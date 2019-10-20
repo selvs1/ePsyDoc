@@ -13,3 +13,5 @@ Abmachungen
 lg sugi
 
 schribet ebbis mal
+
+Erste installation unter Eclipse

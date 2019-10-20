@@ -15,3 +15,29 @@ lg sugi
 schribet ebbis mal
 
 Erste installation unter Eclipse
+
+---------------------------------------------------------- kleine Übersicht ------------------------------------------------------------
+Anforderung PMS: 
+-Aufnahme, Verlegung und Entlassung von Patienten
+-ärztliche und pflegerische Basisdokumentation
+-Drucken und Lesen von Etiketten, Formularen, Barcodes etc.
+-Erfassen von abrechnungsrelevanten Daten
+-Präsentieren von Daten und von Statistiken
+
+Zusätzliche Funktionen Psychiatrie:
+-Fälle unterteilen
+-TARPSY
+
+Mögliche Interviewparnter:
+-Dozent aus BFH mit ärztlicher Erfahrung
+-Ansonsten bekannten Arzt anfragen
+
+Diagramme und Dokumente welche zu erstellen sind:
+-Pflichten/ Lastenheft
+-Zeitplan
+-User-Story & Persona
+-Use-Case-Diagramm
+-UML-Klassendiagramm
+-Projektbericht
+...
+chöits gern no ergänze

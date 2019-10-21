@@ -16,6 +16,44 @@ schribet ebbis mal
 
 Erste installation unter Eclipse
 
+---------------------------------------------------------- Benotung ------------------------------------------------------------
+- Projekt in 7 Aufgaben (Benotung pro Task) aufgeteilt
+- 25% der Fachnote ~ 120 Punkte
+- Zielgruppe: 1. Doctor in a clinic
+- Schwerpunkt: Addiction
+---------------------------------------------- CS2 Introduction - broken translation ---------------------------------------------------
+### Übergeordnete Ziele: ###
+	1. Behandlung der Patienten erleichtern, indem Informationen rechtzeitig dem medizinischen Personal (Ärzte und health visitors) zur Verfügung gestellt wird
+	2. Support für Patienten un deren Angehörigen bei der Bewältigung der Krankheit
+
+### Problem: ###
+- Patient oft unorganisiert
+- verpasst Termine
+- verliert o. vergisst Rezepte / Medis
+- stellen für sich selber o. anderen eine Gefahr dar
+- können ihre Adresse regelmässig ändern, werden obdachlos???
+- Wenn Patient gefährlich, muss das Spital entsprechend gesichert sein
+
+### Wer verwendet unser Produkt (ins CH-Deutsch umgedeutscht): ###
+- klinisches Personal (Arzt, Pflegeleute, Gesundheitsfachkräfte??)
+- Administrationsmitarbeiter (Termine)
+- Personal ??? für Krankenakte
+
+### Output / Reports: ###
+- Bericht: für Krankenahusverwaltung (KIS???) wird vom Pflegepersonal gemacht
+
+### Zugriff: ###
+- Management: hat kein direkter Zugriff auf das System. -> was gemeint?
+
+### Rechtliche Aspekte: ###
+- Datenschutzgesetz: personenbezogene Daten
+- Regelung Inhaftierung des Patienten (ist hier FFE / FU gemeint???)
+
+### Was ist das System nicht: ###
+- keine vollständige Krankenakte (div. Pat Infos werden nicht gespeichert) nur für Support bei psychischen Krankheiten gedacht
+- nicht zusammenhängende (zur psychischen) Krankheiten werden nicht gespeichert
+
+
 ---------------------------------------------------------- kleine Übersicht ------------------------------------------------------------
 Anforderung PMS: 
 -Aufnahme, Verlegung und Entlassung von Patienten
@@ -41,3 +79,76 @@ Diagramme und Dokumente welche zu erstellen sind:
 -Projektbericht
 ...
 chöits gern no ergänze
+
+---------------------------------------------------------- Diary starts here ------------------------------------------------------------
+
+---------------------------------------------------------- Struktur von hier kopieren  ------------------------------------------------------------
+====================================================================================================================================================
+Datum           :   dd.mm.2019
+Uhrzeit         :   hh:mm
+
+Mitarbeiter     :   [1]Sugeelan Selvasingham
+                    [2]Janahan Sellathurai
+                    [3]Alain Nippel
+                    [4]Viktor Velkov
+                    [5]Marko Miletic
+                    [6]Apiwat-David Gaupp
+
+Anwesend waren  :   1,2,3,4,5,6
+
+Sitzungsdauer   :   xx Stunden
+==================================================================Notizen=============================================================================
+FLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXT
+FLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXTFLIESSTEXT
+==================================================================To Do's=============================================================================
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##  STATUS       : [open|work in progress|done]
+#   PRIORITÄT    : !!!!
+#   WER          : 1,2,3,4,5,6
+#   Deadline     : dd.mm.jjjj hh.mm
+
+#   WAS
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulv
+inar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. Nunc viverra imperdiet enim. Fusc
+e est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse d
+ui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend.
+Ut nonummy. Fusce aliquet pede non pede. Suspendisse dapibus lorem pellentesque magna. Integer nulla. Donec blandit feu
+giat ligula. Donec hendrerit, felis et imperdiet euismod, purus ipsum pretium metus, in lacinia nulla nisl eget sapien.
+ Donec ut est in lectus consequat consequat.
+Etiam eget dui. Aliquam erat volutpat. Sed at lorem in nunc porta tristique. Proin nec augue. Quisque aliquam tempor ma
+gna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac magna.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##  STATUS       : [open|work in progress|done]
+#   PRIORITÄT    : !!!!
+#   WER          : 1,2,3,4,5,6
+#   Deadline     : dd.mm.jjjj hh.mm
+
+#   WAS
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulv
+inar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. Nunc viverra imperdiet enim. Fusc
+e est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse d
+ui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend.
+Ut nonummy. Fusce aliquet pede non pede. Suspendisse dapibus lorem pellentesque magna. Integer nulla. Donec blandit feu
+giat ligula. Donec hendrerit, felis et imperdiet euismod, purus ipsum pretium metus, in lacinia nulla nisl eget sapien.
+ Donec ut est in lectus consequat consequat.
+Etiam eget dui. Aliquam erat volutpat. Sed at lorem in nunc porta tristique. Proin nec augue. Quisque aliquam tempor ma
+gna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac magna.
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##  STATUS       : [open|work in progress|done]
+#   PRIORITÄT    : !!!!
+#   WER          : 1,2,3,4,5,6
+#   Deadline     : dd.mm.jjjj hh.mm
+
+#   WAS
+TEXT TEXT TEXT
+
+====================================================================================================================================================
+
+
+
+---------------------------------------------------------- \Struktur von hier kopieren  ------------------------------------------------------------

@@ -24,7 +24,7 @@ Erste installation unter Eclipse
 ---------------------------------------------- CS2 Introduction - broken translation ---------------------------------------------------
 ### Übergeordnete Ziele: ###
 	1. Behandlung der Patienten erleichtern, indem Informationen rechtzeitig dem medizinischen Personal (Ärzte und health visitors) zur Verfügung gestellt wird
-	2. Support für Patienten un deren Angehörigen bei der Bewältigung der Krankheit
+	2. Support für Patienten und deren Angehörigen bei der Bewältigung der Krankheit
 
 ### Problem: ###
 - Patient oft unorganisiert
@@ -33,6 +33,7 @@ Erste installation unter Eclipse
 - stellen für sich selber o. anderen eine Gefahr dar
 - können ihre Adresse regelmässig ändern, werden obdachlos???
 - Wenn Patient gefährlich, muss das Spital entsprechend gesichert sein
+- Der Patient hat unter anderem mit unterschiedlichen Fachexperten Sitzungen
 
 ### Wer verwendet unser Produkt (ins CH-Deutsch umgedeutscht): ###
 - klinisches Personal (Arzt, Pflegeleute, Gesundheitsfachkräfte??)
@@ -64,14 +65,16 @@ Anforderung PMS:
 
 Zusätzliche Funktionen Psychiatrie:
 -Fälle unterteilen
+-Spezialisten unterteilen
 -TARPSY
 
 Mögliche Interviewparnter:
 -Dozent aus BFH mit ärztlicher Erfahrung
 -Ansonsten bekannten Arzt anfragen
+-Interview am 28.10 um 14:00 Uhr Raum N.316
 
 Diagramme und Dokumente welche zu erstellen sind:
--Pflichten/ Lastenheft
+-Pflichten/ Lastenheft 
 -Zeitplan
 -User-Story & Persona
 -Use-Case-Diagramm

@@ -6,5 +6,5 @@ BFH Software Engineering and Design Project
 - Alain Nippel
 - David Gaupp
 - Viktor Velkov
-- Marco Miletic
+- Marko Miletic
 - Janahan Sellathurai

@@ -1,0 +1,20 @@
+Gui Bauen:
+	LoginView erstellen + inkl. Navigationskonzept 9
+	MainView erstellen + inkl. Navigationskonzept	9
+	MedikamentenView erstellen + inkl. Navigationskonzept	9
+	PatientenView erstellen + inkl. Navigationskonzept	9
+	TerminView erstellen + inkl. Navigationskonzept	9
+	Test Userstory 9
+	
+	
+
+	Navigationskonzept erarbeiten + Im Vaadin Elemente für das GUI überprüfen
+	GUI für LoginView erstellen und Navigation implementieren
+	GUI für mainView erstellen und Navigation implementieren
+	GUI für patientView erstellen und Navigation implementieren
+	GUI für medicationView erstellen und Navigation implementieren
+	GUI für reportView erstellen und Navigation implementieren
+	GUI für appointmentView erstellen und Navigation implementieren
+	Dummydaten für Medikamente und Patienten erstellen in Array
+	Alle Klassen gemäss Klassendiagramm erstellen (nur Grundgerüst)
+	patientView Logik nach MVP implementieren inkl. trivialer Getter-Methoden für Patientenauflistung

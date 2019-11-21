@@ -890,7 +890,7 @@
 											"top": 1119,
 											"width": 105.85986328125,
 											"height": 13,
-											"text": "drug"
+											"text": "Drug"
 										},
 										{
 											"_type": "LabelView",
@@ -2018,7 +2018,7 @@
 											"top": 543,
 											"width": 105.8662109375,
 											"height": 13,
-											"text": "patientModel"
+											"text": "PatientModel"
 										},
 										{
 											"_type": "LabelView",
@@ -2232,7 +2232,7 @@
 											"top": 1151,
 											"width": 165.115234375,
 											"height": 13,
-											"text": "hospINDEX"
+											"text": "HospINDEX"
 										},
 										{
 											"_type": "LabelView",
@@ -2427,7 +2427,7 @@
 											"top": 1015,
 											"width": 152.09619140625,
 											"height": 13,
-											"text": "medicationPlan"
+											"text": "MedicationPlan"
 										},
 										{
 											"_type": "LabelView",
@@ -2695,7 +2695,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -256,
-											"top": 1184,
+											"top": 1168,
 											"height": 13
 										},
 										{
@@ -2706,10 +2706,10 @@
 											},
 											"font": "Arial;13;1",
 											"left": 605,
-											"top": 1127,
+											"top": 1119,
 											"width": 141.26708984375,
 											"height": 13,
-											"text": "prescription"
+											"text": "Prescription"
 										},
 										{
 											"_type": "LabelView",
@@ -2720,7 +2720,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -256,
-											"top": 1184,
+											"top": 1168,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -2734,14 +2734,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -256,
-											"top": 1184,
+											"top": 1168,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 600,
-									"top": 1120,
+									"top": 1112,
 									"width": 151.26708984375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -2778,7 +2778,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 605,
-											"top": 1150,
+											"top": 1142,
 											"width": 141.26708984375,
 											"height": 13,
 											"text": "+drugList list",
@@ -2787,7 +2787,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 600,
-									"top": 1145,
+									"top": 1137,
 									"width": 151.26708984375,
 									"height": 23
 								},
@@ -2812,7 +2812,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 605,
-											"top": 1173,
+											"top": 1165,
 											"width": 141.26708984375,
 											"height": 13,
 											"text": "+addDrug()",
@@ -2829,7 +2829,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 605,
-											"top": 1188,
+											"top": 1180,
 											"width": 141.26708984375,
 											"height": 13,
 											"text": "+createMedicationPlan()",
@@ -2846,7 +2846,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 605,
-											"top": 1203,
+											"top": 1195,
 											"width": 141.26708984375,
 											"height": 13,
 											"text": "+toString()",
@@ -2855,7 +2855,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 600,
-									"top": 1168,
+									"top": 1160,
 									"width": 151.26708984375,
 									"height": 53
 								},
@@ -2871,7 +2871,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -128,
-									"top": 592,
+									"top": 584,
 									"width": 10,
 									"height": 10
 								},
@@ -2887,7 +2887,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -128,
-									"top": 592,
+									"top": 584,
 									"width": 10,
 									"height": 10
 								}
@@ -2895,7 +2895,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 600,
-							"top": 1120,
+							"top": 1112,
 							"width": 151.26708984375,
 							"height": 101,
 							"nameCompartment": {
@@ -2957,7 +2957,7 @@
 											"top": 423,
 											"width": 96.94140625,
 											"height": 13,
-											"text": "mainPresenter"
+											"text": "MainPresenter"
 										},
 										{
 											"_type": "LabelView",
@@ -3152,7 +3152,7 @@
 											"top": 527,
 											"width": 129.71435546875,
 											"height": 13,
-											"text": "patientPresenter"
+											"text": "PatientPresenter"
 										},
 										{
 											"_type": "LabelView",
@@ -3366,7 +3366,7 @@
 											"top": 623,
 											"width": 177.37255859375,
 											"height": 13,
-											"text": "medicationPresenter"
+											"text": "MedicationPresenter"
 										},
 										{
 											"_type": "LabelView",
@@ -3597,7 +3597,7 @@
 											"top": 735,
 											"width": 177.37255859375,
 											"height": 13,
-											"text": "reportPresenter"
+											"text": "ReportPresenter"
 										},
 										{
 											"_type": "LabelView",
@@ -3828,7 +3828,7 @@
 											"top": 847,
 											"width": 150.66162109375,
 											"height": 13,
-											"text": "appointmentPresenter"
+											"text": "AppointmentPresenter"
 										},
 										{
 											"_type": "LabelView",
@@ -4059,7 +4059,7 @@
 											"top": 423,
 											"width": 80.57080078125,
 											"height": 13,
-											"text": "mainView"
+											"text": "MainView"
 										},
 										{
 											"_type": "LabelView",
@@ -4254,7 +4254,7 @@
 											"top": 535,
 											"width": 83.22412109375,
 											"height": 13,
-											"text": "patientView"
+											"text": "PatientView"
 										},
 										{
 											"_type": "LabelView",
@@ -4449,7 +4449,7 @@
 											"top": 631,
 											"width": 107.0595703125,
 											"height": 13,
-											"text": "medicationView"
+											"text": "MedicationView"
 										},
 										{
 											"_type": "LabelView",
@@ -4644,7 +4644,7 @@
 											"top": 743,
 											"width": 80.57080078125,
 											"height": 13,
-											"text": "reportView"
+											"text": "ReportView"
 										},
 										{
 											"_type": "LabelView",
@@ -4839,7 +4839,7 @@
 											"top": 855,
 											"width": 115.7431640625,
 											"height": 13,
-											"text": "appointmentView"
+											"text": "AppointmentView"
 										},
 										{
 											"_type": "LabelView",
@@ -5832,7 +5832,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 687,
-									"top": 1098,
+									"top": 1094,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -5853,7 +5853,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 702,
-									"top": 1097,
+									"top": 1092,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -5874,7 +5874,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 658,
-									"top": 1101,
+									"top": 1097,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5916,7 +5916,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 702,
-									"top": 1115,
+									"top": 1114,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -5958,7 +5958,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 687,
-									"top": 1086,
+									"top": 1078,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -5977,8 +5977,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 701,
-									"top": 1083,
+									"left": 700,
+									"top": 1075,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -5998,7 +5998,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 660,
-									"top": 1091,
+									"top": 1084,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -6047,7 +6047,7 @@
 								"$ref": "AAAAAAFugqluNZnumwQ="
 							},
 							"lineStyle": 1,
-							"points": "673:1094;674:1119",
+							"points": "673:1094;674:1111",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFugv5J/Z5iNO4="
@@ -7532,8 +7532,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 776,
-									"top": 1147,
+									"left": 777,
+									"top": 1146,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -7553,7 +7553,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 778,
+									"left": 780,
 									"top": 1133,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -7574,8 +7574,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 773,
-									"top": 1174,
+									"left": 771,
+									"top": 1173,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -7685,7 +7685,7 @@
 								"$ref": "AAAAAAFugr7acJpYgTQ="
 							},
 							"lineStyle": 1,
-							"points": "751:1169;784:1168;784:720;871:720",
+							"points": "751:1166;784:1168;784:720;871:720",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFugyBJ++eUthg="
@@ -10527,7 +10527,7 @@
 											"top": 407,
 											"width": 110.89990234375,
 											"height": 13,
-											"text": "doctorModel"
+											"text": "DoctorModel"
 										},
 										{
 											"_type": "LabelView",
@@ -11005,8 +11005,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 583,
-									"top": 1150,
+									"left": 582,
+									"top": 1146,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -11026,8 +11026,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 583,
-									"top": 1135,
+									"left": 581,
+									"top": 1131,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -11048,7 +11048,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 583,
-									"top": 1180,
+									"top": 1175,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -11068,8 +11068,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 592,
-									"top": 1150,
+									"left": 591,
+									"top": 1145,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -11089,8 +11089,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 595,
-									"top": 1136,
+									"left": 593,
+									"top": 1132,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -11110,8 +11110,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 588,
-									"top": 1177,
+									"left": 589,
+									"top": 1173,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -11131,8 +11131,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 573,
-									"top": 1150,
+									"left": 572,
+									"top": 1146,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -11151,8 +11151,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 570,
-									"top": 1136,
+									"left": 569,
+									"top": 1133,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -11171,8 +11171,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 577,
-									"top": 1177,
+									"left": 578,
+									"top": 1173,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -11217,7 +11217,7 @@
 								"$ref": "AAAAAAFugqZTFpnAxdg="
 							},
 							"lineStyle": 1,
-							"points": "567:1171;599:1171",
+							"points": "567:1168;599:1166",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFuiZrRTl7vysg="
@@ -12217,7 +12217,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuglbQm5aJg90="
 							},
-							"name": "street"
+							"name": "street",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -12225,7 +12226,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuglbQm5aJg90="
 							},
-							"name": "zip"
+							"name": "zip",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -12233,7 +12235,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuglbQm5aJg90="
 							},
-							"name": "city"
+							"name": "city",
+							"type": ""
 						}
 					]
 				},
@@ -12289,7 +12292,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "drug",
+					"name": "Drug",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -12756,7 +12759,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuglc/EJgDmO8="
 							},
-							"name": "empID int"
+							"name": "empID int",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -12785,7 +12789,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "patientModel",
+					"name": "PatientModel",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -12935,7 +12939,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "hospINDEX",
+					"name": "HospINDEX",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -12983,7 +12987,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "medicationPlan",
+					"name": "MedicationPlan",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13049,7 +13053,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "prescription",
+					"name": "Prescription",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13150,7 +13154,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "mainPresenter",
+					"name": "MainPresenter",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13198,7 +13202,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "patientPresenter",
+					"name": "PatientPresenter",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13256,7 +13260,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "medicationPresenter",
+					"name": "MedicationPresenter",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13322,7 +13326,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "reportPresenter",
+					"name": "ReportPresenter",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13388,7 +13392,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "appointmentPresenter",
+					"name": "AppointmentPresenter",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13465,7 +13469,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "mainView",
+					"name": "MainView",
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -13483,7 +13487,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "patientView",
+					"name": "PatientView",
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -13501,7 +13505,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "medicationView",
+					"name": "MedicationView",
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -13519,7 +13523,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "reportView",
+					"name": "ReportView",
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -13537,7 +13541,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "appointmentView",
+					"name": "AppointmentView",
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -13684,7 +13688,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuiZZEyvKbK7Y="
 							},
-							"name": "patID"
+							"name": "patID",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13692,7 +13697,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuiZZEyvKbK7Y="
 							},
-							"name": "ahv"
+							"name": "ahv",
+							"type": ""
 						}
 					]
 				},
@@ -13702,7 +13708,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "doctorModel",
+					"name": "DoctorModel",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -13710,7 +13716,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFuiZf50AMx3fg="
 							},
-							"name": "doctorList list"
+							"name": "doctorList list",
+							"type": ""
 						}
 					],
 					"operations": [

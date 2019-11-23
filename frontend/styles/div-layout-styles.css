@@ -1,0 +1,30 @@
+.main-view {
+    display: flex;
+    flex-direction: column;
+    background: hotpink;
+}
+
+.center {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    background: aquamarine;
+}
+
+.navbar {
+    flex: 1;
+    min-width: 200px;
+    background: antiquewhite;
+}
+
+.content {
+    flex: 4;
+    min-width: 500px;
+    background: aqua;
+}
+
+.btn {
+    background: blueviolet;
+    color: greenyellow;
+    width: 500px;
+}

@@ -20,7 +20,7 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView{
 		TextField firstnameTextfield = new TextField("Firstname");
 		TextField lastnameTextfield = new TextField("Lastname");
 		Button PatientButton = new Button("Patient searching");
-		  HorizontalLayout hLayout1 = new HorizontalLayout();
+		HorizontalLayout hLayout1 = new HorizontalLayout();
         HorizontalLayout hLayout2 = new HorizontalLayout();
         Grid<Object> grid = new Grid<Object>();
         

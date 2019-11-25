@@ -17,7 +17,7 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.Route;
 
 
-@Route("dini")
+@Route("Homepage")
 public class MainView extends VerticalLayout {
     public MainView() {
 /*	

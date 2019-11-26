@@ -26,9 +26,9 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView{
 		VerticalLayout hLayout = new VerticalLayout();
 		VerticalLayout hLayout2 = new VerticalLayout();
 		VerticalLayout vLayout = new VerticalLayout();
-		TextField firstnameTextfield = new TextField("Firstname");
-		TextField lastnameTextfield = new TextField("Lastname");
-		Button btnPatientsearch = new Button("Patient searching");
+		TextField firstnameTextfield = new TextField("Vorname");
+		TextField lastnameTextfield = new TextField("Nachname");
+		Button btnPatientsearch = new Button("Patient suchen");
 		Button btnPatientAll = new Button("Alle Patient anzeigen");
     	List<PatientModel> Patientlist = new ArrayList<PatientModel>();
       

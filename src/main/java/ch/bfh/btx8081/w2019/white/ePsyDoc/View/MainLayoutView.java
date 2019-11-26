@@ -25,26 +25,27 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 
 @CssImport("frontend://styles/mainlayoutview.css")
 public class MainLayoutView extends Div {
-   
-Header header;
-MenuBar menuBar;
-VerticalLayout content;
-Div body;
-Footer footer;
-Button btnReturn;
-HorizontalLayout information;
+
+    Header header;
+    MenuBar menuBar;
+    VerticalLayout content;
+    Div body;
+    Footer footer;
+    Button btnReturn;
+    HorizontalLayout information;
+
     public MainLayoutView() {
         // Instantiate layouts
-    	String patientName= "Max Muster";
-    	String patientCase="2019-11-10 12394";
-    	header = new Header();
-    	footer = new Footer();
+        String patientName = "Max Muster";
+        String patientCase = "2019-11-10 12394";
+        header = new Header();
+        footer = new Footer();
         menuBar = new MenuBar();
         MenuItem appointment = new MenuItem(null, null);
         MenuItem patient = new MenuItem(null, null);
         MenuItem report = new MenuItem(null, null);
         MenuItem logout = new MenuItem(null, null);
-        appointment.add(new Icon(VaadinIcon.CALENDAR_USER)); 
+        appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
         appointment.add(" Appointment");
         appointment.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
         patient.add(new Icon(VaadinIcon.USER));
@@ -57,7 +58,7 @@ HorizontalLayout information;
         logout.add(new Icon(VaadinIcon.SIGN_OUT));
         logout.add(" Logout");
         //logout.addClickListener(e -> UI.getCurrent().navigate(LogoutViewImpl.class));
-        
+
         menuBar.addItem(appointment);
         menuBar.addItem(patient);
         menuBar.addItem(report);
@@ -71,21 +72,19 @@ HorizontalLayout information;
         information.add(new Label(patientName));
         information.add(new Label("| Case:"));
         information.add(new Label(patientCase));
-        
+
         information.addClassName("patient");
         menuBar.addClassName("navbar");
         body.addClassName("body");
         content.addClassName("content");
 
         footer.add("Ⓒ by ePsyDoc");
-               
-        // Compose layout
-        body.add(information,content);
-        add(header, body, footer);
-        
-    }
 
-    
+        // Compose layout
+        body.add(information, content);
+        add(header, body, footer);
+
+    }
 
 
 }

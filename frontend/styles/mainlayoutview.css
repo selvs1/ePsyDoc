@@ -1,44 +1,36 @@
-.main-view {
-    display: flex;
-    flex-direction: column;
-    background: hotpink;
+html{
+	background-color:#fefefe;
+	
+}
+.main-view{
+	width:100%;
 }
 
-.center {
-    flex: 1;
-    display: flex;
+header{
+	margin: 5px;
+	
+}
+footer{
+	text-align: center;
+	padding-top:30px;
+	color:#1576f3;
+	border-top:1px solid #B1AFAE;
+}
+
+vaadin-horizontal-layout{
+	    max-width: 100%;
     flex-wrap: wrap;
-    background: aquamarine;
 }
 
-.subHeader1 {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    background: red;
+
+
+.patient{
+	background-color:#1576f3;
+	color:#ffffff;
+	padding:10px 5px;
+	
 }
 
-.subHeader2 {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    background: green;
-}
-
-.navbar {
-    flex: 1;
-    min-width: 200px;
-    background: antiquewhite;
-}
-
-.content {
-    flex: 4;
-    min-width: 500px;
-    background: aqua;
-}
-
-.btn {
-    background: blueviolet;
-    color: greenyellow;
-    width: 500px;
+.patient label:nth-child(2n){
+	  font-weight: bold;
 }

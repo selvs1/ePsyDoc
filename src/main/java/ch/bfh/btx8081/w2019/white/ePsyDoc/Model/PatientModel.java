@@ -8,10 +8,10 @@ public class PatientModel {
 	private String gender;
 	private String date;
 	private String adress;
-	private String plz;
+	private String zip;
 
 	public PatientModel(int patientID, String lastname, String firstname, String gender, String date, String adress,
-			String plz) {
+			String zip) {
 
 		this.patientID = patientID;
 		this.lastname = lastname;
@@ -19,7 +19,7 @@ public class PatientModel {
 		this.gender = gender;
 		this.date = date;
 		this.adress = adress;
-		this.plz = plz;
+		this.zip = zip;
 
 	}
 
@@ -71,12 +71,12 @@ public class PatientModel {
 		this.adress = adress;
 	}
 
-	public String getPlz() {
-		return plz;
+	public String getZIP() {
+		return zip;
 	}
 
-	public void setPlz(String plz) {
-		this.plz = plz;
+	public void setZIP(String zip) {
+		this.zip = zip;
 	}
 
 }

@@ -1,3 +1,9 @@
+/**
+ * This class handles the login procedure. I got inspired by this link:
+ * https://github.com/vaadin-learning-center/spring-secured-vaadin/blob/login-overlay-form/src/main/java/org/vaadin/paul/spring/ui/views/LoginView.java
+ *
+ * @author Sugeelan Selvasingham, Alain Nippel
+ */
 package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 
 import java.util.ArrayList;
@@ -15,28 +21,21 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-/**
- * This class handles the login procedure. I got inspired by this link:
- * https://github.com/vaadin-learning-center/spring-secured-vaadin/blob/login-overlay-form/src/main/java/org/vaadin/paul/spring/ui/views/LoginView.java
- *
- * @author Sugeelan Selvasingham, Alain Nippel
- */
-
 @Route(value = LoginViewImpl.ROUTE)
 @PageTitle("Login")
 
 public class LoginViewImpl extends VerticalLayout implements LoginView {
+	private static final long serialVersionUID = 1L;
 	public static final String ROUTE = "login";
-
 	private VerticalLayout root = new VerticalLayout();
 	private TextField tfUsername = new TextField();
 	private PasswordField tfPassword = new PasswordField();
 	private Button btnSubmit = new Button("Submit");
 	private H1 title = new H1("ePsyDoc");
-
 	private List<LoginViewListener> listeners = new ArrayList<>();
-
 	private FormLayout login = new FormLayout();
+	private LoginOverlay component = new LoginOverlay();
+
 	public LoginViewImpl() {
 //        login.setAction("Homepage");
 //        login.setOpened(true);
@@ -44,7 +43,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 //        login.setDescription("Secure Authentication");
 //        login.setForgotPasswordButtonVisible(false); // we won't implement this
 //        getElement().appendChild(login.getElement());
-		LoginOverlay component = new LoginOverlay();
+
 		component.addLoginListener(e -> component.close());
 		btnSubmit.addClickListener((x) -> {
 			for (LoginViewListener listener : listeners) {
@@ -52,7 +51,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 			}
 		});
 
-		
+		// Input field settings
 		root.addClassName("login");
 		root.setWidth("300");
 		tfUsername.setPlaceholder("Username");
@@ -61,14 +60,13 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 		tfUsername.setAutoselect(true);
 		tfUsername.setClearButtonVisible(true);
 
-
 		tfPassword.setPlaceholder("Password");
 		tfPassword.setLabel("Password");
 		tfPassword.setRequired(true);
 		tfPassword.setAutoselect(true);
 		tfPassword.setClearButtonVisible(true);
 
-		
+		// Add to Layout
 		login.add(tfUsername, tfPassword, btnSubmit);
 		root.add(title, login);
 		this.add(root);
@@ -97,7 +95,6 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	public void letsGo() {
 		this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
 	}
-	
 
 	public void problem(String message) {
 		Notification.show("Login not possible for user: " + message);

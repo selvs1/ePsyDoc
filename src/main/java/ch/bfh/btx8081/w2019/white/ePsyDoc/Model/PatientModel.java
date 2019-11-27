@@ -5,89 +5,130 @@ import java.util.List;
 
 public class PatientModel {
 
-
-
-
 	private int patientID;
-	private String name;
-	private String vorname;
-	private String geschlecht;
+	private String lastname;
+	private String firstname;
+	private String gender;
 	private String date;
-	private String adresse;
+	private String adress;
 	private String plz;
 
 	
 	
 	
-	public PatientModel(int patientID, String name, String vorname,String geschlecht, String date, String adresse, String plz ) {
+	public PatientModel(int patientID, String lastname, String firstname,String gender, String date, String adress, String plz ) {
 		
 		this.patientID =patientID;
-		this.name = name;
-		this.vorname = vorname;
-		this.geschlecht = geschlecht;
+		this.lastname = lastname;
+		this.firstname= firstname;
+		this.gender = gender;
 		this.date = date;
-		this.adresse =adresse;
+		this.adress =adress;
 		this.plz = plz;
 		
 		
 		
 	}
+
+
+
 
 	public int getPatientID() {
 		return patientID;
 	}
 
+
+
+
 	public void setPatientID(int patientID) {
 		this.patientID = patientID;
 	}
 
-	public String getName() {
-		return name;
+
+
+
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+
+
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
-	public String getVorname() {
-		return vorname;
+
+
+
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setVorname(String vorname) {
-		this.vorname = vorname;
+
+
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getGeschlecht() {
-		return geschlecht;
+
+
+
+	public String getGender() {
+		return gender;
 	}
 
-	public void setGeschlecht(String geschlecht) {
-		this.geschlecht = geschlecht;
+
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
+
+
+
 
 	public String getDate() {
 		return date;
 	}
 
+
+
+
 	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public String getAdresse() {
-		return adresse;
+
+
+
+	public String getAdress() {
+		return adress;
 	}
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+
+
+
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
+
+
+
 
 	public String getPlz() {
 		return plz;
 	}
 
+
+
+
 	public void setPlz(String plz) {
 		this.plz = plz;
 	}
+
+
 	
 	
 

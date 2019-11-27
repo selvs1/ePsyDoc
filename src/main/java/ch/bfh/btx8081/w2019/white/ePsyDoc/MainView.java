@@ -6,6 +6,9 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Footer;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -19,25 +22,16 @@ import com.vaadin.flow.router.Route;
 
 @Route("Homepage")
 public class MainView extends VerticalLayout {
+	Header header;
+	Footer footer;
     public MainView() {
-/*	
-// Create the model and the Vaadin view implementation
-        CalculatorModel model = new CalculatorModel();
-        CalculatorViewImpl view = new CalculatorViewImpl();
-// The presenter connects the model and view
-        new CalculatorPresenter(model, view);
-// The view implementation is a Vaadin component
-        add(view);
-*/  
-	
-	// HEADER
-		Icon drawer = VaadinIcon.MENU.create();
+    	header = new Header();
+    	footer = new Footer();
+
+    	header.add(new H1("ePsyDoc"));
 		Span title = new Span("ePsyDoc");
 		Icon help = VaadinIcon.QUESTION_CIRCLE.create();
-		HorizontalLayout header = new HorizontalLayout(title, drawer, help);
-		header.expand(title);
-		header.setPadding(true);
-		header.setWidth("100%");
+		
 		
 		// WORKSPACE
 		
@@ -63,9 +57,7 @@ public class MainView extends VerticalLayout {
 			Tab actionButton2 = new Tab(VaadinIcon.USERS.create(), new Span("Back"));
 			Tab actionButton3 = new Tab(VaadinIcon.PACKAGE.create(), new Span("More"));
 			Tabs buttonBar = new Tabs(actionButton1, actionButton2, actionButton3);
-			HorizontalLayout footer = new HorizontalLayout(buttonBar);
-			footer.setJustifyContentMode(JustifyContentMode.CENTER);
-			footer.setWidth("100%");
+			
 
 			// MAIN CONTAINER
 			setSizeFull();

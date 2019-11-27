@@ -34,3 +34,24 @@ vaadin-horizontal-layout{
 .patient label:nth-child(2n){
 	  font-weight: bold;
 }
+
+.login{
+	width:300px;
+	margin:50px auto;
+	border:2px solid #1576f3;
+	padding:0 0 20px 0;
+	display:grid;
+}
+.login * {
+    width: 90%;
+    margin:10px auto;
+    text-align: center;
+}
+
+.login h1{
+	width:100%;
+	margin:0;
+	background-color:#1576f3;
+	color:#ffffff;
+	padding:20px 0;
+}

@@ -4,21 +4,31 @@ import java.util.Date;
 
 public class Doctor implements Person {
 
+    private String firstname;
     private String name;
     private String username;
     private String password;
 
 
+    public Doctor(String firstname, String name, String username, String password) {
+        this.firstname = firstname;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
 
     public String getName() {
         return name;
+    }
+
+    public String getFirstname() {
+        return firstname;
     }
 
     public String getPassword() {
         return password;
     }
 
-    @Override
     public String getUsername() {
         return username;
     }

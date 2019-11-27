@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public interface Person {
 
-    String getUsername();
+    String getName();
 
     Date getBirthdate();
 

@@ -4,11 +4,11 @@ import java.util.List;
 
 public class PatientCase {
 	private String fid;
-	private List reportList;
-	private List appointmentList;
+	private List<?> reportList;
+	private List<?> appointmentList;
 	private MedicationPlan mediPlan;
 
-	public PatientCase(String fid, List reportList, List appointmentList, MedicationPlan mediPlan) {
+	public PatientCase(String fid, List<?> reportList, List<?> appointmentList, MedicationPlan mediPlan) {
 		this.fid = fid;
 		this.reportList = reportList;
 		this.appointmentList = appointmentList;
@@ -19,23 +19,23 @@ public class PatientCase {
 		return fid;
 	}
 
-	public void setFid(String fID) {
-		fid = fid;
+	public void setFid(String fid) {
+		this.fid = fid;
 	}
 
-	public List getReportList() {
+	public List<?> getReportList() {
 		return reportList;
 	}
 
-	public void setReportList(List reportList) {
+	public void setReportList(List<?> reportList) {
 		this.reportList = reportList;
 	}
 
-	public List getAppointmentList() {
+	public List<?> getAppointmentList() {
 		return appointmentList;
 	}
 
-	public void setAppointmentList(List appointmentList) {
+	public void setAppointmentList(List<?> appointmentList) {
 		this.appointmentList = appointmentList;
 	}
 

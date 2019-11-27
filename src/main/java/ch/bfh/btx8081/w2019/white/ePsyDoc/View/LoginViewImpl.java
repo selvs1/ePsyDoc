@@ -1,8 +1,10 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.charts.model.Label;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginOverlay;
@@ -10,12 +12,8 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class handles the login procedure. I got inspired by this link:
@@ -48,8 +46,6 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 //        getElement().appendChild(login.getElement());
 		LoginOverlay component = new LoginOverlay();
 		component.addLoginListener(e -> component.close());
-		Button open = new Button("Open login overlay",
-		    e -> component.setOpened(true));
 		btnSubmit.addClickListener((x) -> {
 			for (LoginViewListener listener : listeners) {
 				listener.login(tfUsername.getValue(), tfPassword.getValue());

@@ -23,7 +23,7 @@ public class MedicationViewImpl extends Div implements MedicationView {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	VerticalLayout layout1 = new VerticalLayout();
+	VerticalLayout root = new VerticalLayout();
 	HorizontalLayout layout2 = new HorizontalLayout();
 	HorizontalLayout layout3 = new HorizontalLayout();
 	HorizontalLayout layout4 = new HorizontalLayout();
@@ -119,7 +119,7 @@ public class MedicationViewImpl extends Div implements MedicationView {
 			}
 				
 			grid.setItems(medicationplan);
-			layout1.add(grid);
+			root.add(grid);
 
 			textfieldactiveIngredient.clear();
 			textfieldStrength.clear();
@@ -141,9 +141,9 @@ public class MedicationViewImpl extends Div implements MedicationView {
 
 		});
 
-		layout1.add(layout2, layout3, layout4, btnOk);
+		root.add(layout2, layout3, layout4, btnOk);
 
-		add(layout1);
+		add(root);
 
 	}
 }

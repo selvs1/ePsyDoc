@@ -18,6 +18,7 @@ import com.vaadin.flow.router.Route;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 
+//Route Name and Page Title
 @Route("Appointment")
 @PageTitle("Appointment")
 public class AppointmentViewImpl extends MainLayoutView implements MedicationView {

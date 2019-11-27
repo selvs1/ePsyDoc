@@ -21,7 +21,7 @@ import java.util.List;
  * This class handles the login procedure. I got inspired by this link:
  * https://github.com/vaadin-learning-center/spring-secured-vaadin/blob/login-overlay-form/src/main/java/org/vaadin/paul/spring/ui/views/LoginView.java
  *
- * @author Sugeelan Selvasingham
+ * @author Sugeelan Selvasingham, Alain Nippel
  */
 
 @Route(value = LoginViewImpl.ROUTE)

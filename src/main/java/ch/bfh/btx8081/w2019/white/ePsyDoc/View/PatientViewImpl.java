@@ -10,6 +10,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 
 @Route("Patient")
@@ -25,7 +26,10 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 	private TextField lastnameTextfield = new TextField("Lastname");
 	private Button btnPatientsearch = new Button("Searching patient");
 	private Button btnPatientAll = new Button("All patient");
+	private List<PatientModel> personList = new ArrayList<>();
 	private Grid<PatientModel> grid = new Grid<>();
+	private Grid<PatientCase> patientCase = new Grid<>();
+	private List<PatientCase> patientCaseList = new ArrayList<>();
 
 	public PatientViewImpl() {
 		// Test Data
@@ -33,6 +37,10 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 		Patientlist.add(new PatientModel(2, "Mars", "Jardon", "m", "10.02.1995", "Teststrasse 43", "3012"));
 		Patientlist.add(new PatientModel(3, "Jackson", "Peter", "m", "03.03.2000", "okstrasse 34", "3000"));
 		Patientlist.add(new PatientModel(4, "Bolliga", "Anna", "w", "12.06.1989", "strassstrasse 99", "3430"));
+		
+		patientCaseList.add(new PatientCase("F124134", personList, personList, null));
+		patientCaseList.add(new PatientCase("F13423234", personList, personList, null));
+		patientCaseList.add(new PatientCase("F898767", personList, personList, null));
 
 		// Column set and description
 		grid.addColumn(PatientModel::getPatientID).setHeader("Patient ID");
@@ -63,9 +71,17 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 				grid.setItems(certain);
 			}
 		});
+		
+		// Column set, description and settings
+		patientCase.addColumn(PatientCase::getFid).setHeader("FID");
+		patientCase.setVisible(false);
+		patientCase.setItems(patientCaseList);
+
+		// double click on patient item show patientCase Grid
+		grid.addItemClickListener(e -> patientCase.setVisible(true));
 
 		// Add elements to root VerticalLayout
-		root.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid, btnPatientAll);
+		root.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid, btnPatientAll,patientCase);
 
 		// Add to layout
 		super.content.add(root);

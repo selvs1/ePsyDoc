@@ -1,7 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.vaadin.flow.component.button.Button;
@@ -13,14 +12,16 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.HospIndex;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Drug;
 
 @Route("Medication")
 @PageTitle("Medication")
 public class MedicationViewImpl extends Div implements MedicationView {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	VerticalLayout layout1 = new VerticalLayout();
 	HorizontalLayout layout2 = new HorizontalLayout();
 	HorizontalLayout layout3 = new HorizontalLayout();

@@ -82,7 +82,8 @@ public class MedicationViewImpl extends MainLayoutView implements MedicationView
 				textfieldUnit.setEnabled(false);
 			}
 		});
-		
+	
+
 		medicationplan = new ArrayList<>();
 		grid = new Grid<>();
 		grid.addColumn(Medicationplan::getactiveIngredient).setHeader("Active Ingredient");

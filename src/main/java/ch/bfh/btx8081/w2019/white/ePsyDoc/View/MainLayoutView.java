@@ -57,7 +57,7 @@ public class MainLayoutView extends Div {
 
         logout.add(new Icon(VaadinIcon.SIGN_OUT));
         logout.add(" Logout");
-        //logout.addClickListener(e -> UI.getCurrent().navigate(LogoutViewImpl.class));
+        logout.addClickListener(e -> UI.getCurrent().navigate(LogoutViewImpl.class));
 
         menuBar.addItem(appointment);
         menuBar.addItem(patient);

@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatientModel {
-	
+
+
+
+
 	private int patientID;
 	private String name;
 	private String vorname;

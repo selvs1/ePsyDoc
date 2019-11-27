@@ -2,6 +2,9 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
 import java.util.Date;
 
+/**
+ * @author Sugeelan Selvasingham
+ * */
 public class Doctor implements Person {
 
     private String firstname;

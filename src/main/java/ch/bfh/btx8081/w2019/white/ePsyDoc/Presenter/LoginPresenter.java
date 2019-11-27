@@ -29,6 +29,7 @@ public class LoginPresenter implements LoginView.LoginViewListener {
         model.search();
         if (model.getLoginsuccess() == true) {
             view.letsGo();
+       
 
         } else {
             view.problem(username);

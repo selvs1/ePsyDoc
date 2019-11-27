@@ -42,8 +42,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 
 	private List<LoginViewListener> listeners = new ArrayList<>();
 
-	private LoginOverlay login = new LoginOverlay();
-
+	private FormLayout login = new FormLayout();
 	public LoginViewImpl() {
 //        login.setAction("Homepage");
 //        login.setOpened(true);
@@ -51,21 +50,35 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 //        login.setDescription("Secure Authentication");
 //        login.setForgotPasswordButtonVisible(false); // we won't implement this
 //        getElement().appendChild(login.getElement());
-
+		LoginOverlay component = new LoginOverlay();
+		component.addLoginListener(e -> component.close());
+		Button open = new Button("Open login overlay",
+		    e -> component.setOpened(true));
 		btnSubmit.addClickListener((x) -> {
 			for (LoginViewListener listener : listeners) {
 				listener.login(tfUsername.getValue(), tfPassword.getValue());
 			}
 		});
 
+		
 		root.addClassName("login");
-		root.setWidth("225");
+		root.setWidth("300");
 		tfUsername.setPlaceholder("Username");
 		tfUsername.setLabel("Username");
+		tfUsername.setRequired(true);
+		tfUsername.setAutoselect(true);
+		tfUsername.setClearButtonVisible(true);
+
+
 		tfPassword.setPlaceholder("Password");
 		tfPassword.setLabel("Password");
+		tfPassword.setRequired(true);
+		tfPassword.setAutoselect(true);
+		tfPassword.setClearButtonVisible(true);
+
 		
-		root.add(title, tfUsername, tfPassword, btnSubmit);
+		login.add(tfUsername, tfPassword, btnSubmit);
+		root.add(title, login);
 		this.add(root);
 	}
 
@@ -92,6 +105,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	public void letsGo() {
 		this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
 	}
+	
 
 	public void problem(String message) {
 		Notification.show("Login not possible for user: " + message);

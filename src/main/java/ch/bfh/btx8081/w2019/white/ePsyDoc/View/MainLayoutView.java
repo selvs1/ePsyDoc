@@ -18,8 +18,10 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.ThemableLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.Page;
 import com.vaadin.flow.component.timepicker.osgi.TimePickerResource;
 import com.vaadin.flow.server.Command;
+import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 
@@ -57,7 +59,7 @@ public class MainLayoutView extends Div {
 
         logout.add(new Icon(VaadinIcon.SIGN_OUT));
         logout.add(" Logout");
-        logout.addClickListener(e -> UI.getCurrent().navigate(LogoutViewImpl.class));
+        logout.addClickListener(e -> VaadinSession.getCurrent().close());
 
         menuBar.addItem(appointment);
         menuBar.addItem(patient);
@@ -85,6 +87,7 @@ public class MainLayoutView extends Div {
         add(header, body, footer);
 
     }
+   
 
 
 }

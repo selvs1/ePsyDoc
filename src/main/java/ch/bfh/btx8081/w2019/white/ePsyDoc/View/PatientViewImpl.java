@@ -3,11 +3,15 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -26,11 +30,13 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView{
 		VerticalLayout hLayout = new VerticalLayout();
 		VerticalLayout hLayout2 = new VerticalLayout();
 		VerticalLayout vLayout = new VerticalLayout();
-		TextField firstnameTextfield = new TextField("Vorname");
-		TextField lastnameTextfield = new TextField("Nachname");
-		Button btnPatientsearch = new Button("Patient suchen");
-		Button btnPatientAll = new Button("Alle Patient anzeigen");
+		TextField firstnameTextfield = new TextField("Firstname");
+		TextField lastnameTextfield = new TextField("Lastname");
+		Button btnPatientsearch = new Button("searching patient");
+		Button btnPatientAll = new Button("all patient");
     	List<PatientModel> Patientlist = new ArrayList<PatientModel>();
+   
+    	
       
         
         
@@ -42,16 +48,17 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView{
 
         
 		Grid<PatientModel> grid= new Grid<>();
+		
 		grid.addColumn(PatientModel::getPatientID).setHeader("Patient ID");
-		grid.addColumn(PatientModel::getVorname).setHeader("Vorname");
-		grid.addColumn(PatientModel::getName).setHeader("Nachname");
-		grid.addColumn(PatientModel::getGeschlecht).setHeader("Geschlecht");
-		grid.addColumn(PatientModel::getDate).setHeader("Geburtsdatum");
-		grid.addColumn(PatientModel::getAdresse).setHeader("Adresse");
+		grid.addColumn(PatientModel::getFirstname).setHeader("Firstname");
+		grid.addColumn(PatientModel::getLastname).setHeader("Lastname");
+		grid.addColumn(PatientModel::getGender).setHeader("Gender");
+		grid.addColumn(PatientModel::getDate).setHeader("Birthdate");
+		grid.addColumn(PatientModel::getAdress).setHeader("Address");
 		grid.addColumn(PatientModel::getPlz).setHeader("PLZ");
+
 		
-		
-		
+	
 		btnPatientAll.addClickListener(event -> {
 			grid.setItems(Patientlist);
 		});
@@ -69,8 +76,8 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView{
 
 			for(PatientModel patient : Patientlist) {
 				
-				if(patient.getVorname().equals(vorname)&& patient.getName().equals(nachname)) {
-				
+				if(patient.getFirstname().equalsIgnoreCase(vorname) && patient.getLastname().equalsIgnoreCase(nachname)) {
+		
 					certain.add(patient);
 				}
 				grid.setItems(certain);
@@ -102,4 +109,5 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView{
 		
 		
 	}
+	
 }

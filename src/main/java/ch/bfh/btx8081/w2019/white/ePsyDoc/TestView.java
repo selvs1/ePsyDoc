@@ -9,16 +9,13 @@ import com.vaadin.flow.router.Route;
 @Route("testlogin")
 public class TestView extends VerticalLayout {
 
+	public TestView() {
+		LoginModel model = new LoginModel();
+		model.init(); // Testdaten erstellen
+		LoginViewImpl view = new LoginViewImpl();
+		new LoginPresenter(model, view);
 
-
-    public TestView() {
-        LoginModel model = new LoginModel();
-        model.init(); // Testdaten erstellen
-        LoginViewImpl view = new LoginViewImpl();
-        new LoginPresenter(model,view);
-
-        add(view);
-    }
-
+		add(view);
+	}
 
 }

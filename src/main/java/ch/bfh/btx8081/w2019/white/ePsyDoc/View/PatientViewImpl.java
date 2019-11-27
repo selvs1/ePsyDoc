@@ -9,6 +9,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 
 @Route("Patient")
@@ -20,7 +21,7 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 
 		VerticalLayout hLayout = new VerticalLayout();
 		VerticalLayout hLayout2 = new VerticalLayout();
-		VerticalLayout vLayout = new VerticalLayout();
+		VerticalLayout root = new VerticalLayout();
 		TextField firstnameTextfield = new TextField("Firstname");
 		TextField lastnameTextfield = new TextField("Lastname");
 		Button btnPatientsearch = new Button("searching patient");
@@ -69,10 +70,10 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 		hLayout.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid);
 		hLayout2.add(btnPatientAll);
 		// vLayout.add(grid);
-		vLayout.add(hLayout, hLayout2);
+		root.add(hLayout, hLayout2);
 		// vLayout.add(grid);
 
-		super.content.add(vLayout);
+		super.content.add(root);
 
 	}
 

@@ -24,99 +24,115 @@ public class MedicationViewImpl extends MainLayoutView implements MedicationView
 	HorizontalLayout layout2 = new HorizontalLayout();
 	HorizontalLayout layout3 = new HorizontalLayout();
 	HorizontalLayout layout4 = new HorizontalLayout();
-	TextField textfieldHandelsname = new TextField("Handelsname");
-	TextField textfieldStärke = new TextField("Stärke");
+	TextField textfieldactiveIngredient = new TextField("Active Ingredient");
+	TextField textfieldbrandName = new TextField("Brand name");
+	TextField textfieldStrength = new TextField("Strength");
 	TextField textfieldForm = new TextField("Form");
-	TextField textfieldMorgen = new TextField("morgen");
-	TextField textfieldMittag = new TextField("mittag");
-	TextField textfieldAbend = new TextField("abend");
-	TextField textfieldNacht = new TextField("nacht");
-	TextField textfieldEinheit = new TextField("Einheit");
-	TextField textfieldHinweis = new TextField("Hinweis");
-	TextField textfieldGrund = new TextField("Grund");
+	TextField textfieldMorning = new TextField("morning");
+	TextField textfieldNoon = new TextField("noon");
+	TextField textfieldEvening = new TextField("evening");
+	TextField textfieldAtBedtime = new TextField("at bedtime");
+	TextField textfieldUnit = new TextField("Unit");
+	TextField textfieldInstructions = new TextField("Instructions");
+	TextField textfieldIndication = new TextField("Indication");
 	Grid<Medicationplan> grid = new Grid<Medicationplan>();
-	Button btnOk = new Button("OK");
-	ComboBox<String> combo = new ComboBox<String>("Wirkstoff");
+	Button btnOk = new Button("Confirm and add to medicationplan");
+	ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
 	List<Medicationplan> medicationplan;
 
 	public MedicationViewImpl() {
 		// Build Layout
-		layout2.add(combo, textfieldHandelsname, textfieldStärke, textfieldForm);
-		layout3.add(textfieldMorgen, textfieldMittag, textfieldAbend, textfieldNacht);
-		layout4.add(textfieldEinheit, textfieldHinweis, textfieldGrund);
+		layout2.add(combo, textfieldactiveIngredient, textfieldStrength, textfieldForm);
+		layout3.add(textfieldMorning, textfieldNoon, textfieldEvening, textfieldAtBedtime);
+		layout4.add(textfieldUnit, textfieldInstructions, textfieldIndication);
 
 		combo.setItems("Ibuprofen 100mg", "Ibuprofen 200mg");
 
 		combo.addValueChangeListener(event -> {
 			if (combo.getValue() == "Ibuprofen 100mg") {
-				textfieldHandelsname.setValue("Brufen 100mg");
-				textfieldStärke.setValue("100 mg");
-				textfieldForm.setValue("Tablette");
-				textfieldGrund.setValue("Schmerzen");
-				textfieldHinweis.setValue("Keine Hinweise");
-				textfieldEinheit.setValue("Stück");
+				textfieldactiveIngredient.setValue(combo.getValue());
+				textfieldbrandName.setValue("Brufen 100mg");
+				textfieldStrength.setValue("100 mg");
+				textfieldForm.setValue("Tabl");
+				textfieldIndication.setValue("Pain");
+				textfieldInstructions.setValue("Take with a glas of water");
+				textfieldUnit.setValue("Pcs");
 
-				textfieldHandelsname.setEnabled(false);
-				textfieldStärke.setEnabled(false);
+				textfieldactiveIngredient.setEnabled(false);
+				textfieldStrength.setEnabled(false);
 				textfieldForm.setEnabled(false);
-				textfieldGrund.setEnabled(false);
-				textfieldHinweis.setEnabled(false);
-				textfieldEinheit.setEnabled(false);
+				textfieldIndication.setEnabled(false);
+				textfieldInstructions.setEnabled(false);
+				textfieldUnit.setEnabled(false);
 			}
 			else if(combo.getValue() == "Ibuprofen 200mg") {
-				textfieldHandelsname.setValue("Brufen 200mg");
-				textfieldStärke.setValue("200 mg");
-				textfieldForm.setValue("Tablette");
-				textfieldGrund.setValue("Schmerzen");
-				textfieldHinweis.setValue("Keine Hinweise");
-				textfieldEinheit.setValue("Stück");
+				textfieldactiveIngredient.setValue(combo.getValue());
+				textfieldbrandName.setValue("Brufen 200mg");
+				textfieldStrength.setValue("200 mg");
+				textfieldForm.setValue("Tabl");
+				textfieldIndication.setValue("Pain");
+				textfieldInstructions.setValue("Take with a glass of water");
+				textfieldUnit.setValue("Pcs");
 
-				textfieldHandelsname.setEnabled(false);
-				textfieldStärke.setEnabled(false);
+				textfieldactiveIngredient.setEnabled(false);
+				textfieldStrength.setEnabled(false);
 				textfieldForm.setEnabled(false);
-				textfieldGrund.setEnabled(false);
-				textfieldHinweis.setEnabled(false);
-				textfieldEinheit.setEnabled(false);
+				textfieldIndication.setEnabled(false);
+				textfieldInstructions.setEnabled(false);
+				textfieldUnit.setEnabled(false);
 			}
 		});
 		
 		medicationplan = new ArrayList<>();
 		grid = new Grid<>();
-		grid.addColumn(Medicationplan::getWirkstoffname).setHeader("Wirkstoffname");
-		grid.addColumn(Medicationplan::getHandelsname).setHeader("Handelsname");
-		grid.addColumn(Medicationplan::getStärke).setHeader("Stärke");
-		grid.addColumn(Medicationplan::getForm).setHeader("Form");
-		grid.addColumn(Medicationplan::getMorgen).setHeader("Morgen");
-		grid.addColumn(Medicationplan::getMittag).setHeader("Mittag");
-		grid.addColumn(Medicationplan::getAbend).setHeader("Abend");
-		grid.addColumn(Medicationplan::getNacht).setHeader("Nacht");
-		grid.addColumn(Medicationplan::getEinheit).setHeader("Einheit");
-		grid.addColumn(Medicationplan::getHinweis).setHeader("Hinweis");
-		grid.addColumn(Medicationplan::getGrund).setHeader("Grund");
+		grid.addColumn(Medicationplan::getactiveIngredient).setHeader("Active Ingredient");
+		grid.addColumn(Medicationplan::getbrandName).setHeader("Brand name");
+		grid.addColumn(Medicationplan::getstrength).setHeader("Strength");
+		grid.addColumn(Medicationplan::getform).setHeader("Form");
+		grid.addColumn(Medicationplan::getmorning).setHeader("morning");
+		grid.addColumn(Medicationplan::getnoon).setHeader("noon");
+		grid.addColumn(Medicationplan::getevening).setHeader("evening");
+		grid.addColumn(Medicationplan::getatBedtime).setHeader("at bedtime");
+		grid.addColumn(Medicationplan::getunit).setHeader("Unit");
+		grid.addColumn(Medicationplan::getinstructions).setHeader("Instructions");
+		grid.addColumn(Medicationplan::getindication).setHeader("Indication");
 
 		btnOk.addClickListener(event -> {
 
-			medicationplan.add(new Medicationplan(combo.getValue(), textfieldHandelsname.getValue(), textfieldStärke.getValue(), textfieldForm.getValue(), textfieldMorgen.getValue(), textfieldMittag.getValue(), textfieldAbend.getValue(), textfieldNacht.getValue(), textfieldEinheit.getValue(), textfieldHinweis.getValue(), textfieldGrund.getValue()));
+			medicationplan.add(new Medicationplan(combo.getValue(), textfieldactiveIngredient.getValue(), textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(), textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(), textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
 
+			for(Medicationplan plan : medicationplan) {
+				
+				if(plan.getmorning().isEmpty()) {
+					plan.setmorning("0");
+				}if(plan.getnoon().isEmpty()) {
+					plan.setnoon("0");
+				}if(plan.getevening().isEmpty()) {
+					plan.setevening("0");
+				}if( plan.getatBedtime().isEmpty()) {
+					plan.setatBedtime("0");
+				}
+			}
+				
 			grid.setItems(medicationplan);
 			layout1.add(grid);
 
-			textfieldHandelsname.clear();
-			textfieldStärke.clear();
+			textfieldactiveIngredient.clear();
+			textfieldStrength.clear();
 			textfieldForm.clear();
-			textfieldGrund.clear();
-			textfieldHinweis.clear();
-			textfieldEinheit.clear();
-			textfieldMorgen.clear();
-			textfieldMittag.clear();
-			textfieldAbend.clear();
-			textfieldNacht.clear();
-			textfieldHandelsname.setEnabled(true);
-			textfieldStärke.setEnabled(true);
+			textfieldIndication.clear();
+			textfieldInstructions.clear();
+			textfieldUnit.clear();
+			textfieldMorning.clear();
+			textfieldNoon.clear();
+			textfieldEvening.clear();
+			textfieldAtBedtime.clear();
+			textfieldactiveIngredient.setEnabled(true);
+			textfieldStrength.setEnabled(true);
 			textfieldForm.setEnabled(true);
-			textfieldGrund.setEnabled(true);
-			textfieldHinweis.setEnabled(true);
-			textfieldEinheit.setEnabled(true);
+			textfieldIndication.setEnabled(true);
+			textfieldInstructions.setEnabled(true);
+			textfieldUnit.setEnabled(true);
 			combo.clear();
 
 		});
@@ -126,16 +142,4 @@ public class MedicationViewImpl extends MainLayoutView implements MedicationView
 		super.content.add(layout1);
 
 	}
-
-	public ArrayList<String> fillcombobox() {
-
-		ArrayList<String> selection = new ArrayList<String>();
-
-		for (Drug drug : HospIndex.druglist) {
-			selection.add(drug.getWirkstoffname());
-
-		}
-		return selection;
-	}
-
 }

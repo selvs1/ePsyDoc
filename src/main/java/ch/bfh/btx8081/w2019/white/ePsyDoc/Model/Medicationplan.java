@@ -4,121 +4,121 @@ import java.util.ArrayList;
 
 public class Medicationplan {
 	
-	private String wirkstoffname;
-	private String handelsname;
-	private String stärke;
+	private String activeIngredient;
+	private String brandName;
+	private String strength;
 	private String form;
-	private String morgen;
-	private String mittag;
-	private String abend;
-	private String nacht;
-	private String einheit;
-	private String hinweis;
-	private String grund;
+	private String morning;
+	private String noon;
+	private String evening;
+	private String atBedtime;
+	private String unit;
+	private String instructions;
+	private String indication;
 	
 	ArrayList<Medicationplan> mediplan = new ArrayList<Medicationplan>();
 	
-	public Medicationplan(String wirkstoffname, String handelsname, String stärke, String form, String morgen,
-			String mittag, String abend, String nacht, String einheit, String hinweis, String grund) {
-		this.wirkstoffname = wirkstoffname;
-		this.handelsname = handelsname;
-		this.stärke = stärke;
+	public Medicationplan(String activeIngredient, String brandName, String strength, String form, String morning,
+			String noon, String evening, String atBedtime, String unit, String instructions, String indication) {
+		this.activeIngredient = activeIngredient;
+		this.brandName = brandName;
+		this.strength = strength;
 		this.form = form;
-		this.morgen = morgen;
-		this.mittag = mittag;
-		this.abend = abend;
-		this.nacht = nacht;
-		this.einheit = einheit;
-		this.hinweis = hinweis;
-		this.grund = grund;
+		this.morning = morning;
+		this.noon = noon;
+		this.evening = evening;
+		this.atBedtime = atBedtime;
+		this.unit = unit;
+		this.instructions = instructions;
+		this.indication = indication;
 	}
 
-	public String getWirkstoffname() {
-		return wirkstoffname;
+	public String getactiveIngredient() {
+		return activeIngredient;
 	}
 
-	public void setWirkstoffname(String wirkstoffname) {
-		this.wirkstoffname = wirkstoffname;
+	public void setactiveIngredient(String activeIngredient) {
+		this.activeIngredient = activeIngredient;
 	}
 
-	public String getHandelsname() {
-		return handelsname;
+	public String getbrandName() {
+		return brandName;
 	}
 
-	public void setHandelsname(String handelsname) {
-		this.handelsname = handelsname;
+	public void setbrandName(String brandName) {
+		this.brandName = brandName;
 	}
 
-	public String getStärke() {
-		return stärke;
+	public String getstrength() {
+		return strength;
 	}
 
-	public void setStärke(String stärke) {
-		this.stärke = stärke;
+	public void setstrength(String strength) {
+		this.strength = strength;
 	}
 
-	public String getForm() {
+	public String getform() {
 		return form;
 	}
 
-	public void setForm(String form) {
+	public void setform(String form) {
 		this.form = form;
 	}
 
-	public String getMorgen() {
-		return morgen;
+	public String getmorning() {
+		return morning;
 	}
 
-	public void setMorgen(String morgen) {
-		this.morgen = morgen;
+	public void setmorning(String morning) {
+		this.morning = morning;
 	}
 
-	public String getMittag() {
-		return mittag;
+	public String getnoon() {
+		return noon;
 	}
 
-	public void setMittag(String mittag) {
-		this.mittag = mittag;
+	public void setnoon(String noon) {
+		this.noon = noon;
 	}
 
-	public String getAbend() {
-		return abend;
+	public String getevening() {
+		return evening;
 	}
 
-	public void setAbend(String abend) {
-		this.abend = abend;
+	public void setevening(String evening) {
+		this.evening = evening;
 	}
 
-	public String getNacht() {
-		return nacht;
+	public String getatBedtime() {
+		return atBedtime;
 	}
 
-	public void setNacht(String nacht) {
-		this.nacht = nacht;
+	public void setatBedtime(String atBedtime) {
+		this.atBedtime = atBedtime;
 	}
 
-	public String getEinheit() {
-		return einheit;
+	public String getunit() {
+		return unit;
 	}
 
-	public void setEinheit(String einheit) {
-		this.einheit = einheit;
+	public void setunit(String unit) {
+		this.unit = unit;
 	}
 
-	public String getHinweis() {
-		return hinweis;
+	public String getinstructions() {
+		return instructions;
 	}
 
-	public void setHinweis(String hinweis) {
-		this.hinweis = hinweis;
+	public void setinstructions(String instructions) {
+		this.instructions = instructions;
 	}
 
-	public String getGrund() {
-		return grund;
+	public String getindication() {
+		return indication;
 	}
 
-	public void setGrund(String grund) {
-		this.grund = grund;
+	public void setindication(String indication) {
+		this.indication = indication;
 	}
 	
 	

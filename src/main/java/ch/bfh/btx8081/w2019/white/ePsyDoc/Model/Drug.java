@@ -1,64 +1,60 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
 public class Drug {
-	
-	private String wirkstoffname;
-	private String handelsname;
-	private String stärke;
+
+	private String activeIngridient;
+	private String brandName;
+	private String strength;
 	private String form;
 
-	public Drug(String wirkstoffname, String handelsname, String stärke, String form) {
-		setHandelsname(handelsname);
-		setWirkstoffname(wirkstoffname);
-		setStärke(stärke);
-		setForm(form);
-		
+	public Drug(String activeIngridient, String brandName, String strength, String form) {
+		setbrandName(brandName);
+		setactiveIngridient(activeIngridient);
+		setstrength(strength);
+		setform(form);
+
 	}
 
-	public String getWirkstoffname() {
-		return wirkstoffname;
+	public String getactiveIngridient() {
+		return activeIngridient;
 	}
 
-	public void setWirkstoffname(String wirkstoffname) {
-		this.wirkstoffname = wirkstoffname;
+	public void setactiveIngridient(String activeIngridient) {
+		this.activeIngridient = activeIngridient;
 	}
 
-	public String getHandelsname() {
-		return handelsname;
+	public String getbrandName() {
+		return brandName;
 	}
 
-	public void setHandelsname(String handelsname) {
-		this.handelsname = handelsname;
+	public void setbrandName(String brandName) {
+		this.brandName = brandName;
 	}
 
-	public String getStärke() {
-		return stärke;
+	public String getstrength() {
+		return strength;
 	}
 
-	public void setStärke(String stärke) {
-		this.stärke = stärke;
+	public void setstrength(String strength) {
+		this.strength = strength;
 	}
 
-	public String getForm() {
+	public String getform() {
 		return form;
 	}
 
-	public void setForm(String form) {
+	public void setform(String form) {
 		this.form = form;
 	}
 
 	@Override
 	public String toString() {
-		return "drug [wirkstoffname=" + wirkstoffname + ", handelsname=" + handelsname + ", stärke=" + stärke
+		return "drug [activeIngridient=" + activeIngridient + ", brandName=" + brandName + ", strength=" + strength
 				+ ", form=" + form + "]";
 	}
-	
-	public String wirkstoffnameToString() {
-		return this.getWirkstoffname();
+
+	public String activeIngridientToString() {
+		return this.getactiveIngridient();
 	}
-	
-	
-	
-	
 
 }

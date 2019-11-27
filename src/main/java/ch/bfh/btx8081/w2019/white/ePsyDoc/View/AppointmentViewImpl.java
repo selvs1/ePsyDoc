@@ -69,4 +69,5 @@ public class AppointmentViewImpl extends MainLayoutView implements MedicationVie
 		root.add(title, datePicker, patient, patientCase);
 		super.content.add(root);
 	}
+
 }

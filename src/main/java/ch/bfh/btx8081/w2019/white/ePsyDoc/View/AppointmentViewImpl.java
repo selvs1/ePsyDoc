@@ -50,19 +50,14 @@ private LocalDate date = LocalDate.now();
 				patient.setItems(personList);
 
 				patient.removeColumnByKey("patientID");
-
-				// The Grid<>(Person.class) sorts the properties and in order to
-				// reorder the properties we use the 'setColumns' method.
-				patient.setColumns("vorname", "name", "date","geschlecht");
+				patient.setColumns("firstname", "lastname", "date","gender");
 				
 				Grid<PatientModel> patientCase = new Grid<>(PatientModel.class);
 				patientCase.setItems(personList);
 
 				patientCase.removeColumnByKey("patientID");
 
-				// The Grid<>(Person.class) sorts the properties and in order to
-				// reorder the properties we use the 'setColumns' method.
-				patientCase.setColumns("vorname", "name", "date","geschlecht");
+				//patientCase.setColumns("vorname", "name", "date","geschlecht");
 		
 		root.add(title, datePicker, patient);
 		content.add(root);

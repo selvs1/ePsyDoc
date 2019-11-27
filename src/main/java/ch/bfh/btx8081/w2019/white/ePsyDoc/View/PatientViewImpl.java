@@ -3,21 +3,13 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.provider.ListDataProvider;
-import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Drug;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.HospIndex;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medicationplan;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 
 @Route("Patient")

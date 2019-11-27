@@ -15,66 +15,59 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 @Route("Patient")
 @PageTitle("Patient")
 public class PatientViewImpl extends MainLayoutView implements MedicationView {
-	private List<PatientModel> Patientlist = new ArrayList<PatientModel>();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<PatientModel> Patientlist = new ArrayList<>();
+	private VerticalLayout root = new VerticalLayout();
+	private TextField firstnameTextfield = new TextField("Firstname");
+	private TextField lastnameTextfield = new TextField("Lastname");
+	private Button btnPatientsearch = new Button("Searching patient");
+	private Button btnPatientAll = new Button("All patient");
+	private Grid<PatientModel> grid = new Grid<>();
 
 	public PatientViewImpl() {
-
-		VerticalLayout hLayout = new VerticalLayout();
-		VerticalLayout hLayout2 = new VerticalLayout();
-		VerticalLayout root = new VerticalLayout();
-		TextField firstnameTextfield = new TextField("Firstname");
-		TextField lastnameTextfield = new TextField("Lastname");
-		Button btnPatientsearch = new Button("searching patient");
-		Button btnPatientAll = new Button("all patient");
-
+		// Test Data
 		Patientlist.add(new PatientModel(1, "Velkova", "Sugulina", "w", "12.12.1992", "Normalstrasse 43", "3000"));
 		Patientlist.add(new PatientModel(2, "Mars", "Jardon", "m", "10.02.1995", "Teststrasse 43", "3012"));
 		Patientlist.add(new PatientModel(3, "Jackson", "Peter", "m", "03.03.2000", "okstrasse 34", "3000"));
 		Patientlist.add(new PatientModel(4, "Bolliga", "Anna", "w", "12.06.1989", "strassstrasse 99", "3430"));
 
-		Grid<PatientModel> grid = new Grid<>();
-
+		// Column set and description
 		grid.addColumn(PatientModel::getPatientID).setHeader("Patient ID");
 		grid.addColumn(PatientModel::getFirstname).setHeader("Firstname");
 		grid.addColumn(PatientModel::getLastname).setHeader("Lastname");
 		grid.addColumn(PatientModel::getGender).setHeader("Gender");
 		grid.addColumn(PatientModel::getDate).setHeader("Birthdate");
 		grid.addColumn(PatientModel::getAdress).setHeader("Address");
-		grid.addColumn(PatientModel::getPlz).setHeader("PLZ");
+		grid.addColumn(PatientModel::getZIP).setHeader("ZIP");
 
+		// On click show all patients
 		btnPatientAll.addClickListener(event -> {
 			grid.setItems(Patientlist);
 		});
 
+		// Search for patient
 		btnPatientsearch.addClickListener(event -> {
-
 			firstnameTextfield.getValue();
-			String nachname = lastnameTextfield.getValue();
-			String vorname = firstnameTextfield.getValue();
-
+			String surname = lastnameTextfield.getValue();
+			String prename = firstnameTextfield.getValue();
 			ArrayList<PatientModel> certain = new ArrayList<PatientModel>();
-
 			for (PatientModel patient : Patientlist) {
-
-				if (patient.getFirstname().equalsIgnoreCase(vorname)
-						&& patient.getLastname().equalsIgnoreCase(nachname)) {
+				if (patient.getFirstname().equalsIgnoreCase(prename)
+						&& patient.getLastname().equalsIgnoreCase(surname)) {
 
 					certain.add(patient);
 				}
 				grid.setItems(certain);
-
 			}
-
 		});
 
-		hLayout.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid);
-		hLayout2.add(btnPatientAll);
-		// vLayout.add(grid);
-		root.add(hLayout, hLayout2);
-		// vLayout.add(grid);
+		// Add elements to root VerticalLayout
+		root.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid, btnPatientAll);
 
+		// Add to layout
 		super.content.add(root);
-
 	}
-
 }

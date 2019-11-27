@@ -77,5 +77,9 @@ public class MainLayoutView extends Div {
 		// Add to layout
 		body.add(information, content);
 		add(header, body, footer);
+	
+		// Add to layout
+		body.add(information, content);
+		add(header, body, footer);
 	}
 }

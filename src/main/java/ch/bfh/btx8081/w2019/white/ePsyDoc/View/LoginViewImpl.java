@@ -42,7 +42,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 
 	private List<LoginViewListener> listeners = new ArrayList<>();
 
-	private LoginOverlay login = new LoginOverlay();
+	private FormLayout login = new FormLayout();
 	public LoginViewImpl() {
 //        login.setAction("Homepage");
 //        login.setOpened(true);

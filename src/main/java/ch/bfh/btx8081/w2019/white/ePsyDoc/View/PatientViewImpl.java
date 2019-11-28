@@ -24,10 +24,6 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 	private static final long serialVersionUID = 1L;
 	private List<PatientModel> patientlist = new ArrayList<>();
 	private VerticalLayout root = new VerticalLayout();
-	private TextField firstnameTextfield = new TextField("Firstname");
-	private TextField lastnameTextfield = new TextField("Lastname");
-	private Button btnPatientsearch = new Button("Searching patient");
-	private Button btnPatientAll = new Button("All patient");
 	private List<PatientModel> personList = new ArrayList<>();
 	private Grid<PatientModel> grid = new Grid<>();
 	private Grid<PatientCase> patientCase = new Grid<>();
@@ -76,26 +72,6 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 		lastNameField.setSizeFull();
 		lastNameField.setPlaceholder("Filter");
 
-		// On click show all patients
-		btnPatientAll.addClickListener(event -> {
-			grid.setItems(patientlist);
-		});
-
-		// Search for patient
-		btnPatientsearch.addClickListener(event -> {
-			firstnameTextfield.getValue();
-			String surname = lastnameTextfield.getValue();
-			String prename = firstnameTextfield.getValue();
-			ArrayList<PatientModel> certain = new ArrayList<PatientModel>();
-			for (PatientModel patient : patientlist) {
-				if (patient.getFirstname().equalsIgnoreCase(prename)
-						&& patient.getLastname().equalsIgnoreCase(surname)) {
-
-					certain.add(patient);
-				}
-				grid.setItems(certain);
-			}
-		});
 
 		// Column set, description and settings
 		patientCase.addColumn(PatientCase::getFid).setHeader("FID");
@@ -106,7 +82,7 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 		grid.addItemClickListener(e -> patientCase.setVisible(true));
 
 		// Add elements to root VerticalLayout
-		root.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid, btnPatientAll, patientCase);
+		root.add( grid, patientCase);
 
 		// Add to layout
 		super.content.add(root);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class is responsible for credential check. Later with database.
+ *
  * @author Sugeelan Selvasingham
  */
 
@@ -14,11 +16,11 @@ public class LoginModel {
     private String password;
     private Doctor selectedDoctor;
 
-    public boolean getLoginsuccess() {
-        return loginsuccess;
+    public boolean getLoginSucess() {
+        return loginSucess;
     }
 
-    private boolean loginsuccess = false;
+    private boolean loginSucess = false;
 
     public void setUsername(String username) {
         this.username = username;
@@ -31,7 +33,7 @@ public class LoginModel {
     private int findDoctorInDataBase(String username) {
 
         for (int i = 0; i < dataBaseDoctors.size(); i++) {
-            if (dataBaseDoctors.get(i).getUsername().equals(username)) {
+            if (dataBaseDoctors.get(i).getUserName().equals(username)) {
                 return i;
             }
         }
@@ -44,7 +46,7 @@ public class LoginModel {
 
         if (arrIndex != -1) {
             if (checkCredential(arrIndex, password)) {
-                loginsuccess = true;
+                loginSucess = true;
                 return dataBaseDoctors.get(findDoctorInDataBase(username));
             }
         }

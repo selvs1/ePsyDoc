@@ -27,7 +27,7 @@ public class LoginPresenter implements LoginView.LoginViewListener {
         model.setUsername(username);
         model.setPassword(password);
         model.search();
-        if (model.getLoginsuccess() == true) {
+        if (model.getLoginSucess() == true) {
             view.letsGo();
        
 

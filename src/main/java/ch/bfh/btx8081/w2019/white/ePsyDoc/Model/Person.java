@@ -9,7 +9,9 @@ public interface Person {
 
     String getName();
 
-    Date getBirthdate();
+    String getFirstName();
+
+    Date getBirthDate();
 
     String getStreet();
 

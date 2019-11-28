@@ -17,67 +17,69 @@ import com.vaadin.flow.server.VaadinSession;
 
 @CssImport("frontend://styles/mainlayoutview.css")
 public class MainLayoutView extends Div {
+	private static final long serialVersionUID = 1L;
+	private Header header = new Header();
+	private MenuBar menuBar = new MenuBar();
+	protected VerticalLayout content = new VerticalLayout();
+	private Div body = new Div();
+	private Footer footer = new Footer();
+	private HorizontalLayout information;
+	private MenuItem appointment = new MenuItem(null, null);
+	private MenuItem patient = new MenuItem(null, null);
+	private MenuItem report = new MenuItem(null, null);
+	private MenuItem logout = new MenuItem(null, null);
 
-    Header header;
-    MenuBar menuBar;
-    VerticalLayout content;
-    Div body;
-    Footer footer;
-    Button btnReturn;
-    HorizontalLayout information;
+	public MainLayoutView() {
+		// Demo Data
+		String patientName = "Max Muster";
+		String patientCase = "2019-11-10 12394";
 
-    public MainLayoutView() {
-        // Instantiate layouts
-        String patientName = "Max Muster";
-        String patientCase = "2019-11-10 12394";
-        header = new Header();
-        footer = new Footer();
-        menuBar = new MenuBar();
-        MenuItem appointment = new MenuItem(null, null);
-        MenuItem patient = new MenuItem(null, null);
-        MenuItem report = new MenuItem(null, null);
-        MenuItem logout = new MenuItem(null, null);
-        appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
-        appointment.add(" Appointment");
-        appointment.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
-        patient.add(new Icon(VaadinIcon.USER));
-        patient.add(" Patient");
-        patient.addClickListener(e -> UI.getCurrent().navigate(PatientViewImpl.class));
-        report.add(new Icon(VaadinIcon.CLIPBOARD_CROSS));
-        report.add(" Report");
-        report.addClickListener(e -> UI.getCurrent().navigate(ReportViewImpl.class));
+		// Navigation
+		appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
+		appointment.add(" Appointment");
+		appointment.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
+		patient.add(new Icon(VaadinIcon.USER));
+		patient.add(" Patient");
+		patient.addClickListener(e -> UI.getCurrent().navigate(PatientViewImpl.class));
+		report.add(new Icon(VaadinIcon.CLIPBOARD_CROSS));
+		report.add(" Report");
+		report.addClickListener(e -> UI.getCurrent().navigate(ReportViewImpl.class));
+		logout.add(new Icon(VaadinIcon.SIGN_OUT));
+		logout.add(" Logout");
+		logout.addClickListener(e -> VaadinSession.getCurrent().close());
 
-        logout.add(new Icon(VaadinIcon.SIGN_OUT));
-        logout.add(" Logout");
-        logout.addClickListener(e -> VaadinSession.getCurrent().close());
+		// Add to menubar
+		menuBar.addItem(appointment);
+		menuBar.addItem(patient);
+		menuBar.addItem(report);
+		menuBar.addItem(logout);
 
-        menuBar.addItem(appointment);
-        menuBar.addItem(patient);
-        menuBar.addItem(report);
-        menuBar.addItem(logout);
-        header.add(menuBar);
-        content = new VerticalLayout();
-        body = new Div();
-        addClassName("main-view");
-        information = new HorizontalLayout();
-        information.add(new Label("Patient:"));
-        information.add(new Label(patientName));
-        information.add(new Label("| Case:"));
-        information.add(new Label(patientCase));
+		// Header
+		header.add(menuBar);
 
-        information.addClassName("patient");
-        menuBar.addClassName("navbar");
-        body.addClassName("body");
-        content.addClassName("content");
+		addClassName("main-view");
 
-        footer.add("Ⓒ by ePsyDoc");
+		// Show active patient
+		information = new HorizontalLayout();
+		information.add(new Label("Patient:"));
+		information.add(new Label(patientName));
+		information.add(new Label("| Case:"));
+		information.add(new Label(patientCase));
 
-        // Compose layout
-        body.add(information, content);
-        add(header, body, footer);
+		information.addClassName("patient");
+		menuBar.addClassName("navbar");
+		body.addClassName("body");
+		content.addClassName("content");
 
-    }
-   
+		// Footer
+		footer.add("Ⓒ by ePsyDoc");
 
-
+		// Add to layout
+		body.add(information, content);
+		add(header, body, footer);
+	
+		// Add to layout
+		body.add(information, content);
+		add(header, body, footer);
+	}
 }

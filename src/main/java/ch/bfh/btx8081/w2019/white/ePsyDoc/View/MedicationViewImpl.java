@@ -18,30 +18,26 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
 @Route("Medication")
 @PageTitle("Medication")
 public class MedicationViewImpl extends Div implements MedicationView {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	VerticalLayout root = new VerticalLayout();
-	HorizontalLayout layout2 = new HorizontalLayout();
-	HorizontalLayout layout3 = new HorizontalLayout();
-	HorizontalLayout layout4 = new HorizontalLayout();
-	TextField textfieldactiveIngredient = new TextField("Active Ingredient");
-	TextField textfieldbrandName = new TextField("Brand name");
-	TextField textfieldStrength = new TextField("Strength");
-	TextField textfieldForm = new TextField("Form");
-	TextField textfieldMorning = new TextField("morning");
-	TextField textfieldNoon = new TextField("noon");
-	TextField textfieldEvening = new TextField("evening");
-	TextField textfieldAtBedtime = new TextField("at bedtime");
-	TextField textfieldUnit = new TextField("Unit");
-	TextField textfieldInstructions = new TextField("Instructions");
-	TextField textfieldIndication = new TextField("Indication");
-	Grid<MedicationPlan> grid = new Grid<MedicationPlan>();
-	Button btnOk = new Button("Confirm and add to medicationplan");
-	ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
-	List<MedicationPlan> medicationplan;
+	private VerticalLayout root = new VerticalLayout();
+	private HorizontalLayout layout2 = new HorizontalLayout();
+	private HorizontalLayout layout3 = new HorizontalLayout();
+	private HorizontalLayout layout4 = new HorizontalLayout();
+	private TextField textfieldactiveIngredient = new TextField("Active Ingredient");
+	private TextField textfieldbrandName = new TextField("Brand name");
+	private TextField textfieldStrength = new TextField("Strength");
+	private TextField textfieldForm = new TextField("Form");
+	private TextField textfieldMorning = new TextField("morning");
+	private TextField textfieldNoon = new TextField("noon");
+	private TextField textfieldEvening = new TextField("evening");
+	private TextField textfieldAtBedtime = new TextField("at bedtime");
+	private TextField textfieldUnit = new TextField("Unit");
+	private TextField textfieldInstructions = new TextField("Instructions");
+	private TextField textfieldIndication = new TextField("Indication");
+	private Grid<MedicationPlan> grid = new Grid<MedicationPlan>();
+	private Button btnOk = new Button("Confirm and add to medicationplan");
+	private ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
+	private List<MedicationPlan> medicationplan= new ArrayList<>();
 
 	public MedicationViewImpl() {
 		// Build Layout
@@ -49,8 +45,10 @@ public class MedicationViewImpl extends Div implements MedicationView {
 		layout3.add(textfieldMorning, textfieldNoon, textfieldEvening, textfieldAtBedtime);
 		layout4.add(textfieldUnit, textfieldInstructions, textfieldIndication);
 
+		// Fill ComboBox
 		combo.setItems("Ibuprofen 100mg", "Ibuprofen 200mg");
 
+		// Change of fields when input is changed
 		combo.addValueChangeListener(event -> {
 			if (combo.getValue() == "Ibuprofen 100mg") {
 				textfieldactiveIngredient.setValue(combo.getValue());
@@ -67,8 +65,7 @@ public class MedicationViewImpl extends Div implements MedicationView {
 				textfieldIndication.setEnabled(false);
 				textfieldInstructions.setEnabled(false);
 				textfieldUnit.setEnabled(false);
-			}
-			else if(combo.getValue() == "Ibuprofen 200mg") {
+			} else if (combo.getValue() == "Ibuprofen 200mg") {
 				textfieldactiveIngredient.setValue(combo.getValue());
 				textfieldbrandName.setValue("Brufen 200mg");
 				textfieldStrength.setValue("200 mg");
@@ -76,7 +73,7 @@ public class MedicationViewImpl extends Div implements MedicationView {
 				textfieldIndication.setValue("Pain");
 				textfieldInstructions.setValue("Take with a glass of water");
 				textfieldUnit.setValue("Pcs");
-
+				
 				textfieldactiveIngredient.setEnabled(false);
 				textfieldStrength.setEnabled(false);
 				textfieldForm.setEnabled(false);
@@ -85,10 +82,8 @@ public class MedicationViewImpl extends Div implements MedicationView {
 				textfieldUnit.setEnabled(false);
 			}
 		});
-	
-
-		medicationplan = new ArrayList<>();
-		grid = new Grid<>();
+		
+		// Column set and description
 		grid.addColumn(MedicationPlan::getactiveIngredient).setHeader("Active Ingredient");
 		grid.addColumn(MedicationPlan::getbrandName).setHeader("Brand name");
 		grid.addColumn(MedicationPlan::getstrength).setHeader("Strength");
@@ -101,26 +96,33 @@ public class MedicationViewImpl extends Div implements MedicationView {
 		grid.addColumn(MedicationPlan::getinstructions).setHeader("Instructions");
 		grid.addColumn(MedicationPlan::getindication).setHeader("Indication");
 
+		//Insert values in Grid
 		btnOk.addClickListener(event -> {
+			medicationplan.add(new MedicationPlan(combo.getValue(), textfieldactiveIngredient.getValue(),
+					textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
+					textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
+					textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
 
-			medicationplan.add(new MedicationPlan(combo.getValue(), textfieldactiveIngredient.getValue(), textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(), textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(), textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
+			for (MedicationPlan plan : medicationplan) {
 
-			for(MedicationPlan plan : medicationplan) {
-				
-				if(plan.getmorning().isEmpty()) {
+				if (plan.getmorning().isEmpty()) {
 					plan.setmorning("0");
-				}if(plan.getnoon().isEmpty()) {
+				}
+				if (plan.getnoon().isEmpty()) {
 					plan.setnoon("0");
-				}if(plan.getevening().isEmpty()) {
+				}
+				if (plan.getevening().isEmpty()) {
 					plan.setevening("0");
-				}if( plan.getatBedtime().isEmpty()) {
+				}
+				if (plan.getatBedtime().isEmpty()) {
 					plan.setatBedtime("0");
 				}
 			}
-				
-			grid.setItems(medicationplan);
-			root.add(grid);
 
+			// Insert item
+			grid.setItems(medicationplan);
+			
+			// Change field status
 			textfieldactiveIngredient.clear();
 			textfieldStrength.clear();
 			textfieldForm.clear();
@@ -138,11 +140,10 @@ public class MedicationViewImpl extends Div implements MedicationView {
 			textfieldInstructions.setEnabled(true);
 			textfieldUnit.setEnabled(true);
 			combo.clear();
-
 		});
 
-		root.add(layout2, layout3, layout4, btnOk);
-
+		// Add to layout
+		root.add(layout2, layout3, layout4, btnOk,grid);
 		add(root);
 
 	}

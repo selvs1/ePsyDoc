@@ -11,28 +11,31 @@ import com.vaadin.flow.router.Route;
 @Route("Report")
 @PageTitle("Report")
 public class ReportViewImpl extends MainLayoutView implements MedicationView {
+	private static final long serialVersionUID = 1L;
+	private VerticalLayout root = new VerticalLayout();
+	private MedicationViewImpl medicationView = new MedicationViewImpl();
+	private Button newB = new Button("New");
+	private Button saveB = new Button("Save");
+	private Button deleteB = new Button("Delete");
+	private Tab tab1 = new Tab("C 2019.08.10");
+	private Tab tab2 = new Tab("C 2019.10.04");
+	private Tab tab3 = new Tab("C 2019.11.22");
+	private Tabs tabs = new Tabs(tab1, tab2, tab3);
+	private RichTextEditor consultation = new RichTextEditor("Consultation");
 
 	public ReportViewImpl() {
-		VerticalLayout root = new VerticalLayout();
-		MedicationViewImpl medicationView = new MedicationViewImpl();
+		// medicationView settings
 		medicationView.setWidth("100%");
-		
-		RichTextEditor consultation = new RichTextEditor("Consultation");
+
+		// consultation editor settings
 		consultation.setWidth("100%");
-		
-		Button newB = new Button("New");
-		Button saveB = new Button("Save");
-		Button deleteB = new Button("Delete");
 
-		Tab tab1 = new Tab("C 2019.08.10");
-		Tab tab2 = new Tab("C 2019.10.04");
-		Tab tab3 = new Tab("C 2019.11.22");
-
-		Tabs tabs = new Tabs(tab1, tab2, tab3);
+		// Tabs settings
 		tabs.setFlexGrowForEnclosedTabs(1);
 		tabs.setWidth("100%");
 
-		root.add(tabs,newB,consultation,medicationView,saveB,deleteB);
-		content.add(root);
+		// Add to layout
+		root.add(tabs, newB, consultation, medicationView, saveB, deleteB);
+		super.content.add(root);
 	}
 }

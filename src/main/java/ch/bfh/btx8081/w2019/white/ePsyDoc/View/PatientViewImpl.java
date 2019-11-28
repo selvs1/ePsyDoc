@@ -3,10 +3,15 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -16,11 +21,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 @Route("Patient")
 @PageTitle("Patient")
 public class PatientViewImpl extends MainLayoutView implements MedicationView {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private List<PatientModel> Patientlist = new ArrayList<>();
+	private List<PatientModel> patientlist = new ArrayList<>();
 	private VerticalLayout root = new VerticalLayout();
 	private TextField firstnameTextfield = new TextField("Firstname");
 	private TextField lastnameTextfield = new TextField("Lastname");
@@ -33,27 +35,50 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 
 	public PatientViewImpl() {
 		// Test Data
-		Patientlist.add(new PatientModel(1, "Velkova", "Sugulina", "w", "12.12.1992", "Normalstrasse 43", "3000"));
-		Patientlist.add(new PatientModel(2, "Mars", "Jardon", "m", "10.02.1995", "Teststrasse 43", "3012"));
-		Patientlist.add(new PatientModel(3, "Jackson", "Peter", "m", "03.03.2000", "okstrasse 34", "3000"));
-		Patientlist.add(new PatientModel(4, "Bolliga", "Anna", "w", "12.06.1989", "strassstrasse 99", "3430"));
-		
+		patientlist.add(new PatientModel(1, "Velkova", "Sugulina", "w", "12.12.1992", "Normalstrasse 43", "3000"));
+		patientlist.add(new PatientModel(2, "Mars", "Jardon", "m", "10.02.1995", "Teststrasse 43", "3012"));
+		patientlist.add(new PatientModel(3, "Jackson", "Peter", "m", "03.03.2000", "okstrasse 34", "3000"));
+		patientlist.add(new PatientModel(4, "Bolliga", "Anna", "w", "12.06.1989", "strassstrasse 99", "3430"));
+
 		patientCaseList.add(new PatientCase("F124134", personList, personList, null));
 		patientCaseList.add(new PatientCase("F13423234", personList, personList, null));
 		patientCaseList.add(new PatientCase("F898767", personList, personList, null));
 
 		// Column set and description
 		grid.addColumn(PatientModel::getPatientID).setHeader("Patient ID");
-		grid.addColumn(PatientModel::getFirstname).setHeader("Firstname");
-		grid.addColumn(PatientModel::getLastname).setHeader("Lastname");
+		Grid.Column<PatientModel> firstNameColumn = grid.addColumn(PatientModel::getFirstname).setHeader("Firstname");
+		Grid.Column<PatientModel> lastNameColumn = grid.addColumn(PatientModel::getLastname).setHeader("Lastname");
 		grid.addColumn(PatientModel::getGender).setHeader("Gender");
 		grid.addColumn(PatientModel::getDate).setHeader("Birthdate");
 		grid.addColumn(PatientModel::getAdress).setHeader("Address");
 		grid.addColumn(PatientModel::getZIP).setHeader("ZIP");
 
+		// Data provider
+		ListDataProvider<PatientModel> dataProvider = new ListDataProvider<>(patientlist);
+		grid.setDataProvider(dataProvider);
+		HeaderRow filterRow = grid.appendHeaderRow();
+
+		// Firstname filter
+		TextField firstNameField = new TextField();
+		firstNameField.addValueChangeListener(event -> dataProvider.addFilter(
+				patient -> StringUtils.containsIgnoreCase(patient.getFirstname(), firstNameField.getValue())));
+		firstNameField.setValueChangeMode(ValueChangeMode.EAGER);
+		filterRow.getCell(firstNameColumn).setComponent(firstNameField);
+		firstNameField.setSizeFull();
+		firstNameField.setPlaceholder("Filter");
+
+		// Lastname filter
+		TextField lastNameField = new TextField();
+		lastNameField.addValueChangeListener(event -> dataProvider
+				.addFilter(patient -> StringUtils.containsIgnoreCase(patient.getLastname(), lastNameField.getValue())));
+		lastNameField.setValueChangeMode(ValueChangeMode.EAGER);
+		filterRow.getCell(lastNameColumn).setComponent(lastNameField);
+		lastNameField.setSizeFull();
+		lastNameField.setPlaceholder("Filter");
+
 		// On click show all patients
 		btnPatientAll.addClickListener(event -> {
-			grid.setItems(Patientlist);
+			grid.setItems(patientlist);
 		});
 
 		// Search for patient
@@ -62,7 +87,7 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 			String surname = lastnameTextfield.getValue();
 			String prename = firstnameTextfield.getValue();
 			ArrayList<PatientModel> certain = new ArrayList<PatientModel>();
-			for (PatientModel patient : Patientlist) {
+			for (PatientModel patient : patientlist) {
 				if (patient.getFirstname().equalsIgnoreCase(prename)
 						&& patient.getLastname().equalsIgnoreCase(surname)) {
 
@@ -71,7 +96,7 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 				grid.setItems(certain);
 			}
 		});
-		
+
 		// Column set, description and settings
 		patientCase.addColumn(PatientCase::getFid).setHeader("FID");
 		patientCase.setVisible(false);
@@ -81,7 +106,7 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 		grid.addItemClickListener(e -> patientCase.setVisible(true));
 
 		// Add elements to root VerticalLayout
-		root.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid, btnPatientAll,patientCase);
+		root.add(firstnameTextfield, lastnameTextfield, btnPatientsearch, grid, btnPatientAll, patientCase);
 
 		// Add to layout
 		super.content.add(root);

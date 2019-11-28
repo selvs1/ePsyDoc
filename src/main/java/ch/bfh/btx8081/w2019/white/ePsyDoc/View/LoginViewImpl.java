@@ -13,7 +13,6 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
@@ -34,22 +33,17 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	private H1 title = new H1("ePsyDoc");
 	private List<LoginViewListener> listeners = new ArrayList<>();
 	private FormLayout login = new FormLayout();
-	private LoginOverlay component = new LoginOverlay();
+//	private LoginOverlay component = new LoginOverlay();
 
 	public LoginViewImpl() {
-//        login.setAction("Homepage");
-//        login.setOpened(true);
-//        login.setTitle("ePsyDoc");
-//        login.setDescription("Secure Authentication");
-//        login.setForgotPasswordButtonVisible(false); // we won't implement this
-//        getElement().appendChild(login.getElement());
 
-		component.addLoginListener(e -> component.close());
+//		component.addLoginListener(e -> component.close());
 		btnSubmit.addClickListener((x) -> {
 			for (LoginViewListener listener : listeners) {
-				listener.login(tfUsername.getValue(), tfPassword.getValue());
+				listener.clickLogin(tfUsername.getValue(), tfPassword.getValue());
 			}
 		});
+
 
 		// Input field settings
 		root.addClassName("login");
@@ -82,22 +76,21 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 		return tfPassword.getValue();
 	}
 
-	@Override
-	public boolean showLoginStatus() {
-		return false;
-	}
+//	@Override
+//	public boolean showLoginStatus() {
+//		return false;
+//	}
 
 	@Override
 	public void addListener(LoginViewListener listener) {
 		listeners.add(listener);
 	}
 
-	public void letsGo() {
+	public void openSession() {
 		this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
 	}
 
-	public void problem(String message) {
+	public void notifyProblem(String message) {
 		Notification.show("Login not possible for user: " + message);
 	}
-
 }

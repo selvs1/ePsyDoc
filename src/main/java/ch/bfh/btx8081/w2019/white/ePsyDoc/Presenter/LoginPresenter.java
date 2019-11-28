@@ -8,9 +8,8 @@ public class LoginPresenter implements LoginView.LoginViewListener {
     private LoginModel model;
     private LoginView view;
 
-    private String username;
-    private String password;
-
+//    private String username;
+//    private String password;
 
 
     public LoginPresenter(LoginModel model, LoginView view) {
@@ -20,19 +19,14 @@ public class LoginPresenter implements LoginView.LoginViewListener {
     }
 
 
-
-
     @Override
-    public void login(String username, String password) {
-        model.setUsername(username);
-        model.setPassword(password);
-        model.search();
-        if (model.getLoginSucess() == true) {
-            view.letsGo();
-       
-
+    public void clickLogin(String username, String password) {
+//        model.setUsername(username);
+//        model.setPassword(password);
+        if (model.checkCredential(username, password) == true) {
+            view.openSession();
         } else {
-            view.problem(username);
+            view.notifyProblem(username);
         }
 
     }

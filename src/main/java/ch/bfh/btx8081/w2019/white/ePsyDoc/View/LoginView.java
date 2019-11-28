@@ -5,15 +5,15 @@ public interface LoginView {
 
 	String getTextFieldPassword();
 
-	boolean showLoginStatus();
+//	boolean showLoginStatus();
 
 	interface LoginViewListener {
-		void login(String username, String password);
+		void clickLogin(String username, String password);
 	}
 
-	public void addListener(LoginViewListener listener);
+	void addListener(LoginViewListener listener);
 
-	public void letsGo();
+	void openSession();
 
-	public void problem(String message);
+	void notifyProblem(String message);
 }

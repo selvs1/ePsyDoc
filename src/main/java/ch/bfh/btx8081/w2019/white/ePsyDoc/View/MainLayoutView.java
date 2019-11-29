@@ -23,7 +23,7 @@ public class MainLayoutView extends Div {
 	protected VerticalLayout content = new VerticalLayout();
 	private Div body = new Div();
 	private Footer footer = new Footer();
-	private HorizontalLayout information;
+	private VerticalLayout information = new VerticalLayout();
 	private MenuItem appointment = new MenuItem(null, null);
 	private MenuItem patient = new MenuItem(null, null);
 	private MenuItem report = new MenuItem(null, null);
@@ -60,10 +60,10 @@ public class MainLayoutView extends Div {
 		addClassName("main-view");
 
 		// Show active patient
-		information = new HorizontalLayout();
-		information.add(new Label("Patient:"));
+		information.setWidth("180");
+		information.add(new Icon(VaadinIcon.USER));
 		information.add(new Label(patientName));
-		information.add(new Label("| Case:"));
+		information.add(new Icon(VaadinIcon.FILE));
 		information.add(new Label(patientCase));
 
 		information.addClassName("patient");

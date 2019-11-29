@@ -25,9 +25,14 @@ vaadin-horizontal-layout{
 
 
 .patient{
-	background-color:#1576f3;
-	color:#ffffff;
-	padding:10px 5px;
+    background-color: #1576f3;
+    color: #ffffff;
+    padding: 10px 5px;
+    width: 200px;
+    right: 0;
+    top: 0;
+    position: fixed;
+    z-index: 999999;
 	
 }
 

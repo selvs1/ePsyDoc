@@ -7,6 +7,8 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -35,7 +37,7 @@ public class MedicationViewImpl extends Div implements MedicationView {
 	private TextField textfieldInstructions = new TextField("Instructions");
 	private TextField textfieldIndication = new TextField("Indication");
 	private Grid<MedicationPlan> grid = new Grid<MedicationPlan>();
-	private Button btnOk = new Button("Confirm and add to medicationplan");
+	private Button btnOk = new Button(new Icon(VaadinIcon.PLUS));
 	private ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
 	private List<MedicationPlan> medicationplan= new ArrayList<>();
 

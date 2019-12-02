@@ -1,0 +1,29 @@
+Also jungs wele Productbacklog tüe mir für sprint 2 verwende?
+Wer vo öich ish pro mit jpa?
+Chöit dir lokal für öich notize mache, weli klasse no müesst gmacht/ veränderet werde? Ziel => richtig persistiere.
+
+Am mittwoch 23.00 uhr sötte mir das scho gliefert ha. 
+
+Düet no vpn iirichte für postgress zuegriff... Url ish vpn.bfh.ch
+
+Bitte oh lokal e db instanz erstelle und zuegriff uf die instanz mit eclipse teste.
+
+
+
+# Work
+	ER Modell überprüfen
+	
+	
+	
+	
+Slot 1 Start 12:35
+
+Slot 2 Start 13.28
+
+
+Slot 2
+	A105 gab ein String wdh 13.36
+
+Slot 3
+	A113 hat nicht ok eingetippt und gedacht er sei fertig : 14:10
+

@@ -27,5 +27,10 @@ public class LogoutViewImpl extends VerticalLayout implements LogoutView  {
 		
 		// Add to Layout
 		this.add(root);
+	}
+
+	@Override
+	public void addListener(LogoutViewListener listener) {
+		
 	}	
 }

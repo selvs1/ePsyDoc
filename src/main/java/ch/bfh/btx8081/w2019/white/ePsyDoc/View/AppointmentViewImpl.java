@@ -18,11 +18,12 @@ import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.View.LoginView.LoginViewListener;
 
 //Route Name and Page Title
 @Route("Appointment")
 @PageTitle("Appointment")
-public class AppointmentViewImpl extends MainLayoutView implements MedicationView {
+public class AppointmentViewImpl extends MainLayoutView implements AppointmentView {
 
 	private static final long serialVersionUID = 1L;
 	private LocalDate date = LocalDate.now();
@@ -33,6 +34,8 @@ public class AppointmentViewImpl extends MainLayoutView implements MedicationVie
 	private List<PatientModel> personList = new ArrayList<>();
 	private Grid<PatientCase> patientCase = new Grid<>();
 	private List<PatientCase> patientCaseList = new ArrayList<>();
+	private List<AppointmentViewListener> listeners = new ArrayList<>();
+
 
 	public AppointmentViewImpl() {
 		// datePicker settings
@@ -68,6 +71,12 @@ public class AppointmentViewImpl extends MainLayoutView implements MedicationVie
 		// Add to layout
 		root.add(title, datePicker, patient, patientCase);
 		super.content.add(root);
+	}
+
+	@Override
+	public void addListener(AppointmentViewListener listener) {
+		listeners.add(listener);
+
 	}
 
 }

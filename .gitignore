@@ -21,3 +21,6 @@ drivers/
 error-screenshots/
 
 webpack.generated.js
+*.json
+webpack.config.js
+package-lock.json

@@ -12,7 +12,7 @@ import com.vaadin.flow.router.Route;
 
 @Route("Report")
 @PageTitle("Report")
-public class ReportViewImpl extends MainLayoutView implements MedicationView {
+public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private static final long serialVersionUID = 1L;
 	private VerticalLayout root = new VerticalLayout();
 	private MedicationViewImpl medicationView = new MedicationViewImpl();
@@ -39,5 +39,10 @@ public class ReportViewImpl extends MainLayoutView implements MedicationView {
 		// Add to layout
 		root.add(tabs, newB, consultation, medicationView, saveB, deleteB);
 		super.content.add(root);
+	}
+
+	@Override
+	public void addListener(ReportViewListener listener) {
+		
 	}
 }

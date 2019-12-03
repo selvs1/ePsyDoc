@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -17,10 +16,12 @@ import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.View.MedicationPlanView.MedicationPlanViewListener;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.View.PatientView.PatientViewListener;
 
 @Route("Patient")
 @PageTitle("Patient")
-public class PatientViewImpl extends MainLayoutView implements MedicationView {
+public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private static final long serialVersionUID = 1L;
 	private List<PatientModel> patientlist = new ArrayList<>();
 	private VerticalLayout root = new VerticalLayout();
@@ -87,4 +88,11 @@ public class PatientViewImpl extends MainLayoutView implements MedicationView {
 		// Add to layout
 		super.content.add(root);
 	}
+
+	@Override
+	public void addListener(PatientViewListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

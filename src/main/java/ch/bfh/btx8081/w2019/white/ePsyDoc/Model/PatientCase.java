@@ -6,9 +6,9 @@ public class PatientCase {
 	private String fid;
 	private List<?> reportList;
 	private List<?> appointmentList;
-	private MedicationPlan mediPlan;
+	private MedicationPlanModel mediPlan;
 
-	public PatientCase(String fid, List<?> reportList, List<?> appointmentList, MedicationPlan mediPlan) {
+	public PatientCase(String fid, List<?> reportList, List<?> appointmentList, MedicationPlanModel mediPlan) {
 		this.fid = fid;
 		this.reportList = reportList;
 		this.appointmentList = appointmentList;
@@ -39,11 +39,11 @@ public class PatientCase {
 		this.appointmentList = appointmentList;
 	}
 
-	public MedicationPlan getMediPlan() {
+	public MedicationPlanModel getMediPlan() {
 		return mediPlan;
 	}
 
-	public void setMediPlan(MedicationPlan mediPlan) {
+	public void setMediPlan(MedicationPlanModel mediPlan) {
 		this.mediPlan = mediPlan;
 	}
 

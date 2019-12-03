@@ -2,7 +2,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
 import java.util.ArrayList;
 
-public class MedicationPlan {
+public class MedicationPlanModel {
 	
 	private String activeIngredient;
 	private String brandName;
@@ -16,9 +16,9 @@ public class MedicationPlan {
 	private String instructions;
 	private String indication;
 	
-	ArrayList<MedicationPlan> mediplan = new ArrayList<MedicationPlan>();
+	ArrayList<MedicationPlanModel> mediplan = new ArrayList<MedicationPlanModel>();
 	
-	public MedicationPlan(String activeIngredient, String brandName, String strength, String form, String morning,
+	public MedicationPlanModel(String activeIngredient, String brandName, String strength, String form, String morning,
 			String noon, String evening, String atBedtime, String unit, String instructions, String indication) {
 		this.activeIngredient = activeIngredient;
 		this.brandName = brandName;

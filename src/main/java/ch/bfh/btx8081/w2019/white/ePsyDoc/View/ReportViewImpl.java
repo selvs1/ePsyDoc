@@ -15,7 +15,7 @@ import com.vaadin.flow.router.Route;
 public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private static final long serialVersionUID = 1L;
 	private VerticalLayout root = new VerticalLayout();
-	private MedicationViewImpl medicationView = new MedicationViewImpl();
+	private MedicationPlanViewImpl medicationView = new MedicationPlanViewImpl();
 	private Button newB = new Button(new Icon(VaadinIcon.FILE_ADD));
 	private Button saveB = new Button(new Icon(VaadinIcon.CHECK));
 	private Button deleteB = new Button(new Icon(VaadinIcon.FILE_REMOVE));

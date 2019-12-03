@@ -15,11 +15,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlanModel;
 
 @Route("Medication")
 @PageTitle("Medication")
-public class MedicationViewImpl extends Div implements MedicationView {
+public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 	private static final long serialVersionUID = 1L;
 	private VerticalLayout root = new VerticalLayout();
 	private HorizontalLayout layout2 = new HorizontalLayout();
@@ -36,12 +36,12 @@ public class MedicationViewImpl extends Div implements MedicationView {
 	private TextField textfieldUnit = new TextField("Unit");
 	private TextField textfieldInstructions = new TextField("Instructions");
 	private TextField textfieldIndication = new TextField("Indication");
-	private Grid<MedicationPlan> grid = new Grid<MedicationPlan>();
+	private Grid<MedicationPlanModel> grid = new Grid<MedicationPlanModel>();
 	private Button btnOk = new Button(new Icon(VaadinIcon.PLUS));
 	private ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
-	private List<MedicationPlan> medicationplan= new ArrayList<>();
+	private List<MedicationPlanModel> medicationplan= new ArrayList<>();
 
-	public MedicationViewImpl() {
+	public MedicationPlanViewImpl() {
 		// Build Layout
 		layout2.add(combo, textfieldactiveIngredient, textfieldStrength, textfieldForm);
 		layout3.add(textfieldMorning, textfieldNoon, textfieldEvening, textfieldAtBedtime);
@@ -86,26 +86,26 @@ public class MedicationViewImpl extends Div implements MedicationView {
 		});
 		
 		// Column set and description
-		grid.addColumn(MedicationPlan::getactiveIngredient).setHeader("Active Ingredient");
-		grid.addColumn(MedicationPlan::getbrandName).setHeader("Brand name");
-		grid.addColumn(MedicationPlan::getstrength).setHeader("Strength");
-		grid.addColumn(MedicationPlan::getform).setHeader("Form");
-		grid.addColumn(MedicationPlan::getmorning).setHeader("morning");
-		grid.addColumn(MedicationPlan::getnoon).setHeader("noon");
-		grid.addColumn(MedicationPlan::getevening).setHeader("evening");
-		grid.addColumn(MedicationPlan::getatBedtime).setHeader("at bedtime");
-		grid.addColumn(MedicationPlan::getunit).setHeader("Unit");
-		grid.addColumn(MedicationPlan::getinstructions).setHeader("Instructions");
-		grid.addColumn(MedicationPlan::getindication).setHeader("Indication");
+		grid.addColumn(MedicationPlanModel::getactiveIngredient).setHeader("Active Ingredient");
+		grid.addColumn(MedicationPlanModel::getbrandName).setHeader("Brand name");
+		grid.addColumn(MedicationPlanModel::getstrength).setHeader("Strength");
+		grid.addColumn(MedicationPlanModel::getform).setHeader("Form");
+		grid.addColumn(MedicationPlanModel::getmorning).setHeader("morning");
+		grid.addColumn(MedicationPlanModel::getnoon).setHeader("noon");
+		grid.addColumn(MedicationPlanModel::getevening).setHeader("evening");
+		grid.addColumn(MedicationPlanModel::getatBedtime).setHeader("at bedtime");
+		grid.addColumn(MedicationPlanModel::getunit).setHeader("Unit");
+		grid.addColumn(MedicationPlanModel::getinstructions).setHeader("Instructions");
+		grid.addColumn(MedicationPlanModel::getindication).setHeader("Indication");
 
 		//Insert values in Grid
 		btnOk.addClickListener(event -> {
-			medicationplan.add(new MedicationPlan(combo.getValue(), textfieldactiveIngredient.getValue(),
+			medicationplan.add(new MedicationPlanModel(combo.getValue(), textfieldactiveIngredient.getValue(),
 					textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
 					textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
 					textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
 
-			for (MedicationPlan plan : medicationplan) {
+			for (MedicationPlanModel plan : medicationplan) {
 
 				if (plan.getmorning().isEmpty()) {
 					plan.setmorning("0");
@@ -148,5 +148,12 @@ public class MedicationViewImpl extends Div implements MedicationView {
 		root.add(layout2, layout3, layout4, btnOk,grid);
 		add(root);
 
+	}
+
+
+	@Override
+	public void addListener(MedicationPlanViewListener listener) {
+		// TODO Auto-generated method stub
+		
 	}
 }

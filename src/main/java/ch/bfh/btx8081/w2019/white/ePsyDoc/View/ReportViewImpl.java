@@ -65,7 +65,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		tabs.setWidth("100%");
 
 		// Add to layout
-		root.add(tabs, newB,information, consultation,diagnoseT,addB, diagnoseG, medicationView, deleteB);
+		root.add(tabs, newB,information, consultation, diagnoseT, addB, diagnoseG, medicationView, deleteB);
 		super.content.add(root);
 	}
 

@@ -5,4 +5,6 @@ public interface AppointmentView {
 	}
 
 	void addListener(AppointmentViewListener listener);
+	void showPatientCase();
+	void CalenderChange();
 }

@@ -1,50 +1,81 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PatientCase {
-	private String fid;
-	private List<?> reportList;
-	private List<?> appointmentList;
-	private MedicationPlanModel mediPlan;
 
-	public PatientCase(String fid, List<?> reportList, List<?> appointmentList, MedicationPlanModel mediPlan) {
-		this.fid = fid;
-		this.reportList = reportList;
-		this.appointmentList = appointmentList;
-		this.mediPlan = mediPlan;
+	private int patientCaseID;
+	private int patientID;
+	private MedicationPlan medicationPlan;
+	private Report report;
+	private Doctor doctor;
+	private PatientModel patient;
+
+	public PatientCase(int patientCaseID, int patientID) {
+		
+		this.patientID = patientID;
+		this.patientCaseID = patientCaseID;
+
 	}
 
-	public String getFid() {
-		return fid;
+	public MedicationPlan getMedicationPlan() {
+		return medicationPlan;
 	}
 
-	public void setFid(String fid) {
-		this.fid = fid;
+	public void addToMedicationPlan(Medication medication) {
+		medicationPlan.addToMedicationplan(medication);
 	}
 
-	public List<?> getReportList() {
-		return reportList;
+	public void RemoveFromMedicationPlan(String brandname) {
+		medicationPlan.removeFromMedicationplan(brandname);
 	}
 
-	public void setReportList(List<?> reportList) {
-		this.reportList = reportList;
+	public int getPatientcaseID() {
+		return patientCaseID;
 	}
 
-	public List<?> getAppointmentList() {
-		return appointmentList;
+	public void setPatientcaseID(int patientcaseID) {
+		this.patientCaseID = patientcaseID;
 	}
 
-	public void setAppointmentList(List<?> appointmentList) {
-		this.appointmentList = appointmentList;
+	public int getPatientID() {
+		return patientID;
 	}
 
-	public MedicationPlanModel getMediPlan() {
-		return mediPlan;
+	public void setPatientID(int patientID) {
+		this.patientID = patientID;
 	}
 
-	public void setMediPlan(MedicationPlanModel mediPlan) {
-		this.mediPlan = mediPlan;
+	public MedicationPlan getMedicationplan() {
+		return medicationPlan;
+	}
+
+	public void setMedicationplan(MedicationPlan medicationplan) {
+		this.medicationPlan = medicationplan;
+	}
+
+	public Report getReport() {
+		return report;
+	}
+
+	public void setReport(Report report) {
+		this.report = report;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+	public PatientModel getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientModel patient) {
+		this.patient = patient;
 	}
 
 }

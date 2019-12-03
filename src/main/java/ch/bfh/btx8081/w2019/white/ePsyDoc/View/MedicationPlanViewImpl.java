@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.vaadin.flow.component.button.Button;
@@ -15,7 +16,10 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlanModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 
 @Route("Medication")
 @PageTitle("Medication")
@@ -36,10 +40,10 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 	private TextField textfieldUnit = new TextField("Unit");
 	private TextField textfieldInstructions = new TextField("Instructions");
 	private TextField textfieldIndication = new TextField("Indication");
-	private Grid<MedicationPlanModel> grid = new Grid<MedicationPlanModel>();
+	private Grid<Medication> grid = new Grid<Medication>();
 	private Button btnOk = new Button(new Icon(VaadinIcon.PLUS));
 	private ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
-	private List<MedicationPlanModel> medicationplan= new ArrayList<>();
+	private MedicationPlan plan;
 
 	public MedicationPlanViewImpl() {
 		// Build Layout
@@ -84,45 +88,53 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 				textfieldUnit.setEnabled(false);
 			}
 		});
+		Date date = new Date(2019, 7, 22);
 		
+		PatientModel patient = new PatientModel(1, "Lou", "Tscheir", "M", date, "Haldenstrasse 22", "6300");
+		patient.createPatientCase(0, 1);
+		PatientCase patientCase = patient.getSinglePatientCase(0);
+		MedicationPlan plan = patientCase.getMedicationplan();
+		plan.addToMedicationplan(new Medication("Ibuprofen 100mg", "Brufen 100mg ", "100mg", "tablet", "1", "1", "1", "1", "Pcs", "Nothing to see here", "Pain"));
+		ArrayList<Medication> medicationList = plan.getMedicationplan();
+		
+		grid.setItems(medicationList);
 		// Column set and description
-		grid.addColumn(MedicationPlanModel::getactiveIngredient).setHeader("Active Ingredient");
-		grid.addColumn(MedicationPlanModel::getbrandName).setHeader("Brand name");
-		grid.addColumn(MedicationPlanModel::getstrength).setHeader("Strength");
-		grid.addColumn(MedicationPlanModel::getform).setHeader("Form");
-		grid.addColumn(MedicationPlanModel::getmorning).setHeader("morning");
-		grid.addColumn(MedicationPlanModel::getnoon).setHeader("noon");
-		grid.addColumn(MedicationPlanModel::getevening).setHeader("evening");
-		grid.addColumn(MedicationPlanModel::getatBedtime).setHeader("at bedtime");
-		grid.addColumn(MedicationPlanModel::getunit).setHeader("Unit");
-		grid.addColumn(MedicationPlanModel::getinstructions).setHeader("Instructions");
-		grid.addColumn(MedicationPlanModel::getindication).setHeader("Indication");
+		grid.addColumn(Medication::getactiveIngredient).setHeader("Active Ingredient");
+		grid.addColumn(Medication::getbrandName).setHeader("Brand name");
+		grid.addColumn(Medication::getstrength).setHeader("Strength");
+		grid.addColumn(Medication::getform).setHeader("Form");
+		grid.addColumn(Medication::getmorning).setHeader("morning");
+		grid.addColumn(Medication::getnoon).setHeader("noon");
+		grid.addColumn(Medication::getevening).setHeader("evening");
+		grid.addColumn(Medication::getatBedtime).setHeader("at bedtime");
+		grid.addColumn(Medication::getunit).setHeader("Unit");
+		grid.addColumn(Medication::getinstructions).setHeader("Instructions");
+		grid.addColumn(Medication::getindication).setHeader("Indication");
 
 		//Insert values in Grid
 		btnOk.addClickListener(event -> {
-			medicationplan.add(new MedicationPlanModel(combo.getValue(), textfieldactiveIngredient.getValue(),
+			medicationList.add(new Medication(combo.getValue(), textfieldactiveIngredient.getValue(),
 					textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
 					textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
 					textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
 
-			for (MedicationPlanModel plan : medicationplan) {
+			for (Medication medication : medicationList) {
 
-				if (plan.getmorning().isEmpty()) {
-					plan.setmorning("0");
+				if (medication.getmorning().isEmpty()) {
+					medication.setmorning("0");
 				}
-				if (plan.getnoon().isEmpty()) {
-					plan.setnoon("0");
+				if (medication.getnoon().isEmpty()) {
+					medication.setnoon("0");
 				}
-				if (plan.getevening().isEmpty()) {
-					plan.setevening("0");
+				if (medication.getevening().isEmpty()) {
+					medication.setevening("0");
 				}
-				if (plan.getatBedtime().isEmpty()) {
-					plan.setatBedtime("0");
+				if (medication.getatBedtime().isEmpty()) {
 				}
 			}
 
 			// Insert item
-			grid.setItems(medicationplan);
+			grid.setItems(medicationList);
 			
 			// Change field status
 			textfieldactiveIngredient.clear();

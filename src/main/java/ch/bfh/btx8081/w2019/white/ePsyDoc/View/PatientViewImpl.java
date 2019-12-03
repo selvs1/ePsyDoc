@@ -32,15 +32,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 
 	public PatientViewImpl() {
 		// Test Data
-		patientlist.add(new PatientModel(1, "Velkova", "Sugulina", "w", "12.12.1992", "Normalstrasse 43", "3000"));
-		patientlist.add(new PatientModel(2, "Mars", "Jardon", "m", "10.02.1995", "Teststrasse 43", "3012"));
-		patientlist.add(new PatientModel(3, "Jackson", "Peter", "m", "03.03.2000", "okstrasse 34", "3000"));
-		patientlist.add(new PatientModel(4, "Bolliga", "Anna", "w", "12.06.1989", "strassstrasse 99", "3430"));
-
-		patientCaseList.add(new PatientCase("F124134", personList, personList, null));
-		patientCaseList.add(new PatientCase("F13423234", personList, personList, null));
-		patientCaseList.add(new PatientCase("F898767", personList, personList, null));
-
+		
 		// Column set and description
 		grid.addColumn(PatientModel::getPatientID).setHeader("Patient ID");
 		Grid.Column<PatientModel> firstNameColumn = grid.addColumn(PatientModel::getFirstname).setHeader("Firstname");
@@ -75,7 +67,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 
 
 		// Column set, description and settings
-		patientCase.addColumn(PatientCase::getFid).setHeader("FID");
+		//patientCase.addColumn(PatientCase::getFid).setHeader("FID");
 		patientCase.setVisible(false);
 		patientCase.setItems(patientCaseList);
 

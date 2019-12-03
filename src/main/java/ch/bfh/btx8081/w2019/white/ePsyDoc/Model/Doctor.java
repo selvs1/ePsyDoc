@@ -14,8 +14,7 @@ import javax.persistence.Id;
 //@Entity
 public class Doctor implements Person {
 
-	//@Id
-
+//	@Id
     private int emplId;
     private String firstName;
     private String name;

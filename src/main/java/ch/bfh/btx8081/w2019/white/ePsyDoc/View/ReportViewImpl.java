@@ -44,6 +44,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private TextArea consultation = new TextArea("Consultation");
 
 	public ReportViewImpl() {
+		
 		// medicationView settings
 		medicationView.setWidth("100%");
 

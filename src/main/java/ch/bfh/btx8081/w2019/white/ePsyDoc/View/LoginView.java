@@ -13,7 +13,7 @@ public interface LoginView {
 
 	void addListener(LoginViewListener listener);
 
-	void openSession();
+	void openSession(String name);
 
 	void notifyProblem(String message);
 }

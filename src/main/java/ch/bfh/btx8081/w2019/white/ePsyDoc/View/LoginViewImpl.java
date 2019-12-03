@@ -19,6 +19,8 @@ import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinServletService;
+import com.vaadin.flow.server.VaadinSession;
 
 @Route(value = LoginViewImpl.ROUTE)
 @PageTitle("Login")
@@ -86,7 +88,11 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 		listeners.add(listener);
 	}
 
-	public void openSession() {
+	public void openSession(String name) {
+		VaadinSession.getCurrent().setAttribute("name", name);
+
+
+
 		this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
 	}
 

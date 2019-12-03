@@ -24,7 +24,7 @@ public class LoginPresenter implements LoginView.LoginViewListener {
 //        model.setUsername(username);
 //        model.setPassword(password);
         if (model.checkCredential(username, password) == true) {
-            view.openSession();
+            view.openSession(username);
         } else {
             view.notifyProblem(username);
         }

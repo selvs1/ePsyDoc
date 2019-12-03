@@ -3,10 +3,13 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -14,7 +17,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinServletService;
+import com.vaadin.flow.server.VaadinSession;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
@@ -47,6 +53,7 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 	PatientModel patient = new PatientModel(1, "Lou", "Tscheir", "M", date, "Haldenstrasse 22", "6300");
 	
 	public MedicationPlanViewImpl() {
+		
 		// Build Layout
 		layout2.add(combo, textfieldactiveIngredient, textfieldStrength, textfieldForm);
 		layout3.add(textfieldMorning, textfieldNoon, textfieldEvening, textfieldAtBedtime);
@@ -157,7 +164,6 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 			textfieldUnit.setEnabled(true);
 			combo.clear();
 		});
-		
 		// Add to layout
 		root.add(layout2, layout3, layout4, btnOk,grid);
 		add(root);

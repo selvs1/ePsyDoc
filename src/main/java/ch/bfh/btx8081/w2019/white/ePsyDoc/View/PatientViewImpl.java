@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -13,7 +14,9 @@ import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.View.MedicationPlanView.MedicationPlanViewListener;
@@ -31,6 +34,9 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private List<PatientCase> patientCaseList = new ArrayList<>();
 
 	public PatientViewImpl() {
+		 if(VaadinSession.getCurrent().getAttribute("name")== null) {
+			   UI.getCurrent().navigate(MainView.class);
+		 }
 		// Test Data
 		
 		// Column set and description

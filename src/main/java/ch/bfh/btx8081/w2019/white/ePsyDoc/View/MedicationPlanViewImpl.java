@@ -2,7 +2,6 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -43,8 +42,10 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 	private Grid<Medication> grid = new Grid<Medication>();
 	private Button btnOk = new Button(new Icon(VaadinIcon.PLUS));
 	private ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
-	private MedicationPlan plan;
-
+	Medication medi = new Medication("Ibuprofen 100mg", "Brufen 100mg ", "100mg", "tablet", "1", "1", "1", "1", "Pcs", "Nothing to see here", "Pain");
+	Date date = new Date();
+	PatientModel patient = new PatientModel(1, "Lou", "Tscheir", "M", date, "Haldenstrasse 22", "6300");
+	
 	public MedicationPlanViewImpl() {
 		// Build Layout
 		layout2.add(combo, textfieldactiveIngredient, textfieldStrength, textfieldForm);
@@ -88,15 +89,16 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 				textfieldUnit.setEnabled(false);
 			}
 		});
-		Date date = new Date(2019, 7, 22);
 		
-		PatientModel patient = new PatientModel(1, "Lou", "Tscheir", "M", date, "Haldenstrasse 22", "6300");
+		
+		
 		patient.createPatientCase(0, 1);
 		PatientCase patientCase = patient.getSinglePatientCase(0);
 		MedicationPlan plan = patientCase.getMedicationplan();
-		plan.addToMedicationplan(new Medication("Ibuprofen 100mg", "Brufen 100mg ", "100mg", "tablet", "1", "1", "1", "1", "Pcs", "Nothing to see here", "Pain"));
-		ArrayList<Medication> medicationList = plan.getMedicationplan();
+	
 		
+		plan.addToMedicationplan(medi);
+		ArrayList<Medication> medicationList = plan.getMedicationplan();
 		grid.setItems(medicationList);
 		// Column set and description
 		grid.addColumn(Medication::getactiveIngredient).setHeader("Active Ingredient");
@@ -155,7 +157,7 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 			textfieldUnit.setEnabled(true);
 			combo.clear();
 		});
-
+		
 		// Add to layout
 		root.add(layout2, layout3, layout4, btnOk,grid);
 		add(root);

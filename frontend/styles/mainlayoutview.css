@@ -1,68 +1,69 @@
-html{
-	background-color:#fefefe;
-	
-}
-.main-view{
-	width:100%;
+html {
+	background-color: #fefefe;
 }
 
-header{
-	margin: 5px;
-	
+.main-view {
+	width: 100%;
 }
-footer{
+
+header {
+	padding: 5px;
+	border-bottom: 1px solid #dadce0;
+}
+
+footer {
 	text-align: center;
-	padding-top:30px;
-	color:#1576f3;
-	border-top:1px solid #B1AFAE;
+	padding-top: 30px;
+	color: #1576f3;
+	border-top: 1px solid #B1AFAE;
 }
 
-vaadin-horizontal-layout{
-	    max-width: 100%;
-    flex-wrap: wrap;
+vaadin-horizontal-layout {
+	max-width: 100%;
+	flex-wrap: wrap;
 }
 
-
-
-.patient{
-    background-color: #1576f3;
-    color: #ffffff;
-    padding: 10px 5px;
-    width: 200px;
-    right: 0;
-    top: 0;
-    position: fixed;
-    z-index: 999999;
-	
+vaadin-accordion-panel {
+	background-color: #1576f3;
+	color: #ffffff;
+	padding: 10px 5px;
+	width: 200px;
+	right: 0;
+	top: 0;
+	position: fixed;
+	z-index: 999999;
 }
 
-.patient label:nth-child(2n){
-	  font-weight: bold;
+vaadin-accordion-panel span {
+	color: #ffffff;
 }
 
-
-.login,.logout,.sessionError{
-	width:300px;
-	margin:50px auto;
-	border:2px solid #1576f3;
-	padding:0 0 20px 0;
-	display:grid;
-}
-.login *,.logout *,.sessionError * {
-    width: 90%;
-    margin:10px auto;
-    text-align: center;
+vaadin-accordion-panel span::before {
+	color: #ffffff;
 }
 
-.login h1,.logout h1{
-	width:100%;
-	margin:0;
-	background-color:#1576f3;
-	color:#ffffff;
-	padding:20px 0;
+.patient label:nth-child(2n) {
+	font-weight: bold;
 }
 
+.login, .logout, .sessionError {
+	width: 300px;
+	margin: 50px auto;
+	border: 2px solid #1576f3;
+	padding: 0 0 20px 0;
+	display: grid;
+}
 
+.login *, .logout *, .sessionError * {
+	width: 90%;
+	margin: 10px auto;
+	text-align: center;
+}
 
-
-
+.login h1, .logout h1 {
+	width: 100%;
+	margin: 0;
+	background-color: #1576f3;
+	color: #ffffff;
+	padding: 20px 0;
+}

@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 import java.lang.System.Logger;
 
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.charts.model.Level;
 import com.vaadin.flow.component.contextmenu.MenuItem;
@@ -36,7 +37,8 @@ public class MainLayoutView extends Div {
 	private H3 errorT = new H3("Your not Authorized!");
 	private Button loginB = new Button(new Icon(VaadinIcon.SIGN_IN));
 	private Div error=new Div();
-
+	Accordion accordion = new Accordion();
+	
 	public MainLayoutView() {
 
 		// Demo Data
@@ -76,6 +78,10 @@ public class MainLayoutView extends Div {
 		information.add(new Label(patientCase));
 
 		information.addClassName("patient");
+		
+		accordion.add("Information",information);
+	
+
 		menuBar.addClassName("navbar");
 		body.addClassName("body");
 		content.addClassName("content");
@@ -84,7 +90,7 @@ public class MainLayoutView extends Div {
 		footer.add("Ⓒ by ePsyDoc");
 
 		// Add to layout
-		body.add(information, content);
+		body.add(accordion, content);
 		
 		// Error button
 		loginB.addClickListener(e -> UI.getCurrent().navigate(MainView.class));

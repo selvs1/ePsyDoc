@@ -61,6 +61,24 @@
 <!--            <version>2.4.0</version>-->
 <!--        </dependency>-->
 
+<!-- sugi: dependencies for jpa and postgres -->
+		<dependency>   
+		    <groupId>org.eclipse.persistence</groupId>
+		    <artifactId>eclipselink</artifactId>
+		    <version>2.7.0</version>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.eclipse.persistence</groupId>
+		            <artifactId>javax.persistence</artifactId>
+		        </exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.persistence</groupId>
+		    <artifactId>javax.persistence</artifactId>
+		    <version>2.1.1</version>
+		</dependency>
+<!-- sugi: done	 -->
 
         <dependency>
             <groupId>com.vaadin</groupId>

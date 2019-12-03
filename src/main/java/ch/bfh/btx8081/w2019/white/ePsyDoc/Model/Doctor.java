@@ -3,12 +3,18 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 import java.util.Date;
 import java.util.Random;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * This is a concret class for a doctor.
  *
  * @author Sugeelan Selvasingham
  * */
+//@Entity
 public class Doctor implements Person {
+
+	//@Id
 
     private int emplId;
     private String firstName;

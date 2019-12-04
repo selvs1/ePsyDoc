@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Random;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -11,10 +12,11 @@ import javax.persistence.Id;
  *
  * @author Sugeelan Selvasingham
  * */
-//@Entity
+@Entity
 public class Doctor implements Person {
 
-//	@Id
+    @Id
+    @GeneratedValue
     private int emplId;
     private String firstName;
     private String name;
@@ -27,35 +29,56 @@ public class Doctor implements Person {
     private String city;
 
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+
     /**
      * Create a Doctor object either with or without (see below) id.
      * @param id This is the id which is relevant for the database.
      * */
-    public Doctor(int id, String firstName, String name, String userName, String password) {
-        this(firstName, name, userName, password);
-        this.emplId = id;
-    }
+//    public Doctor(int id, String firstName, String name, String userName, String password) {
+//        this(firstName, name, userName, password);
+//        this.emplId = id;
+//    }
 
     /**
      * Without id information a random generator creates an id.
      *
      */
-    public Doctor(String firstName, String name, String userName, String password) {
+//    public Doctor(String firstName, String name, String userName, String password) {
+//
+//        this.emplId = new Random().nextInt(100);
+//        this.firstName = firstName;
+//        this.name = name;
+//        this.userName = userName;
+//        this.password = password;
+//    }
 
-        this.emplId = new Random().nextInt(100);
-        this.firstName = firstName;
-        this.name = name;
-        this.userName = userName;
-        this.password = password;
-    }
-
-    public Doctor(int id, String firstName, String name, String userName, String password, Date birthDate, String street, String zip, String city) {
-        this(id, firstName, name, userName, password);
-        this.birthDate = birthDate;
-        this.street = street;
-        this.zip = zip;
-        this.city = city;
-    }
+//    public Doctor(int id, String firstName, String name, String userName, String password, Date birthDate, String street, String zip, String city) {
+//        this(id, firstName, name, userName, password);
+//        this.birthDate = birthDate;
+//        this.street = street;
+//        this.zip = zip;
+//        this.city = city;
+//    }
 
 
 
@@ -97,5 +120,17 @@ public class Doctor implements Person {
     @Override
     public String getCity() {
         return city;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

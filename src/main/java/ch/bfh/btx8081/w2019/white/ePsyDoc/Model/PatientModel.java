@@ -34,7 +34,15 @@ public class PatientModel {
 		Patient p = new Patient(1, "Muster", "Max", "M", new Date(2019,4,9), "Musterstrasse 34", "3333");
 		patientList.add(p);
 		p.createPatientCase("1.1", 1);
+		PatientCase pc = p.getPatientCase("1.1");
+		
+		MedicationPlan mp = new MedicationPlan();
+		mp.addToMedicationPlan(new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
+							"Film-coated-tablet","Pcs","Take with a glas of water","Pain"));
+		pc.setMedicationplan(mp);
 		HospIndex drugList = new HospIndex();
+		
+		
 	
 		
 		

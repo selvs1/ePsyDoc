@@ -6,39 +6,34 @@ import net.bytebuddy.asm.Advice.Exit;
 
 public class MedicationPlan {
 
-	private int patientcaseID;
-	private int patientID;
-	private ArrayList<Medication> medicationplan = new ArrayList<Medication>();
+	private ArrayList<Medication> medicationPlan;
 
-	public MedicationPlan(int patientcaseID, int patientID) {
-		this.patientcaseID = patientcaseID;
-		this.patientID = patientID;
+	public MedicationPlan() {
+		this.medicationPlan = new ArrayList<Medication>();
 	}
 
 	public ArrayList<Medication> getMedicationPlan() {
-		return medicationplan;
+		return medicationPlan;
 	}
 
 	public void addToMedicationPlan(Medication medication) {
-		for (Medication medicationentry : medicationplan) {
+		for (Medication medicationentry : medicationPlan) {
 			if (medicationentry.getbrandName() == medication.getbrandName()) {
 				System.out.println("Not possible medication already added");
 			} else {
-				medicationplan.add(medication);
+				medicationPlan.add(medication);
 			}
 		}
 	}
 
 	public void removeFromMedicationPlan(String brandname) {
-		for (Medication medication : medicationplan) {
+		for (Medication medication : medicationPlan) {
 			if (medication.getbrandName() == brandname) {
-				medicationplan.remove(medication);
+				medicationPlan.remove(medication);
 			} else {
 				System.out.println("No such objekt found");
 			}
 		}
 	}
-
-
 
 }

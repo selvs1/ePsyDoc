@@ -1,7 +1,5 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
-import java.util.ArrayList;
-
 public class PatientCase {
 
 	private String patientCaseID;
@@ -13,7 +11,7 @@ public class PatientCase {
 	public PatientCase(String patientCaseID, int patientID) {
 		this.patientID = patientID;
 		this.patientCaseID = patientCaseID;
-		this.medicationPlan = new MedicationPlan(patientID, patientID);
+		this.medicationPlan = new MedicationPlan();
 
 	}
 

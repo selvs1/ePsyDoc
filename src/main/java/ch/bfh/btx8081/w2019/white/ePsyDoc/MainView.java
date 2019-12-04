@@ -4,15 +4,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.LoginModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.LogoutModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Presenter.AppointmentPresenter;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Presenter.LoginPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Presenter.LogoutPresenter;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Presenter.PatientPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.View.AppointmentViewImpl;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.View.LoginViewImpl;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.View.LogoutViewImpl;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.View.PatientViewImpl;
 
 @Route("")
@@ -20,9 +15,9 @@ public class MainView extends VerticalLayout {
 
 	public MainView() {
 		setupLogin();
-		setupAppointment();
+		//setupAppointment();
 		setupPatient();
-		setupLogout();
+		//setupLogout();
 	}
 
 	// LoginModel
@@ -43,7 +38,7 @@ public class MainView extends VerticalLayout {
 	//PatientModel
 	private void setupPatient() {
 		PatientModel model = new PatientModel();
-		model.init();
+		//model.init();
 		PatientViewImpl view = new PatientViewImpl();
 		new PatientPresenter(model, view);
 		add(view);

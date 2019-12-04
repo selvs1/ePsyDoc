@@ -84,7 +84,7 @@ public class Patient {
 		this.zip = zip;
 	}
 
-	public void createPatientCase(int patientCaseID, int patientID) {
+	public void createPatientCase(String patientCaseID, int patientID) {
 		PatientCase patientCase = new PatientCase(patientCaseID, patientID);
 		patientCaseList.add(patientCase);
 	}
@@ -97,10 +97,10 @@ public class Patient {
 		this.patientCaseList = patientCaseList;
 	}
 
-	public PatientCase getPatientCase(int patientCaseID) {
+	public PatientCase getPatientCase(String patientCaseID) {
 		PatientCase returnPatientCase = null;
 		for (PatientCase patientCase : patientCaseList) {
-			if (patientCase.getPatientcaseID() == patientCaseID) {
+			if (patientCase.getPatientcaseID().equalsIgnoreCase(patientCaseID)) {
 				returnPatientCase = patientCase;
 			}
 		}
@@ -114,6 +114,25 @@ public class Patient {
 	
 	public PatientCase getLastPatientCase() {
 		return getPatientCaseAtIndex(patientCaseList.size()-1);
+	}
+	
+	public PatientCase getPatientCaseFromPatientCaseID(String patientCaseID) {
+		PatientCase p = null;
+		for (PatientCase patientCase : patientCaseList) {
+			if (patientCase.getPatientcaseID().equalsIgnoreCase(patientCaseID)) {
+				p = patientCase;
+			} 
+		}
+		return p;
+		
+	}
+	
+	public void addPatientCase(String patientCaseID) {
+		patientCaseList.add(new PatientCase(patientCaseID, this.patientID));
+	}
+	
+	public void removePatientCase(String patientCaseID) {
+		patientCaseList.remove(getPatientCaseFromPatientCaseID(patientCaseID));
 	}
 
 }

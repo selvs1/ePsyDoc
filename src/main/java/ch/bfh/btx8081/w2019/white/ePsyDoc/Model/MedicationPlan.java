@@ -15,11 +15,11 @@ public class MedicationPlan {
 		this.patientID = patientID;
 	}
 
-	public ArrayList<Medication> getMedicationplan() {
+	public ArrayList<Medication> getMedicationPlan() {
 		return medicationplan;
 	}
 
-	public void addToMedicationplan(Medication medication) {
+	public void addToMedicationPlan(Medication medication) {
 		for (Medication medicationentry : medicationplan) {
 			if (medicationentry.getbrandName() == medication.getbrandName()) {
 				System.out.println("Not possible medication already added");
@@ -29,7 +29,7 @@ public class MedicationPlan {
 		}
 	}
 
-	public void removeFromMedicationplan(String brandname) {
+	public void removeFromMedicationPlan(String brandname) {
 		for (Medication medication : medicationplan) {
 			if (medication.getbrandName() == brandname) {
 				medicationplan.remove(medication);

@@ -24,6 +24,6 @@ public class DiagnosisList {
 	}
 	
 	public void RemoveFromDiagnosisList(Diagnosis diagnosis) {
-		diagnosisList.add(diagnosis);
+		diagnosisList.remove(diagnosis);
 	}
 }

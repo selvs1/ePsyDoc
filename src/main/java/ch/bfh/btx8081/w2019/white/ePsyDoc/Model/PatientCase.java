@@ -4,14 +4,13 @@ import java.util.ArrayList;
 
 public class PatientCase {
 
-	private int patientCaseID;
+	private String patientCaseID;
 	private int patientID;
 	private MedicationPlan medicationPlan;
 	private Report report;
 	private Doctor doctor;
 
-	public PatientCase(int patientCaseID, int patientID) {
-		
+	public PatientCase(String patientCaseID, int patientID) {
 		this.patientID = patientID;
 		this.patientCaseID = patientCaseID;
 		this.medicationPlan = new MedicationPlan(patientID, patientID);
@@ -22,19 +21,11 @@ public class PatientCase {
 		return medicationPlan;
 	}
 
-	public void addToMedicationPlan(Medication medication) {
-		medicationPlan.addToMedicationplan(medication);
-	}
-
-	public void RemoveFromMedicationPlan(String brandname) {
-		medicationPlan.removeFromMedicationplan(brandname);
-	}
-
-	public int getPatientcaseID() {
+	public String getPatientcaseID() {
 		return patientCaseID;
 	}
 
-	public void setPatientcaseID(int patientcaseID) {
+	public void setPatientcaseID(String patientcaseID) {
 		this.patientCaseID = patientcaseID;
 	}
 

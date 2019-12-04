@@ -1,9 +1,16 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.Presenter;
 
+import com.vaadin.flow.server.VaadinSession;
+
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.DiagnosisList;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Report;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.View.ReportView;
 
 public class ReportPresenter implements ReportView.ReportViewListener {
@@ -17,74 +24,41 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	    }
 
 	@Override
-	public void save(int intervall) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clickSetFields(PatientCase patientcase) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getModel(PatientModel patientModel) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clickNewReport(Doctor doctor, PatientModel patient) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void clickNewPatientCase(int patientCaseID, int patientID) {
-		// TODO Auto-generated method stub
+		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
+		String tempPatientID = String.valueOf(tempPatient.getPatientID());
+		String tempPatientCaseID = tempPatientID + "." + String.valueOf(tempPatient.getPatientCaseList().size());
+		model.getPatient(Integer.parseInt(tempPatientID)).addPatientCase(tempPatientCaseID);
+
 		
 	}
 
 	@Override
 	public void clickDeletePatientCase() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteDiagnose() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clickSetMedicationPlan(int patientcaseID, int patientID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clickDisableFields() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clickAutofill() {
-		// TODO Auto-generated method stub
-		
+		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
+		tempPatient.removePatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 	}
 
 	@Override
 	public void clickAddMedication(Medication medication) {
-		// TODO Auto-generated method stub
-		
+		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		MedicationPlan medicationPlan = tempPatientCase.getMedicationPlan();
+		medicationPlan.addToMedicationPlan(medication);
 	}
 
 	@Override
 	public void clickRemoveFromMedicationPlan(String brandname) {
-		// TODO Auto-generated method stub
-		
+		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+	}
+
+	@Override
+	public void deleteDiagnose(Diagnosis diagnosis) {
+		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		Report report = tempPatientCase.getReport();
+		DiagnosisList diagnosisList = report.getDiagnosisList();
+		diagnosisList.RemoveFromDiagnosisList(diagnosis);		
 	}
 }

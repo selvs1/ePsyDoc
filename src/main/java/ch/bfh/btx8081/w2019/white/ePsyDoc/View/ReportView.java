@@ -22,6 +22,7 @@ public interface ReportView {
 		void clickRemoveFromMedicationPlan(String brandname);
 		
 		void getPatientData();
+		void getDoctorData();
 
 	}
 

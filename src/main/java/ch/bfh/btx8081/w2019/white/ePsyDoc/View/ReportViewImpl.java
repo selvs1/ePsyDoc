@@ -72,7 +72,6 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 	public ReportViewImpl() {
 		this.addAttachListener(e->{
-			
 				for (ReportViewListener listener : listeners) {
 					listener.getPatientData();	
 			}

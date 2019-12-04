@@ -36,7 +36,7 @@ public interface ReportView {
 
 	void displayPatientName(String firstname, String name);
 
-	void displayPatientCaseID(int patientCaseID);
+	void displayPatientCaseID(String patientCaseID);
 
 	void displayUpdateDiagnosisGrid(ArrayList<String> diagnosis);
 

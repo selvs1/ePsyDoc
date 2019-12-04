@@ -73,7 +73,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	public ReportViewImpl() {
 		this.addAttachListener(e->{
 				for (ReportViewListener listener : listeners) {
-					listener.getPatientData();	
+					listener.getPatientData();
+					listener.getDoctorData();
+					listener.getPatientCaseID();
 			}
 			
 		});
@@ -183,8 +185,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	@Override
-	public void displayPatientCaseID(int patientCaseID) {
-		patientCaseL.setText(String.valueOf(patientCaseID));
+	public void displayPatientCaseID(String patientCaseID) {
+		patientCaseL.setText(patientCaseID);
 
 	}
 

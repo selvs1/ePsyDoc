@@ -97,7 +97,7 @@ public class MainLayoutView extends Div {
 		error.add(errorT,loginB);
 		error.addClassName("sessionError");
 
-		if (VaadinSession.getCurrent().getAttribute("name") == null) {
+		if (VaadinSession.getCurrent().getAttribute("name") != null) {
 			add(error);
 		} else {
 			add(header, body, footer);

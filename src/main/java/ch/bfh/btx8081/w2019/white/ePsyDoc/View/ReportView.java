@@ -23,6 +23,7 @@ public interface ReportView {
 		
 		void getPatientData();
 		void getDoctorData();
+		void getPatientCaseID();
 
 	}
 

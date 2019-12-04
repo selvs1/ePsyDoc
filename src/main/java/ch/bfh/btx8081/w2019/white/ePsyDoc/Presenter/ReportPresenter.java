@@ -78,4 +78,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 
 	}
 
+	@Override
+	public void getPatientCaseID() {
+		view.displayPatientCaseID(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		
+	}
+
 }

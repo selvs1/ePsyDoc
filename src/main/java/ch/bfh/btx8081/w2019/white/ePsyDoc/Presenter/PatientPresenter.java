@@ -20,6 +20,18 @@ public class PatientPresenter implements PatientView.PatientViewListener {
 	public void clickNewPatientModel(int patientID, String lastname, String firstname, String gender, String date,
 			String adress, String zip, ArrayList<PatientCase> patientCaseList) {		
 	}
+
+	@Override
+	public void clickGetPatientName(PatientModel patient) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clickGetPatientID(PatientModel patient) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 

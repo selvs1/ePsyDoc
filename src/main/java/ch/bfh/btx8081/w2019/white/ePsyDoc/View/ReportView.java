@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 
+import java.util.ArrayList;
+
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.HospIndex;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
@@ -41,15 +43,20 @@ public interface ReportView {
 	void addListener(ReportViewListener listener);
 
 	// Report
-	void displayPatientCaseTabs(int patientCaseID);
+	void displayPatientCaseTabs(ArrayList<String> patientCaseIDs);
 
-	void displayDoctorName(int doctorID);
+	void displayDoctorName(String firstname, String name);
+	
 
-	void displayPatientName(int patientID);
+	void displayPatientName(String firstname, String name);
 
 	void displayPatientCaseID(int patientCaseID);
+	
+	void displayUpdateDiagnosisGrid(ArrayList<String> diagnosis);
 
 	// Medication
-	void displayComboBox(HospIndex hospIndex);
+	void displayComboBox(ArrayList<String> hospDrugNames);
+	
+	void displayUpdateMedicationGrid(ArrayList<Medication> medication);
 
 }

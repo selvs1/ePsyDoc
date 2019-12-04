@@ -18,10 +18,18 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 
 	@Override
 	public void save(int intervall) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void clickSetFields(PatientCase patientcase) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getModel(PatientModel patientModel) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -79,7 +87,4 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-
 }

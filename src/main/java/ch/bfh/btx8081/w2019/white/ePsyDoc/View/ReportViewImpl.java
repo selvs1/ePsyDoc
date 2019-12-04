@@ -71,9 +71,13 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	HospIndex hospI = new HospIndex();
 
 	public ReportViewImpl() {
-		for (ReportViewListener listener : listeners) {
-			listener.getPatientData();
-		}
+		this.addAttachListener(e->{
+			
+				for (ReportViewListener listener : listeners) {
+					listener.getPatientData();	
+			}
+			
+		});
 		// medicationView settings
 
 		// consultation editor settings
@@ -166,14 +170,10 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		});
 		// Add to layout
 		root.add();
-
-		Button b = new Button("wed");
-		b.addAttachListener(e -> {
-			
-		});
+		
 
 		// Add to layout
-		root.add(b,tabs, newB, information, consultation, diagnosisT, addB, diagnosisG, layout2, layout3, layout4, btnOk,
+		root.add(tabs, newB, information, consultation, diagnosisT, addB, diagnosisG, layout2, layout3, layout4, btnOk,
 				medicationG, deleteB);
 		super.content.add(root);
 	}

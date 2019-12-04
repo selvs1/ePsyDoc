@@ -76,6 +76,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 					listener.getPatientData();
 					listener.getDoctorData();
 					listener.getPatientCaseID();
+					listener.clickAddMedication(new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
+							"Film-coated-tablet","Pcs","Take with a glas of water","Pain"));
 			}
 			
 		});
@@ -129,6 +131,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		});
 
 		// Column set and description
+		medicationG.setItems(medicationList);
 		medicationG.addColumn(Medication::getactiveIngredient).setHeader("Active Ingredient");
 		medicationG.addColumn(Medication::getbrandName).setHeader("Brand name");
 		medicationG.addColumn(Medication::getstrength).setHeader("Strength");
@@ -149,7 +152,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 						textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
 						textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
 				// Change field status
-				textfieldactiveIngredient.clear();
+				/*textfieldactiveIngredient.clear();
 				textfieldStrength.clear();
 				textfieldForm.clear();
 				textfieldIndication.clear();
@@ -165,11 +168,11 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 				textfieldIndication.setEnabled(true);
 				textfieldInstructions.setEnabled(true);
 				textfieldUnit.setEnabled(true);
-				combo.clear();
+				combo.clear();*/
 			}
 
 		});
-		// Add to layout
+	
 		root.add();
 		
 
@@ -220,7 +223,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 	@Override
 	public void displayUpdateMedicationGrid(MedicationPlan medication) {
-		this.medicationList = medication.getMedicationPlan();
+		medicationG.setItems(medication.getMedicationPlan());
 
 	}
 

@@ -32,32 +32,30 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 
 	@Override
 	public void clickDeletePatientCase() {
-		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
 		tempPatient.removePatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 	}
 
 	@Override
 	public void clickAddMedication(Medication medication) {
-		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
-		PatientCase tempPatientCase = tempPatient
-				.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 		MedicationPlan medicationPlan = tempPatientCase.getMedicationPlan();
+		
 		medicationPlan.addToMedicationPlan(medication);
 		view.displayUpdateMedicationGrid(medicationPlan);
 	}
 
 	@Override
 	public void clickRemoveFromMedicationPlan(String brandname) {
-		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
-		PatientCase tempPatientCase = tempPatient
-				.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 	}
 
 	@Override
 	public void deleteDiagnose(Diagnosis diagnosis) {
-		Patient tempPatient = model.getPatient((int) VaadinSession.getCurrent().getAttribute("patientID"));
-		PatientCase tempPatientCase = tempPatient
-				.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 		Report report = tempPatientCase.getReport();
 		DiagnosisList diagnosisList = report.getDiagnosisList();
 		diagnosisList.RemoveFromDiagnosisList(diagnosis);
@@ -65,8 +63,7 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 
 	@Override
 	public void getPatientData() {
-		Patient tempPatient = model
-				.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
 		view.displayPatientName(tempPatient.getFirstname(), tempPatient.getLastname());
 
 	}

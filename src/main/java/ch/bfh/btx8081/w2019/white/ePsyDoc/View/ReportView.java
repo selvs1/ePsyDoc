@@ -3,11 +3,8 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 import java.util.ArrayList;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Doctor;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.HospIndex;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
 
 public interface ReportView {
 
@@ -20,10 +17,11 @@ public interface ReportView {
 		void deleteDiagnose(Diagnosis diagnosis);
 
 		// Medication
-
 		void clickAddMedication(Medication medication);
 
 		void clickRemoveFromMedicationPlan(String brandname);
+		
+		void getPatientData();
 
 	}
 
@@ -41,8 +39,6 @@ public interface ReportView {
 	void displayUpdateDiagnosisGrid(ArrayList<String> diagnosis);
 
 	// Medication
-	void displayComboBox(ArrayList<String> hospDrugNames);
-
-	void displayUpdateMedicationGrid(ArrayList<Medication> medication);
+	void displayUpdateMedicationGrid(MedicationPlan medicationPlan);
 
 }

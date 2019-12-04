@@ -4,7 +4,6 @@ import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.DiagnosisList;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Patient;
@@ -29,8 +28,6 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		String tempPatientID = String.valueOf(tempPatient.getPatientID());
 		String tempPatientCaseID = tempPatientID + "." + String.valueOf(tempPatient.getPatientCaseList().size());
 		model.getPatient(Integer.parseInt(tempPatientID)).addPatientCase(tempPatientCaseID);
-
-		
 	}
 
 	@Override
@@ -45,6 +42,7 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 		MedicationPlan medicationPlan = tempPatientCase.getMedicationPlan();
 		medicationPlan.addToMedicationPlan(medication);
+		view.displayUpdateMedicationGrid(medicationPlan);
 	}
 
 	@Override
@@ -61,4 +59,13 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		DiagnosisList diagnosisList = report.getDiagnosisList();
 		diagnosisList.RemoveFromDiagnosisList(diagnosis);		
 	}
+
+	@Override
+	public void getPatientData() {
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		view.displayPatientName(tempPatient.getFirstname(), tempPatient.getLastname());
+		
+	}
+	
+
 }

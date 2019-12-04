@@ -20,10 +20,11 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Drug;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.HospIndex;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
 
-@Route("Report")
-@PageTitle("Report")
 public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private static final long serialVersionUID = 1L;
 	private HorizontalLayout layout2 = new HorizontalLayout();
@@ -67,9 +68,12 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private List<ReportViewListener> listeners = new ArrayList<>();
 	private List<Medication> medicationList = new ArrayList<>();
 	private List<String> diagnosisList = new ArrayList<>();
+	HospIndex hospI = new HospIndex();
 
 	public ReportViewImpl() {
-		VaadinSession.getCurrent().setAttribute("", "");
+		for (ReportViewListener listener : listeners) {
+			listener.getPatientData();
+		}
 		// medicationView settings
 
 		// consultation editor settings
@@ -85,6 +89,10 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		// set diagnose TextField settings
 		diagnosisT.setLabel("Diagnose");
 
+		// fill ComboBox
+
+		this.combo.setItems("Ibuprofen 200mg", "Ibuprofen 400mg", "Ibuprofen 600mg");
+
 		// Tabs settings
 		tabs.setFlexGrowForEnclosedTabs(1);
 		tabs.setWidth("100%");
@@ -95,37 +103,24 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 		// Change of fields when input is changed
 		combo.addValueChangeListener(event -> {
-			if (combo.getValue() == "Ibuprofen 100mg") {
-				textfieldactiveIngredient.setValue(combo.getValue());
-				textfieldbrandName.setValue("Brufen 100mg");
-				textfieldStrength.setValue("100 mg");
-				textfieldForm.setValue("Tabl");
-				textfieldIndication.setValue("Pain");
-				textfieldInstructions.setValue("Take with a glas of water");
-				textfieldUnit.setValue("Pcs");
-
-				textfieldactiveIngredient.setEnabled(false);
-				textfieldStrength.setEnabled(false);
-				textfieldForm.setEnabled(false);
-				textfieldIndication.setEnabled(false);
-				textfieldInstructions.setEnabled(false);
-				textfieldUnit.setEnabled(false);
-			} else if (combo.getValue() == "Ibuprofen 200mg") {
-				textfieldactiveIngredient.setValue(combo.getValue());
-				textfieldbrandName.setValue("Brufen 200mg");
-				textfieldStrength.setValue("200 mg");
-				textfieldForm.setValue("Tabl");
-				textfieldIndication.setValue("Pain");
-				textfieldInstructions.setValue("Take with a glass of water");
-				textfieldUnit.setValue("Pcs");
-
-				textfieldactiveIngredient.setEnabled(false);
-				textfieldStrength.setEnabled(false);
-				textfieldForm.setEnabled(false);
-				textfieldIndication.setEnabled(false);
-				textfieldInstructions.setEnabled(false);
-				textfieldUnit.setEnabled(false);
+			for (Drug drug : hospI.getDrugList()) {
+				if (combo.getValue().equalsIgnoreCase(drug.getactiveIngridient())) {
+					textfieldactiveIngredient.setValue(combo.getValue());
+					textfieldbrandName.setValue(drug.getbrandName());
+					textfieldStrength.setValue(drug.getstrength());
+					textfieldForm.setValue(drug.getform());
+					textfieldUnit.setValue(drug.getUnit());
+					textfieldInstructions.setValue(drug.getInstruction());
+					textfieldIndication.setValue(drug.getIndication());
+				}
 			}
+			textfieldactiveIngredient.setEnabled(false);
+			textfieldStrength.setEnabled(false);
+			textfieldForm.setEnabled(false);
+			textfieldIndication.setEnabled(false);
+			textfieldInstructions.setEnabled(false);
+			textfieldUnit.setEnabled(false);
+
 		});
 
 		// Column set and description
@@ -142,55 +137,43 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		medicationG.addColumn(Medication::getindication).setHeader("Indication");
 
 		// Insert values in Grid
-		btnOk.addClickListener(event -> {
-			medicationList.add(new Medication(combo.getValue(), textfieldactiveIngredient.getValue(),
-					textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
-					textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
-					textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
-
-			for (Medication medication : medicationList) {
-
-				if (medication.getmorning().isEmpty()) {
-					medication.setmorning("0");
-				}
-				if (medication.getnoon().isEmpty()) {
-					medication.setnoon("0");
-				}
-				if (medication.getevening().isEmpty()) {
-					medication.setevening("0");
-				}
-				if (medication.getatBedtime().isEmpty()) {
-				}
+		btnOk.addClickListener(e -> {
+			for (ReportViewListener listener : listeners) {
+				listener.clickAddMedication(new Medication(combo.getValue(), textfieldactiveIngredient.getValue(),
+						textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
+						textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
+						textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
+				// Change field status
+				textfieldactiveIngredient.clear();
+				textfieldStrength.clear();
+				textfieldForm.clear();
+				textfieldIndication.clear();
+				textfieldInstructions.clear();
+				textfieldUnit.clear();
+				textfieldMorning.clear();
+				textfieldNoon.clear();
+				textfieldEvening.clear();
+				textfieldAtBedtime.clear();
+				textfieldactiveIngredient.setEnabled(true);
+				textfieldStrength.setEnabled(true);
+				textfieldForm.setEnabled(true);
+				textfieldIndication.setEnabled(true);
+				textfieldInstructions.setEnabled(true);
+				textfieldUnit.setEnabled(true);
+				combo.clear();
 			}
 
-			// Insert item
-			medicationG.setItems(medicationList);
-			diagnosisG.setItems(diagnosisList);
-
-			// Change field status
-			textfieldactiveIngredient.clear();
-			textfieldStrength.clear();
-			textfieldForm.clear();
-			textfieldIndication.clear();
-			textfieldInstructions.clear();
-			textfieldUnit.clear();
-			textfieldMorning.clear();
-			textfieldNoon.clear();
-			textfieldEvening.clear();
-			textfieldAtBedtime.clear();
-			textfieldactiveIngredient.setEnabled(true);
-			textfieldStrength.setEnabled(true);
-			textfieldForm.setEnabled(true);
-			textfieldIndication.setEnabled(true);
-			textfieldInstructions.setEnabled(true);
-			textfieldUnit.setEnabled(true);
-			combo.clear();
 		});
 		// Add to layout
 		root.add();
 
+		Button b = new Button("wed");
+		b.addAttachListener(e -> {
+			
+		});
+
 		// Add to layout
-		root.add(tabs, newB, information, consultation, diagnosisT, addB, diagnosisG, layout2, layout3, layout4, btnOk,
+		root.add(b,tabs, newB, information, consultation, diagnosisT, addB, diagnosisG, layout2, layout3, layout4, btnOk,
 				medicationG, deleteB);
 		super.content.add(root);
 	}
@@ -235,14 +218,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	@Override
-	public void displayComboBox(ArrayList<String> hospDrugNames) {
-		this.combo.setItems(hospDrugNames);
-
-	}
-
-	@Override
-	public void displayUpdateMedicationGrid(ArrayList<Medication> medication) {
-		this.medicationList = medication;
+	public void displayUpdateMedicationGrid(MedicationPlan medication) {
+		this.medicationList = medication.getMedicationPlan();
 
 	}
 

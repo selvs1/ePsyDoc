@@ -26,8 +26,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 
-@Route("Medication")
-@PageTitle("Medication")
+
 public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 	private static final long serialVersionUID = 1L;
 	private VerticalLayout root = new VerticalLayout();
@@ -53,7 +52,7 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 	
 	public MedicationPlanViewImpl() {
 		
-		// Build Layout
+		/*// Build Layout
 		layout2.add(combo, textfieldactiveIngredient, textfieldStrength, textfieldForm);
 		layout3.add(textfieldMorning, textfieldNoon, textfieldEvening, textfieldAtBedtime);
 		layout4.add(textfieldUnit, textfieldInstructions, textfieldIndication);
@@ -166,6 +165,7 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 		// Add to layout
 		root.add(layout2, layout3, layout4, btnOk,grid);
 		add(root);
+		*/
 
 	}
 

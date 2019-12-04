@@ -17,19 +17,18 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.View.MedicationPlanView.MedicationPlanViewListener;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.View.PatientView.PatientViewListener;
 
-@Route("Patient")
-@PageTitle("Patient")
 public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private static final long serialVersionUID = 1L;
-	private List<PatientModel> patientlist = new ArrayList<>();
+	private List<Patient> patientlist = new ArrayList<>();
 	private VerticalLayout root = new VerticalLayout();
-	private List<PatientModel> personList = new ArrayList<>();
-	private Grid<PatientModel> grid = new Grid<>();
+	private List<Patient> personList = new ArrayList<>();
+	private Grid<Patient> grid = new Grid<>();
 	private Grid<PatientCase> patientCase = new Grid<>();
 	private List<PatientCase> patientCaseList = new ArrayList<>();
 
@@ -40,16 +39,16 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		// Test Data
 		
 		// Column set and description
-		grid.addColumn(PatientModel::getPatientID).setHeader("Patient ID");
-		Grid.Column<PatientModel> firstNameColumn = grid.addColumn(PatientModel::getFirstname).setHeader("Firstname");
-		Grid.Column<PatientModel> lastNameColumn = grid.addColumn(PatientModel::getLastname).setHeader("Lastname");
-		grid.addColumn(PatientModel::getGender).setHeader("Gender");
-		grid.addColumn(PatientModel::getDate).setHeader("Birthdate");
-		grid.addColumn(PatientModel::getAdress).setHeader("Address");
-		grid.addColumn(PatientModel::getZIP).setHeader("ZIP");
+		grid.addColumn(Patient::getPatientID).setHeader("Patient ID");
+		Grid.Column<Patient> firstNameColumn = grid.addColumn(Patient::getFirstname).setHeader("Firstname");
+		Grid.Column<Patient> lastNameColumn = grid.addColumn(Patient::getLastname).setHeader("Lastname");
+		grid.addColumn(Patient::getGender).setHeader("Gender");
+		grid.addColumn(Patient::getDate).setHeader("Birthdate");
+		grid.addColumn(Patient::getAdress).setHeader("Address");
+		grid.addColumn(Patient::getZIP).setHeader("ZIP");
 
 		// Data provider
-		ListDataProvider<PatientModel> dataProvider = new ListDataProvider<>(patientlist);
+		ListDataProvider<Patient> dataProvider = new ListDataProvider<>(patientlist);
 		grid.setDataProvider(dataProvider);
 		HeaderRow filterRow = grid.appendHeaderRow();
 
@@ -92,5 +91,18 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void displayPatientData(PatientModel patientModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayPatientCaseData(PatientModel patientModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

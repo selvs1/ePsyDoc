@@ -54,13 +54,13 @@ public class MainLayoutView extends Div {
 		// Navigation
 		appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
 		appointment.add(" Appointments");
-		appointment.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
+		appointment.addClickListener(e -> UI.getCurrent().navigate("Appointment"));
 		patient.add(new Icon(VaadinIcon.USER));
 		patient.add(" Patients");
-		patient.addClickListener(e -> UI.getCurrent().navigate(PatientViewImpl.class));
+		patient.addClickListener(e -> UI.getCurrent().navigate("Patient"));
 		report.add(new Icon(VaadinIcon.CLIPBOARD_CROSS));
 		report.add(" Report");
-		report.addClickListener(e -> UI.getCurrent().navigate(ReportViewImpl.class));
+		report.addClickListener(e -> UI.getCurrent().navigate("Report"));
 		logout.add(new Icon(VaadinIcon.SIGN_OUT));
 		logout.add(" Logout");
 		logout.addClickListener(e -> logout());

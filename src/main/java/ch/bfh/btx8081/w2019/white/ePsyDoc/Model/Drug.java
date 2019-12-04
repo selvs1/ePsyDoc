@@ -6,13 +6,19 @@ public class Drug {
 	private String brandName;
 	private String strength;
 	private String form;
+	private String indication;
+	private String instruction;
+	private String unit;
 
-	public Drug(String activeIngridient, String brandName, String strength, String form) {
-		setbrandName(brandName);
-		setactiveIngridient(activeIngridient);
-		setstrength(strength);
-		setform(form);
-
+	public Drug(String activeIngridient, String brandName, String strength, String form, String unit,
+			String instruction, String indication) {
+		this.activeIngridient = activeIngridient;
+		this.brandName = brandName;
+		this.strength = strength;
+		this.form = form;
+		this.indication = indication;
+		this.instruction = instruction;
+		this.unit = unit;
 	}
 
 	public String getactiveIngridient() {
@@ -45,6 +51,30 @@ public class Drug {
 
 	public void setform(String form) {
 		this.form = form;
+	}
+
+	public String getIndication() {
+		return indication;
+	}
+
+	public void setIndication(String indication) {
+		this.indication = indication;
+	}
+
+	public String getInstruction() {
+		return instruction;
+	}
+
+	public void setInstruction(String instruction) {
+		this.instruction = instruction;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 	@Override

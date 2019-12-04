@@ -29,4 +29,14 @@ public class PatientModel {
 		}
 		return returnPatient;
 	}
+	
+	public void init() {
+		Patient p = new Patient(1, "Muster", "Max", "M", new Date(2019,4,9), "Musterstrasse 34", "3333");
+		patientList.add(p);
+		p.createPatientCase("1.1", 1);
+		HospIndex drugList = new HospIndex();
+	
+		
+		
+	}
 }

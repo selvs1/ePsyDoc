@@ -42,8 +42,14 @@ public class MainLayoutView extends Div {
 	public MainLayoutView() {
 
 		// Demo Data
-		String patientName = "Max Muster";
-		String patientCase = "2019-11-10 12394";
+		VaadinSession.getCurrent().setAttribute("patientID", "1");
+		VaadinSession.getCurrent().setAttribute("patientFirstname", "Max");
+		VaadinSession.getCurrent().setAttribute("patientName", "Musterfrau");
+		VaadinSession.getCurrent().setAttribute("patientCaseID", "1.1");
+		VaadinSession.getCurrent().setAttribute("doctorID", "1");
+		VaadinSession.getCurrent().setAttribute("doctorFirstname", "Doctor");
+		VaadinSession.getCurrent().setAttribute("doctorName", "D");
+		
 
 		// Navigation
 		appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
@@ -73,9 +79,9 @@ public class MainLayoutView extends Div {
 		// Show active patient
 		information.setWidth("180");
 		information.add(new Icon(VaadinIcon.USER));
-		information.add(new Label(patientName));
+		information.add(new Label(String.valueOf(VaadinSession.getCurrent().getAttribute("patientFirstname"))+" "+ String.valueOf(VaadinSession.getCurrent().getAttribute("patientName"))));
 		information.add(new Icon(VaadinIcon.FILE));
-		information.add(new Label(patientCase));
+		information.add(new Label(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID"))));
 
 		information.addClassName("patient");
 		

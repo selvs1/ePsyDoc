@@ -50,7 +50,6 @@ public class MedicationPlanViewImpl extends Div implements MedicationPlanView {
 	private ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
 	Medication medi = new Medication("Ibuprofen 100mg", "Brufen 100mg ", "100mg", "tablet", "1", "1", "1", "1", "Pcs", "Nothing to see here", "Pain");
 	Date date = new Date();
-	PatientModel patient = new PatientModel(1, "Lou", "Tscheir", "M", date, "Haldenstrasse 22", "6300");
 	
 	public MedicationPlanViewImpl() {
 		

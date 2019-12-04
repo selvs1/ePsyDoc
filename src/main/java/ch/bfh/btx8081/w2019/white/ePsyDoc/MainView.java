@@ -25,6 +25,7 @@ public class MainView extends VerticalLayout {
 		setupLogout();
 	}
 
+	// LoginModel
 	private void setupLogin() {
 		LoginModel model = new LoginModel();
 		model.init();
@@ -33,14 +34,13 @@ public class MainView extends VerticalLayout {
 		add(view);
 	}
 
-	private void setupAppointment() {
-		AppointmentModel model = new AppointmentModel();
-		model.init();
-		AppointmentViewImpl view = new AppointmentViewImpl();
-		new AppointmentPresenter(model, view);
-		add(view);
-	}
+	/*
+	 * private void setupAppointment() { AppointmentModel model = new
+	 * AppointmentModel(); model.init(); AppointmentViewImpl view = new
+	 * AppointmentViewImpl(); new AppointmentPresenter(model, view); add(view); }
+	 */
 
+	//PatientModel
 	private void setupPatient() {
 		PatientModel model = new PatientModel();
 		model.init();
@@ -49,12 +49,10 @@ public class MainView extends VerticalLayout {
 		add(view);
 	}
 
-	private void setupLogout() {
-		LogoutModel model = new LogoutModel();
-		model.init();
-		LogoutViewImpl view = new LogoutViewImpl();
-		new LogoutPresenter(model, view);
-		add(view);
-	}
-
+	/*
+	 * 
+	 * private void setupLogout() { LogoutModel model = new LogoutModel();
+	 * model.init(); LogoutViewImpl view = new LogoutViewImpl(); new
+	 * LogoutPresenter(model, view); add(view); }
+	 */
 }

@@ -11,8 +11,14 @@ public interface PatientView {
 		
 		void clickNewPatientModel(int patientID, String lastname, String firstname, String gender, String date, String adress,
 				String zip, ArrayList<PatientCase> patientCaseList);
+		
+		void clickGetPatientName(PatientModel patient);
+		void clickGetPatientID(PatientModel patient);
 
 	}
 
 	void addListener(PatientViewListener listener);
+	void displayPatientName();
+	void displayPatientID();
+	
 }

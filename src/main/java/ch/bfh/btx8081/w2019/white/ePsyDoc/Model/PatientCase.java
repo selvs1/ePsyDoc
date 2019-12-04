@@ -9,7 +9,6 @@ public class PatientCase {
 	private MedicationPlan medicationPlan;
 	private Report report;
 	private Doctor doctor;
-	private PatientModel patient;
 
 	public PatientCase(int patientCaseID, int patientID) {
 		
@@ -69,20 +68,6 @@ public class PatientCase {
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
-	}
-
-	public PatientModel getPatient() {
-		return patient;
-	}
-
-	public void setPatient(PatientModel patient) {
-		this.patient = patient;
-	}
-	
-	@Override
-	public String toString() {
-		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patientID + ", medicationPlan="
-				+ medicationPlan + ", report=" + report + ", doctor=" + doctor + ", patient=" + patient + "]";
 	}
 
 }

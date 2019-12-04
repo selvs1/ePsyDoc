@@ -1,5 +1,8 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Label;
@@ -13,6 +16,9 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.HospIndex;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.View.LoginView.LoginViewListener;
 
 @Route("Report")
 @PageTitle("Report")
@@ -42,6 +48,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private Tab tab3 = new Tab("C 2019.11.22");
 	private Tabs tabs = new Tabs(tab1, tab2, tab3);
 	private TextArea consultation = new TextArea("Consultation");
+	private List<ReportViewListener> listeners = new ArrayList<>();
 
 	public ReportViewImpl() {
 		
@@ -72,6 +79,36 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 	@Override
 	public void addListener(ReportViewListener listener) {
+		listeners.add(listener);
+	}
 
+	@Override
+	public void displayPatientCaseTabs(int patientCaseID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayDoctorName(int doctorID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayPatientName(int patientID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayPatientCaseID(int patientCaseID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayComboBox(HospIndex hospIndex) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -18,12 +18,10 @@ public class PatientPresenter implements PatientView.PatientViewListener {
 
 	@Override
 	public void clickNewPatientModel(int patientID, String lastname, String firstname, String gender, String date,
-			String adress, String zip, ArrayList<PatientCase> patientCaseList) {
-		
-		//model = new PatientModel(patientID, lastname, firstname, gender, date, adress, zip, patientCaseList);
-		
+			String adress, String zip, ArrayList<PatientCase> patientCaseList) {		
 	}
+	
 
 
-
+	
 }

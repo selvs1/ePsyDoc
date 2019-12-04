@@ -17,7 +17,7 @@ public class Doctor implements Person {
 
     @Id
     @GeneratedValue
-    private int emplId;
+    private int doctorID;
     private String firstName;
     private String name;
     private String userName;
@@ -82,8 +82,8 @@ public class Doctor implements Person {
 
 
 
-    public int getEmplId() {
-        return emplId;
+    public int getDoctorID() {
+        return doctorID;
     }
 
     public String getName() {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 
 public interface ReportView {
 
@@ -38,9 +39,12 @@ public interface ReportView {
 
 	void displayPatientCaseID(String patientCaseID);
 
-	void displayUpdateDiagnosisGrid(ArrayList<String> diagnosis);
 
 	// Medication
 	void displayUpdateMedicationGrid(MedicationPlan medicationPlan);
+
+	void displayUpdateDiagnosisGrid(ArrayList<Diagnosis> diagnosis);
+
+	void displayPatientCase(PatientCase tempPatientCase);
 
 }

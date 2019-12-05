@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.vaadin.flow.server.VaadinSession;
+
 public class PatientModel {
 
 	private List<Patient> patientList;
@@ -36,7 +38,16 @@ public class PatientModel {
 		p.createPatientCase("1.1", 1);
 		PatientCase pc = p.getPatientCase("1.1");
 		
+		VaadinSession.getCurrent().setAttribute("patientID", "1");
+		VaadinSession.getCurrent().setAttribute("patientFirstname", "Max");
+		VaadinSession.getCurrent().setAttribute("patientName", "Muster");
+		VaadinSession.getCurrent().setAttribute("patientCaseID", "1.1");
+		VaadinSession.getCurrent().setAttribute("doctorID", "1");
+		VaadinSession.getCurrent().setAttribute("doctorFirstname", "Doctor");
+		VaadinSession.getCurrent().setAttribute("doctorName", "D");
+		
 		MedicationPlan mp = new MedicationPlan();
+
 		mp.addToMedicationPlan(new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
 							"Film-coated-tablet","Pcs","Take with a glas of water","Pain"));
 		pc.setMedicationplan(mp);

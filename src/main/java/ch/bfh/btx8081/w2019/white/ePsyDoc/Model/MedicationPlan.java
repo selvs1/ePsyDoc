@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import net.bytebuddy.asm.Advice.Exit;
 
@@ -9,7 +10,7 @@ public class MedicationPlan {
 	private ArrayList<Medication> medicationPlan;
 
 	public MedicationPlan() {
-		this.medicationPlan = new ArrayList<Medication>();
+		medicationPlan = new ArrayList<Medication>();
 	}
 
 	public ArrayList<Medication> getMedicationPlan() {
@@ -17,13 +18,7 @@ public class MedicationPlan {
 	}
 
 	public void addToMedicationPlan(Medication medication) {
-		for (Medication medicationentry : medicationPlan) {
-			if (medicationentry.getbrandName() == medication.getbrandName()) {
-				System.out.println("Not possible medication already added");
-			} else {
-				medicationPlan.add(medication);
-			}
-		}
+		medicationPlan.add(medication);
 	}
 
 	public void removeFromMedicationPlan(String brandname) {
@@ -34,6 +29,13 @@ public class MedicationPlan {
 				System.out.println("No such objekt found");
 			}
 		}
+	}
+
+	@Override
+	public String toString() {
+		String listString = medicationPlan.stream().map(Object::toString)
+                .collect(Collectors.joining(", "));
+		return "MedicationPlan [medicationPlan=" + listString + "]";
 	}
 
 }

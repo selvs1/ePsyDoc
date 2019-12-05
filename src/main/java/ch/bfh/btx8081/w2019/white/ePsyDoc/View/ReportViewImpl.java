@@ -16,11 +16,14 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.function.ValueProvider;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Drug;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.HospIndex;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientCase;
 
 public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private static final long serialVersionUID = 1L;
@@ -42,12 +45,13 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private Button btnOk = new Button(new Icon(VaadinIcon.PLUS));
 	private ComboBox<String> combo = new ComboBox<String>("Active Ingredient");
 	Date date = new Date();
+	private Label l;
 	private VerticalLayout root = new VerticalLayout();
 	private Button newB = new Button(new Icon(VaadinIcon.FILE_ADD));
 	private Button deleteB = new Button(new Icon(VaadinIcon.FILE_REMOVE));
 	private Button addB = new Button(new Icon(VaadinIcon.PLUS));
 	private TextField diagnosisT = new TextField();
-	private Grid<String> diagnosisG = new Grid<String>();
+	private Grid<Diagnosis> diagnosisG = new Grid<Diagnosis>();
 	private VerticalLayout information = new VerticalLayout();
 	private HorizontalLayout patientCaseLayout = new HorizontalLayout();
 	private HorizontalLayout doctorLayout = new HorizontalLayout();
@@ -64,21 +68,30 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private TextArea consultation = new TextArea("Consultation");
 	private List<ReportViewListener> listeners = new ArrayList<>();
 	private List<Medication> medicationList = new ArrayList<>();
-	private List<String> diagnosisList = new ArrayList<>();
+	private List<Diagnosis> diagnosisList = new ArrayList<>();
 	HospIndex hospI = new HospIndex();
 
 	public ReportViewImpl() {
-		this.addAttachListener(e->{
-				for (ReportViewListener listener : listeners) {
-					listener.getPatientData();
-					listener.getDoctorData();
-					listener.getPatientCaseID();
-					listener.clickAddMedication(new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
-							"Film-coated-tablet","Pcs","Take with a glas of water","Pain"));
+		this.addAttachListener(e -> {
+			for (ReportViewListener listener : listeners) {
+				listener.getPatientData();
+				listener.getDoctorData();
+				listener.getPatientCaseID();
+				listener.clickAddMedication(
+						new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet", "", "", "", "",
+								"600mg", "Film-coated-tablet", "Pcs", "Take with a glas of water", "Pain"));
 			}
-			
+
 		});
-		// medicationView settings
+		diagnosisG.addColumn(Diagnosis::getDiagnosis).setHeader("Diagnosis");
+		diagnosisG.setItems(diagnosisList);
+		// Diagnosis
+		addB.addClickListener(e -> {
+			Diagnosis diagnose = new Diagnosis(diagnosisT.getValue());
+			diagnosisList.add(diagnose);
+			diagnosisG.getDataProvider().refreshAll();
+
+		});
 
 		// consultation editor settings
 		consultation.setWidth("100%");
@@ -144,38 +157,40 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		// Insert values in Grid
 		btnOk.addClickListener(e -> {
 			for (ReportViewListener listener : listeners) {
-				listener.clickAddMedication(new Medication(combo.getValue(), textfieldactiveIngredient.getValue(),
+				Medication medi = new Medication(combo.getValue(), textfieldactiveIngredient.getValue(),
 						textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
 						textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
-						textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue()));
+						textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue());
+				
+				Medication edi2 = new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
+						"Film-coated-tablet","Pcs","Take with a glas of water","Pain");
+				listener.clickAddMedication(edi2);
+				
+				
+
+				//medicationList.add(medi);
+				//medicationG.getDataProvider().refreshAll();
 				// Change field status
-				/*textfieldactiveIngredient.clear();
-				textfieldStrength.clear();
-				textfieldForm.clear();
-				textfieldIndication.clear();
-				textfieldInstructions.clear();
-				textfieldUnit.clear();
-				textfieldMorning.clear();
-				textfieldNoon.clear();
-				textfieldEvening.clear();
-				textfieldAtBedtime.clear();
-				textfieldactiveIngredient.setEnabled(true);
-				textfieldStrength.setEnabled(true);
-				textfieldForm.setEnabled(true);
-				textfieldIndication.setEnabled(true);
-				textfieldInstructions.setEnabled(true);
-				textfieldUnit.setEnabled(true);
-				combo.clear();*/
+				/*
+				 * textfieldactiveIngredient.clear(); textfieldStrength.clear();
+				 * textfieldForm.clear(); textfieldIndication.clear();
+				 * textfieldInstructions.clear(); textfieldUnit.clear();
+				 * textfieldMorning.clear(); textfieldNoon.clear(); textfieldEvening.clear();
+				 * textfieldAtBedtime.clear(); textfieldactiveIngredient.setEnabled(true);
+				 * textfieldStrength.setEnabled(true); textfieldForm.setEnabled(true);
+				 * textfieldIndication.setEnabled(true); textfieldInstructions.setEnabled(true);
+				 * textfieldUnit.setEnabled(true); combo.clear();
+				 */
 			}
 
 		});
-	
-		root.add();
-		
 
+		root.add();
+
+		l = new Label();
 		// Add to layout
-		root.add(tabs, newB, information, consultation, diagnosisT, addB, diagnosisG, layout2, layout3, layout4, btnOk,
-				medicationG, deleteB);
+		root.add(l, tabs, newB, information, consultation, diagnosisT, addB, diagnosisG, layout2, layout3, layout4,
+				btnOk, medicationG, deleteB);
 		super.content.add(root);
 	}
 
@@ -213,15 +228,23 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	@Override
-	public void displayUpdateDiagnosisGrid(ArrayList<String> diagnosis) {
+	public void displayUpdateDiagnosisGrid(ArrayList<Diagnosis> diagnosis) {
 		this.diagnosisList = diagnosis;
+
+	}
+	
+
+	@Override
+	public void displayUpdateMedicationGrid(MedicationPlan medication) {
+		this.medicationList=medication.getMedicationPlan().;
+		medicationG.getDataProvider().refreshAll();
 
 	}
 
 	@Override
-	public void displayUpdateMedicationGrid(MedicationPlan medication) {
-		medicationG.setItems(medication.getMedicationPlan());
-
+	public void displayPatientCase(PatientCase tempPatientCase) {
+		l.setText(tempPatientCase.getMedicationplan().getMedicationPlan());
+		
 	}
 
 }

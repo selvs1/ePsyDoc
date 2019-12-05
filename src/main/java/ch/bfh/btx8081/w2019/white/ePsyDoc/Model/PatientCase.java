@@ -12,6 +12,7 @@ public class PatientCase {
 		this.patientID = patientID;
 		this.patientCaseID = patientCaseID;
 		this.medicationPlan = new MedicationPlan();
+		this.report = new Report();
 
 	}
 
@@ -57,6 +58,12 @@ public class PatientCase {
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
+	}
+
+	@Override
+	public String toString() {
+		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patientID + ", medicationPlan="
+				+ medicationPlan + ", report=" + report + ", doctor=" + doctor + "]";
 	}
 
 }

@@ -42,13 +42,7 @@ public class MainLayoutView extends Div {
 	public MainLayoutView() {
 
 		// Demo Data
-		VaadinSession.getCurrent().setAttribute("patientID", "1");
-		VaadinSession.getCurrent().setAttribute("patientFirstname", "Max");
-		VaadinSession.getCurrent().setAttribute("patientName", "Musterfrau");
-		VaadinSession.getCurrent().setAttribute("patientCaseID", "1.1");
-		VaadinSession.getCurrent().setAttribute("doctorID", "1");
-		VaadinSession.getCurrent().setAttribute("doctorFirstname", "Doctor");
-		VaadinSession.getCurrent().setAttribute("doctorName", "D");
+
 		
 
 		// Navigation

@@ -6,7 +6,7 @@ import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp.ReportPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp.ReportViewImpl;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportViewImpl;
 
 @Route("Report")
 @PageTitle("Report")

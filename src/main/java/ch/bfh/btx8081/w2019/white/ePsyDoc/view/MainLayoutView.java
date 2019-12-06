@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.accordion.Accordion;

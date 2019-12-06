@@ -5,7 +5,7 @@ import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.LoginModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp.LoginPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp.LoginViewImpl;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginViewImpl;
 
 @Route("")
 public class MainView extends VerticalLayout {

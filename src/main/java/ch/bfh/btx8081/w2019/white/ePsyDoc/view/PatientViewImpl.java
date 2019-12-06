@@ -15,9 +15,9 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Patient;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientCase;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 
 public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private static final long serialVersionUID = 1L;

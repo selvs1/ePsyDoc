@@ -4,7 +4,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.presenter.ReportPresenter;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportViewImpl;
 

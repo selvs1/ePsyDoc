@@ -2,13 +2,13 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
 import com.vaadin.flow.server.VaadinSession;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.DiagnosisList;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.MedicationPlan;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Patient;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientCase;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.DiagnosisList;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Report;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView;
 

@@ -17,12 +17,12 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Drug;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.HospIndex;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.MedicationPlan;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.HospIndex;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
 
 public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private static final long serialVersionUID = 1L;

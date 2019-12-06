@@ -1,6 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 
 public interface PatientView {
 	interface PatientViewListener {		

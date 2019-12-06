@@ -1,6 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientView;
 
 public class PatientPresenter implements PatientView.PatientViewListener {

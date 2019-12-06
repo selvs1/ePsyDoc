@@ -2,10 +2,10 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
 import java.util.ArrayList;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.MedicationPlan;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
 
 public interface ReportView {
 

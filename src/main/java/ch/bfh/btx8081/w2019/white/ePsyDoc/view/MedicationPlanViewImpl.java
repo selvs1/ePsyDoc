@@ -2,7 +2,6 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
 import java.util.Date;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.view.MedicationPlanView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
@@ -13,7 +12,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
 
 
 public class MedicationPlanViewImpl extends Div implements MedicationPlanView {

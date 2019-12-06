@@ -1,9 +1,8 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Appointment;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 public class AppointmentList {

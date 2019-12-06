@@ -1,6 +1,5 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 public class Appointment {

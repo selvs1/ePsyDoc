@@ -1,0 +1,16 @@
+package ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp;
+
+import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
+
+public interface PatientView {
+	interface PatientViewListener {		
+		void clickGetPatientName(PatientModel patient);
+		void clickGetPatientID(PatientModel patient);
+
+	}
+
+	void addListener(PatientViewListener listener);
+	void displayPatientData(PatientModel patientModel);
+	void displayPatientCaseData(PatientModel patientModel);
+	
+}

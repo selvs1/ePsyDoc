@@ -3,9 +3,9 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.LoginModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Presenter.LoginPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.View.LoginViewImpl;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.LoginModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp.LoginPresenter;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp.LoginViewImpl;
 
 @Route("")
 public class MainView extends VerticalLayout {

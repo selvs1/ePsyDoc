@@ -4,9 +4,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.PatientModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.Presenter.ReportPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.View.ReportViewImpl;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp.ReportPresenter;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp.ReportViewImpl;
 
 @Route("Report")
 @PageTitle("Report")

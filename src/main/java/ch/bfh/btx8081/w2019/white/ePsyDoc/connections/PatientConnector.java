@@ -5,7 +5,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp.PatientPresenter;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientViewImpl;
 
 @Route("Patient")

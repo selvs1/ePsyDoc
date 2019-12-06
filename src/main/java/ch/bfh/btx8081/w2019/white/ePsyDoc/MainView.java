@@ -4,7 +4,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.LoginModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp.LoginPresenter;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.presenter.LoginPresenter;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginViewImpl;
 
 @Route("")

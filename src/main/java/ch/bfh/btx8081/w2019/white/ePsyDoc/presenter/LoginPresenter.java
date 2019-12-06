@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.LoginModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginView;

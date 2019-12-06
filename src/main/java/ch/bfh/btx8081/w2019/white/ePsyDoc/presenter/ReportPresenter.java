@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
 import com.vaadin.flow.server.VaadinSession;
 

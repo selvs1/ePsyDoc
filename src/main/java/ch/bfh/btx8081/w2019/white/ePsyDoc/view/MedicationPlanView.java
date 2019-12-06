@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Medication;
 

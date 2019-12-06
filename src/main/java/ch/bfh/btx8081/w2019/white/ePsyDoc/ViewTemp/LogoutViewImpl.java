@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LogoutView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
@@ -14,7 +15,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 
 @Route("Logout")
 @PageTitle("Logout")
-public class LogoutViewImpl extends VerticalLayout implements LogoutView  {
+public class LogoutViewImpl extends VerticalLayout implements LogoutView {
 	/**
 	 * 
 	 */

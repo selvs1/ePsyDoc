@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp;
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientView;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.flow.component.UI;

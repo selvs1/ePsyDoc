@@ -10,7 +10,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Report;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp.ReportView;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView;
 
 public class ReportPresenter implements ReportView.ReportViewListener {
 	private PatientModel model;

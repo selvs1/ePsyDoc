@@ -2,6 +2,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp;
 
 import java.util.Date;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.MedicationPlanView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;

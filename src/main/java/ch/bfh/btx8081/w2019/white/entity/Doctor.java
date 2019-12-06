@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.EntityTemp;
+package ch.bfh.btx8081.w2019.white.entity;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Person;
 
@@ -53,8 +53,9 @@ public class Doctor implements Person {
 
     /**
      * Create a Doctor object either with or without (see below) id.
+     *
      * @param id This is the id which is relevant for the database.
-     * */
+     */
 //    public Doctor(int id, String firstName, String name, String userName, String password) {
 //        this(firstName, name, userName, password);
 //        this.emplId = id;

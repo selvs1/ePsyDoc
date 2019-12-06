@@ -6,7 +6,7 @@ import com.vaadin.flow.router.Route;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp.AppointmentPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp.AppointmentViewImpl;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
 
 @Route("Appointment")
 @PageTitle("Appointment")

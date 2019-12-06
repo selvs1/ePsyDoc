@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;

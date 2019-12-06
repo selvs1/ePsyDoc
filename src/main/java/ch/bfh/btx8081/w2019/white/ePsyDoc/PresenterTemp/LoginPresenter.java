@@ -1,7 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.PresenterTemp;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.LoginModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ViewTemp.LoginView;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginView;
 
 public class LoginPresenter implements LoginView.LoginViewListener {
 

@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.ConnectionsTemp;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.connections;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;

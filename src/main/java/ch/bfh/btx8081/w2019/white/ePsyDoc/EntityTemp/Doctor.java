@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.entity;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.EntityTemp;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Person;
 

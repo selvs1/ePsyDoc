@@ -1,6 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp;
 
-import ch.bfh.btx8081.w2019.white.entity.Doctor;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.EntityTemp.Doctor;
 
 public class PatientCase {
 

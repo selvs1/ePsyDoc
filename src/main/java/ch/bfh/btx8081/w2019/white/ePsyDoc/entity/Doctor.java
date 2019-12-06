@@ -1,6 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.entity;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Person;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Person;
 
 import java.util.Date;
 

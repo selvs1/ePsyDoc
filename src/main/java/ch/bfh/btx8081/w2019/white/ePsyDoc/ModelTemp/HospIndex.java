@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Drug;
+
 import java.util.ArrayList;
 
 public class HospIndex {

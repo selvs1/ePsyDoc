@@ -18,7 +18,7 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Drug;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Drug;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.HospIndex;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.ModelTemp.MedicationPlan;

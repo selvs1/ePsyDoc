@@ -1,4 +1,6 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.Entity;
+
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Model.Person;
 
 import java.util.Date;
 import java.util.Random;

@@ -1,15 +1,11 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
-import ch.bfh.btx8081.w2019.white.jpaTests.Family;
-import ch.bfh.btx8081.w2019.white.jpaTests.Job;
-import ch.bfh.btx8081.w2019.white.jpaTests.Person;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Entity.Doctor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

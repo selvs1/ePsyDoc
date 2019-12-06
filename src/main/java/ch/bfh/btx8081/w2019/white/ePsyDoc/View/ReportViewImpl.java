@@ -236,14 +236,14 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 	@Override
 	public void displayUpdateMedicationGrid(MedicationPlan medication) {
-		this.medicationList=medication.getMedicationPlan().;
-		medicationG.getDataProvider().refreshAll();
-
+//		this.medicationList=medication.getMedicationPlan().
+//		medicationG.getDataProvider().refreshAll();
+//todo: ferti machen
 	}
 
 	@Override
 	public void displayPatientCase(PatientCase tempPatientCase) {
-		l.setText(tempPatientCase.getMedicationplan().getMedicationPlan());
+//		l.setText(tempPatientCase.getMedicationplan().getMedicationPlan());
 		
 	}
 

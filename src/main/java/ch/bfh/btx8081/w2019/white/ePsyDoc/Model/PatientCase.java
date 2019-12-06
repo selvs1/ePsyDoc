@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.Model;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.Entity.Doctor;
+
 public class PatientCase {
 
 	private String patientCaseID;

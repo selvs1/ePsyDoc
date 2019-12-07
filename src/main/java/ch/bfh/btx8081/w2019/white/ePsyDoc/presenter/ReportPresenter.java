@@ -101,4 +101,15 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		
 	}
 
+	@Override
+	public void clickAddDiagnose(Diagnosis diagnosis) {
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		Report tempReport = tempPatientCase.getReport();
+		DiagnosisList tempDiagnosisList= tempReport.getDiagnosisList();
+		tempDiagnosisList.addToDiagnosisList(diagnosis);
+		view.displayUpdateDiagnosisGrid(tempDiagnosisList.getDiagnosisList());
+		
+	}
+
 }

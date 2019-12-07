@@ -76,9 +76,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 				listener.getPatientData();
 				listener.getDoctorData();
 				listener.getPatientCaseID();
-				listener.clickAddMedication(
-						new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet", "", "", "", "",
-								"600mg", "Film-coated-tablet", "Pcs", "Take with a glas of water", "Pain"));
+				listener.getMedications();
+				listener.getDiagnosis();
 			}
 
 		});
@@ -86,10 +85,12 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		diagnosisG.setItems(diagnosisList);
 		// Diagnosis
 		addB.addClickListener(e -> {
-			Diagnosis diagnose = new Diagnosis(diagnosisT.getValue());
-			diagnosisList.add(diagnose);
-			diagnosisG.getDataProvider().refreshAll();
+			for (ReportViewListener listener : listeners) {
+				Diagnosis diagnose = new Diagnosis(diagnosisT.getValue());
+				listener.clickAddDiagnose(diagnose);
+				diagnosisG.getDataProvider().refreshAll();
 
+			}
 		});
 
 		// consultation editor settings
@@ -160,27 +161,20 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 						textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
 						textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
 						textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue());
-				
-				Medication edi2 = new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
-						"Film-coated-tablet","Pcs","Take with a glas of water","Pain");
-				listener.clickAddMedication(edi2);
+				listener.clickAddMedication(medi);
 				medicationG.getDataProvider().refreshAll();
 				
+	
 				
-
-				//medicationList.add(medi);
-				//medicationG.getDataProvider().refreshAll();
-				// Change field status
-				/*
-				 * textfieldactiveIngredient.clear(); textfieldStrength.clear();
-				 * textfieldForm.clear(); textfieldIndication.clear();
-				 * textfieldInstructions.clear(); textfieldUnit.clear();
-				 * textfieldMorning.clear(); textfieldNoon.clear(); textfieldEvening.clear();
-				 * textfieldAtBedtime.clear(); textfieldactiveIngredient.setEnabled(true);
-				 * textfieldStrength.setEnabled(true); textfieldForm.setEnabled(true);
-				 * textfieldIndication.setEnabled(true); textfieldInstructions.setEnabled(true);
-				 * textfieldUnit.setEnabled(true); combo.clear();
-				 */
+				 textfieldactiveIngredient.clear(); textfieldStrength.clear();
+				 textfieldForm.clear(); textfieldIndication.clear();
+				 textfieldInstructions.clear(); textfieldUnit.clear();
+				 textfieldMorning.clear(); textfieldNoon.clear(); textfieldEvening.clear();
+				 textfieldAtBedtime.clear(); textfieldactiveIngredient.setEnabled(true);
+				 textfieldStrength.setEnabled(true); textfieldForm.setEnabled(true);
+				 textfieldIndication.setEnabled(true); textfieldInstructions.setEnabled(true);
+				 textfieldUnit.setEnabled(true); combo.clear();
+				 
 			}
 
 		});
@@ -231,7 +225,6 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	public void displayUpdateDiagnosisGrid(List<Diagnosis> diagnosis) {
 		this.diagnosisList = diagnosis;
 		this.diagnosisG.setItems(diagnosisList);
-		this.diagnosisG.getDataProvider().refreshAll();
 		
 
 	}
@@ -240,10 +233,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	@Override
 	public void displayUpdateMedicationGrid(MedicationPlan medication) {
 		this.medicationList=medication.getMedicationPlan();
-		l.setText(medication.getMedicationPlan().toString());
 		this.medicationG.setItems(medicationList);
-		this.medicationG.getDataProvider().refreshAll();
-//todo: ferti machen
+
 	}
 
 	@Override

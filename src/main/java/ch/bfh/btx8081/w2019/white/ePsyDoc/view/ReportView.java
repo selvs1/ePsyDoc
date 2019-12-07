@@ -17,6 +17,7 @@ public interface ReportView {
 		void clickDeletePatientCase();
 
 		void deleteDiagnose(Diagnosis diagnosis);
+		void clickAddDiagnose(Diagnosis diagnosis);
 
 		// Medication
 		void clickAddMedication(Medication medication);

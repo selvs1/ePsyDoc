@@ -47,7 +47,9 @@ public class PatientModel {
 		VaadinSession.getCurrent().setAttribute("doctorName", "D");
 		
 		MedicationPlan mp = new MedicationPlan();
-
+		Report r= pc.getReport();
+		DiagnosisList d = r.getDiagnosisList();
+		d.addToDiagnosisList(new Diagnosis("safsdfg"));
 		mp.addToMedicationPlan(new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
 							"Film-coated-tablet","Pcs","Take with a glas of water","Pain"));
 		pc.setMedicationplan(mp);

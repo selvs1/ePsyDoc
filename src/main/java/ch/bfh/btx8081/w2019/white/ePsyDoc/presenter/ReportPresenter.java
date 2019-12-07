@@ -81,4 +81,24 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		
 	}
 
+	@Override
+	public void getDiagnosis() {
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		Report report = tempPatientCase.getReport();
+		DiagnosisList diagnosisList = report.getDiagnosisList();
+		view.displayUpdateDiagnosisGrid(diagnosisList.getDiagnosisList());
+		
+	}
+
+	@Override
+	public void getMedications() {
+		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
+		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		MedicationPlan medicationPlan = tempPatientCase.getMedicationPlan();
+		view.displayUpdateMedicationGrid(medicationPlan);
+		
+		
+	}
+
 }

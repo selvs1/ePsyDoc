@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
@@ -25,6 +26,8 @@ public interface ReportView {
 		void getPatientData();
 		void getDoctorData();
 		void getPatientCaseID();
+		void getDiagnosis();
+		void getMedications();
 
 	}
 
@@ -40,11 +43,14 @@ public interface ReportView {
 	void displayPatientCaseID(String patientCaseID);
 
 
+
 	// Medication
 	void displayUpdateMedicationGrid(MedicationPlan medicationPlan);
 
-	void displayUpdateDiagnosisGrid(ArrayList<Diagnosis> diagnosis);
+	void displayUpdateDiagnosisGrid(List<Diagnosis> diagnosis);
 
 	void displayPatientCase(PatientCase tempPatientCase);
+
+	
 
 }

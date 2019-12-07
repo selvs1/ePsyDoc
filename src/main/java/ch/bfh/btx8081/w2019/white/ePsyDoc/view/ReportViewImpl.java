@@ -164,6 +164,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 				Medication edi2 = new Medication("Ibuprofen 600mg", "IBUPROFEN AL akut 600mg Film-coated-tablet","","","","","600mg",
 						"Film-coated-tablet","Pcs","Take with a glas of water","Pain");
 				listener.clickAddMedication(edi2);
+				medicationG.getDataProvider().refreshAll();
 				
 				
 
@@ -227,22 +228,27 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	@Override
-	public void displayUpdateDiagnosisGrid(ArrayList<Diagnosis> diagnosis) {
+	public void displayUpdateDiagnosisGrid(List<Diagnosis> diagnosis) {
 		this.diagnosisList = diagnosis;
+		this.diagnosisG.setItems(diagnosisList);
+		this.diagnosisG.getDataProvider().refreshAll();
+		
 
 	}
 	
 
 	@Override
 	public void displayUpdateMedicationGrid(MedicationPlan medication) {
-//		this.medicationList=medication.getMedicationPlan().
-//		medicationG.getDataProvider().refreshAll();
+		this.medicationList=medication.getMedicationPlan();
+		l.setText(medication.getMedicationPlan().toString());
+		this.medicationG.setItems(medicationList);
+		this.medicationG.getDataProvider().refreshAll();
 //todo: ferti machen
 	}
 
 	@Override
 	public void displayPatientCase(PatientCase tempPatientCase) {
-//		l.setText(tempPatientCase.getMedicationplan().getMedicationPlan());
+	//l.setText(tempPatientCase.getMedicationplan().getMedicationPlan().toString());
 		
 	}
 

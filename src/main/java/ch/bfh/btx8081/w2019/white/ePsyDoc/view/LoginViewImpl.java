@@ -9,6 +9,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.connections.AppointmentConnector;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -98,9 +99,13 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
         Notification.show("Login not possible for user: " + message);
     }
 
-    public void openSession(String name) {
-        this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
-        VaadinSession.getCurrent().setAttribute("name", name);
+//    public void openSession(String name) {
+//        this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
+//        VaadinSession.getCurrent().setAttribute("name", name);
+//    }
+
+    public void openSession() {
+        UI.getCurrent().navigate(AppointmentConnector.class);
     }
 
 

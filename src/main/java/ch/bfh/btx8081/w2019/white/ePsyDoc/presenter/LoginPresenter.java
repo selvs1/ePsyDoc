@@ -2,7 +2,9 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.LoginModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginView;
+import com.vaadin.flow.component.UI;
 
 /**
  * Responsible to responding to user interaction and updating the view
@@ -37,6 +39,7 @@ public class LoginPresenter implements LoginView.LoginViewListener {
 
         try {
             LoginModel.login(username, password);
+            view.openSession(); // enter to the main page
         } catch (DoctorException e) {
             view.notifyProblem(e.getMessage());
         }

@@ -21,8 +21,8 @@ public interface LoginView {
 
     void addListener(LoginViewListener listener);
 
-    void openSession(String name);
-
+    //    void openSession(String name);
+    void openSession();
 //	void openSession();
 
     void notifyProblem(String message);

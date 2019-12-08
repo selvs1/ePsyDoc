@@ -43,7 +43,7 @@ public class VorlageJpaDoctor {
 
                 Doctor doctor = new Doctor();
                 doctor.setName(dataFeed[i][0]);
-                doctor.setFirstName(dataFeed[i][1]);
+                doctor.setFirstname(dataFeed[i][1]);
                 doctor.setUsername(dataFeed[i][2]);
                 doctor.setPassword("0000");
 //                doctor.setBirthDate(new Date(""));

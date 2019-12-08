@@ -92,7 +92,7 @@ public class Doctor implements Person {
         return name;
     }
 
-    public String getFirstName() {
+    public String getFirstname() {
         return firstname;
     }
 
@@ -128,7 +128,7 @@ public class Doctor implements Person {
         this.name = name;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstname(String firstName) {
         this.firstname = firstName;
     }
 
@@ -137,6 +137,6 @@ public class Doctor implements Person {
     }
 
     public boolean validPassword(String password) {
-        return this.password.equals(password); //todo: build a encryption mechanism
+        return this.password.equals(password); //todo: build a encryption mechanism to prevent plaintext password in db
     }
 }

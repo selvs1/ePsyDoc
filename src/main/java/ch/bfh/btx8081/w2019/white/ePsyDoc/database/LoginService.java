@@ -22,6 +22,13 @@ public class LoginService {
 
     // todo: convert this class into a generic class in order to reduce code
 
+    /**
+     * Dynamic database searching with attribute.
+     * @param attribute Attribute e.g. "username", "firstname".
+     * @param value Value e.g. "selvs1", "password1234".
+     * @return Returns only the first successfully found Doctor object.
+     * @throws DoctorException Will be thrown if username doesnt exist.
+     */
     public Doctor findByAttribute(String attribute, Object value) throws DoctorException {
 
         List l = getQuery(attribute, value).setMaxResults(1).getResultList();
@@ -32,11 +39,30 @@ public class LoginService {
         return (Doctor) l.get(0); // the first result
     }
 
+    /**
+     * Methode with where search.
+     * @param attribute Attribute of database table.
+     * @param value Value for attribute.
+     * @return A Query object.
+     */
     private Query getQuery(String attribute, Object value) {
         return Database.getCurrentEntityManager().createQuery("select d from " + model.getClass().getSimpleName() + " d where d." + attribute + " = :value").setParameter("value", value);
     }
 
 
+
+
+
+
+
+
+
+
+
+    /**
+     * This methode is only for testing.
+     * @param args
+     */
     public static void main(String[] args) {
         //todo: delete this main methode after testing
 

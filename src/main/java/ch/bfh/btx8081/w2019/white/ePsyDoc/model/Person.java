@@ -9,7 +9,7 @@ public interface Person {
 
     String getName();
 
-    String getFirstName();
+    String getFirstname();
 
     Date getBirthdate();
 

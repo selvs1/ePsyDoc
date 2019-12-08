@@ -21,7 +21,7 @@ public class Doctor implements Person {
     private int doctorID;
     private String firstName;
     private String name;
-    private String userName;
+    private String userName; //todo: change name to username and firstname and birthdate
     private String password;
 
     private Date birthDate;
@@ -134,5 +134,9 @@ public class Doctor implements Person {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public boolean validPassword(String password) {
+        return this.password.equals(password); //todo: build a encryption mechanism
     }
 }

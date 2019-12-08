@@ -13,7 +13,7 @@ public class MainView extends VerticalLayout {
 
 	public MainView() {
 		LoginModel model = new LoginModel();
-		model.init();
+//		model.init();
 		LoginViewImpl view = new LoginViewImpl();
 		new LoginPresenter(model, view);
 		add(view);

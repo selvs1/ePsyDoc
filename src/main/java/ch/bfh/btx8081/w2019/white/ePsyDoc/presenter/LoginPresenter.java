@@ -1,8 +1,14 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.LoginModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginView;
 
+/**
+ * Responsible to responding to user interaction and updating the view
+ *
+ * @author Sugeelan Selvasingham
+ */
 public class LoginPresenter implements LoginView.LoginViewListener {
 
     private LoginModel model;
@@ -20,13 +26,19 @@ public class LoginPresenter implements LoginView.LoginViewListener {
 
 
     @Override
-    public void clickLogin(String username, String password) {
+    public void onLoginBtnClicked(String username, String password) {
 //        model.setUsername(username);
 //        model.setPassword(password);
-        if (model.checkCredential(username, password) == true) {
-            view.openSession(username);
-        } else {
-            view.notifyProblem(username);
+//        if (model.checkCredential(username, password) == true) {
+//            view.openSession(username);
+//        } else {
+//            view.notifyProblem(username);
+//        }
+
+        try {
+            LoginModel.login(username, password);
+        } catch (DoctorException e) {
+            view.notifyProblem(e.getMessage());
         }
 
     }

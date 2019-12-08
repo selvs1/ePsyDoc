@@ -25,77 +25,88 @@ import com.vaadin.flow.server.VaadinSession;
 @PageTitle("Login")
 
 public class LoginViewImpl extends VerticalLayout implements LoginView {
-	private static final long serialVersionUID = 1L;
-	public static final String ROUTE = "login";
-	private VerticalLayout root = new VerticalLayout();
-	private TextField tfUsername = new TextField();
-	private PasswordField tfPassword = new PasswordField();
-	private Button btnSubmit = new Button("Submit");
-	private H1 title = new H1("ePsyDoc");
-	private List<LoginViewListener> listeners = new ArrayList<>();
-	private FormLayout login = new FormLayout();
-//	private LoginOverlay component = new LoginOverlay();
+    private static final long serialVersionUID = 1L;
+    public static final String ROUTE = "login";
+    private VerticalLayout root = new VerticalLayout();
+    private TextField tfUsername = new TextField();
+    private PasswordField tfPassword = new PasswordField();
+    private Button btnSubmit = new Button("Submit");
+    private H1 title = new H1("ePsyDoc");
+    private FormLayout login = new FormLayout();
 
-	public LoginViewImpl() {
+    // A list of listeners subscribed to this view
+    private List<LoginViewListener> listeners = new ArrayList<>();
+
+    //	private LoginOverlay component = new LoginOverlay();
+    public LoginViewImpl() {
 
 //		component.addLoginListener(e -> component.close());
-		btnSubmit.addClickListener((x) -> {
-			for (LoginViewListener listener : listeners) {
-				listener.clickLogin(tfUsername.getValue(), tfPassword.getValue());
-			}
-		});
+        btnSubmit.addClickListener((x) -> {
+			notifyListenersOnLoginBtnClicked();
+//			for (LoginViewListener listener : listeners) {
+//				listener.clickLogin(tfUsername.getValue(), tfPassword.getValue());
+//			}
+        });
 
 
-		// Input field settings
-		root.addClassName("login");
-		root.setWidth("300");
-		tfUsername.setPlaceholder("Username");
-		tfUsername.setLabel("Username");
-		tfUsername.setRequired(true);
-		tfUsername.setAutoselect(true);
-		tfUsername.setClearButtonVisible(true);
+        // Input field settings
+        root.addClassName("login");
+        root.setWidth("300");
+        tfUsername.setPlaceholder("Username");
+        tfUsername.setLabel("Username");
+        tfUsername.setRequired(true);
+        tfUsername.setAutoselect(true);
+        tfUsername.setClearButtonVisible(true);
 
-		tfPassword.setPlaceholder("Password");
-		tfPassword.setLabel("Password");
-		tfPassword.setRequired(true);
-		tfPassword.setAutoselect(true);
-		tfPassword.setClearButtonVisible(true);
+        tfPassword.setPlaceholder("Password");
+        tfPassword.setLabel("Password");
+        tfPassword.setRequired(true);
+        tfPassword.setAutoselect(true);
+        tfPassword.setClearButtonVisible(true);
 
-		// Add to Layout
-		login.add(tfUsername, tfPassword, btnSubmit);
-		root.add(title, login);
-		this.add(root);
-	}
+        // Add to Layout
+        login.add(tfUsername, tfPassword, btnSubmit);
+        root.add(title, login);
+        this.add(root);
+    }
 
-	@Override
-	public String getTextFieldUsername() {
-		return tfUsername.getValue();
-	}
+    @Override
+    public String getTextFieldUsername() {
+        return tfUsername.getValue();
+    }
 
-	@Override
-	public String getTextFieldPassword() {
-		return tfPassword.getValue();
-	}
+    @Override
+    public String getTextFieldPassword() {
+        return tfPassword.getValue();
+    }
 
 //	@Override
 //	public boolean showLoginStatus() {
 //		return false;
 //	}
 
-	@Override
-	public void addListener(LoginViewListener listener) {
-		listeners.add(listener);
-	}
 
-	public void openSession(String name) {
-		VaadinSession.getCurrent().setAttribute("name", name);
+    // Iterate through the list, notifying or du some actions to each listner individualy
+    public void notifyListenersOnLoginBtnClicked() {
+        for (LoginViewListener listener : listeners) {
+            listener.onLoginBtnClicked(tfUsername.getValue(), tfPassword.getValue());
+        }
+    }
 
 
+    public void notifyProblem(String message) {
+        Notification.show("Login not possible for user: " + message);
+    }
 
-		this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
-	}
+    public void openSession(String name) {
+        this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
+        VaadinSession.getCurrent().setAttribute("name", name);
+    }
 
-	public void notifyProblem(String message) {
-		Notification.show("Login not possible for user: " + message);
-	}
+
+    // Subscribe a listener
+    @Override
+    public void addListener(LoginViewListener listener) {
+        listeners.add(listener);
+    }
 }

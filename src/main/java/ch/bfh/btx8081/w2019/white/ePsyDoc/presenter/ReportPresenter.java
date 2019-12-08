@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.Doctor;
 import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Diagnosis;
@@ -70,8 +71,12 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 
 	@Override
 	public void getDoctorData() {
-		view.displayDoctorName((String) VaadinSession.getCurrent().getAttribute("doctorFirstname"),
-				(String) VaadinSession.getCurrent().getAttribute("doctorName"));
+		view.displayDoctorName(
+				(String) VaadinSession.getCurrent().getAttribute("doctorFirstname"),
+				(String) VaadinSession.getCurrent().getAttribute("doctorName")
+		);
+//		(Doctor) VaadinSession.getCurrent().getAttribute("user")); todo: rückgängig machen - done sugi
+
 
 	}
 

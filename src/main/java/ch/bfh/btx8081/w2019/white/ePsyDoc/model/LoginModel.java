@@ -42,8 +42,8 @@ public class LoginModel {
 
     }
 
-    public static void login(Doctor p) {
-        VaadinSession.getCurrent().setAttribute("user", p);
+    public static void login(Doctor d) {
+        VaadinSession.getCurrent().setAttribute("user", d);
 //        UI.getCurrent().navigate(AppointmentViewImpl.class);
     }
 

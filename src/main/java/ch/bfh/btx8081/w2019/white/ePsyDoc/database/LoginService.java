@@ -20,6 +20,8 @@ public class LoginService {
         this.model = model;
     }
 
+    // todo: convert this class into a generic class in order to reduce code
+
     public Doctor findByAttribute(String attribute, Object value) throws DoctorException {
 
         List l = getQuery(attribute, value).setMaxResults(1).getResultList();
@@ -31,21 +33,22 @@ public class LoginService {
     }
 
     private Query getQuery(String attribute, Object value) {
-        return Database.getCurrentEntityManager().createQuery("select d from " + model.getClass().getSimpleName().toLowerCase() + " d where d." + attribute + " = :value").setParameter("value", value);
+        return Database.getCurrentEntityManager().createQuery("select d from " + model.getClass().getSimpleName() + " d where d." + attribute + " = :value").setParameter("value", value);
     }
 
 
     public static void main(String[] args) {
-        //todo: test löschen
+        //todo: delete this main methode after testing
 
         LoginService test = new LoginService(new Doctor());
 
         try {
 
-            test.findByAttribute("username", "selvs1");
+            test.findByAttribute("password", "0000");
         } catch (DoctorException e) {
             System.out.println(e.getMessage());
         }
 
     }
+
 }

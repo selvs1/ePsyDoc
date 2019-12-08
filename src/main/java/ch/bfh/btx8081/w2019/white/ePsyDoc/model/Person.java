@@ -11,7 +11,7 @@ public interface Person {
 
     String getFirstName();
 
-    Date getBirthDate();
+    Date getBirthdate();
 
     String getStreet();
 

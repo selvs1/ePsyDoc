@@ -28,7 +28,6 @@ public class LoginModel {
     public static void login(String username, String password) throws DoctorException {
         LoginService ls = new LoginService(new Doctor());
 
-
         Doctor doctor = ls.findByAttribute("username", username);
 
         if (doctor.validPassword(password)) {
@@ -114,7 +113,5 @@ public class LoginModel {
 //        return false;
 //    }
 
-    public static void main(String[] args) {
 
-    }
 }

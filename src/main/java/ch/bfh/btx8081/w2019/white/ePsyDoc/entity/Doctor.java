@@ -19,12 +19,12 @@ public class Doctor implements Person {
     @Id
     @GeneratedValue
     private int doctorID;
-    private String firstName;
+    private String firstname;
     private String name;
-    private String userName; //todo: change name to username and firstname and birthdate
+    private String username; //todo: change name to username and firstname and birthdate
     private String password;
 
-    private Date birthDate;
+    private Date birthdate;
     private String street;
     private String zip;
     private String city;
@@ -34,8 +34,8 @@ public class Doctor implements Person {
         this.password = password;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public void setStreet(String street) {
@@ -93,20 +93,20 @@ public class Doctor implements Person {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     @Override
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
     @Override
@@ -129,11 +129,11 @@ public class Doctor implements Person {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public boolean validPassword(String password) {

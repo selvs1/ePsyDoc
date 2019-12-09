@@ -4,8 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Persistence;
+
 public class Patient {
 
+	@Id
+    @GeneratedValue
 	private int patientID;
 	private String lastname;
 	private String firstname;

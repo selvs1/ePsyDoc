@@ -31,14 +31,14 @@ public class Service<GenericModel> {
      * @return Returns only the first successfully found Doctor object.
      * @throws DoctorException Will be thrown if username doesnt exist.
      */
-    public Doctor findByAttribute(String attribute, Object value) throws DoctorException {
+    public GenericModel findByAttribute(String attribute, Object value) throws DoctorException {
 
         List l = getQuery(attribute, value).setMaxResults(1).getResultList();
         if (l.size() == 0) {
             System.out.println("Benutzer wurde nicht gefunden"); //todo: zeile löschen
             throw new DoctorException("user not found");
         }
-        return (Doctor) l.get(0); // the first result
+        return (GenericModel) l.get(0); // the first result
     }
 
     /**

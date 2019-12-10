@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.database.LoginService;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Service;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
@@ -22,11 +23,12 @@ import java.util.List;
 
 public class LoginModel {
 
-    private LoginService loginService = new LoginService(new Doctor());
+//    private LoginService loginService = new LoginService(new Doctor());
+//    private Service<Doctor> loginService = new Service<>(new Doctor());
 
 
     public static void login(String username, String password) throws DoctorException {
-        LoginService ls = new LoginService(new Doctor());
+        Service<Doctor> ls = new Service<>(new Doctor());
 
         Doctor doctor = ls.findByAttribute("username", username);
 

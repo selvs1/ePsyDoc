@@ -9,8 +9,8 @@ import java.util.List;
 
 /**
  * Class for login service.
- *
  * @author Sugeelan Selvasingham
+ * @deprecated This class will be soon replaced by "Service" generic class.
  */
 public class LoginService {
 

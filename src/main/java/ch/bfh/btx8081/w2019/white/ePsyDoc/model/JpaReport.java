@@ -38,7 +38,7 @@ public class JpaReport {
         	diagnosen.addToDiagnosisList(new Diagnosis("Kammerfilmmer"));
 			Report report = new Report();
     		report.setDoctorID(42);
-    		report.setDiagnosisList(diagnosen);
+//    		report.setDiagnosisList(diagnosen);
     		report.setReport("Dies dient als Test");
         	em.persist(report);
             }

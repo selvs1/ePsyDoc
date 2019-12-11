@@ -21,6 +21,7 @@ public class Diagnosis {
 	public Diagnosis() {
 
 	}
+
 	
 	public Diagnosis(String diagnosis){
 	this.diagnosis = diagnosis;

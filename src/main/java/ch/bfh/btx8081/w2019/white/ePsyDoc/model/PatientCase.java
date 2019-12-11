@@ -2,10 +2,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.Doctor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class PatientCase {
@@ -21,13 +18,18 @@ public class PatientCase {
 	@OneToOne(mappedBy = "patientCase")
 	private Report report;
 
+	//todo: PatientCase noch mit Patienten und Doctor verknüpfen
+	@ManyToOne
+	private Patient patient;
+	@ManyToOne
+	private Doctor doctor;
+
 
 //	todo: 10.12.2019 Why string?? - lg sugi
 	private String patientCaseID;
 	private int patientID;
 
 
-	private Doctor doctor;
 
 
 

@@ -36,6 +36,7 @@ public class Report {
 		return diagnoses;
 	}
 
+
 	public void setDiagnoses(List<Diagnosis> diagnoses) {
 		this.diagnoses = diagnoses;
 	}
@@ -45,7 +46,7 @@ public class Report {
 //	private DiagnosisList diagnosisList; todo: sugi bestätig durch jena
 	
 	public Report() {
-//		this.report = null;
+		this.report = null;
 //		diagnosisList = new DiagnosisList();
 	}
 

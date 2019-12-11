@@ -15,13 +15,18 @@ public class Patient {
 	@OneToMany(mappedBy = "patient")
 	private List<Appointment> appointments = new ArrayList<>();
 
+	// todo: diese Verbindung ist gemäss ER nicht vorgesehen. Noch mit Gruppe anschauen.
+	@OneToMany(mappedBy = "patient")
+	private List<PatientCase> patientCaseList; //todo: evtl. in patientCases unbenennen
+
+
 	private String lastname;
 	private String firstname;
 	private String gender;
 	private Date date;
 	private String adress;
 	private String zip;
-	private List<PatientCase> patientCaseList;
+
 
 
 	public Patient() {

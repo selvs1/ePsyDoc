@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.entity;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Appointment;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Person;
 
 import java.util.ArrayList;
@@ -26,6 +27,13 @@ public class Doctor implements Person {
     @OneToMany(mappedBy = "doctor")
     private List<Appointment> appointments = new ArrayList<>();
 
+
+    // todo: diese Verbindung ist gemäss ER nicht vorgesehen. Noch mit Gruppe anschauen.
+    @OneToMany(mappedBy = "doctor")
+    private List<PatientCase> patientCaseList; //todo: evtl. in patientCases unbenennen
+
+
+
     private String firstname;
     private String name;
     private String username; //todo: change name to username and firstname and birthdate
@@ -35,6 +43,7 @@ public class Doctor implements Person {
     private String street;
     private String zip;
     private String city;
+
 
 
     public void setPassword(String password) {
@@ -142,4 +151,26 @@ public class Doctor implements Person {
     public boolean validPassword(String password) {
         return this.password.equals(password); //todo: build a encryption mechanism to prevent plaintext password in db
     }
+
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public List<PatientCase> getPatientCaseList() {
+        return patientCaseList;
+    }
+
+    public void setPatientCaseList(List<PatientCase> patientCaseList) {
+        this.patientCaseList = patientCaseList;
+    }
+
+
 }

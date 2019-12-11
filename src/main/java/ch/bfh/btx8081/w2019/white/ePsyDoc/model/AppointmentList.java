@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 

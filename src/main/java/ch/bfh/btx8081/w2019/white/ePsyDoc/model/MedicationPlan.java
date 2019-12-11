@@ -11,6 +11,7 @@ public class MedicationPlan {
 	@Id
 	@GeneratedValue
 	private int medicationPlanID;
+	private ArrayList<Medication> medicationPlan;
 
 	@OneToOne(mappedBy = "medicationPlan")
 	private PatientCase patientCase;

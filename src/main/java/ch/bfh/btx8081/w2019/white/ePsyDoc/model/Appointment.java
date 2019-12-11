@@ -15,19 +15,24 @@ public class Appointment {
     @ManyToOne
     private Doctor doctor;
     @ManyToOne
-    private Patient patient;
+    private PatientModel patient;
     @OneToOne(mappedBy = "appointment")
     private PatientCase patientCase;
 
-    Date appointmentDate;
+    DateTime appointmentDate;
 
 //	todo: auskommentiert, lg sugi
 //	PatientModel patient;
 //	DateTime date;
 
-
+    
     public Appointment() {
+    	
+    }
 
+    public Appointment(PatientModel patient, DateTime date) {
+    	this.patient = patient;
+    	this.appointmentDate = date;
     }
 
 

@@ -24,7 +24,7 @@ public class Doctor implements Person {
     private int doctorID;
 
     @OneToMany(mappedBy = "doctor")
-    private final List<Appointment> appointments = new ArrayList<>();
+    private List<Appointment> appointments = new ArrayList<>();
 
     private String firstname;
     private String name;

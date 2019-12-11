@@ -1,8 +1,23 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class Report {
-	 
+
+	@Id
+	@GeneratedValue
+	private int reportID;
+
+	@OneToOne(mappedBy = "report")
+	private PatientCase patientCase;
+	@ManyToMany
+	private List<Diagnosis> diagnoses = new ArrayList<>();
+
+
+
 	private int DoctorID;
 	private String report;
 	private DiagnosisList diagnosisList;

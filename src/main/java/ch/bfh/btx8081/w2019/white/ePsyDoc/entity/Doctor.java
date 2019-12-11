@@ -1,24 +1,31 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.entity;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Appointment;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Person;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * This is a concret class for a doctor.
  *
  * @author Sugeelan Selvasingham
- * */
+ */
 @Entity
 public class Doctor implements Person {
-
     @Id
     @GeneratedValue
     private int doctorID;
+
+    @OneToMany(mappedBy = "doctor")
+    private final List<Appointment> appointments = new ArrayList<>();
+
     private String firstname;
     private String name;
     private String username; //todo: change name to username and firstname and birthdate
@@ -63,7 +70,6 @@ public class Doctor implements Person {
 
     /**
      * Without id information a random generator creates an id.
-     *
      */
 //    public Doctor(String firstName, String name, String userName, String password) {
 //
@@ -81,9 +87,6 @@ public class Doctor implements Person {
 //        this.zip = zip;
 //        this.city = city;
 //    }
-
-
-
     public int getDoctorID() {
         return doctorID;
     }

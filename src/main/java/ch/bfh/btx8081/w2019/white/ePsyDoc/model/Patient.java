@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
+@Entity
 public class Patient {
-
 	@Id
-    @GeneratedValue
+	@GeneratedValue
 	private int patientID;
+
+	@OneToMany(mappedBy = "patient")
+	private List<Appointment> appointments = new ArrayList<>();
+
 	private String lastname;
 	private String firstname;
 	private String gender;
@@ -21,6 +22,11 @@ public class Patient {
 	private String adress;
 	private String zip;
 	private List<PatientCase> patientCaseList;
+
+
+	public Patient() {
+
+	}
 
 	public Patient(int patientID, String lastname, String firstname, String gender, Date date, String adress,
 			String zip) {
@@ -33,6 +39,14 @@ public class Patient {
 		this.adress = adress;
 		this.zip = zip;
 		patientCaseList = new ArrayList<PatientCase>();
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 	public int getPatientID() {
@@ -113,31 +127,31 @@ public class Patient {
 		}
 		return returnPatientCase;
 	}
-	
+
 	public PatientCase getPatientCaseAtIndex(int index) {
 		return patientCaseList.get(index);
-		
+
 	}
-	
+
 	public PatientCase getLastPatientCase() {
 		return getPatientCaseAtIndex(patientCaseList.size()-1);
 	}
-	
+
 	public PatientCase getPatientCaseFromPatientCaseID(String patientCaseID) {
 		PatientCase p = null;
 		for (PatientCase patientCase : patientCaseList) {
 			if (patientCase.getPatientcaseID().equalsIgnoreCase(patientCaseID)) {
 				p = patientCase;
-			} 
+			}
 		}
 		return p;
-		
+
 	}
-	
+
 	public void addPatientCase(String patientCaseID) {
 		patientCaseList.add(new PatientCase(patientCaseID, this.patientID));
 	}
-	
+
 	public void removePatientCase(String patientCaseID) {
 		patientCaseList.remove(getPatientCaseFromPatientCaseID(patientCaseID));
 	}

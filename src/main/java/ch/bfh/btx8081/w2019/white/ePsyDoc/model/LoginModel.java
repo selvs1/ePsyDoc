@@ -30,7 +30,7 @@ public class LoginModel {
     public static void login(String username, String password) throws DoctorException {
         Service<Doctor> ls = new Service<>(new Doctor());
 
-        Doctor doctor = ls.findByAttribute("username", username);
+        Doctor doctor = ls.findByAttributeFirstElem("username", username);
 
         if (doctor.validPassword(password)) {
             LoginModel.login(doctor);

@@ -13,7 +13,7 @@ public class Diagnosis {
 	@GeneratedValue
 	private int diagnosisID;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "diagnoses")
 	private List<Report> reports = new ArrayList<>();
 
 	private String diagnosis;

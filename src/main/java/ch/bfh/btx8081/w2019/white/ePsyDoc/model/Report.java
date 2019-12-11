@@ -16,23 +16,45 @@ public class Report {
 	@ManyToMany
 	private List<Diagnosis> diagnoses = new ArrayList<>();
 
+	public int getReportID() {
+		return reportID;
+	}
 
+	public void setReportID(int reportID) {
+		this.reportID = reportID;
+	}
 
-	private int DoctorID;
+	public PatientCase getPatientCase() {
+		return patientCase;
+	}
+
+	public void setPatientCase(PatientCase patientCase) {
+		this.patientCase = patientCase;
+	}
+
+	public List<Diagnosis> getDiagnosisList() {
+		return diagnoses;
+	}
+
+	public void setDiagnoses(List<Diagnosis> diagnoses) {
+		this.diagnoses = diagnoses;
+	}
+
+	private int doctorID;
 	private String report;
-	private DiagnosisList diagnosisList;
+//	private DiagnosisList diagnosisList; todo: sugi bestätig durch jena
 	
 	public Report() {
-		this.report = null;
-		diagnosisList = new DiagnosisList();
+//		this.report = null;
+//		diagnosisList = new DiagnosisList();
 	}
 
 	public int getDoctorID() {
-		return DoctorID;
+		return doctorID;
 	}
 
 	public void setDoctorID(int doctorID) {
-		DoctorID = doctorID;
+		this.doctorID = doctorID;
 	}
 
 	public String getReport() {
@@ -43,13 +65,13 @@ public class Report {
 		this.report = report;
 	}
 
-	public DiagnosisList getDiagnosisList() {
-		return diagnosisList;
-	}
+//	public DiagnosisList getDiagnosisList() {
+//		return diagnosisList;
+//	}
 
-	public void setDiagnosisList(DiagnosisList diagnosisList) {
-		this.diagnosisList = diagnosisList;
-	}
+//	public void setDiagnosisList(DiagnosisList diagnosisList) {
+//		this.diagnosisList = diagnosisList;
+//	}
 
 }
 

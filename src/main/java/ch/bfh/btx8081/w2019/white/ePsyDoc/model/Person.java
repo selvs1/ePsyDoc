@@ -5,6 +5,8 @@ import java.util.Date;
 /**
  * @author Sugeelan Selvasingham
  */
+
+//todo: interface überflüssig ev. daraus eine Superklasse ersellen?
 public interface Person {
 
     String getName();

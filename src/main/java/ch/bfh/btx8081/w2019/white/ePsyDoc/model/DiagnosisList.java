@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiagnosisList {
-	
+	//todo: nicht mehr notwendig mit jpa oder? - lg sugi
 	private List<Diagnosis> diagnosisList;
 	
 	public DiagnosisList() {

@@ -6,7 +6,9 @@ import java.util.List;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 public class AppointmentList {
-	
+
+	//todo: brauchts überhaupt diese Klasse? lg sugi
+
 	List<Appointment> appointmentList;
 	
 	public AppointmentList() {

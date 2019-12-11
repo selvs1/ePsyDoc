@@ -1,6 +1,18 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Drug {
+	@Id
+	@GeneratedValue
+	private int drugID;
+
+	@OneToOne(mappedBy = "drug")
+	private Medication medication;
 
 	private String activeIngridient;
 	private String brandName;
@@ -9,6 +21,10 @@ public class Drug {
 	private String indication;
 	private String instruction;
 	private String unit;
+
+	public Drug() {
+
+	}
 
 	public Drug(String activeIngridient, String brandName, String strength, String form, String unit,
 			String instruction, String indication) {

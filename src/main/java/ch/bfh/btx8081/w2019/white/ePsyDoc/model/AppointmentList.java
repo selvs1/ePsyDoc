@@ -24,10 +24,10 @@ public class AppointmentList {
 		this.appointmentList = appointmentList;
 	}
 	
-	public void AddToAppointmentList(PatientModel patient, DateTime date) {
-		Appointment appointment = new Appointment(patient, date);
-		appointmentList.add(appointment);
-	}
+//	public void AddToAppointmentList(PatientModel patient, DateTime date) {
+//		Appointment appointment = new Appointment(patient, date);
+//		appointmentList.add(appointment);
+//	}
 	
 	public void RemoveFromAppointmentList(Appointment appointment) {
 		appointmentList.remove(appointment);

@@ -63,7 +63,7 @@ public class MedicationPlan {
 
 	public void removeFromMedicationPlan(String brandname) {
 		for (Medication medication : medications) {
-			if (medication.getbrandName() == brandname) {
+			if (medication.getbrandName().equals(brandname)) {
 				medications.remove(medication);
 			} else {
 				System.out.println("No such objekt found");

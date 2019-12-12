@@ -17,7 +17,7 @@ public class Appointment {
     @ManyToOne
     private Patient patient;
 
-    @OneToOne(mappedBy = "appointment")
+    @OneToOne
     private PatientCase patientCase;
 
     Date appointmentDate;

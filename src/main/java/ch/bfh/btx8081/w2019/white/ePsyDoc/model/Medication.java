@@ -10,7 +10,7 @@ public class Medication{
 
 	@ManyToOne
 	private MedicationPlan medicationPlan;
-	@OneToOne(mappedBy = "medication")
+	@OneToOne
 	private Drug drug;
 	
 	private String activeIngredient;

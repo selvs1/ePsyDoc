@@ -39,4 +39,20 @@ public class Diagnosis {
 	public String toString() {
 	return diagnosis;
 	}
+
+	public int getDiagnosisID() {
+		return diagnosisID;
+	}
+
+	public void setDiagnosisID(int diagnosisID) {
+		this.diagnosisID = diagnosisID;
+	}
+
+	public List<Report> getReports() {
+		return reports;
+	}
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
 }

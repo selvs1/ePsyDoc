@@ -13,9 +13,9 @@ public class PatientCase {
 
 	@OneToOne(mappedBy = "patientCase")
 	private Appointment appointment;
-	@OneToOne(mappedBy = "patientCase")
+	@OneToOne
 	private MedicationPlan medicationPlan;
-	@OneToOne(mappedBy = "patientCase")
+	@OneToOne
 	private Report report;
 
 	//todo: PatientCase noch mit Patienten und Doctor verknüpfen

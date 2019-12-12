@@ -39,5 +39,4 @@ public class Diagnosis {
 	public String toString() {
 	return diagnosis;
 	}
-
 }

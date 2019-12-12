@@ -13,6 +13,9 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Report;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReportPresenter implements ReportView.ReportViewListener {
 	private PatientModel model;
 	private ReportView view;
@@ -43,7 +46,8 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 		MedicationPlan medicationPlan = tempPatientCase.getMedicationPlan();
 		view.displayPatientCase(tempPatientCase);
-		medicationPlan.addToMedicationPlan(medication);
+//		medicationPlan.addToMedicationPlan(medication);
+		medicationPlan.getMedications().add(medication);
 		view.displayUpdateMedicationGrid(medicationPlan);
 	}
 
@@ -58,8 +62,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
 		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 		Report report = tempPatientCase.getReport();
-		DiagnosisList diagnosisList = report.getDiagnosisList();
-		diagnosisList.RemoveFromDiagnosisList(diagnosis);
+//		DiagnosisList diagnosisList = report.getDiagnosisList();
+		List<Diagnosis> diagnosisList = report.getDiagnosisList();
+//		diagnosisList.RemoveFromDiagnosisList(diagnosis);
+		diagnosisList.remove(diagnosis);
 	}
 
 	@Override
@@ -91,8 +97,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
 		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 		Report report = tempPatientCase.getReport();
-		DiagnosisList diagnosisList = report.getDiagnosisList();
-		view.displayUpdateDiagnosisGrid(diagnosisList.getDiagnosisList());
+//		DiagnosisList diagnosisList = report.getDiagnosisList();
+		List<Diagnosis> diagnosisList = report.getDiagnosisList();
+//		view.displayUpdateDiagnosisGrid(diagnosisList.getDiagnosisList()); todo: meine änderungen - lg sugi
+		view.displayUpdateDiagnosisGrid(report.getDiagnosisList());
 		
 	}
 
@@ -111,9 +119,12 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
 		PatientCase tempPatientCase = tempPatient.getPatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
 		Report tempReport = tempPatientCase.getReport();
-		DiagnosisList tempDiagnosisList= tempReport.getDiagnosisList();
-		tempDiagnosisList.addToDiagnosisList(diagnosis);
-		view.displayUpdateDiagnosisGrid(tempDiagnosisList.getDiagnosisList());
+//		DiagnosisList tempDiagnosisList= tempReport.getDiagnosisList();
+		List<Diagnosis> tempDiagnosisList = tempReport.getDiagnosisList();
+//		tempDiagnosisList.addToDiagnosisList(diagnosis);
+		tempDiagnosisList.add(diagnosis);
+//		view.displayUpdateDiagnosisGrid(tempDiagnosisList.getDiagnosisList());
+		view.displayUpdateDiagnosisGrid(tempDiagnosisList); //tempDianosisList is a List obj itself
 		
 	}
 

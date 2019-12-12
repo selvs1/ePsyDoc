@@ -73,6 +73,5 @@ public class Report {
 //	public void setDiagnosisList(DiagnosisList diagnosisList) {
 //		this.diagnosisList = diagnosisList;
 //	}
-
 }
 

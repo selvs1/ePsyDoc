@@ -41,7 +41,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		grid.addColumn(Patient::getGender).setHeader("Gender");
 		grid.addColumn(Patient::getDate).setHeader("Birthdate");
 		grid.addColumn(Patient::getAdress).setHeader("Address");
-		grid.addColumn(Patient::getZIP).setHeader("ZIP");
+		grid.addColumn(Patient::getZip).setHeader("ZIP");
 
 		// Data provider
 		ListDataProvider<Patient> dataProvider = new ListDataProvider<>(patientlist);

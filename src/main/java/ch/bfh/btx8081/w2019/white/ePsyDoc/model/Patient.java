@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -102,13 +103,7 @@ public class Patient {
 		this.adress = adress;
 	}
 
-	public String getZIP() {
-		return zip;
-	}
 
-	public void setZIP(String zip) {
-		this.zip = zip;
-	}
 
 	public void createPatientCase(String patientCaseID, int patientID) {
 		PatientCase patientCase = new PatientCase(patientCaseID, patientID);

@@ -17,8 +17,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
  * @author Sugeelan Selvasingham
  */
 public class Service<GenericModel> {
-
-
     private GenericModel model;
     private EntityManager em;
     private String dbTableName;
@@ -45,6 +43,11 @@ public class Service<GenericModel> {
             throw new EntityNotFoundException("user not found");
         }
         return (GenericModel) list.get(0); // the first result
+    }
+    
+    public List<GenericModel> getAppointmentPatient(Object value) throws EntityNotFoundException {
+        List list = appointmentPatients(value).getResultList();
+        return (List<GenericModel>) list;
     }
     
 
@@ -102,9 +105,11 @@ public class Service<GenericModel> {
     
    
 
-    private Query deleteQuery(String attribute, Object value) {
-        return Database.getEntityManager().createQuery("delete from " + dbTableName + " x where x." + attribute + " = :value").setParameter("value", value);
-    }
+    private Query appointmentPatients(Object value) {
+    	Query query = em.createQuery("select a from Appointment  a, Patient p where a.appointmentDate = :value Group by a.appointmentID order by a.appointmentTime");
+    	query.setParameter("value", value);
+    	return query;
+    	 }
 
  
 

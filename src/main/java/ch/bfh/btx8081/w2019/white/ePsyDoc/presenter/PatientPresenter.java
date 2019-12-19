@@ -14,7 +14,7 @@ public class PatientPresenter implements PatientView.PatientViewListener {
     }
 
     @Override
-    public void onLoadPatientList() {
+    public void loadPatientList() {
         System.out.println("#set PatientList"); //todo: wegnehmen
         view.displayPatientList(model.getPatientList());
     }

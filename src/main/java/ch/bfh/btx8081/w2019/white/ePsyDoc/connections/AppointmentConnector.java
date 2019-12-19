@@ -16,7 +16,6 @@ public class AppointmentConnector extends VerticalLayout {
 
 	public AppointmentConnector() {
 		AppointmentModel model = new AppointmentModel();
-		model.init();
 		AppointmentViewImpl view = new AppointmentViewImpl();
 		new AppointmentPresenter(model, view);
 		add(view);

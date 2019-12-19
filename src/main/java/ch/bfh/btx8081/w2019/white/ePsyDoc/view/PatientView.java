@@ -7,7 +7,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 public interface PatientView {
 	interface PatientViewListener {
-		void onLoadPatientList();
+		void loadPatientList();
 
 		void loadPatientCaseList();
 

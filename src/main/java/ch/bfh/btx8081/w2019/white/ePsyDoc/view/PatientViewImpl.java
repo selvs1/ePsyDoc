@@ -63,13 +63,11 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 			for (PatientViewListener listener : listeners) {
 				int patientID = event.getItem().getPatientID();
 				listener.setPatientCaseList(patientID);
-				listener.onLoadPatientList();
 			}
 
 			// Update PatientCase Grid
 			patientCase.setVisible(true);
 			patientCase.getDataProvider().refreshAll();
-
 		});
 		// Click listener PatientCase
 		patientCase.addItemClickListener(event -> {
@@ -78,7 +76,6 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		});
 
 		// Data provider
-		
 		patient.setDataProvider(dataProvider);
 		HeaderRow filterRow = patient.appendHeaderRow();
 
@@ -118,12 +115,13 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	@Override
 	public void displayPatientList(List<Patient> patientList) {
 		this.patientList = patientList;
-		dataProvider= new ListDataProvider<Patient>(patientList);
+		dataProvider = new ListDataProvider<Patient>(patientList);
 		patient.setDataProvider(dataProvider);
 	}
 
 	@Override
 	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
+		System.out.println(patientCaseList);
 		this.patientCase.setItems(patientCaseList);
 	}
 }

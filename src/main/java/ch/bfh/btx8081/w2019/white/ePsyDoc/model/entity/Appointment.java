@@ -75,6 +75,12 @@ public class Appointment {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+    public String getPatientLastname() {
+    	return patient.getLastname();
+    }
+    public String getPatientFirstname() {
+    	return patient.getFirstname();
+    }
 
     public Date getAppointmentDate() {
         return appointmentDate;

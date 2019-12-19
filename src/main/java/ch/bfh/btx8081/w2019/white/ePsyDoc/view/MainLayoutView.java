@@ -35,15 +35,10 @@ public class MainLayoutView extends Div {
 	private MenuItem logout = new MenuItem(null, null);
 	private H3 errorT = new H3("Your not Authorized!");
 	private Button loginB = new Button(new Icon(VaadinIcon.SIGN_IN));
-	private Div error=new Div();
+	private Div error = new Div();
 	Accordion accordion = new Accordion();
 
 	public MainLayoutView() {
-
-		// Demo Data
-
-		
-
 		// Navigation
 		appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
 		appointment.add(" Appointments");
@@ -72,14 +67,14 @@ public class MainLayoutView extends Div {
 		// Show active patient
 		information.setWidth("180");
 		information.add(new Icon(VaadinIcon.USER));
-		information.add(new Label(String.valueOf(VaadinSession.getCurrent().getAttribute("patientFirstname"))+" "+ String.valueOf(VaadinSession.getCurrent().getAttribute("patientName"))));
+		information.add(new Label(String.valueOf(VaadinSession.getCurrent().getAttribute("patientFirstname")) + " "
+				+ String.valueOf(VaadinSession.getCurrent().getAttribute("patientName"))));
 		information.add(new Icon(VaadinIcon.FILE));
 		information.add(new Label(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID"))));
 
 		information.addClassName("patient");
-		
-		accordion.add("Information",information);
-	
+
+		accordion.add("Information", information);
 
 		menuBar.addClassName("navbar");
 		body.addClassName("body");
@@ -90,10 +85,10 @@ public class MainLayoutView extends Div {
 
 		// Add to layout
 		body.add(accordion, content);
-		
+
 		// Error button
 		loginB.addClickListener(e -> UI.getCurrent().navigate(MainView.class));
-		error.add(errorT,loginB);
+		error.add(errorT, loginB);
 		error.addClassName("sessionError");
 
 		if (VaadinSession.getCurrent().getAttribute("name") != null) {
@@ -101,16 +96,10 @@ public class MainLayoutView extends Div {
 		} else {
 			add(header, body, footer);
 		}
-
-	}
-
-	private void informationRefresh() {
-
 	}
 
 	private void logout() {
 		VaadinSession.getCurrent().close();
 		UI.getCurrent().navigate(LogoutViewImpl.class);
 	}
-
 }

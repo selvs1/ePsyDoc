@@ -1,6 +1,5 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,11 +15,10 @@ public class Patient {
 	@OneToMany(mappedBy = "patient")
 	private List<Appointment> appointments = new ArrayList<>();
 
-	// todo: diese Verbindung ist gemäss ER nicht vorgesehen. Noch mit Gruppe anschauen.
+	// todo: diese Verbindung ist gemäss ER nicht vorgesehen. Noch mit Gruppe
+	// anschauen.
 	@OneToMany(mappedBy = "patient")
-	private List<PatientCase> patientCaseList; //todo: evtl. in patientCases unbenennen
-
-
+	private List<PatientCase> patientCaseList; // todo: evtl. in patientCases unbenennen
 	private String lastname;
 	private String firstname;
 	private String gender;
@@ -28,15 +26,11 @@ public class Patient {
 	private String adress;
 	private String zip;
 
-
-
 	public Patient() {
-
 	}
 
 	public Patient(int patientID, String lastname, String firstname, String gender, Date date, String adress,
 			String zip) {
-
 		this.patientID = patientID;
 		this.lastname = lastname;
 		this.firstname = firstname;
@@ -103,8 +97,6 @@ public class Patient {
 		this.adress = adress;
 	}
 
-
-
 	public void createPatientCase(int patientCaseID, int patientID) {
 		PatientCase patientCase = new PatientCase(patientCaseID, patientID);
 		patientCaseList.add(patientCase);
@@ -134,7 +126,7 @@ public class Patient {
 	}
 
 	public PatientCase getLastPatientCase() {
-		return getPatientCaseAtIndex(patientCaseList.size()-1);
+		return getPatientCaseAtIndex(patientCaseList.size() - 1);
 	}
 
 	public PatientCase getPatientCaseFromPatientCaseID(int patientCaseID) {
@@ -155,5 +147,4 @@ public class Patient {
 	public void removePatientCase(int patientCaseID) {
 		patientCaseList.remove(getPatientCaseFromPatientCaseID(patientCaseID));
 	}
-
 }

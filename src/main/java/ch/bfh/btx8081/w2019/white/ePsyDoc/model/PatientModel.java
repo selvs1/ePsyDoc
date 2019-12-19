@@ -15,9 +15,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Report;
 
 public class PatientModel {
-//    private EntityManager em;
-//    private EntityTransaction transaction;
-
     private List<Patient> patientList = new ArrayList<Patient>();
     private List<PatientCase> patientCaseList = new ArrayList<PatientCase>();
 

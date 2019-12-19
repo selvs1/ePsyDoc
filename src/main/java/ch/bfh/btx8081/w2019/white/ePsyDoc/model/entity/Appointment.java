@@ -1,10 +1,8 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 import javax.persistence.*;
-
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
-
 import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 public class Appointment {
@@ -21,17 +19,20 @@ public class Appointment {
     * @OneToOne
     private PatientCase patientCase;
 */
-    DateTime appointmentDate;
+    Date appointmentDate;
+    Time appointmentTime;
 
 //	todo: auskommentiert, lg sugi
 //	PatientModel patient;
 //	DateTime date;
 
-    public Appointment() {
+
+
+	public Appointment() {
 
     }
 
-    public Appointment(Patient patient, DateTime date) {
+    public Appointment(Patient patient, Date date) {
         this.patient = patient;
         this.appointmentDate = date;
     }
@@ -63,17 +64,16 @@ public class Appointment {
     public Patient getPatient() {
         return patient;
     }
+    public Time getAppointmentTime() {
+		return appointmentTime;
+	}
+
+	public void setAppointmentTime(Time appointmentTime) {
+		this.appointmentTime = appointmentTime;
+	}
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-    }
-
-    public PatientCase getPatientCase() {
-        return patientCase;
-    }
-
-    public void setPatientCase(PatientCase patientCase) {
-        this.patientCase = patientCase;
     }
 
     public Date getAppointmentDate() {

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Database;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Service;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.*;
 import com.vaadin.flow.server.VaadinSession;
 
@@ -13,46 +14,54 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 public class PatientModel {
+//    private EntityManager em;
+//    private EntityTransaction transaction;
 
-    private EntityManager em;
-    private EntityTransaction transaction;
+    private List<Patient> patientList = new ArrayList<Patient>();
 
-    private List<Patient> patientList;
+    Service<Patient> patientService = new Service<>(new Patient());
 
     public PatientModel() {
-        patientList = new ArrayList<Patient>();
+
     }
 
     public List<Patient> getPatientList() {
         return patientList;
     }
 
+
+
     public void setPatientList(List<Patient> patientList) {
         this.patientList = patientList;
     }
 
     public Patient getPatient(int patientID) {
-        Patient returnPatient = null;
-        for (Patient patient : patientList) {
-            if (patient.getPatientID() == patientID) {
-                returnPatient = patient;
-            }
-        }
-        return returnPatient;
+//        Patient returnPatient = null;
+//        for (Patient patient : patientList) {
+//            if (patient.getPatientID() == patientID) {
+//                returnPatient = patient;
+//            }
+//        }
+//        return returnPatient;
+
+        return patientService.findByAttributeFirstElem("patientid", patientID);
     }
 
 
     public void init() {
 
-        em = Database.createEntityManager();
+//        patientService = new Service<>(new Patient());
+        setPatientList(patientService.getEntityTable());
+
+        //This code was replaced by code above
+       /* em = Database.createEntityManager();
         transaction = em.getTransaction();
         transaction.begin();
         Query q = em.createQuery("select p from Patient p");
         setPatientList(q.getResultList());
         transaction.commit();
-        em.close();
+        em.close();*/
         // bis hier oben funktioniert
-
 
 
         Patient p = new Patient(1, "Muster", "Max", "M", new Date(2019, 4, 9), "Musterstrasse 34", "3333");
@@ -79,19 +88,19 @@ public class PatientModel {
 //							"Film-coated-tablet","Pcs","Take with a glas of water","Pain"));
 
         mp.getMedications().add(new Medication(
-                "Ibuprofen 600mg",
-                "IBUPROFEN AL akut 600mg Film-coated-tablet",
-                "",
-                "",
-                "",
-                "",
-				"600mg",
-                "Film-coated-tablet",
-				"Pcs",
-				"Take with a glas of water",
-				"Pain"
-				)
-		);
+                        "Ibuprofen 600mg",
+                        "IBUPROFEN AL akut 600mg Film-coated-tablet",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "600mg",
+                        "Film-coated-tablet",
+                        "Pcs",
+                        "Take with a glas of water",
+                        "Pain"
+                )
+        );
 
         pc.setMedicationplan(mp);
         HospIndex drugList = new HospIndex();

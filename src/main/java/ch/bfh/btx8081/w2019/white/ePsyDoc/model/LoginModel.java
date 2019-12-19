@@ -2,7 +2,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Service;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
 import com.vaadin.flow.server.VaadinSession;
 
 /**
@@ -36,8 +36,11 @@ public class LoginModel {
     }
 
     public static void login(Doctor d) {
-        VaadinSession.getCurrent().setAttribute("user", d);
+        VaadinSession.getCurrent().setAttribute("doctorID", d.getDoctorID());
+        VaadinSession.getCurrent().setAttribute("doctorFirstname", d.getFirstname());
+        VaadinSession.getCurrent().setAttribute("doctorName", d.getName().substring(0,1));
 //        UI.getCurrent().navigate(AppointmentViewImpl.class);
+
     }
 
 

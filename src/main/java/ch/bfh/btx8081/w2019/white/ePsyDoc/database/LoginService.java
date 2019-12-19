@@ -1,7 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -19,7 +19,6 @@ public class LoginService {
         this.model = model;
     }
 
-    // todo: convert this class into a generic class in order to reduce code
 
     /**
      * Dynamic database searching with attribute.
@@ -32,7 +31,6 @@ public class LoginService {
 
         List l = getQuery(attribute, value).setMaxResults(1).getResultList();
         if (l.size() == 0) {
-            System.out.println("Benutzer wurde nicht gefunden"); //todo: zeile löschen
             throw new DoctorException("user not found");
         }
         return (Doctor) l.get(0); // the first result
@@ -45,7 +43,7 @@ public class LoginService {
      * @return A Query object.
      */
     private Query getQuery(String attribute, Object value) {
-        return Database.getCurrentEntityManager().createQuery("select d from " + model.getClass().getSimpleName() + " d where d." + attribute + " = :value").setParameter("value", value);
+        return Database.getEntityManager().createQuery("select d from " + model.getClass().getSimpleName() + " d where d." + attribute + " = :value").setParameter("value", value);
     }
 
 

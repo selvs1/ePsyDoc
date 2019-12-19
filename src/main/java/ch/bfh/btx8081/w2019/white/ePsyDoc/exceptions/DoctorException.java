@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.entity;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions;
 
 /**
  * Exception handling for doctor class.

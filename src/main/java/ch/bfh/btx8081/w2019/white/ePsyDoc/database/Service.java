@@ -1,8 +1,9 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import java.util.List;
@@ -18,12 +19,15 @@ public class Service<GenericModel> {
 
 
     private GenericModel model;
+    private EntityManager em;
+    private String dbTableName;
 
     public Service(GenericModel model) {
         this.model = model;
+        em = Database.createEntityManager();
+        dbTableName = model.getClass().getSimpleName(); // classname same as table name of db
     }
 
-    // todo: convert this class into a generic class in order to reduce code
 
     /**
      * Dynamic database searching with attribute.
@@ -37,11 +41,11 @@ public class Service<GenericModel> {
 
         List list = getQuery(attribute, value).setMaxResults(1).getResultList();
         if (list.size() == 0) {
-            System.out.println("Benutzer wurde nicht gefunden"); //todo: zeile löschen
             throw new EntityNotFoundException("user not found");
         }
         return (GenericModel) list.get(0); // the first result
     }
+
 
     public List<GenericModel> findByAttributFull(String attribut, Object value) throws EntityNotFoundException {
         List list = getQuery(attribut, value).getResultList();
@@ -49,24 +53,21 @@ public class Service<GenericModel> {
     }
 
 
-
     //CRUD
+    //Read
+    public List<GenericModel> getEntityTable() {
+        String q = "select x from " + dbTableName + " x";
+        return em.createQuery(q).getResultList();
+    }
+
+
     //Create
 
 
-    //Read
 
     //Update
 
     //Delete
-
-
-
-
-
-
-
-
 
 
 
@@ -84,7 +85,7 @@ public class Service<GenericModel> {
      * @return A Query object.
      */
     private Query getQuery(String attribute, Object value) {
-        return Database.getCurrentEntityManager().createQuery("select x from " + model.getClass().getSimpleName() + " x where x." + attribute + " = :value").setParameter("value", value);
+        return Database.getEntityManager().createQuery("select x from " + dbTableName + " x where x." + attribute + " = :value").setParameter("value", value);
     }
 
 
@@ -116,6 +117,14 @@ public class Service<GenericModel> {
 //        }
 
 
+        Service<Patient> test = new Service<>(new Patient());
+
+        try {
+            test.findByAttributeFirstElem("firstname", "toni");
+            System.out.println("yuhu");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
 
 

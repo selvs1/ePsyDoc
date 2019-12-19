@@ -27,7 +27,7 @@ public class Database {
      * Return the current previously created EntityManager object.
      * @return EntityManager object.
      */
-    public static EntityManager getCurrentEntityManager() {
+    public static EntityManager getEntityManager() {
         return em;
     }
 

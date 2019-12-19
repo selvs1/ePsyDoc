@@ -11,6 +11,8 @@ public interface PatientView {
 		void clickGetPatientID(PatientModel patient);
 
 		void onLoadPatientList();
+
+		void onPatientItemClicked(Patient choosedPatient);
 	}
 
 	void addListener(PatientViewListener listener);

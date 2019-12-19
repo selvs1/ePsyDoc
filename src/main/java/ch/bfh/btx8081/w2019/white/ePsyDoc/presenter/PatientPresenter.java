@@ -1,7 +1,11 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginViewImpl;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.MainLayoutView;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientView;
+import com.vaadin.flow.component.UI;
 
 public class PatientPresenter implements PatientView.PatientViewListener {
     private PatientModel model;
@@ -31,10 +35,14 @@ public class PatientPresenter implements PatientView.PatientViewListener {
 
     @Override
     public void onLoadPatientList() {
-        System.out.println("#set PatientList");
+        System.out.println("#set PatientList"); //todo: wegnehmen
         view.setPatientList(model.getPatientList());
     }
 
+    @Override
+    public void onPatientItemClicked(Patient choosedPatient) {
+
+    }
 
 
 }

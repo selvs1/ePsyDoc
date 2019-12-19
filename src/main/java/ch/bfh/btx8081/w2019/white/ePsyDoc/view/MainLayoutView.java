@@ -14,10 +14,12 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PreserveOnRefresh;
 import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 
+@PreserveOnRefresh
 @CssImport("frontend://styles/mainlayoutview.css")
 public class MainLayoutView extends Div {
 	private static final long serialVersionUID = 1L;
@@ -35,7 +37,7 @@ public class MainLayoutView extends Div {
 	private Button loginB = new Button(new Icon(VaadinIcon.SIGN_IN));
 	private Div error=new Div();
 	Accordion accordion = new Accordion();
-	
+
 	public MainLayoutView() {
 
 		// Demo Data
@@ -99,6 +101,10 @@ public class MainLayoutView extends Div {
 		} else {
 			add(header, body, footer);
 		}
+
+	}
+
+	private void informationRefresh() {
 
 	}
 

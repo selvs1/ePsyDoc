@@ -3,6 +3,8 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vaadin.flow.component.page.Page;
+import com.vaadin.flow.server.PageConfigurator;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.flow.component.UI;
@@ -19,6 +21,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 
+
+
 //@Route(value = "t")
 public class PatientViewImpl extends MainLayoutView implements PatientView {
     private static final long serialVersionUID = 1L;
@@ -29,21 +33,21 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
     private Grid<PatientCase> patientCase = new Grid<>();
     private List<PatientCase> patientCaseList = new ArrayList<>();
 
+
     // A list of listeners subscribed to this view
     private List<PatientViewListener> listeners = new ArrayList<>();
-
-
 
 
     public PatientViewImpl(List<Patient> patientList) {
         if (VaadinSession.getCurrent().getAttribute("name") == null) {
             UI.getCurrent().navigate(MainView.class);
+
         }
 
         this.patientlist = patientList;
 
         //todo: to delete after debugging - sugi
-        System.out.println("### start h@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println("### start h @@@@@@@@@@@@@@@");
         for (Patient p : patientlist) {
             System.out.println(p.getFirstname());
         }
@@ -61,6 +65,23 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
         grid.addColumn(Patient::getDate).setHeader("Birthdate");
         grid.addColumn(Patient::getAdress).setHeader("Address");
         grid.addColumn(Patient::getZip).setHeader("ZIP");
+        grid.addItemDoubleClickListener(event -> {
+
+            System.out.println(event.getItem().getFirstname() + "wurde geklickt");
+//            System.out.println("ich wurde geklickt");
+            VaadinSession.getCurrent().setAttribute("patientID", event.getItem().getPatientID());
+            VaadinSession.getCurrent().setAttribute("patientFirstname", event.getItem().getFirstname());
+            VaadinSession.getCurrent().setAttribute("patientName", event.getItem().getLastname());
+            VaadinSession.getCurrent().setAttribute("patientCaseID", "1.1");
+            VaadinSession.getCurrent().setAttribute("doctorID", VaadinSession.getCurrent().getAttribute("doctorID"));
+            VaadinSession.getCurrent().setAttribute("doctorFirstname", VaadinSession.getCurrent().getAttribute("doctorFirstname"));
+            VaadinSession.getCurrent().setAttribute("doctorName", VaadinSession.getCurrent().getAttribute("doctorName"));
+
+            notifyListenersOnPatientItemClicked(event.getItem());
+
+
+        });
+
 
         // Data provider
         ListDataProvider<Patient> dataProvider = new ListDataProvider<>(patientlist);
@@ -94,11 +115,18 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
         // double click on patient item show patientCase Grid
         grid.addItemClickListener(e -> patientCase.setVisible(true));
 
+
         // Add elements to root VerticalLayout
         root.add(grid, patientCase);
 
         // Add to layout
         super.content.add(root);
+    }
+
+    private void notifyListenersOnPatientItemClicked(Patient choosedPatient) {
+        for (PatientViewListener listener : listeners) {
+            listener.onPatientItemClicked(choosedPatient);
+        }
     }
 
 
@@ -119,7 +147,6 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
     }
 
 
-
     @Override
     public void addListener(PatientViewListener listener) {
         listeners.add(listener);
@@ -137,15 +164,15 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 
     }
 
-	@Override
-	public void setPatientList(List<Patient> patientList) {
-		this.patientlist = patientList;
-		System.out.println("Patienten Liste wurde gesetzt");
+    @Override
+    public void setPatientList(List<Patient> patientList) {
+        this.patientlist = patientList;
+        System.out.println("Patienten Liste wurde gesetzt");
 
         for (Patient p : patientList) {
             System.out.println(p.getFirstname());
         }
-	}
+    }
 
 
 }

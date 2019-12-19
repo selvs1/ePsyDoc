@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Database;
 import com.vaadin.flow.server.VaadinSession;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+
 public class PatientModel {
+
+    private EntityManager em;
+    private EntityTransaction transaction;
 
     private List<Patient> patientList;
 
@@ -34,6 +42,18 @@ public class PatientModel {
 
 
     public void init() {
+
+        em = Database.createEntityManager();
+        transaction = em.getTransaction();
+        transaction.begin();
+        Query q = em.createQuery("select p from Patient p");
+        setPatientList(q.getResultList());
+        transaction.commit();
+        em.close();
+        // bis hier oben funktioniert
+
+
+
         Patient p = new Patient(1, "Muster", "Max", "M", new Date(2019, 4, 9), "Musterstrasse 34", "3333");
         patientList.add(p);
         p.createPatientCase("1.1", 1);

@@ -16,7 +16,7 @@ public class PatientConnector extends VerticalLayout {
 	public PatientConnector() {
 		PatientModel model = new PatientModel();
 		model.init();
-		PatientViewImpl view = new PatientViewImpl();
+		PatientViewImpl view = new PatientViewImpl(model.getPatientList());
 		new PatientPresenter(model, view);
 		add(view);
 	}

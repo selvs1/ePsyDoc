@@ -22,8 +22,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 
-@Route(value = LoginViewImpl.ROUTE)
-@PageTitle("Login")
+//@Route(value = LoginViewImpl.ROUTE)
+//@PageTitle("Login")
 
 public class LoginViewImpl extends VerticalLayout implements LoginView {
     private static final long serialVersionUID = 1L;

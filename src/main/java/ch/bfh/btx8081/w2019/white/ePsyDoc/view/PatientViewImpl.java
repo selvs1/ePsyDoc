@@ -3,6 +3,8 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vaadin.flow.router.Route;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.flow.component.UI;
@@ -19,85 +21,131 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 
+//@Route(value = "t")
 public class PatientViewImpl extends MainLayoutView implements PatientView {
-	private static final long serialVersionUID = 1L;
-	private List<Patient> patientlist = new ArrayList<>();
-	private VerticalLayout root = new VerticalLayout();
-	private List<Patient> personList = new ArrayList<>();
-	private Grid<Patient> grid = new Grid<>();
-	private Grid<PatientCase> patientCase = new Grid<>();
-	private List<PatientCase> patientCaseList = new ArrayList<>();
+    private static final long serialVersionUID = 1L;
+    private List<Patient> patientlist = new ArrayList<>();
+    private VerticalLayout root = new VerticalLayout();
+    private List<Patient> personList = new ArrayList<>();
+    private Grid<Patient> grid = new Grid<>();
+    private Grid<PatientCase> patientCase = new Grid<>();
+    private List<PatientCase> patientCaseList = new ArrayList<>();
 
-	public PatientViewImpl() {
-		 if(VaadinSession.getCurrent().getAttribute("name")== null) {
-			   UI.getCurrent().navigate(MainView.class);
-		 }
-		// Test Data
-		
-		// Column set and description
-		grid.addColumn(Patient::getPatientID).setHeader("Patient ID");
-		Grid.Column<Patient> firstNameColumn = grid.addColumn(Patient::getFirstname).setHeader("Firstname");
-		Grid.Column<Patient> lastNameColumn = grid.addColumn(Patient::getLastname).setHeader("Lastname");
-		grid.addColumn(Patient::getGender).setHeader("Gender");
-		grid.addColumn(Patient::getDate).setHeader("Birthdate");
-		grid.addColumn(Patient::getAdress).setHeader("Address");
-		grid.addColumn(Patient::getZip).setHeader("ZIP");
-
-		// Data provider
-		ListDataProvider<Patient> dataProvider = new ListDataProvider<>(patientlist);
-		grid.setDataProvider(dataProvider);
-		HeaderRow filterRow = grid.appendHeaderRow();
-
-		// Firstname filter
-		TextField firstNameField = new TextField();
-		firstNameField.addValueChangeListener(event -> dataProvider.addFilter(
-				patient -> StringUtils.containsIgnoreCase(patient.getFirstname(), firstNameField.getValue())));
-		firstNameField.setValueChangeMode(ValueChangeMode.EAGER);
-		filterRow.getCell(firstNameColumn).setComponent(firstNameField);
-		firstNameField.setSizeFull();
-		firstNameField.setPlaceholder("Filter");
-
-		// Lastname filter
-		TextField lastNameField = new TextField();
-		lastNameField.addValueChangeListener(event -> dataProvider
-				.addFilter(patient -> StringUtils.containsIgnoreCase(patient.getLastname(), lastNameField.getValue())));
-		lastNameField.setValueChangeMode(ValueChangeMode.EAGER);
-		filterRow.getCell(lastNameColumn).setComponent(lastNameField);
-		lastNameField.setSizeFull();
-		lastNameField.setPlaceholder("Filter");
+    // A list of listeners subscribed to this view
+    private List<PatientViewListener> listeners = new ArrayList<>();
 
 
-		// Column set, description and settings
-		//patientCase.addColumn(PatientCase::getFid).setHeader("FID");
-		patientCase.setVisible(false);
-		patientCase.setItems(patientCaseList);
 
-		// double click on patient item show patientCase Grid
-		grid.addItemClickListener(e -> patientCase.setVisible(true));
 
-		// Add elements to root VerticalLayout
-		root.add( grid, patientCase);
+    public PatientViewImpl(List<Patient> patientList) {
+        if (VaadinSession.getCurrent().getAttribute("name") == null) {
+            UI.getCurrent().navigate(MainView.class);
+        }
 
-		// Add to layout
-		super.content.add(root);
-	}
+        this.patientlist = patientList;
+
+        System.out.println("### start h@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        for (Patient p : patientlist) {
+            System.out.println(p.getFirstname());
+        }
+
+
+//		refreshPatientList();
+
+        System.out.println("### gemacht");
+
+        for (Patient p : patientlist) {
+            System.out.println(p.getFirstname());
+        }
+
+        // Test Data
+
+        // Column set and description
+        grid.addColumn(Patient::getPatientID).setHeader("Patient ID");
+        Grid.Column<Patient> firstNameColumn = grid.addColumn(Patient::getFirstname).setHeader("Firstname");
+        Grid.Column<Patient> lastNameColumn = grid.addColumn(Patient::getLastname).setHeader("Lastname");
+        grid.addColumn(Patient::getGender).setHeader("Gender");
+        grid.addColumn(Patient::getDate).setHeader("Birthdate");
+        grid.addColumn(Patient::getAdress).setHeader("Address");
+        grid.addColumn(Patient::getZip).setHeader("ZIP");
+
+        // Data provider
+        ListDataProvider<Patient> dataProvider = new ListDataProvider<>(patientlist);
+        grid.setDataProvider(dataProvider);
+        HeaderRow filterRow = grid.appendHeaderRow();
+
+        // Firstname filter
+        TextField firstNameField = new TextField();
+        firstNameField.addValueChangeListener(event -> dataProvider.addFilter(
+                patient -> StringUtils.containsIgnoreCase(patient.getFirstname(), firstNameField.getValue())));
+        firstNameField.setValueChangeMode(ValueChangeMode.EAGER);
+        filterRow.getCell(firstNameColumn).setComponent(firstNameField);
+        firstNameField.setSizeFull();
+        firstNameField.setPlaceholder("Filter");
+
+        // Lastname filter
+        TextField lastNameField = new TextField();
+        lastNameField.addValueChangeListener(event -> dataProvider
+                .addFilter(patient -> StringUtils.containsIgnoreCase(patient.getLastname(), lastNameField.getValue())));
+        lastNameField.setValueChangeMode(ValueChangeMode.EAGER);
+        filterRow.getCell(lastNameColumn).setComponent(lastNameField);
+        lastNameField.setSizeFull();
+        lastNameField.setPlaceholder("Filter");
+
+
+        // Column set, description and settings
+        //patientCase.addColumn(PatientCase::getFid).setHeader("FID");
+        patientCase.setVisible(false);
+        patientCase.setItems(patientCaseList);
+
+        // double click on patient item show patientCase Grid
+        grid.addItemClickListener(e -> patientCase.setVisible(true));
+
+        // Add elements to root VerticalLayout
+        root.add(grid, patientCase);
+
+        // Add to layout
+        super.content.add(root);
+    }
+
+
+    // Iterate through the list, notifying or du some actions to each listner individualy
+    public void refreshPatientList() {
+        System.out.println("starte refreshPatientList");
+        for (PatientViewListener listener : listeners) {
+            System.out.println("#listener.onLoadPatientList()");
+            listener.onLoadPatientList();
+        }
+        System.out.println("ende hier");
+    }
+
+
+
+    @Override
+    public void addListener(PatientViewListener listener) {
+        listeners.add(listener);
+    }
+
+    @Override
+    public void displayPatientData(PatientModel patientModel) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void displayPatientCaseData(PatientModel patientModel) {
+        // TODO Auto-generated method stub
+
+    }
 
 	@Override
-	public void addListener(PatientViewListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void setPatientList(List<Patient> patientList) {
+		this.patientlist = patientList;
+		System.out.println("Patienten Liste wurde gesetzt");
 
-	@Override
-	public void displayPatientData(PatientModel patientModel) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void displayPatientCaseData(PatientModel patientModel) {
-		// TODO Auto-generated method stub
-		
+        for (Patient p : patientList) {
+            System.out.println(p.getFirstname());
+        }
 	}
 
 

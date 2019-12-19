@@ -25,7 +25,7 @@ public class PatientCase {
 
 
 //	todo: 10.12.2019 Why string?? - lg sugi
-	//private int patientID;
+	private int patientID;
 
 
 
@@ -37,9 +37,7 @@ public class PatientCase {
 	}
 
 	public PatientCase(int patientCaseID, int patientID) {
-		//this.patientID = patientID;
-		//neu
-		this.patient.setPatientID(patientID);
+		this.patientID = patientID;
 		this.patientCaseID = patientCaseID;
 		this.medicationPlan = new MedicationPlan();
 		this.report = new Report();
@@ -57,7 +55,7 @@ public class PatientCase {
 	public void setPatientcaseID(int patientcaseID) {
 		this.patientCaseID = patientcaseID;
 	}
-/*
+
 	public int getPatientID() {
 		return patientID;
 	}
@@ -65,7 +63,7 @@ public class PatientCase {
 	public void setPatientID(int patientID) {
 		this.patientID = patientID;
 	}
-*/
+
 	public MedicationPlan getMedicationplan() {
 		return medicationPlan;
 	}
@@ -92,7 +90,7 @@ public class PatientCase {
 
 	@Override
 	public String toString() {
-		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patient.getPatientID() + ", medicationPlan="
+		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patientID + ", medicationPlan="
 				+ medicationPlan + ", report=" + report + ", doctor=" + doctor + "]";
 	}
 

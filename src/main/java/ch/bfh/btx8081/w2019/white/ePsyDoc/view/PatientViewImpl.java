@@ -82,6 +82,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
                listener.setPatientCaseList(patientID);
                 listener.onLoadPatientList();
             }
+            patientCase.getDataProvider().refreshAll();
             patientCase.setVisible(true);
             notifyListenersOnPatientItemClicked(event.getItem());
 
@@ -180,8 +181,9 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 
 	@Override
 	public void setPatientCaseList(List<PatientCase> patientCaseList) {
+		this.patientCaseList=null;
 		this.patientCaseList = patientCaseList;
-		 System.out.println("______________");
+		 System.out.println(patientCaseList);
         this.patientCase.setItems(this.patientCaseList);
 		
 	}

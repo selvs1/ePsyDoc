@@ -33,8 +33,8 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 
 	@Override
 	public void clickDeletePatientCase() {
-		Patient tempPatient = model.getPatient(Integer.parseInt((String) VaadinSession.getCurrent().getAttribute("patientID")));
-		tempPatient.removePatientCase(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID")));
+		Patient tempPatient = model.getPatient(Integer.parseInt((String)VaadinSession.getCurrent().getAttribute("patientID")));
+		tempPatient.removePatientCase(Integer.parseInt((String)VaadinSession.getCurrent().getAttribute("patientCaseID")));
 	}
 
 	@Override

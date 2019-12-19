@@ -41,7 +41,7 @@ public class PatientModel {
     }
 
     public void setPatientCaseList(int patientID) {
-        this.patientCaseList = patientCaseService.findByAttributFull("patientID", patientID);
+        this.patientCaseList = patientCaseService.findByAttributFull("patientID", 53);
     }
 
     public Patient getPatient(int patientID) {
@@ -76,8 +76,8 @@ public class PatientModel {
 
         Patient p = new Patient(1, "Muster", "Max", "M", new Date(2019, 4, 9), "Musterstrasse 34", "3333");
         patientList.add(p);
-        p.createPatientCase("1.1", 1);
-        PatientCase pc = p.getPatientCase("1.1");
+        p.createPatientCase(1, 1);
+        PatientCase pc = p.getPatientCase(1);
 
         VaadinSession.getCurrent().setAttribute("patientID", "1");
         VaadinSession.getCurrent().setAttribute("patientFirstname", "Max");

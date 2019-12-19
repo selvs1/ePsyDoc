@@ -37,6 +37,7 @@ public class PatientCase {
 	}
 
 	public PatientCase(int patientCaseID, int patientID) {
+
 		this.patientID = patientID;
 		this.patientCaseID = patientCaseID;
 		this.medicationPlan = new MedicationPlan();

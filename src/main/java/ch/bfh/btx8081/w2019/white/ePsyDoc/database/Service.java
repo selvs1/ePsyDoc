@@ -3,14 +3,16 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
 
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import java.util.List;
 
 
 /**
  * Generic class for db service. Don't touch!!
- * @author Sugeelan Selvasingham
+ *
  * @param <GenericModel> Is the entity model used for our database.
+ * @author Sugeelan Selvasingham
  */
 public class Service<GenericModel> {
 
@@ -25,32 +27,60 @@ public class Service<GenericModel> {
 
     /**
      * Dynamic database searching with attribute.
+     *
      * @param attribute Attribute e.g. "username", "firstname".
-     * @param value Value e.g. "selvs1", "password1234".
+     * @param value     Value e.g. "selvs1", "password1234".
      * @return Returns only the first successfully found Doctor object.
      * @throws DoctorException Will be thrown if username doesnt exist.
      */
-    public GenericModel findByAttributeFirstElem(String attribute, Object value) throws DoctorException {
+    public GenericModel findByAttributeFirstElem(String attribute, Object value) throws EntityNotFoundException {
 
         List list = getQuery(attribute, value).setMaxResults(1).getResultList();
         if (list.size() == 0) {
             System.out.println("Benutzer wurde nicht gefunden"); //todo: zeile löschen
-            throw new DoctorException("user not found");
+            throw new EntityNotFoundException("user not found");
         }
         return (GenericModel) list.get(0); // the first result
     }
 
-    public List<GenericModel> findByAttributFull(String attribut, Object value) throws DoctorException {
+    public List<GenericModel> findByAttributFull(String attribut, Object value) throws EntityNotFoundException {
         List list = getQuery(attribut, value).getResultList();
         return (List<GenericModel>) list;
     }
 
 
 
+    //CRUD
+    //Create
+
+
+    //Read
+
+    //Update
+
+    //Delete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Methode with "where" search. Don't touch!!.
+     *
      * @param attribute Attribute of database table.
-     * @param value Value for attribute.
+     * @param value     Value for attribute.
      * @return A Query object.
      */
     private Query getQuery(String attribute, Object value) {
@@ -59,21 +89,35 @@ public class Service<GenericModel> {
 
 
 
+
+
+
+
+
+
+
+
+
     /**
      * This methode is only for testing.
+     *
      * @param args
      */
     public static void main(String[] args) {
         //todo: delete this main methode after testing
 
-        LoginService test = new LoginService(new Doctor());
+//        LoginService test = new LoginService(new Doctor());
+//
+//        try {
+//
+//            test.findByAttribute("password", "0000");
+//        } catch (EntityNotFoundException e) {
+//            System.out.println(e.getMessage());
+//        }
 
-        try {
 
-            test.findByAttribute("password", "0000");
-        } catch (DoctorException e) {
-            System.out.println(e.getMessage());
-        }
+
+
 
     }
 

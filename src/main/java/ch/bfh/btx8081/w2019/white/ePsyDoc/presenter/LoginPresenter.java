@@ -40,7 +40,7 @@ public class LoginPresenter implements LoginView.LoginViewListener {
         try {
             LoginModel.login(username, password);
             view.openSession(); // enter to the main page
-        } catch (DoctorException e) {
+        } catch (Exception e) {
             view.notifyProblem(e.getMessage());
         }
 

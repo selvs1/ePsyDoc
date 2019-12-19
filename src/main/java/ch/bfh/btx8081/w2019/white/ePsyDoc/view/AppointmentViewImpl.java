@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
@@ -31,13 +32,11 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	private Grid<Appointment> appointment = new Grid<>();
 	private List<Appointment> appointmentList = new ArrayList<>();
 	private Grid<PatientCase> patientCase = new Grid<>();
-	private List<PatientCase> patientCaseList = new ArrayList<>();
 	private List<AppointmentViewListener> listeners = new ArrayList<>();
 
 
 	public AppointmentViewImpl() {
 
-		
 		// Load Data
 		this.addAttachListener(e -> {
 			for (AppointmentViewListener listener : listeners) {
@@ -57,6 +56,8 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 		});
 
 		appointment.setItems(appointmentList);
+		// PatientCase Grid setup
+		patientCase.addColumn(PatientCase::getPatientcaseID).setHeader("Patient Case ID");
 		
 		// Column set and description
 		appointment.addColumn(Appointment::getAppointmentID).setVisible(false);
@@ -83,6 +84,13 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 			patientCase.setVisible(true);
 			patientCase.getDataProvider().refreshAll();
 		});
+		
+		// Click listener PatientCase
+		patientCase.addItemClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("patientCaseID", event.getItem().getPatientcaseID());
+			UI.getCurrent().navigate("Report");
+		});
+
 
 		// Add to layout
 		root.add(title, datePicker, appointment, patientCase);
@@ -101,9 +109,6 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 
 	@Override
 	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
-		System.out.println(patientCaseList);
 		patientCase.setItems(patientCaseList);
-		patientCase.getDataProvider().refreshAll();
-		System.out.println(patientCase.getElement().toString());
 	}
 }

@@ -20,7 +20,6 @@ import com.vaadin.flow.server.VaadinSession;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Appointment;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
-//Route Name and Page Title
 
 public class AppointmentViewImpl extends MainLayoutView implements AppointmentView {
 
@@ -30,7 +29,6 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	private H1 title = new H1("Today's Patient");
 	private DatePicker datePicker = new DatePicker();
 	private Grid<Appointment> appointment = new Grid<>();
-	private List<Appointment> appointmentList = new ArrayList<>();
 	private Grid<PatientCase> patientCase = new Grid<>();
 	private List<AppointmentViewListener> listeners = new ArrayList<>();
 
@@ -44,8 +42,10 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 			}
 		});
 		
-		// datePicker settings
+		// DatePicker settings
 		datePicker.setValue(date);
+		
+		// Change date 
 		datePicker.addValueChangeListener(e -> {
 			date = datePicker.getValue();
 			for (AppointmentViewListener listener : listeners) {
@@ -54,8 +54,7 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 				}
 			appointment.getDataProvider().refreshAll();
 		});
-
-		appointment.setItems(appointmentList);
+		
 		// PatientCase Grid setup
 		patientCase.addColumn(PatientCase::getPatientcaseID).setHeader("Patient Case ID");
 		
@@ -64,7 +63,6 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 		appointment.addColumn(Appointment::getPatientFirstname).setHeader("Firstname");
 		appointment.addColumn(Appointment::getPatientLastname).setHeader("Lastname");
 		appointment.addColumn(Appointment::getAppointmentTime).setHeader("Time");
-		appointment.setItems(appointmentList);
 
 		// Column set, description and settings
 		patientCase.setVisible(false);
@@ -90,7 +88,6 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 			VaadinSession.getCurrent().setAttribute("patientCaseID", event.getItem().getPatientcaseID());
 			UI.getCurrent().navigate("Report");
 		});
-
 
 		// Add to layout
 		root.add(title, datePicker, appointment, patientCase);

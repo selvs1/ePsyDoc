@@ -15,35 +15,16 @@ public class Appointment {
     @ManyToOne
     private Patient patient;
 
-   /* not used
-    * @OneToOne
-    private PatientCase patientCase;
-*/
     Date appointmentDate;
     Time appointmentTime;
 
-//	todo: auskommentiert, lg sugi
-//	PatientModel patient;
-//	DateTime date;
-
-
-
 	public Appointment() {
-
     }
 
     public Appointment(Patient patient, Date date) {
         this.patient = patient;
         this.appointmentDate = date;
     }
-
-
-// todo: 10.12.2019 - lg sugi
-//	public Appointment(PatientModel patient, DateTime date) {
-//		this.patient = patient;
-//		this.date = date;
-//	}
-
 
     public int getAppointmentID() {
         return appointmentID;

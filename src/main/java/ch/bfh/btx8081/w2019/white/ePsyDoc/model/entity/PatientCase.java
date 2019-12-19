@@ -7,7 +7,7 @@ public class PatientCase {
 
 	@Id
 	@GeneratedValue
-	private int hospitalPatientCaseID;
+	private int patientCaseID;
 	/* not used
 	@OneToOne(mappedBy = "patientCase")
 	private Appointment appointment;
@@ -25,8 +25,7 @@ public class PatientCase {
 
 
 //	todo: 10.12.2019 Why string?? - lg sugi
-	private String patientCaseID;
-	private int patientID;
+	//private int patientID;
 
 
 
@@ -37,8 +36,10 @@ public class PatientCase {
 
 	}
 
-	public PatientCase(String patientCaseID, int patientID) {
-		this.patientID = patientID;
+	public PatientCase(int patientCaseID, int patientID) {
+		//this.patientID = patientID;
+		//neu
+		this.patient.setPatientID(patientID);
 		this.patientCaseID = patientCaseID;
 		this.medicationPlan = new MedicationPlan();
 		this.report = new Report();
@@ -49,14 +50,14 @@ public class PatientCase {
 		return medicationPlan;
 	}
 
-	public String getPatientcaseID() {
+	public int getPatientcaseID() {
 		return patientCaseID;
 	}
 
-	public void setPatientcaseID(String patientcaseID) {
+	public void setPatientcaseID(int patientcaseID) {
 		this.patientCaseID = patientcaseID;
 	}
-
+/*
 	public int getPatientID() {
 		return patientID;
 	}
@@ -64,7 +65,7 @@ public class PatientCase {
 	public void setPatientID(int patientID) {
 		this.patientID = patientID;
 	}
-
+*/
 	public MedicationPlan getMedicationplan() {
 		return medicationPlan;
 	}
@@ -91,7 +92,7 @@ public class PatientCase {
 
 	@Override
 	public String toString() {
-		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patientID + ", medicationPlan="
+		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patient.getPatientID() + ", medicationPlan="
 				+ medicationPlan + ", report=" + report + ", doctor=" + doctor + "]";
 	}
 

@@ -56,6 +56,10 @@ public class Service<GenericModel> {
         List list = getQuery(attribut, value).getResultList();
         return (List<GenericModel>) list;
     }
+    public List<GenericModel> findByAttributFullDESC(String attribut, Object value,String sortAttribute) throws EntityNotFoundException {
+        List list = getQueryDESC(attribut, value,sortAttribute).getResultList();
+        return (List<GenericModel>) list;
+    }
 
 
     //CRUD
@@ -103,7 +107,9 @@ public class Service<GenericModel> {
         return Database.getEntityManager().createQuery("select x from " + dbTableName + " x where x." + attribute + " = :value").setParameter("value", value);
     }
     
-   
+    private Query getQueryDESC(String attribute, Object value,String sortAttribute) {
+        return Database.getEntityManager().createQuery("select x from " + dbTableName + " x where x." + attribute + " = :value order by x."+sortAttribute+" DESC").setParameter("value", value);
+    }
 
     private Query appointmentPatients(Object value) {
     	Query query = em.createQuery("select a from Appointment  a, Patient p where a.appointmentDate = :value Group by a.appointmentID order by a.appointmentTime");

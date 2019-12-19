@@ -38,7 +38,7 @@ public class PatientModel {
     }
 
     public void setPatientCaseList(int patientID) {
-        this.patientCaseList = patientCaseService.findByAttributFull("patientID", patientID);
+        this.patientCaseList = patientCaseService.findByAttributFullDESC("patientID", patientID,"patientID");
     }
 
     public void init() {

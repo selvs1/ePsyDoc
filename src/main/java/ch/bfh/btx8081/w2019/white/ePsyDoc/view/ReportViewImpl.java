@@ -12,16 +12,15 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Drug;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.HospIndex;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Drug;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.MedicationPlan;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 public class ReportViewImpl extends MainLayoutView implements ReportView {
@@ -73,11 +72,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
     public ReportViewImpl() {
         this.addAttachListener(e -> {
             for (ReportViewListener listener : listeners) {
-                listener.getPatientData();
-                listener.getDoctorData();
-                listener.getPatientCaseID();
-                listener.getMedications();
-                listener.getDiagnosis();
+                
             }
 
         });
@@ -87,7 +82,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
         addB.addClickListener(e -> {
             for (ReportViewListener listener : listeners) {
                 Diagnosis diagnose = new Diagnosis(diagnosisT.getValue());
-                listener.clickAddDiagnose(diagnose);
+                //listener.clickAddDiagnose(diagnose);
                 diagnosisG.getDataProvider().refreshAll();
 
             }
@@ -161,7 +156,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
                         textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
                         textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
                         textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue());
-                listener.clickAddMedication(medi);
+                //listener.clickAddMedication(medi);
                 medicationG.getDataProvider().refreshAll();
 
 
@@ -201,55 +196,39 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
         listeners.add(listener);
     }
 
-    @Override
-    public void displayPatientCaseID(String patientCaseID) {
-        patientCaseL.setText(patientCaseID);
+	@Override
+	public void displayDoctor(Doctor doctor) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    }
+	@Override
+	public void updateAll(List<PatientCase> patientCase,List<Diagnosis> diagnosis,List<Medication> medication) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Override
-    public void displayPatientCaseTabs(ArrayList<String> patientCaseIDs) {
-        for (String id : patientCaseIDs) {
-            this.tabs.add(new Tab(id));
-        }
+	@Override
+	public void displayDiagnosisList(List<Diagnosis> diagnosis) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    }
+	@Override
+	public void displayMedicationList(List<Medication> medication) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Override
-    public void displayDoctorName(String firstname, String name) {
-        doctorFirstnameL.setText(firstname);
-        doctorNameL.setText(name);
+	@Override
+	public void displayRegister(List<PatientCase> patientCase) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    }
-
-    @Override
-    public void displayPatientName(String firstname, String name) {
-        patientFirstnameL.setText(firstname);
-        patientNameL.setText(name);
-
-    }
-
-    @Override
-    public void displayUpdateDiagnosisGrid(List<Diagnosis> diagnosis) {
-        this.diagnosisList = diagnosis;
-        this.diagnosisG.setItems(diagnosisList);
-
-
-    }
-
-
-    @Override
-    public void displayUpdateMedicationGrid(MedicationPlan medication) {
-//        this.medicationList = medication.getMedicationPlan();
-		this.medicationList = medication.getMedications();
-        this.medicationG.setItems(medicationList);
-
-    }
-
-    @Override
-    public void displayPatientCase(PatientCase tempPatientCase) {
-        //l.setText(tempPatientCase.getMedicationplan().getMedicationPlan().toString());
-
-    }
-
+	@Override
+	public void changeRegister() {
+		// TODO Auto-generated method stub
+		
+	}
 }

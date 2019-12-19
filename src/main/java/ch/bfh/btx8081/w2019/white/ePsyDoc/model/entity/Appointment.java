@@ -1,6 +1,9 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 import javax.persistence.*;
+
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
+
 import java.sql.Date;
 
 @Entity
@@ -14,10 +17,11 @@ public class Appointment {
     @ManyToOne
     private Patient patient;
 
-    @OneToOne
+   /* not used
+    * @OneToOne
     private PatientCase patientCase;
-
-    Date appointmentDate;
+*/
+    DateTime appointmentDate;
 
 //	todo: auskommentiert, lg sugi
 //	PatientModel patient;
@@ -27,7 +31,7 @@ public class Appointment {
 
     }
 
-    public Appointment(Patient patient, Date date) {
+    public Appointment(Patient patient, DateTime date) {
         this.patient = patient;
         this.appointmentDate = date;
     }

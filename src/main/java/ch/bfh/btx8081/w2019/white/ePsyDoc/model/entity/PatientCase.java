@@ -8,9 +8,10 @@ public class PatientCase {
 	@Id
 	@GeneratedValue
 	private int hospitalPatientCaseID;
-
+	/* not used
 	@OneToOne(mappedBy = "patientCase")
 	private Appointment appointment;
+	*/
 	@OneToOne
 	private MedicationPlan medicationPlan;
 	@OneToOne

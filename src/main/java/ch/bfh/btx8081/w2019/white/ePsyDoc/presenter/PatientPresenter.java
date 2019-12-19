@@ -15,49 +15,23 @@ public class PatientPresenter implements PatientView.PatientViewListener {
         this.model = model;
         this.view = view;
         view.addListener(this);
-//        onLoadPatientList();
-    }
-
-
-
-
-    @Override
-    public void clickGetPatientName(PatientModel patient) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void clickGetPatientID(PatientModel patient) {
-        // TODO Auto-generated method stub
-
     }
 
     @Override
     public void onLoadPatientList() {
         System.out.println("#set PatientList"); //todo: wegnehmen
-        view.setPatientList(model.getPatientList());
+        view.displayPatientList(model.getPatientList());
     }
-
-    @Override
-    public void onPatientItemClicked(Patient choosedPatient) {
-
-    }
-
-
-	@Override
-	public void setPatientCaseList() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 	@Override
 	public void setPatientCaseList(int patientID) {
 		model.setPatientCaseList(patientID);
-		view.setPatientCaseList(model.getPatientCaseList());
-		
+		view.displayPatientCaseList(model.getPatientCaseList());
 	}
 
 
+	@Override
+	public void loadPatientCaseList() {
+		view.displayPatientList(model.getPatientList());
+	}
 }

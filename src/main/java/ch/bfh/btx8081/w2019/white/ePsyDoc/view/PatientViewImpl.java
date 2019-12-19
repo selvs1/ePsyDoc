@@ -13,12 +13,14 @@ import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.data.provider.SortOrder;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView.ReportViewListener;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 
 //@Route(value = "t")
@@ -27,44 +29,41 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private List<Patient> patientlist = new ArrayList<>();
 	private VerticalLayout root = new VerticalLayout();
 	private List<Patient> personList = new ArrayList<>();
-	private Grid<Patient> grid = new Grid<>();
+	private Grid<Patient> patient = new Grid<>();
 	private Grid<PatientCase> patientCase = new Grid<>();
 	private List<PatientCase> patientCaseList = new ArrayList<>();
 
 	// A list of listeners subscribed to this view
 	private List<PatientViewListener> listeners = new ArrayList<>();
 
-	public PatientViewImpl(List<Patient> patientList) {
+	public PatientViewImpl() {
 		if (VaadinSession.getCurrent().getAttribute("name") == null) {
 			UI.getCurrent().navigate(MainView.class);
 
 		}
+	    this.addAttachListener(e -> {
+            for (PatientViewListener listener : listeners) {
+                listener.loadPatientCaseList();
+            }
 
-		this.patientlist = patientList;
+        });
 
-		// todo: to delete after debugging - sugi
-		System.out.println("### start h @@@@@@@@@@@@@@@");
-		for (Patient p : patientlist) {
-			System.out.println(p.getFirstname());
-		}
-
-//		refreshPatientList();
-
+		
 		patientCase.addColumn(PatientCase::getPatientcaseID).setHeader("Patient Case ID");
 		patientCase.setItems(patientCaseList);
 
 		// Column set and description
-		grid.addColumn(Patient::getPatientID).setHeader("Patient ID");
-		Grid.Column<Patient> firstNameColumn = grid.addColumn(Patient::getFirstname).setHeader("Firstname");
-		Grid.Column<Patient> lastNameColumn = grid.addColumn(Patient::getLastname).setHeader("Lastname");
-		grid.addColumn(Patient::getGender).setHeader("Gender");
-		grid.addColumn(Patient::getDate).setHeader("Birthdate");
-		grid.addColumn(Patient::getAdress).setHeader("Address");
-		grid.addColumn(Patient::getZip).setHeader("ZIP");
-		grid.addItemClickListener(event -> {
+		patient.addColumn(Patient::getPatientID).setHeader("Patient ID");
+		Grid.Column<Patient> firstNameColumn = patient.addColumn(Patient::getFirstname).setHeader("Firstname");
+		Grid.Column<Patient> lastNameColumn = patient.addColumn(Patient::getLastname).setHeader("Lastname");
+		patient.addColumn(Patient::getGender).setHeader("Gender");
+		patient.addColumn(Patient::getDate).setHeader("Birthdate");
+		patient.addColumn(Patient::getAdress).setHeader("Address");
+		patient.addColumn(Patient::getZip).setHeader("ZIP");
+		
+		patient.addItemClickListener(event -> {
 
 			System.out.println(event.getItem().getFirstname() + "wurde geklickt");
-//            System.out.println("ich wurde geklickt");
 			VaadinSession.getCurrent().setAttribute("patientID", event.getItem().getPatientID());
 			VaadinSession.getCurrent().setAttribute("patientFirstname", event.getItem().getFirstname());
 			VaadinSession.getCurrent().setAttribute("patientName", event.getItem().getLastname());
@@ -82,15 +81,18 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 			}
 
 			patientCase.setVisible(true);
-			notifyListenersOnPatientItemClicked(event.getItem());
 			patientCase.getDataProvider().refreshAll();
 
+		});
+		patientCase.addItemClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("patientCaseID", event.getItem().getPatientcaseID());
+			UI.getCurrent().navigate("Report");
 		});
 
 		// Data provider
 		ListDataProvider<Patient> dataProvider = new ListDataProvider<>(patientlist);
-		grid.setDataProvider(dataProvider);
-		HeaderRow filterRow = grid.appendHeaderRow();
+		patient.setDataProvider(dataProvider);
+		HeaderRow filterRow = patient.appendHeaderRow();
 
 		// Firstname filter
 		TextField firstNameField = new TextField();
@@ -114,35 +116,15 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		// patientCase.addColumn(PatientCase::getFid).setHeader("FID");
 		patientCase.setVisible(false);
 		patientCase.setItems(patientCaseList);
+		
+		
+		
 
 		// Add elements to root VerticalLayout
-		root.add(grid, patientCase);
+		root.add(patient, patientCase);
 
 		// Add to layout
 		super.content.add(root);
-	}
-
-	private void notifyListenersOnPatientItemClicked(Patient choosedPatient) {
-		for (PatientViewListener listener : listeners) {
-			listener.onPatientItemClicked(choosedPatient);
-		}
-	}
-
-	// Iterate through the list, notifying or du some actions to each listner
-	// individualy
-
-	/**
-	 * Reload this page with new patientList data.
-	 *
-	 * @deprecated I think this methode is not useful anymore.
-	 */
-	public void refreshPatientList() {
-		System.out.println("starte refreshPatientList");
-		for (PatientViewListener listener : listeners) {
-			System.out.println("#listener.onLoadPatientList()");
-			listener.onLoadPatientList();
-		}
-		System.out.println("ende hier");
 	}
 
 	@Override
@@ -151,34 +133,17 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	}
 
 	@Override
-	public void displayPatientData(PatientModel patientModel) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void displayPatientCaseData(PatientModel patientModel) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setPatientList(List<Patient> patientList) {
+	public void displayPatientList(List<Patient> patientList) {
 		this.patientlist = patientList;
-		System.out.println("Patienten Liste wurde gesetzt");
-
-		for (Patient p : patientList) {
-			System.out.println(p.getFirstname());
-		}
+		this.patient.setItems(patientList);
+		
 	}
 
 	@Override
-	public void setPatientCaseList(List<PatientCase> patientCaseList) {
+	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
 		this.patientCaseList = null;
 		this.patientCaseList = patientCaseList;
 		this.patientCase.setItems(patientCaseList);
-
-
 	}
 
 }

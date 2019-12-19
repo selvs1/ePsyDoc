@@ -8,20 +8,15 @@ import java.util.List;
 
 public interface PatientView {
 	interface PatientViewListener {		
-		void clickGetPatientName(PatientModel patient);
-		void clickGetPatientID(PatientModel patient);
 		void onLoadPatientList();
-		void setPatientCaseList();
-		void onPatientItemClicked(Patient choosedPatient);
+		void loadPatientCaseList();
 		void setPatientCaseList(int patientID);
 	}
 
 	
 	void addListener(PatientViewListener listener);
-	void displayPatientData(PatientModel patientModel);
-	void displayPatientCaseData(PatientModel patientModel);
-	void setPatientList(List<Patient> patientList);
-	void setPatientCaseList(List<PatientCase> patientCaseList);
+	void displayPatientList(List<Patient> patientList);
+	void displayPatientCaseList(List<PatientCase> patientCaseList);
 
 	
 }

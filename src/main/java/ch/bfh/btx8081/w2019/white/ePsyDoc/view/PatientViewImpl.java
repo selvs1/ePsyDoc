@@ -3,8 +3,6 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.flow.router.Route;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.vaadin.flow.component.UI;
@@ -17,8 +15,8 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 
 //@Route(value = "t")
@@ -44,19 +42,14 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 
         this.patientlist = patientList;
 
+        //todo: to delete after debugging - sugi
         System.out.println("### start h@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         for (Patient p : patientlist) {
             System.out.println(p.getFirstname());
         }
 
-
 //		refreshPatientList();
 
-        System.out.println("### gemacht");
-
-        for (Patient p : patientlist) {
-            System.out.println(p.getFirstname());
-        }
 
         // Test Data
 
@@ -110,6 +103,12 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 
 
     // Iterate through the list, notifying or du some actions to each listner individualy
+
+    /**
+     * Reload this page with new patientList data.
+     *
+     * @deprecated I think this methode is not useful anymore.
+     */
     public void refreshPatientList() {
         System.out.println("starte refreshPatientList");
         for (PatientViewListener listener : listeners) {

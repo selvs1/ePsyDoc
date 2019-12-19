@@ -1,10 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientView;
-
-import java.util.List;
 
 public class PatientPresenter implements PatientView.PatientViewListener {
     private PatientModel model;

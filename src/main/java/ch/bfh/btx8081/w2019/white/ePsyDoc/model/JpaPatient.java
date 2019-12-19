@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+
 import java.util.Date;
 
 import javax.persistence.EntityManager;

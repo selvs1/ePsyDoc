@@ -1,6 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 
 import java.util.List;

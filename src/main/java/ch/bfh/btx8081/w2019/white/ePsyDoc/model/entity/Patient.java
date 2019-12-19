@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 
 import java.util.ArrayList;

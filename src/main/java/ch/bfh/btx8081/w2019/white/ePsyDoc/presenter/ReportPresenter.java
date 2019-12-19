@@ -3,12 +3,12 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 import com.vaadin.flow.server.VaadinSession;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.MedicationPlan;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Report;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Report;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView;
 
 import java.util.List;

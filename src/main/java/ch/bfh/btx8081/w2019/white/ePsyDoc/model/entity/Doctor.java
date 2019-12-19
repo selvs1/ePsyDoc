@@ -1,7 +1,5 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Appointment;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Person;
 
 import java.util.ArrayList;

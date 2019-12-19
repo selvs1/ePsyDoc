@@ -12,7 +12,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 
 
 public class MedicationPlanViewImpl extends Div implements MedicationPlanView {

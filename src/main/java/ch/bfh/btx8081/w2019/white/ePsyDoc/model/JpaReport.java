@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Report;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

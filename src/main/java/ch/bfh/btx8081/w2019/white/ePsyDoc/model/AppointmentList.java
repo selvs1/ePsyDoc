@@ -1,10 +1,9 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Appointment;
 
 /**
  * Waste of time of commenting.

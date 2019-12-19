@@ -1,6 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
-
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Drug;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 import javax.persistence.*;
 

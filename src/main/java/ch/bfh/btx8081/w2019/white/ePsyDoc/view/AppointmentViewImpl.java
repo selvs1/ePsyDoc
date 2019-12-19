@@ -14,8 +14,8 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 //Route Name and Page Title
 

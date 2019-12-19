@@ -20,9 +20,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Drug;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.HospIndex;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.MedicationPlan;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 public class ReportViewImpl extends MainLayoutView implements ReportView {
     private static final long serialVersionUID = 1L;

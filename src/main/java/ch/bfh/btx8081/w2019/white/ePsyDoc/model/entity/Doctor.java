@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.entity;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Appointment;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;

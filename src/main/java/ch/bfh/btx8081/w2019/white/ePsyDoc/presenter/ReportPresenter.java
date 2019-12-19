@@ -1,10 +1,8 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.Doctor;
 import com.vaadin.flow.server.VaadinSession;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.DiagnosisList;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.MedicationPlan;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Patient;
@@ -13,7 +11,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Report;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReportPresenter implements ReportView.ReportViewListener {

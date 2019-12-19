@@ -1,11 +1,9 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.Doctor;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
 
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 

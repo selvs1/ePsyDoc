@@ -1,4 +1,6 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
+
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Report;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Database;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
 import com.vaadin.flow.server.VaadinSession;
 
 import javax.persistence.EntityManager;

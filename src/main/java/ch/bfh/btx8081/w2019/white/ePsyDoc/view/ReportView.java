@@ -3,7 +3,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.MedicationPlan;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientCase;

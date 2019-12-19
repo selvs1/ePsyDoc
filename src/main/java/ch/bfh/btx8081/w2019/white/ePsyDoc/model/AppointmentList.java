@@ -6,6 +6,11 @@ import java.util.List;
 
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
+/**
+ * Waste of time of commenting.
+ *
+ * @deprecated Guys please don't use this class should be depricated due to database.
+ */
 public class AppointmentList {
 
 	//todo: brauchts überhaupt diese Klasse? lg sugi

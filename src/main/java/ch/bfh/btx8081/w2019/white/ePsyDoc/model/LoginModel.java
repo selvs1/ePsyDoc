@@ -1,18 +1,9 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.database.LoginService;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Service;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.Doctor;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.entity.DoctorException;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinSession;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class is responsible for credential check. Later with database.

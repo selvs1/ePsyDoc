@@ -44,8 +44,6 @@ public class JpaPatient {
 	                    {"Weist", "Jennifer", "Dorfstrasse 8","01.01.1991","w","3110"},
 	                    {"Mohadas", "Prathas", "Zentralstrasse 75","14.09.1980","m","3110"},
 	                    {"Bracher", "Laura", "Zentralstrasse 74","30.08.1984","w","3110"},
-	                    
-
 	            };
 	            
 	           

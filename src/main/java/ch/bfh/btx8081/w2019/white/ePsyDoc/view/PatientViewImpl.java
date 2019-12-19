@@ -65,18 +65,24 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
         grid.addColumn(Patient::getDate).setHeader("Birthdate");
         grid.addColumn(Patient::getAdress).setHeader("Address");
         grid.addColumn(Patient::getZip).setHeader("ZIP");
-        grid.addItemDoubleClickListener(event -> {
+        grid.addItemClickListener(event -> {
 
             System.out.println(event.getItem().getFirstname() + "wurde geklickt");
 //            System.out.println("ich wurde geklickt");
             VaadinSession.getCurrent().setAttribute("patientID", event.getItem().getPatientID());
             VaadinSession.getCurrent().setAttribute("patientFirstname", event.getItem().getFirstname());
             VaadinSession.getCurrent().setAttribute("patientName", event.getItem().getLastname());
-            VaadinSession.getCurrent().setAttribute("patientCaseID", "1.1");
+            VaadinSession.getCurrent().setAttribute("patientCaseID", "NULL");
             VaadinSession.getCurrent().setAttribute("doctorID", VaadinSession.getCurrent().getAttribute("doctorID"));
             VaadinSession.getCurrent().setAttribute("doctorFirstname", VaadinSession.getCurrent().getAttribute("doctorFirstname"));
             VaadinSession.getCurrent().setAttribute("doctorName", VaadinSession.getCurrent().getAttribute("doctorName"));
 
+            for (PatientViewListener listener : listeners) {
+            	int patientID = event.getItem().getPatientID();
+               listener.setPatientCaseList(patientID);
+                listener.onLoadPatientList();
+            }
+            patientCase.setVisible(true);
             notifyListenersOnPatientItemClicked(event.getItem());
 
 
@@ -112,8 +118,6 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
         patientCase.setVisible(false);
         patientCase.setItems(patientCaseList);
 
-        // double click on patient item show patientCase Grid
-        grid.addItemClickListener(e -> patientCase.setVisible(true));
 
 
         // Add elements to root VerticalLayout
@@ -173,6 +177,14 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
             System.out.println(p.getFirstname());
         }
     }
+
+	@Override
+	public void setPatientCaseList(List<PatientCase> patientCaseList) {
+		this.patientCaseList = patientCaseList;
+		 System.out.println("______________");
+        this.patientCase.setItems(this.patientCaseList);
+		
+	}
 
 
 }

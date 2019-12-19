@@ -45,4 +45,19 @@ public class PatientPresenter implements PatientView.PatientViewListener {
     }
 
 
+	@Override
+	public void setPatientCaseList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setPatientCaseList(int patientID) {
+		model.setPatientCaseList(patientID);
+		view.setPatientCaseList(model.getPatientCaseList());
+		
+	}
+
+
 }

@@ -24,3 +24,4 @@ webpack.generated.js
 *.json
 webpack.config.js
 package-lock.json
+src/main/java/META-INF/persistence.xml

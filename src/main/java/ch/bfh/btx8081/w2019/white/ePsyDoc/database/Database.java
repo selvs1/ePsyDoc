@@ -1,6 +1,5 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 

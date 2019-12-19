@@ -1,10 +1,11 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
+import java.util.List;
 
 import javax.persistence.Query;
-import java.util.List;
+
+import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 
 /**
  * Class for login service.

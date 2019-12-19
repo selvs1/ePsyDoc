@@ -1,12 +1,13 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
-import java.util.List;
+
+import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 
 
 /**
@@ -45,6 +46,7 @@ public class Service<GenericModel> {
         }
         return (GenericModel) list.get(0); // the first result
     }
+    
 
 
     public List<GenericModel> findByAttributFull(String attribut, Object value) throws EntityNotFoundException {
@@ -62,13 +64,23 @@ public class Service<GenericModel> {
 
 
     //Create
-
+    public List<GenericModel> createEntityTable() {
+        String q = "instert into " + dbTableName + " x";
+        return em.createQuery(q).getResultList();
+    }
 
 
     //Update
+    public List<GenericModel> updateEntityTable() {
+        String q = "update " + dbTableName + " x";
+        return em.createQuery(q).getResultList();
+    }
 
     //Delete
-
+    public List<GenericModel> deleteEntityTable() {
+        String q = "delete from " + dbTableName + " x";
+        return em.createQuery(q).getResultList();
+    }
 
 
 
@@ -87,10 +99,14 @@ public class Service<GenericModel> {
     private Query getQuery(String attribute, Object value) {
         return Database.getEntityManager().createQuery("select x from " + dbTableName + " x where x." + attribute + " = :value").setParameter("value", value);
     }
+    
+   
 
+    private Query deleteQuery(String attribute, Object value) {
+        return Database.getEntityManager().createQuery("delete from " + dbTableName + " x where x." + attribute + " = :value").setParameter("value", value);
+    }
 
-
-
+ 
 
 
 

@@ -4,22 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Database;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Service;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.*;
 import com.vaadin.flow.server.VaadinSession;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Service;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.MedicationPlan;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Report;
 
 public class PatientModel {
 //    private EntityManager em;
 //    private EntityTransaction transaction;
 
     private List<Patient> patientList = new ArrayList<Patient>();
+    private List<PatientCase> patientCaseList = new ArrayList<PatientCase>();
 
-    Service<Patient> patientService = new Service<>(new Patient());
+    private Service<Patient> patientService = new Service<>(new Patient());
+    private Service<PatientCase> patientCaseService = new Service<>(new PatientCase());
 
     public PatientModel() {
 
@@ -29,10 +32,16 @@ public class PatientModel {
         return patientList;
     }
 
-
-
     public void setPatientList(List<Patient> patientList) {
         this.patientList = patientList;
+    }
+    
+    public List<PatientCase> getPatientCaseList() {
+        return patientCaseList;
+    }
+
+    public void setPatientCaseList(int patientID) {
+        this.patientCaseList = patientCaseService.findByAttributFull("patientID", patientID);
     }
 
     public Patient getPatient(int patientID) {
@@ -46,6 +55,7 @@ public class PatientModel {
 
         return patientService.findByAttributeFirstElem("patientid", patientID);
     }
+     
 
 
     public void init() {

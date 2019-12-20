@@ -90,12 +90,16 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 			}
 
 		});
-		
+		/*
 		tabs.addSelectedChangeListener(e->{
 			String[] tab = e.getSelectedTab().getElement().getText().split(" ");
-			VaadinSession.getCurrent().setAttribute("patientCaseID", tab[1]);
+			if(!VaadinSession.getCurrent().getAttribute("patientCaseID").toString().equalsIgnoreCase(tab[1])){
+				VaadinSession.getCurrent().setAttribute("patientCaseID", tab[1]);
+				
 				 UI.getCurrent().getPage().reload();
-		});
+			}
+			
+		});*/
 		
 		
 		diagnosisG.addColumn(Diagnosis::getDiagnosis).setHeader("Diagnosis");

@@ -20,6 +20,8 @@ public class ReportModel {
 	private Service<PatientCase> patientCaseService = new Service<>(new PatientCase());
 	private Service<Medication> medicationService = new Service<>(new Medication());
 	private Service<Diagnosis> diagnosisService = new Service<>(new Diagnosis());
+	
+	private PatientCase patientCase;
 
 	
 	public void changePatientCase(int patientCaseID, String consultation) {
@@ -45,6 +47,19 @@ public class ReportModel {
 	public void addPatientCase(Patient patient, Doctor doctor) {
 
 	}
+	
+
+	public PatientCase getPatientCase() {
+		return patientCase;
+	}
+
+	public void setPatientCase(int patientCaseID) {
+		this.patientCase = patientCaseService.findByAttributeFirstElem("patientCaseID", patientCaseID);
+	}
+	
+	public void setPatientCaseToLastPatientCase(int patientCaseID) {
+		this.patientCase= patientCaseService.findLastElem("patientCaseID",patientCaseID);
+	}
 
 	public void removePatientCase(int patientCaseID) {
 
@@ -62,8 +77,8 @@ public class ReportModel {
 		return patientCaseList;
 	}
 
-	public void setPatientCaseList(List<PatientCase> patientCaseList) {
-		this.patientCaseList = patientCaseList;
+	public void setPatientCaseList(int patientID) {
+		this.patientCaseList = patientCaseService.findByAttributFullDESC("patientID", patientID, "patientID");
 	}
 
 	public List<Medication> getMedicationList() {

@@ -15,30 +15,33 @@ public interface ReportView {
 
 		void removePatientCase(int patientCaseID);
 
-		void createDiagnosis(Diagnosis diagnosis);
+		void createDiagnosis(int patientCaseID,Diagnosis diagnosis);
 
 		void removeDiagnosis(int diagnosisID);
 
-		void createMedication(Medication medication);
+		void createMedication(int patientCaseID,Medication medication);
 
 		void removeMedication(int medicationID);
 
 		void save(int patientCaseID, String consultation);
 
-		void getPatientCase();
+		void getPatientCase(int patientCaseID);
+		void getPatientCaseList(int patientCaseID);
 
-		void getDiagnosisList();
+		void getDiagnosisList(int patientCaseID);
 
-		void getMedicationList();
+		void getMedicationList(int patientCaseID);
+		
+		void getDoctor(int patientCaseID);
 
 		
 	}
 
 	void addListener(ReportViewListener listener);
 
-	void displayDoctor(Doctor doctor);
+	void displayDoctor(PatientCase patientCase);
 
-	void updateAll(List<PatientCase> patientCase,List<Diagnosis> diagnosis,List<Medication> medication);
+	void updateAll(List<PatientCase> patientCaseList,PatientCase patientCase,List<Diagnosis> diagnosis,List<Medication> medication);
 
 	void displayDiagnosisList(List<Diagnosis> diagnosis);
 

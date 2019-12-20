@@ -28,11 +28,6 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private List<PatientViewListener> listeners = new ArrayList<>();
 
 	public PatientViewImpl() {
-		// Security check
-		if (VaadinSession.getCurrent().getAttribute("name") == null) {
-			UI.getCurrent().navigate(MainView.class);
-		}
-
 		// Load Data
 		this.addAttachListener(e -> {
 			for (PatientViewListener listener : listeners) {
@@ -121,7 +116,6 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 
 	@Override
 	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
-		System.out.println(patientCaseList);
 		this.patientCase.setItems(patientCaseList);
 	}
 }

@@ -52,7 +52,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 			VaadinSession.getCurrent().setAttribute("patientID", event.getItem().getPatientID());
 			VaadinSession.getCurrent().setAttribute("patientFirstname", event.getItem().getFirstname());
 			VaadinSession.getCurrent().setAttribute("patientName", event.getItem().getLastname());
-			VaadinSession.getCurrent().setAttribute("patientCaseID", "NULL");
+			VaadinSession.getCurrent().setAttribute("patientCaseID", null);
 
 			// Get PatienCase
 			for (PatientViewListener listener : listeners) {

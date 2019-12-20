@@ -71,7 +71,7 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 			VaadinSession.getCurrent().setAttribute("patientID", event.getItem().getPatient().getPatientID());
 			VaadinSession.getCurrent().setAttribute("patientFirstname", event.getItem().getPatient().getFirstname());
 			VaadinSession.getCurrent().setAttribute("patientName", event.getItem().getPatient().getLastname());
-			VaadinSession.getCurrent().setAttribute("patientCaseID", "NULL");
+			VaadinSession.getCurrent().setAttribute("patientCaseID", null);
 
 			// Get PatienCase
 			for (AppointmentViewListener listener : listeners) {

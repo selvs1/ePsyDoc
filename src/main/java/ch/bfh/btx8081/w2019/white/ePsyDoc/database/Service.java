@@ -71,9 +71,9 @@ public class Service<GenericModel> {
 		}
 		return (GenericModel) list.get(0);
 	}
-
-	public GenericModel findById(int id) {
-		return (GenericModel) em.find(model.getClass(), id);
+	
+	public void updatePatientCaseReport(Object patientCaseID, Object report) throws EntityNotFoundException {
+		updateReport(patientCaseID, report).executeUpdate();
 	}
 
 	// CRUD
@@ -85,7 +85,7 @@ public class Service<GenericModel> {
 
 	// Create
 	public List<GenericModel> createEntityTable() {
-		String q = "insert into " + dbTableName + " x";
+		String q = "instert into " + dbTableName + " x";
 		return em.createQuery(q).getResultList();
 	}
 
@@ -93,14 +93,6 @@ public class Service<GenericModel> {
 	public List<GenericModel> updateEntityTable() {
 		String q = "update " + dbTableName + " x";
 		return em.createQuery(q).getResultList();
-	}
-
-	public void updateEntityRow(GenericModel tuple) {
-		//todo: exceptionhandling if data doent exist.
-		em.getTransaction().begin();
-		em.merge(tuple);
-		em.flush();
-		em.getTransaction().commit();
 	}
 
 	// Delete
@@ -141,6 +133,14 @@ public class Service<GenericModel> {
 	}
 
 	// Static
+	
+	private Query updateReport(Object patientCaseID, Object report) {
+		Query query = em.createQuery(
+				"UPDATE PatientCase p SET p.report = :report WHERE p.patientCaseID = :patientCaseID");
+		query.setParameter("report", report);
+		query.setParameter("patientCaseID", patientCaseID);
+		return query;
+	}
 
 	private Query appointmentPatients(Object value) {
 		Query query = em.createQuery(

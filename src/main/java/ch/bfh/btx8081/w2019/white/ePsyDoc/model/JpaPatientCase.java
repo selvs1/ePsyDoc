@@ -62,8 +62,8 @@ public class JpaPatientCase {
         doctor.setStreet("Hoehenweg");
         doctor.setZip("3000");
     	patientCase.setDoctor(doctor);
-    	patientCase.setReport(new Report());
-    	patientCase.setPatient(patient);
+    	patientCase.setDiagnosis(new Report());
+//    	patientCase.setPatient(patient);
     	patientCase.setPatientID(55);
     	
    

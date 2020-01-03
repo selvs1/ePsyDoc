@@ -1,10 +1,6 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,8 +9,8 @@ public class Diagnosis {
 	@GeneratedValue
 	private int diagnosisID;
 
-	@ManyToMany(mappedBy = "diagnoses")
-	private List<Report> reports = new ArrayList<>();
+	@ManyToOne
+	private PatientCase patientCase;
 
 	private String diagnosis;
 
@@ -48,11 +44,11 @@ public class Diagnosis {
 		this.diagnosisID = diagnosisID;
 	}
 
-	public List<Report> getReports() {
-		return reports;
+	public PatientCase getPatientCase() {
+		return patientCase;
 	}
 
-	public void setReports(List<Report> reports) {
-		this.reports = reports;
+	public void setPatientCase(PatientCase patientCase) {
+		this.patientCase = patientCase;
 	}
 }

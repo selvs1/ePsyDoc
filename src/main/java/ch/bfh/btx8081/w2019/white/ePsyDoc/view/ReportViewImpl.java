@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
@@ -21,10 +20,8 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.server.VaadinSession;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.HospIndex;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Drug;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
@@ -239,7 +236,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	public void updateAll(List<PatientCase> patientCaseList, PatientCase patientCase,List<Diagnosis> diagnosis, List<Medication> medication) {
 		doctorFirstnameL.setText(patientCase.getDoctor().getFirstname());
 		doctorNameL.setText(patientCase.getDoctor().getName());
-		consultation.setValue(patientCase.getReport().getReport());
+		consultation.setValue(patientCase.getDiagnosis().getReport());
 		diagnosisG.setItems(diagnosis);
 		medicationG.setItems(medication);
 	}

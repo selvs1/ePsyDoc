@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class PatientCase {
@@ -12,10 +13,10 @@ public class PatientCase {
 	@OneToOne(mappedBy = "patientCase")
 	private Appointment appointment;
 	*/
-	@OneToOne
-	private MedicationPlan medicationPlan;
-	@OneToOne
-	private Report report;
+	@OneToMany(mappedBy = "patientCase")
+	private List<Medication> medications;
+	@OneToMany(mappedBy = "patientCase")
+	private List<Diagnosis> diagnosis;
 
 	//todo: PatientCase noch mit Patienten und Doctor verknüpfen
 	@ManyToOne
@@ -24,29 +25,38 @@ public class PatientCase {
 	private Doctor doctor;
 
 
-//	todo: 10.12.2019 Why string?? - lg sugi
-	private int patientID;
+	//	todo: 10.12.2019 Why string?? - lg sugi
+	//private int patientID;
+	
+	
+	String report;
 
 
 
+	public String getReport() {
+		return report;
+	}
 
-
+	public void setReport(String report) {
+		this.report = report;
+	}
 
 	public PatientCase() {
 
 	}
 
-	public PatientCase(int patientCaseID, int patientID) {
+	public PatientCase(int patientCaseID, Patient patient, Doctor doctor) {
 
-		this.patientID = patientID;
+		this.patient = patient;
 		this.patientCaseID = patientCaseID;
-		this.medicationPlan = new MedicationPlan();
-		this.report = new Report();
+		this.doctor = doctor;
+//		this.medications = getMedications();
+//		this.diagnosis = getDiagnosis();
 
 	}
 
-	public MedicationPlan getMedicationPlan() {
-		return medicationPlan;
+	public List<Medication> getMedications() {
+		return medications;
 	}
 
 	public int getPatientcaseID() {
@@ -57,28 +67,30 @@ public class PatientCase {
 		this.patientCaseID = patientcaseID;
 	}
 
-	public int getPatientID() {
-		return patientID;
+
+	public List<Medication> getMedicationplan() {
+		return medications;
 	}
 
-	public void setPatientID(int patientID) {
-		this.patientID = patientID;
+	public void setMedicationplan(List<Medication> medications) {
+		this.medications = medications;
 	}
 
-	public MedicationPlan getMedicationplan() {
-		return medicationPlan;
+	public List<Diagnosis> getDiagnosis() {
+		return diagnosis;
 	}
 
-	public void setMedicationplan(MedicationPlan medicationplan) {
-		this.medicationPlan = medicationplan;
+	public void setDiagnosis(List<Diagnosis> diagnosis) {
+		this.diagnosis = diagnosis;
+	}
+	
+
+	public Patient getPatient() {
+		return patient;
 	}
 
-	public Report getReport() {
-		return report;
-	}
-
-	public void setReport(Report report) {
-		this.report = report;
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 	public Doctor getDoctor() {
@@ -92,7 +104,7 @@ public class PatientCase {
 	@Override
 	public String toString() {
 		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patientID + ", medicationPlan="
-				+ medicationPlan + ", report=" + report + ", doctor=" + doctor + "]";
+				+ medications + ", report=" + diagnosis + ", doctor=" + doctor + "]";
 	}
 
 }

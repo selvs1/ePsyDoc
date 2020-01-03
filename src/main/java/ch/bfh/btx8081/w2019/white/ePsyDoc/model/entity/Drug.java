@@ -1,9 +1,12 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Drug {
@@ -11,8 +14,8 @@ public class Drug {
 	@GeneratedValue
 	private int drugID;
 
-	@OneToOne(mappedBy = "drug")
-	private Medication medication;
+	@OneToMany(mappedBy = "drug")
+	private List<Medication> medication = new ArrayList<>();
 
 	private String activeIngridient;
 	private String brandName;

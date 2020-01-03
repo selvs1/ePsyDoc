@@ -113,7 +113,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 		// consultation editor settings
 		consultation.setWidth("100%");
-		consultation.addInputListener(e -> {
+		consultation.addValueChangeListener(e -> {
 			for (ReportViewListener listener : listeners) {
 				listener.saveReport(Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()), consultation.getValue());
 			}

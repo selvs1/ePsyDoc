@@ -32,7 +32,7 @@ public class Medication {
 	}
 
 	public Medication(String activeIngredient, String brandName, String strength, String form, String morning,
-			String noon, String evening, String atBedtime, String unit, String instructions, String indication) {
+			String noon, String evening, String atBedtime, String unit, String instructions, String indication,PatientCase patientCase) {
 		
 		this.activeIngredient = activeIngredient;
 		this.brandName = brandName;
@@ -45,7 +45,16 @@ public class Medication {
 		this.unit = unit;
 		this.instructions = instructions;
 		this.indication = indication;
+		this.patientCase=patientCase;
 	}	
+
+	public int getMedicationID() {
+		return medicationID;
+	}
+
+	public void setMedicationID(int medicationID) {
+		this.medicationID = medicationID;
+	}
 
 	public String getActiveIngredient() {
 		return activeIngredient;

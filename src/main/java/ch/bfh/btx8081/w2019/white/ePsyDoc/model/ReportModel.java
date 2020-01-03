@@ -20,8 +20,11 @@ public class ReportModel {
 	private Service<PatientCase> patientCaseService = new Service<>(new PatientCase());
 	private Service<Medication> medicationService = new Service<>(new Medication());
 	private Service<Diagnosis> diagnosisService = new Service<>(new Diagnosis());
+	private Service<Doctor> DoctorService = new Service<>(new Doctor());
+
 	
 	private PatientCase patientCase;
+	private Doctor doctor;
 
 	
 	public void changePatientCase(int patientCaseID, String report) {
@@ -29,23 +32,25 @@ public class ReportModel {
 	}
 	
 	public void addMedication(Medication medication) {
+		medicationService.addMedication(medication);
 
 	}
 
-	public void removeMedication(int medicationID) {
-
+	public void removeMedication(Medication medication) {
+		medicationService.removeMedication(medication);
 	}
 
 	public void addDiagnosis(Diagnosis diagnosis) {
+		diagnosisService.addDiagnosis(diagnosis);
 
 	}
 
-	public void removeDiagnosis(int diagnosisID) {
-
+	public void removeDiagnosis(Diagnosis diagnosis) {
+		diagnosisService.removeDiagnosis(diagnosis);
 	}
 
-	public void addPatientCase(Patient patient, Doctor doctor) {
-
+	public int addPatientCase(PatientCase patientCase) {
+		return patientCaseService.addPatientCase(patientCase);
 	}
 	
 
@@ -62,7 +67,7 @@ public class ReportModel {
 	}
 
 	public void removePatientCase(int patientCaseID) {
-
+		patientCaseService.removePatientCase(patientCaseID);
 	}
 
 	public List<Patient> getPatientList() {
@@ -85,15 +90,26 @@ public class ReportModel {
 		return medicationList;
 	}
 
-	public void setMedicationList(List<Medication> medicationList) {
-		medicationList = medicationList;
+	public void setMedicationList(int patientCaseID) {
+		medicationList = medicationService.findByAttributFull("patientCase.patientCaseID", patientCaseID);
+		//SQL Statement
 	}
 
 	public List<Diagnosis> getDiagnosisList() {
 		return diagnosisList;
 	}
 
-	public void setDiagnosisList(List<Diagnosis> diagnosisList) {
-		diagnosisList = diagnosisList;
+	public void setDiagnosisList(int patientCaseID) {
+		diagnosisList = diagnosisService.findByAttributFull("patientCase.patientCaseID", patientCaseID);
+		//SQL Statement
+	}
+
+	public void setDoctor(int doctorID) {
+		this.doctor = DoctorService.findByAttributeFirstElem("doctorID", doctorID);
+		
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
 	}
 }

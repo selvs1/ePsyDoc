@@ -8,7 +8,11 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
  * Generic class for db service. Don't touch!!
@@ -142,6 +146,7 @@ public class Service<GenericModel> {
 				.setParameter("value", value);
 	}
 
+
 	// Static
 	
 	private void updateReport(Object patientCaseID, Object report) {
@@ -182,6 +187,56 @@ public class Service<GenericModel> {
 			System.out.println(e.getMessage());
 		}
 
+	}
+
+	public void addMedication(Medication medication) {
+		em.getTransaction().begin();
+		em.persist(medication);
+		em.flush();
+		em.getTransaction().commit();
+		
+	}
+
+	public void addDiagnosis(Diagnosis diagnosis) {
+		em.getTransaction().begin();
+		em.persist(diagnosis);
+		em.flush();
+		em.getTransaction().commit();
+		
+	}
+
+	public void removeDiagnosis(Diagnosis diagnosis) {
+		em.getTransaction().begin();
+		Diagnosis d = em.find(Diagnosis.class, diagnosis.getDiagnosisID());
+		em.remove(d);
+		em.flush();
+		em.getTransaction().commit();
+		
+	}
+
+	public void removeMedication(Medication medication) {
+		em.getTransaction().begin();
+		Medication m = em.find(Medication.class, medication.getMedicationID());
+		em.remove(m);
+		em.flush();
+		em.getTransaction().commit();
+	}
+	
+	public void removePatientCase(int patientCaseID) {
+		em.getTransaction().begin();
+		PatientCase pc = em.find(PatientCase.class, patientCaseID);
+		em.remove(pc);
+		em.flush();
+		em.getTransaction().commit();
+		
+	}
+
+	public int addPatientCase(PatientCase patientCase) {
+			em.getTransaction().begin();
+			em.persist(patientCase);
+			em.flush();
+			em.getTransaction().commit();
+			return patientCase.getPatientcaseID();
 	}
 
 }

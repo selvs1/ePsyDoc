@@ -13,13 +13,13 @@ public class Diagnosis {
 	private PatientCase patientCase;
 
 	private String diagnosis;
-
-	public Diagnosis() {
-
-	}
-
 	
-	public Diagnosis(String diagnosis){
+	public Diagnosis() {
+		
+	}
+	
+	public Diagnosis(PatientCase patientCase,String diagnosis){
+		this.patientCase=patientCase;
 	this.diagnosis = diagnosis;
 	}
 

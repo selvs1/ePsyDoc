@@ -11,9 +11,9 @@ public class PatientCase {
 	@Id
 	@GeneratedValue
 	private int patientCaseID;
-	@OneToMany(mappedBy = "patientCase")
+	@OneToMany(mappedBy = "patientCase",cascade=CascadeType.REMOVE)
 	private List<Medication> medications;
-	@OneToMany(mappedBy = "patientCase")
+	@OneToMany(mappedBy = "patientCase",cascade=CascadeType.REMOVE)
 	private List<Diagnosis> diagnosis;
 
 	private Date date;
@@ -22,7 +22,6 @@ public class PatientCase {
 	private Patient patient;
 	@ManyToOne
 	private Doctor doctor;
-
 
 	String report;
 
@@ -43,6 +42,7 @@ public class PatientCase {
 		this.patient = patient;
 		this.doctor = doctor;
 		this.date = new Date(System.currentTimeMillis());
+		this.report = "";
 
 
 	}
@@ -90,7 +90,6 @@ public class PatientCase {
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
-	
 
 	public Date getDate() {
 		return date;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
@@ -73,7 +74,7 @@ public class Service<GenericModel> {
 	}
 	
 	public void updatePatientCaseReport(Object patientCaseID, Object report) throws EntityNotFoundException {
-		updateReport(patientCaseID, report).executeUpdate();
+		updateReport(patientCaseID, report);
 	}
 
 	// CRUD
@@ -101,14 +102,14 @@ public class Service<GenericModel> {
 		return em.createQuery(q).getResultList();
 	}
 
-	public void deleteEntityRow(int id) {
+	/*public void deleteEntityRow(int id) {
 		this.em.getTransaction().begin();
 
 		GenericModel entity = this.findById(id);
 		this.em.remove(entity);
 		this.em.flush();
 		this.em.getTransaction().commit();
-	}
+	}*/
 
 	/**
 	 * Methode with "where" search. Don't touch!!.
@@ -143,12 +144,13 @@ public class Service<GenericModel> {
 
 	// Static
 	
-	private Query updateReport(Object patientCaseID, Object report) {
+	private void updateReport(Object patientCaseID, Object report) {
+		em.getTransaction().begin();
 		Query query = em.createQuery(
 				"UPDATE PatientCase p SET p.report = :report WHERE p.patientCaseID = :patientCaseID");
-		query.setParameter("report", report);
-		query.setParameter("patientCaseID", patientCaseID);
-		return query;
+		query.setParameter("report", report).setParameter("patientCaseID", patientCaseID).executeUpdate();
+		em.flush();
+		em.getTransaction().commit();
 	}
 
 	private Query appointmentPatients(Object value) {

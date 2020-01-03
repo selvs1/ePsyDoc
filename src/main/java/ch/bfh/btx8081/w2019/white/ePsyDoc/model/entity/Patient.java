@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Patient {
@@ -97,8 +100,8 @@ public class Patient {
 		this.adress = adress;
 	}
 
-	public void createPatientCase(int patientCaseID, int patientID) {
-		PatientCase patientCase = new PatientCase(patientCaseID, patientID);
+	public void createPatientCase(int patientCaseID, Patient patient, Doctor doctor) {
+		PatientCase patientCase = new PatientCase(patientCaseID, patient, doctor);
 		patientCaseList.add(patientCase);
 	}
 
@@ -140,8 +143,8 @@ public class Patient {
 
 	}
 
-	public void addPatientCase(int patientCaseID) {
-		patientCaseList.add(new PatientCase(patientCaseID, this.patientID));
+	public void addPatientCase(int patientCaseID, Doctor doctor) {
+		patientCaseList.add(new PatientCase(patientCaseID, this, doctor));
 	}
 
 	public void removePatientCase(int patientCaseID) {

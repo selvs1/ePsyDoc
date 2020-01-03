@@ -103,7 +103,7 @@ public class PatientCase {
 
 	@Override
 	public String toString() {
-		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patientID + ", medicationPlan="
+		return "PatientCase [patientCaseID=" + patientCaseID + ", patientID=" + patient + ", medicationPlan="
 				+ medications + ", report=" + diagnosis + ", doctor=" + doctor + "]";
 	}
 

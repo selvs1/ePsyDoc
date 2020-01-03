@@ -1,6 +1,8 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 import javax.persistence.*;
+
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -9,29 +11,28 @@ public class PatientCase {
 	@Id
 	@GeneratedValue
 	private int patientCaseID;
-	/* not used
-	@OneToOne(mappedBy = "patientCase")
-	private Appointment appointment;
-	*/
+	/*
+	 * not used
+	 * 
+	 * @OneToOne(mappedBy = "patientCase") private Appointment appointment;
+	 */
 	@OneToMany(mappedBy = "patientCase")
 	private List<Medication> medications;
 	@OneToMany(mappedBy = "patientCase")
 	private List<Diagnosis> diagnosis;
 
-	//todo: PatientCase noch mit Patienten und Doctor verknüpfen
+	private Date date;
+
+	// todo: PatientCase noch mit Patienten und Doctor verknüpfen
 	@ManyToOne
 	private Patient patient;
 	@ManyToOne
 	private Doctor doctor;
 
+	// todo: 10.12.2019 Why string?? - lg sugi
+	// private int patientID;
 
-	//	todo: 10.12.2019 Why string?? - lg sugi
-	//private int patientID;
-	
-	
 	String report;
-
-
 
 	public String getReport() {
 		return report;
@@ -67,7 +68,6 @@ public class PatientCase {
 		this.patientCaseID = patientcaseID;
 	}
 
-
 	public List<Medication> getMedicationplan() {
 		return medications;
 	}
@@ -83,7 +83,6 @@ public class PatientCase {
 	public void setDiagnosis(List<Diagnosis> diagnosis) {
 		this.diagnosis = diagnosis;
 	}
-	
 
 	public Patient getPatient() {
 		return patient;

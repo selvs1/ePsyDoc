@@ -101,6 +101,15 @@ public class Service<GenericModel> {
 		return em.createQuery(q).getResultList();
 	}
 
+	public void deleteEntityRow(int id) {
+		this.em.getTransaction().begin();
+
+		GenericModel entity = this.findById(id);
+		this.em.remove(entity);
+		this.em.flush();
+		this.em.getTransaction().commit();
+	}
+
 	/**
 	 * Methode with "where" search. Don't touch!!.
 	 *

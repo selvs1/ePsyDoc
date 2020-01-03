@@ -164,17 +164,17 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 		// Column set and description
 		medicationG.setItems(medicationList);
-		medicationG.addColumn(Medication::getactiveIngredient).setHeader("Active Ingredient");
-		medicationG.addColumn(Medication::getbrandName).setHeader("Brand name");
-		medicationG.addColumn(Medication::getstrength).setHeader("Strength");
-		medicationG.addColumn(Medication::getform).setHeader("Form");
+		medicationG.addColumn(Medication::getActiveIngredient).setHeader("Active Ingredient");
+		medicationG.addColumn(Medication::getBrandName).setHeader("Brand name");
+		medicationG.addColumn(Medication::getStrength).setHeader("Strength");
+		medicationG.addColumn(Medication::getForm).setHeader("Form");
 		medicationG.addColumn(Medication::getmorning).setHeader("morning");
 		medicationG.addColumn(Medication::getnoon).setHeader("noon");
 		medicationG.addColumn(Medication::getevening).setHeader("evening");
 		medicationG.addColumn(Medication::getatBedtime).setHeader("at bedtime");
-		medicationG.addColumn(Medication::getunit).setHeader("Unit");
-		medicationG.addColumn(Medication::getinstructions).setHeader("Instructions");
-		medicationG.addColumn(Medication::getindication).setHeader("Indication");
+		medicationG.addColumn(Medication::getUnit).setHeader("Unit");
+		medicationG.addColumn(Medication::getInstructions).setHeader("Instructions");
+		medicationG.addColumn(Medication::getIndication).setHeader("Indication");
 
 		// Insert values in Grid
 		addMedicationB.addClickListener(e -> {

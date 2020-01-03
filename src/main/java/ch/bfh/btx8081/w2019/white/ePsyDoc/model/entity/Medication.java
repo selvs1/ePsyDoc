@@ -47,6 +47,62 @@ public class Medication {
 		this.indication = indication;
 	}	
 
+	public String getActiveIngredient() {
+		return activeIngredient;
+	}
+
+	public void setActiveIngredient(String activeIngredient) {
+		this.activeIngredient = activeIngredient;
+	}
+
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public String getStrength() {
+		return strength;
+	}
+
+	public void setStrength(String strength) {
+		this.strength = strength;
+	}
+
+	public String getForm() {
+		return form;
+	}
+
+	public void setForm(String form) {
+		this.form = form;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public String getInstructions() {
+		return instructions;
+	}
+
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
+	}
+
+	public String getIndication() {
+		return indication;
+	}
+
+	public void setIndication(String indication) {
+		this.indication = indication;
+	}
+
 	public String getmorning() {
 		return morning;
 	}

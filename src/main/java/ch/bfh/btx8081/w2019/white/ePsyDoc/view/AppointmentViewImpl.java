@@ -56,7 +56,8 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 		});
 		
 		// PatientCase Grid setup
-		patientCase.addColumn(PatientCase::getPatientcaseID).setHeader("Patient Case ID");
+		patientCase.addColumn(PatientCase::getDate).setHeader("Patient Case");
+		patientCase.addColumn(PatientCase::getPatientcaseID).setVisible(false);
 		
 		// Column set and description
 		appointment.addColumn(Appointment::getAppointmentID).setVisible(false);

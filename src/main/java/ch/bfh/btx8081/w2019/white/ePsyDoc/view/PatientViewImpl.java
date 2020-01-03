@@ -36,7 +36,8 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		});
 
 		// PatientCase Grid setup
-		patientCase.addColumn(PatientCase::getPatientcaseID).setHeader("Patient Case ID");
+		patientCase.addColumn(PatientCase::getDate).setHeader("Patient Case");
+		patientCase.addColumn(PatientCase::getPatientcaseID).setVisible(false);
 
 		// Patient Grid setup
 		patient.addColumn(Patient::getPatientID).setHeader("Patient ID");

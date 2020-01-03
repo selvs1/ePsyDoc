@@ -11,26 +11,17 @@ public class PatientCase {
 	@Id
 	@GeneratedValue
 	private int patientCaseID;
-	/*
-	 * not used
-	 * 
-	 * @OneToOne(mappedBy = "patientCase") private Appointment appointment;
-	 */
 	@OneToMany(mappedBy = "patientCase")
 	private List<Medication> medications;
 	@OneToMany(mappedBy = "patientCase")
 	private List<Diagnosis> diagnosis;
 
 	private Date date;
-
-	// todo: PatientCase noch mit Patienten und Doctor verknüpfen
 	@ManyToOne
 	private Patient patient;
 	@ManyToOne
 	private Doctor doctor;
 
-	// todo: 10.12.2019 Why string?? - lg sugi
-	// private int patientID;
 
 	String report;
 
@@ -51,8 +42,6 @@ public class PatientCase {
 		this.patient = patient;
 		this.patientCaseID = patientCaseID;
 		this.doctor = doctor;
-//		this.medications = getMedications();
-//		this.diagnosis = getDiagnosis();
 
 	}
 
@@ -98,6 +87,15 @@ public class PatientCase {
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
+	}
+	
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@Override

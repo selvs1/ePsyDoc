@@ -72,6 +72,10 @@ public class Service<GenericModel> {
 		return (GenericModel) list.get(0);
 	}
 
+	public GenericModel findById(int id) {
+		return (GenericModel) em.find(model.getClass(), id);
+	}
+
 	// CRUD
 	// Read
 	public List<GenericModel> getEntityTable() {
@@ -81,7 +85,7 @@ public class Service<GenericModel> {
 
 	// Create
 	public List<GenericModel> createEntityTable() {
-		String q = "instert into " + dbTableName + " x";
+		String q = "insert into " + dbTableName + " x";
 		return em.createQuery(q).getResultList();
 	}
 
@@ -89,6 +93,14 @@ public class Service<GenericModel> {
 	public List<GenericModel> updateEntityTable() {
 		String q = "update " + dbTableName + " x";
 		return em.createQuery(q).getResultList();
+	}
+
+	public void updateEntityRow(GenericModel tuple) {
+		//todo: exceptionhandling if data doent exist.
+		em.getTransaction().begin();
+		em.merge(tuple);
+		em.flush();
+		em.getTransaction().commit();
 	}
 
 	// Delete

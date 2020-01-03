@@ -236,7 +236,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	public void updateAll(List<PatientCase> patientCaseList, PatientCase patientCase,List<Diagnosis> diagnosis, List<Medication> medication) {
 		doctorFirstnameL.setText(patientCase.getDoctor().getFirstname());
 		doctorNameL.setText(patientCase.getDoctor().getName());
-		consultation.setValue(patientCase.getDiagnosis().getReport());
+//		consultation.setValue(patientCase.getDiagnosis().getReport());
+		consultation.setValue(patientCase.getReport());
 		diagnosisG.setItems(diagnosis);
 		medicationG.setItems(medication);
 	}

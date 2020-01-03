@@ -33,16 +33,16 @@ public class JpaMedication {
             	
         	
         		Medication med1 = new Medication();
-        		med1.setbrandName("ALGIFOR-L Filmtabl 200 mg");
-        		med1.setactiveIngredient("Ibuprofen");
-        		med1.setstrength("200mg");
-        		med1.setform("Brausetablette");
-        		med1.setunit("3 Tage");
+//        		med1.setbrandName("ALGIFOR-L Filmtabl 200 mg");
+//        		med1.setactiveIngredient("Ibuprofen");
+//        		med1.setstrength("200mg");
+//        		med1.setform("Brausetablette");
+//        		med1.setunit("3 Tage");
         		med1.setmorning("0");
         		med1.setevening("0");
-        		med1.setindication("Schmerz, Fieber");
+//        		med1.setindication("Schmerz, Fieber");
         		med1.setnoon("0");
-        		med1.setinstructions("ohne ärtzliche Verschreibung: in 1 Glas kaltem oder warmen Wasser lösen");
+//        		med1.setinstructions("ohne ärtzliche Verschreibung: in 1 Glas kaltem oder warmen Wasser lösen");
         		em.persist(med1);
             }
         em.flush();

@@ -9,10 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Report;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.*;
 
 
 //in progress
@@ -39,43 +36,72 @@ public class JpaPatientCase {
 
         // No? so lets create new entries
         if (createNewPatientCaseEntries) {
-            
-        	PatientCase patc1 = new PatientCase();
-        	
-        	List patientCaseList = new ArrayList<PatientCase>();
-        	PatientCase patientCase = new PatientCase();
-        Patient patient = new Patient();
-        patient.setLastname("Kouassi");
-    	patient.setFirstname("Xavier");
-    	patient.setAdress("Dorfmattweg 8z");
-    	patient.setDate(new Date(2000, 1,1));
-    	patient.setGender("m");
-    	patient.setZip("3110");
-    	
-   
-    	Doctor doctor = new Doctor();
-        doctor.setName("Nippel");
-        doctor.setFirstname("Alain");
-        doctor.setUsername("nippa1");
-        doctor.setPassword("0000");
-        doctor.setCity("Bern");
-        doctor.setStreet("Hoehenweg");
-        doctor.setZip("3000");
-    	patientCase.setDoctor(doctor);
-    	patientCase.setDiagnosis(new Report());
+
+            PatientCase patc1 = new PatientCase();
+
+            List patientCaseList = new ArrayList<PatientCase>();
+            PatientCase patientCase = new PatientCase();
+            Patient patient = new Patient();
+            patient.setLastname("Kouassi");
+            patient.setFirstname("Xavier");
+            patient.setAdress("Dorfmattweg 8z");
+            patient.setDate(new Date(2000, 1, 1));
+            patient.setGender("m");
+            patient.setZip("3110");
+
+
+            Doctor doctor = new Doctor();
+            doctor.setName("Nippel");
+            doctor.setFirstname("Alain");
+            doctor.setUsername("nippa1");
+            doctor.setPassword("0000");
+            doctor.setCity("Bern");
+            doctor.setStreet("Hoehenweg");
+            doctor.setZip("3000");
+            patientCase.setDoctor(doctor);
+//    	patientCase.setDiagnosis(new Report());
+
+
+            //Part für Diagnosen
+            List<Diagnosis> testDiagnosen = new ArrayList<>();
+            testDiagnosen.add(new Diagnosis("Tuberkulose"));
+            testDiagnosen.add(new Diagnosis("Diabetes"));
+            patientCase.setDiagnosis(testDiagnosen);
+
+            patientCase.setReport("De ish nümm ganz 100ert");
+
+
+            List<Medication> testMedication = new ArrayList<>();
+
+            Medication med1 = new Medication();
+            med1.setmorning("0");
+            med1.setevening("0");
+
+            testMedication.add(med1);
+
+
+
+//            patientCase.setMedicationplan();
+
+
+
+
+
+
+
 //    	patientCase.setPatient(patient);
-    	patientCase.setPatientID(55);
-    	
-   
-        	patientCaseList.add(patientCase);
-        	em.persist(patientCaseList);
-            }
+            //patientCase.setPatientID(55);
+
+
+            patientCaseList.add(patientCase);
+            em.persist(patientCaseList);
+        }
         em.flush();
         transaction.commit();
     }
 
     public void checkDoctor() {
-    	
+
         Query q = em.createQuery("select p from PatientCase p");
 
         System.out.println("1 PatientCases, right? " + q.getResultList().size());
@@ -95,9 +121,6 @@ public class JpaPatientCase {
         jpaMed.checkDoctor();
         jpaMed.close();
     }
-
-
-
 
 
 }

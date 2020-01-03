@@ -100,8 +100,8 @@ public class Patient {
 		this.adress = adress;
 	}
 
-	public void createPatientCase(int patientCaseID, Patient patient, Doctor doctor) {
-		PatientCase patientCase = new PatientCase(patientCaseID, patient, doctor);
+	public void createPatientCase(Patient patient, Doctor doctor) {
+		PatientCase patientCase = new PatientCase(patient, doctor);
 		patientCaseList.add(patientCase);
 	}
 
@@ -143,8 +143,9 @@ public class Patient {
 
 	}
 
-	public void addPatientCase(int patientCaseID, Doctor doctor) {
-		patientCaseList.add(new PatientCase(patientCaseID, this, doctor));
+
+	public void addPatientCase(Patient patient, Doctor doctor) { //todo: evtl. mit this machen --> sieht schöner aus
+		patientCaseList.add(new PatientCase(patient, doctor));
 	}
 
 	public void removePatientCase(int patientCaseID) {

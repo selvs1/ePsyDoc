@@ -106,10 +106,12 @@ public class VorlageJpaDoctor {
     }
 
     public static void main(String[] args) {
-        VorlageJpaDoctor vorlage = new VorlageJpaDoctor();
-        vorlage.setUp();
-        vorlage.checkDoctor();
-        vorlage.close();
+//        VorlageJpaDoctor vorlage = new VorlageJpaDoctor();
+//        vorlage.setUp();
+//        vorlage.checkDoctor();
+//        vorlage.close();
+
+        System.out.println("hahah");
     }
 
 

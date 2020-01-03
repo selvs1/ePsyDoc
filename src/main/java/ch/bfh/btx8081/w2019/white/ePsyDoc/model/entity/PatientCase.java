@@ -17,6 +17,7 @@ public class PatientCase {
 	private List<Diagnosis> diagnosis;
 
 	private Date date;
+
 	@ManyToOne
 	private Patient patient;
 	@ManyToOne
@@ -37,11 +38,12 @@ public class PatientCase {
 
 	}
 
-	public PatientCase(int patientCaseID, Patient patient, Doctor doctor) {
+	public PatientCase(Patient patient, Doctor doctor) {
 
 		this.patient = patient;
-		this.patientCaseID = patientCaseID;
 		this.doctor = doctor;
+		this.date = new Date(System.currentTimeMillis());
+
 
 	}
 

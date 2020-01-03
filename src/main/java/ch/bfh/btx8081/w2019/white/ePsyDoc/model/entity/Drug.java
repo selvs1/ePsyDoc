@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Drug {
@@ -14,8 +15,8 @@ public class Drug {
 	@GeneratedValue
 	private int drugID;
 
-	@OneToMany(mappedBy = "drug")
-	private List<Medication> medication = new ArrayList<>();
+	@OneToOne(mappedBy = "drug")
+	private Medication medication;
 
 	private String activeIngridient;
 	private String brandName;

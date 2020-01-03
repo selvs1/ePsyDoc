@@ -5,43 +5,47 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-public class Medication{
+public class Medication {
 	@Id
 	@GeneratedValue
 	private int medicationID;
 
 	@ManyToOne
 	private PatientCase patientCase;
-	@ManyToOne
+	@OneToOne
 	private Drug drug;
-	
-	//private String activeIngredient;
-	//private String brandName;
-	//private String strength;
-	//private String form;
+
+	private String activeIngredient;
+	private String brandName;
+	private String strength;
+	private String form;
 	private String morning;
 	private String noon;
 	private String evening;
 	private String atBedtime;
-	//private String unit;
-	//private String instructions;
-	//private String indication;
+	private String unit;
+	private String instructions;
+	private String indication;
 
 	public Medication() {
 
 	}
-	public Medication(String morning, String noon, String evening, String atBedtime) {
+
+	public Medication(String activeIngredient, String brandName, String strength, String form, String morning,
+			String noon, String evening, String atBedtime, String unit, String instructions, String indication) {
 		
+		this.activeIngredient = activeIngredient;
+		this.brandName = brandName;
+		this.strength = strength;
+		this.form = form;
 		this.morning = morning;
 		this.noon = noon;
 		this.evening = evening;
 		this.atBedtime = atBedtime;
-	}
-	
-
-
-
-
+		this.unit = unit;
+		this.instructions = instructions;
+		this.indication = indication;
+	}	
 
 	public String getmorning() {
 		return morning;
@@ -74,8 +78,5 @@ public class Medication{
 	public void setatBedtime(String atBedtime) {
 		this.atBedtime = atBedtime;
 	}
-
-
-
 
 }

@@ -78,7 +78,7 @@ public class ReportModel {
 	}
 
 	public void setPatientCaseList(int patientID) {
-		this.patientCaseList = patientCaseService.findByAttributFullDESC("patientID", patientID, "patientID");
+		this.patientCaseList = patientCaseService.findByAttributFullDESC("patient.patientID", patientID, "patient.patientID");
 	}
 
 	public List<Medication> getMedicationList() {

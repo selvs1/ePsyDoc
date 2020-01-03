@@ -18,7 +18,7 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	@Override
-	public void createPatientCase(Patient patient, Doctor doctor) {
+	public void addPatientCase(Patient patient, Doctor doctor) {
 		model.addPatientCase(patient, doctor);
 		view.updateAll(model.getPatientCaseList(),model.getPatientCase(),model.getDiagnosisList(),model.getMedicationList());
 	}
@@ -31,7 +31,7 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	@Override
-	public void createDiagnosis(int patientCaseID,Diagnosis diagnosis) {
+	public void addDiagnosis(int patientCaseID,Diagnosis diagnosis) {
 		model.setPatientCase(patientCaseID);
 		model.addDiagnosis(diagnosis);
 		view.displayDiagnosisList(model.getDiagnosisList());
@@ -45,7 +45,7 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	@Override
-	public void createMedication(int patientCaseID,Medication medication) {
+	public void addMedication(int patientCaseID,Medication medication) {
 		model.setPatientCase(patientCaseID);
 		model.addMedication(medication);
 		view.displayMedicationList(model.getMedicationList());
@@ -60,8 +60,8 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	@Override
-	public void save(int patientCaseID, String consultation) {
-		model.changePatientCase(patientCaseID, consultation);
+	public void saveReport(int patientCaseID, String report) {
+		model.changePatientCase(patientCaseID, report);
 	}
 
 	@Override

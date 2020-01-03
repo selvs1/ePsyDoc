@@ -24,8 +24,8 @@ public class ReportModel {
 	private PatientCase patientCase;
 
 	
-	public void changePatientCase(int patientCaseID, String consultation) {
-		
+	public void changePatientCase(int patientCaseID, String report) {
+		patientCaseService.updatePatientCaseReport(patientCaseID, report);
 	}
 	
 	public void addMedication(Medication medication) {

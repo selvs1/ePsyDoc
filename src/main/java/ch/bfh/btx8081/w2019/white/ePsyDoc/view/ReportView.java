@@ -11,37 +11,40 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 public interface ReportView {
 
 	interface ReportViewListener {
-		void createPatientCase(Patient patient, Doctor doctor);
+
+		void addPatientCase(Patient patient, Doctor doctor);
 
 		void removePatientCase(int patientCaseID);
 
-		void createDiagnosis(int patientCaseID,Diagnosis diagnosis);
+		void addDiagnosis(int patientCaseID, Diagnosis diagnosis);
 
 		void removeDiagnosis(int diagnosisID);
 
-		void createMedication(int patientCaseID,Medication medication);
+		void addMedication(int patientCaseID, Medication medication);
 
 		void removeMedication(int medicationID);
 
-		void save(int patientCaseID, String consultation);
+		void saveReport(int patientCaseID, String report);
 
 		void getPatientCase(int patientCaseID);
+
 		void getPatientCaseList(int patientCaseID);
 
 		void getDiagnosisList(int patientCaseID);
 
 		void getMedicationList(int patientCaseID);
-		
+
 		void getDoctor(int patientCaseID);
 
-		
 	}
 
 	void addListener(ReportViewListener listener);
 
 	void displayDoctor(PatientCase patientCase);
 
-	void updateAll(List<PatientCase> patientCaseList,PatientCase patientCase,List<Diagnosis> diagnosis,List<Medication> medication);
+	// updated ganze Patientcaseview
+	void updateAll(List<PatientCase> patientCaseList, PatientCase patientCase, List<Diagnosis> diagnosis,
+			List<Medication> medication);
 
 	void displayDiagnosisList(List<Diagnosis> diagnosis);
 
@@ -49,6 +52,5 @@ public interface ReportView {
 
 	void displayRegister(List<PatientCase> patientCase);
 
-	void changeRegister();
 
 }

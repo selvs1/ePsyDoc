@@ -76,29 +76,30 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private Div error = new Div();
 
 	public ReportViewImpl() {
-	
+
 		this.addAttachListener(e -> {
 			for (ReportViewListener listener : listeners) {
 				if (VaadinSession.getCurrent().getAttribute("patientCaseID") != null) {
-				listener.getDoctor(
-						Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()));
-				listener.getPatientCaseList(Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientID").toString()));
+					listener.getDoctor(
+							Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()));
+					listener.getPatientCaseList(
+							Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientID").toString()));
 				}
 			}
 
 		});
 		/*
-		tabs.addSelectedChangeListener(e->{
-			String[] tab = e.getSelectedTab().getElement().getText().split(" ");
-			if(!VaadinSession.getCurrent().getAttribute("patientCaseID").toString().equalsIgnoreCase(tab[1])){
-				VaadinSession.getCurrent().setAttribute("patientCaseID", tab[1]);
-				
-				 UI.getCurrent().getPage().reload();
-			}
-			
-		});*/
-		
-		
+		 * tabs.addSelectedChangeListener(e->{ String[] tab =
+		 * e.getSelectedTab().getElement().getText().split(" ");
+		 * if(!VaadinSession.getCurrent().getAttribute("patientCaseID").toString().
+		 * equalsIgnoreCase(tab[1])){
+		 * VaadinSession.getCurrent().setAttribute("patientCaseID", tab[1]);
+		 * 
+		 * UI.getCurrent().getPage().reload(); }
+		 * 
+		 * });
+		 */
+
 		diagnosisG.addColumn(Diagnosis::getDiagnosis).setHeader("Diagnosis");
 		diagnosisG.setItems(diagnosisList);
 		// Diagnosis
@@ -112,6 +113,12 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 
 		// consultation editor settings
 		consultation.setWidth("100%");
+		consultation.addInputListener(e -> {
+			for (ReportViewListener listener : listeners) {
+				listener.saveReport(Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()), consultation.getValue());
+			}
+		});
+		
 		if (VaadinSession.getCurrent().getAttribute("patientCaseID") != null) {
 			patientFirstnameL.setText(VaadinSession.getCurrent().getAttribute("patientFirstname").toString());
 			patientNameL.setText(VaadinSession.getCurrent().getAttribute("patientName").toString());
@@ -183,7 +190,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 						textfieldStrength.getValue(), textfieldForm.getValue(), textfieldMorning.getValue(),
 						textfieldNoon.getValue(), textfieldEvening.getValue(), textfieldAtBedtime.getValue(),
 						textfieldUnit.getValue(), textfieldInstructions.getValue(), textfieldIndication.getValue());
-				listener.createMedication(Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()),medi);
+				listener.addMedication(
+						Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()), medi);
 				medicationG.getDataProvider().refreshAll();
 
 				textfieldactiveIngredient.clear();
@@ -214,8 +222,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		if (VaadinSession.getCurrent().getAttribute("patientCaseID") == null) {
 			root.add(error);
 		} else {
-			root.add(tabs, newB, information, consultation, diagnosisT, addDiagnosisB, diagnosisG,removeDiagnosisB, layout2, layout3, layout4,
-					addMedicationB, medicationG,removeMedicationB, deleteB);
+			root.add(tabs, newB, information, consultation, diagnosisT, addDiagnosisB, diagnosisG, removeDiagnosisB,
+					layout2, layout3, layout4, addMedicationB, medicationG, removeMedicationB, deleteB);
 		}
 		super.content.add(root);
 	}
@@ -233,7 +241,8 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	@Override
-	public void updateAll(List<PatientCase> patientCaseList, PatientCase patientCase,List<Diagnosis> diagnosis, List<Medication> medication) {
+	public void updateAll(List<PatientCase> patientCaseList, PatientCase patientCase, List<Diagnosis> diagnosis,
+			List<Medication> medication) {
 		doctorFirstnameL.setText(patientCase.getDoctor().getFirstname());
 		doctorNameL.setText(patientCase.getDoctor().getName());
 //		consultation.setValue(patientCase.getDiagnosis().getReport());
@@ -257,19 +266,15 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	@Override
 	public void displayRegister(List<PatientCase> patientCase) {
 		tabs.removeAll();
-		for(PatientCase p : patientCase){
+		for (PatientCase p : patientCase) {
 			Tab t = new Tab("C " + p.getPatientcaseID());
 			tabs.add(t);
-			if(p.getPatientcaseID()== Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString())) {
+			if (p.getPatientcaseID() == Integer
+					.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString())) {
 				tabs.setSelectedTab(t);
 			}
 		}
-		
-	}
-
-	@Override
-	public void changeRegister() {
-		// TODO Auto-generated method stub
 
 	}
+
 }

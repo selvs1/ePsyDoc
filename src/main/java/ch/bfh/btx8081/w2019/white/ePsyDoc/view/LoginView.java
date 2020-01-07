@@ -1,29 +1,31 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
 /**
- * Designshape for implementation class.
- *
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
  * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ * 
+ *          LoginView interface contains all functions which are adopted in the
+ *          LoginViewListener class. The Interface LoginViewListener contains
+ *          all functions which are adopted in the LoginModel class.
  */
 public interface LoginView {
     String getTextFieldUsername();
 
     String getTextFieldPassword();
 
-//	boolean showLoginStatus();
-
-    /**
-     * Provides methods to notify on user interaction
-     */
     interface LoginViewListener {
         void onLoginBtnClicked(String username, String password);
     }
 
     void addListener(LoginViewListener listener);
 
-    //    void openSession(String name);
     void openSession();
-//	void openSession();
 
     void notifyProblem(String message);
 }

@@ -5,13 +5,26 @@ import java.util.List;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
+/**
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ * 
+ *          ReportView interface contains all functions which are adopted in the
+ *          ReportViewImpl class. The Interface ReportViewListener contains all
+ *          functions which are adopted in the ReportModel class.
+ */
 public interface ReportView {
 
 	interface ReportViewListener {
-		
+
 		void getAll(int patientCaseID, int patientID);
 
 		void addPatientCase(PatientCase patientCase);
@@ -24,14 +37,14 @@ public interface ReportView {
 
 		void addMedication(int patientCaseID, Medication medication);
 
-		void removeMedication(int patientcase,Medication medication);
+		void removeMedication(int patientcase, Medication medication);
 
 		void saveReport(int patientCaseID, String report);
 
 		void getPatientCase(int patientCaseID);
-		
+
 		void getPatientCaseObject(int patientCaseID);
-		
+
 		void getDoctorObject(int doctorID);
 
 		void getPatientCaseList(int patientCaseID);
@@ -41,7 +54,6 @@ public interface ReportView {
 		void getMedicationList(int patientCaseID);
 
 		void getDoctor(int patientCaseID);
-		
 
 	}
 
@@ -49,24 +61,22 @@ public interface ReportView {
 
 	void displayDoctor(PatientCase patientCase);
 
-	// updated ganze Patientcaseview
-	void updateAll(List<PatientCase> patientCaseList, PatientCase patientCase, List<Diagnosis> diagnosis,
-			List<Medication> medication);
-
 	void displayDiagnosisList(List<Diagnosis> diagnosis);
 
 	void displayMedicationList(List<Medication> medication);
 
 	void displayRegister(List<PatientCase> patientCase);
-	
-	void setPatientCase(PatientCase patientCase);
-	
-	void setDoctor(Doctor doctor);
-	
-	void refresh();
-	
-	void redirect();
-	
 
+	void displayReport(String report);
+
+	void setPatientCase(PatientCase patientCase);
+
+	void setDoctor(Doctor doctor);
+
+	void refresh();
+
+	void redirect();
+
+	void setSessionID(int patientCaseID);
 
 }

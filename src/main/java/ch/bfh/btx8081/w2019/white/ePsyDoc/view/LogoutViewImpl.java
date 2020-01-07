@@ -1,6 +1,5 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LogoutView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
@@ -15,18 +14,27 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 
 @Route("Logout")
 @PageTitle("Logout")
-public class LogoutViewImpl extends VerticalLayout implements LogoutView {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
+/**
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ * 
+ *          Setup logout GUI
+ */
+public class LogoutViewImpl extends VerticalLayout {
+	
 	private VerticalLayout root = new VerticalLayout();
 	private Button backB = new Button(new Icon(VaadinIcon.SIGN_IN));
 	private H1 title = new H1("ePsyDoc");
 	private H2 subtitle = new H2("successfully logged out!");
 
 	public LogoutViewImpl() {
-		//Button settings
 		backB.addClickListener(e-> UI.getCurrent().navigate(MainView.class));
 		
 		// Set settings
@@ -38,9 +46,5 @@ public class LogoutViewImpl extends VerticalLayout implements LogoutView {
 		// Add to Layout
 		this.add(root);
 	}
-
-	@Override
-	public void addListener(LogoutViewListener listener) {
-		
-	}	
+	
 }

@@ -1,8 +1,10 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
-import java.util.List;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Medication {

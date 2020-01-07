@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.presenter;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.PatientModel;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientView;
 
 public class PatientPresenter implements PatientView.PatientViewListener {
@@ -15,7 +16,6 @@ public class PatientPresenter implements PatientView.PatientViewListener {
 
     @Override
     public void loadPatientList() {
-        System.out.println("#set PatientList"); //todo: wegnehmen
         view.displayPatientList(model.getPatientList());
     }
 
@@ -30,4 +30,26 @@ public class PatientPresenter implements PatientView.PatientViewListener {
 	public void loadPatientCaseList() {
 		view.displayPatientList(model.getPatientList());
 	}
+
+	@Override
+	public void getPatientObject(int patientID) {
+		model.setPatient(patientID);
+		view.setPatient(model.getPatient());
+		
+	}
+
+	@Override
+	public void getDoctorObject(int doctorID) {
+		model.setDoctor(doctorID);
+		view.setDoctor(model.getDoctor());
+	}
+
+	@Override
+	public void addPatientCase(PatientCase patientCase,int patientID) {
+		model.addPatientCase(patientCase);
+		model.setPatientCaseList(patientID);
+		view.displayPatientCaseList(model.getPatientCaseList());
+		
+	}
+
 }

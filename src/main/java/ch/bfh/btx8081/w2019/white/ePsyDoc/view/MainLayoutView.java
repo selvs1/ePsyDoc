@@ -21,6 +21,19 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 
 @PreserveOnRefresh
 @CssImport("frontend://styles/mainlayoutview.css")
+
+/**
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ * 
+ *          Setup MailLayout GUI for report, patient and appointment
+ */
 public class MainLayoutView extends Div {
 	private static final long serialVersionUID = 1L;
 	private Header header = new Header();
@@ -91,9 +104,10 @@ public class MainLayoutView extends Div {
 		error.add(errorT, loginB);
 		error.addClassName("sessionError");
 
-		if (VaadinSession.getCurrent().getAttribute("name") != null) {
+		if (VaadinSession.getCurrent().getAttribute("doctorID") == null) {
 			add(error);
 		} else {
+			System.out.println(VaadinSession.getCurrent().getAttribute("doctorID"));
 			add(header, body, footer);
 		}
 	}

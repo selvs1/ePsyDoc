@@ -1,7 +1,5 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.Person;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +15,7 @@ import javax.persistence.OneToMany;
  * @author Sugeelan Selvasingham
  */
 @Entity
-public class Doctor implements Person {
+public class Doctor  {
     @Id
     @GeneratedValue
     private int doctorID;
@@ -25,16 +23,14 @@ public class Doctor implements Person {
     @OneToMany(mappedBy = "doctor")
     private List<Appointment> appointments = new ArrayList<>();
 
-
-    // todo: diese Verbindung ist gemäss ER nicht vorgesehen. Noch mit Gruppe anschauen.
     @OneToMany(mappedBy = "doctor")
-    private List<PatientCase> patientCaseList; //todo: evtl. in patientCases unbenennen
+    private List<PatientCase> patientCaseList; 
 
 
 
     private String firstname;
     private String name;
-    private String username; //todo: change name to username and firstname and birthdate
+    private String username; 
     private String password;
 
     private Date birthdate;
@@ -64,36 +60,6 @@ public class Doctor implements Person {
         this.city = city;
     }
 
-
-    /**
-     * Create a Doctor object either with or without (see below) id.
-     *
-     * @param id This is the id which is relevant for the database.
-     */
-//    public Doctor(int id, String firstName, String name, String userName, String password) {
-//        this(firstName, name, userName, password);
-//        this.emplId = id;
-//    }
-
-    /**
-     * Without id information a random generator creates an id.
-     */
-//    public Doctor(String firstName, String name, String userName, String password) {
-//
-//        this.emplId = new Random().nextInt(100);
-//        this.firstName = firstName;
-//        this.name = name;
-//        this.userName = userName;
-//        this.password = password;
-//    }
-
-//    public Doctor(int id, String firstName, String name, String userName, String password, Date birthDate, String street, String zip, String city) {
-//        this(id, firstName, name, userName, password);
-//        this.birthDate = birthDate;
-//        this.street = street;
-//        this.zip = zip;
-//        this.city = city;
-//    }
     public int getDoctorID() {
         return doctorID;
     }
@@ -114,22 +80,22 @@ public class Doctor implements Person {
         return username;
     }
 
-    @Override
+    
     public Date getBirthdate() {
         return birthdate;
     }
 
-    @Override
+    
     public String getStreet() {
         return street;
     }
 
-    @Override
+    
     public String getZip() {
         return zip;
     }
 
-    @Override
+    
     public String getCity() {
         return city;
     }
@@ -147,7 +113,7 @@ public class Doctor implements Person {
     }
 
     public boolean validPassword(String password) {
-        return this.password.equals(password); //todo: build a encryption mechanism to prevent plaintext password in db
+        return this.password.equals(password); 
     }
 
     public void setDoctorID(int doctorID) {

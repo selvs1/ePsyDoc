@@ -1,7 +1,9 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Diagnosis {

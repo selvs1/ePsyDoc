@@ -4,22 +4,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
-/**
- * Generic class for db service. Don't touch!!
- *
- * @param <GenericModel> Is the entity model used for our database.
- * @author Sugeelan Selvasingham
- */
+
 public class Service<GenericModel> {
 	private GenericModel model;
 	private EntityManager em;

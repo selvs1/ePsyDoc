@@ -1,15 +1,8 @@
-/**
- * This class handles the login procedure. I got inspired by this link:
- * https://github.com/vaadin-learning-center/spring-secured-vaadin/blob/login-overlay-form/src/main/java/org/vaadin/paul/spring/ui/views/LoginView.java
- *
- * @author Sugeelan Selvasingham, Alain Nippel
- */
 package ch.bfh.btx8081.w2019.white.ePsyDoc.view;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.connections.AppointmentConnector;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -18,13 +11,21 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.VaadinSession;
 
-//@Route(value = LoginViewImpl.ROUTE)
-//@PageTitle("Login")
+import ch.bfh.btx8081.w2019.white.ePsyDoc.connections.AppointmentConnector;
 
+/**
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ * 
+ *          Setup login GUI
+ */
 public class LoginViewImpl extends VerticalLayout implements LoginView {
     private static final long serialVersionUID = 1L;
     public static final String ROUTE = "login";
@@ -35,22 +36,14 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
     private H1 title = new H1("ePsyDoc");
     private FormLayout login = new FormLayout();
 
-    // A list of listeners subscribed to this view
     private List<LoginViewListener> listeners = new ArrayList<>();
 
-    //	private LoginOverlay component = new LoginOverlay();
     public LoginViewImpl() {
 
-//		component.addLoginListener(e -> component.close());
         btnSubmit.addClickListener((x) -> {
 			notifyListenersOnLoginBtnClicked();
-//			for (LoginViewListener listener : listeners) {
-//				listener.clickLogin(tfUsername.getValue(), tfPassword.getValue());
-//			}
         });
 
-
-        // Input field settings
         root.addClassName("login");
         root.setWidth("300");
         tfUsername.setPlaceholder("Username");
@@ -65,7 +58,6 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
         tfPassword.setAutoselect(true);
         tfPassword.setClearButtonVisible(true);
 
-        // Add to Layout
         login.add(tfUsername, tfPassword, btnSubmit);
         root.add(title, login);
         this.add(root);
@@ -81,13 +73,6 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
         return tfPassword.getValue();
     }
 
-//	@Override
-//	public boolean showLoginStatus() {
-//		return false;
-//	}
-
-
-    // Iterate through the list, notifying or du some actions to each listner individualy
     public void notifyListenersOnLoginBtnClicked() {
         for (LoginViewListener listener : listeners) {
             listener.onLoginBtnClicked(tfUsername.getValue(), tfPassword.getValue());
@@ -99,17 +84,10 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
         Notification.show("Login not possible for user: " + message);
     }
 
-//    public void openSession(String name) {
-//        this.addClickListener(e -> UI.getCurrent().navigate(AppointmentViewImpl.class));
-//        VaadinSession.getCurrent().setAttribute("name", name);
-//    }
-
     public void openSession() {
         UI.getCurrent().navigate(AppointmentConnector.class);
     }
 
-
-    // Subscribe a listener
     @Override
     public void addListener(LoginViewListener listener) {
         listeners.add(listener);

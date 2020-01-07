@@ -16,7 +16,6 @@ public class ReportModel {
 	private List<Medication> medicationList = new ArrayList<Medication>();
 	private List<Diagnosis> diagnosisList = new ArrayList<Diagnosis>();
 
-	private Service<Patient> patientService = new Service<>(new Patient());
 	private Service<PatientCase> patientCaseService = new Service<>(new PatientCase());
 	private Service<Medication> medicationService = new Service<>(new Medication());
 	private Service<Diagnosis> diagnosisService = new Service<>(new Diagnosis());
@@ -33,7 +32,6 @@ public class ReportModel {
 	
 	public void addMedication(Medication medication) {
 		medicationService.addMedication(medication);
-
 	}
 
 	public void removeMedication(Medication medication) {
@@ -42,7 +40,6 @@ public class ReportModel {
 
 	public void addDiagnosis(Diagnosis diagnosis) {
 		diagnosisService.addDiagnosis(diagnosis);
-
 	}
 
 	public void removeDiagnosis(Diagnosis diagnosis) {
@@ -83,7 +80,7 @@ public class ReportModel {
 	}
 
 	public void setPatientCaseList(int patientID) {
-		this.patientCaseList = patientCaseService.findByAttributFullDESC("patient.patientID", patientID, "patient.patientID");
+		this.patientCaseList = patientCaseService.findByAttributFullDESC("patient.patientID", patientID, "patientCaseID");
 	}
 
 	public List<Medication> getMedicationList() {
@@ -92,7 +89,6 @@ public class ReportModel {
 
 	public void setMedicationList(int patientCaseID) {
 		medicationList = medicationService.findByAttributFull("patientCase.patientCaseID", patientCaseID);
-		//SQL Statement
 	}
 
 	public List<Diagnosis> getDiagnosisList() {
@@ -101,7 +97,6 @@ public class ReportModel {
 
 	public void setDiagnosisList(int patientCaseID) {
 		diagnosisList = diagnosisService.findByAttributFull("patientCase.patientCaseID", patientCaseID);
-		//SQL Statement
 	}
 
 	public void setDoctor(int doctorID) {

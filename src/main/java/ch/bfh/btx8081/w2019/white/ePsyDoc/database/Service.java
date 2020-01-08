@@ -12,28 +12,43 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
-
+/**
+ * Service class connection to database.
+ * 
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ */
 public class Service<GenericModel> {
 	private GenericModel model;
 	private EntityManager em;
 	private String dbTableName;
 
+	/**
+	 * Constructor of Service.
+	 * 
+	 * @param model get model.
+	 */
 	public Service(GenericModel model) {
 		this.model = model;
 		em = Database.createEntityManager();
-		dbTableName = model.getClass().getSimpleName(); // classname same as table name of db
+		dbTableName = model.getClass().getSimpleName();
 	}
 
 	/**
-	 * Dynamic database searching with attribute.
-	 *
-	 * @param attribute Attribute e.g. "username", "firstname".
-	 * @param value     Value e.g. "selvs1", "password1234".
-	 * @return Returns only the first successfully found Doctor object.
-	 * @throws DoctorException Will be thrown if username doesnt exist.
+	 * Get first element.
+	 * 
+	 * @param attribute name of attribute.
+	 * @param value     value of attribute.
+	 * @return First element of list.
+	 * @throws EntityNotFoundException throw exception on failure.
 	 */
 	public GenericModel findByAttributeFirstElem(String attribute, Object value) throws EntityNotFoundException {
-
 		List list = getQuery(attribute, value).setMaxResults(1).getResultList();
 		if (list.size() == 0) {
 			throw new EntityNotFoundException("not found");
@@ -41,27 +56,66 @@ public class Service<GenericModel> {
 		return (GenericModel) list.get(0);
 	}
 
+	/**
+	 * Get appointment from date.
+	 * 
+	 * @param value appointment date.
+	 * @return List.
+	 * @throws EntityNotFoundException throw exception on failure.
+	 */
 	public List<GenericModel> getAppointmentPatient(Object value) throws EntityNotFoundException {
 		List list = appointmentPatients(value).getResultList();
 		return (List<GenericModel>) list;
 	}
 
+	/**
+	 * Get all entry.
+	 * 
+	 * @param attribute name of attribute.
+	 * @param value     value of attribute.
+	 * @return List.
+	 * @throws EntityNotFoundException throw exception on failure.
+	 */
 	public List<GenericModel> findByAttributFull(String attribut, Object value) throws EntityNotFoundException {
 		List list = getQuery(attribut, value).getResultList();
 		return (List<GenericModel>) list;
 	}
 
+	/**
+	 * Get all entry DESC.
+	 * 
+	 * @param attribute     name of attribute.
+	 * @param value         value of attribute.
+	 * @param sortAttribute name of sorting attribute.
+	 * @return List.
+	 * @throws EntityNotFoundException throw exception on failure.
+	 */
 	public List<GenericModel> findByAttributFullDESC(String attribut, Object value, String sortAttribute)
 			throws EntityNotFoundException {
 		List list = getQueryDESC(attribut, value, sortAttribute).getResultList();
 		return (List<GenericModel>) list;
 	}
 
+	/**
+	 * Remove element.
+	 * 
+	 * @param attribute name of attribute.
+	 * @param value     value of attribute.
+	 * @return List.
+	 * @throws EntityNotFoundException throw exception on failure.
+	 */
 	public List<GenericModel> remove(String attribut, Object value) throws EntityNotFoundException {
 		List list = removeQuery(attribut, value).getResultList();
 		return (List<GenericModel>) list;
 	}
 
+	/**
+	 * Get last entry.
+	 * 
+	 * @param attribute name of attribute.
+	 * @param value     value of attribute.
+	 * @return First element from list.
+	 */
 	public GenericModel findLastElem(String attribut, Object value) {
 		List list = getLastQuery(attribut, value).setMaxResults(1).getResultList();
 		if (list.size() == 0) {
@@ -69,88 +123,102 @@ public class Service<GenericModel> {
 		}
 		return (GenericModel) list.get(0);
 	}
-	
+
+	/**
+	 * Update patient case.
+	 * 
+	 * @param patientCaseID get patient case ID.
+	 * @param report        get report.
+	 * @throws EntityNotFoundException throw exception on failure.
+	 */
 	public void updatePatientCaseReport(Object patientCaseID, Object report) throws EntityNotFoundException {
 		updateReport(patientCaseID, report);
 	}
 
-	// CRUD
-	// Read
+	/**
+	 * Select from table.
+	 * 
+	 * @return Selection.
+	 */
 	public List<GenericModel> getEntityTable() {
 		String q = "select x from " + dbTableName + " x";
 		return em.createQuery(q).getResultList();
 	}
 
-	// Create
-	public List<GenericModel> createEntityTable() {
-		String q = "instert into " + dbTableName + " x";
-		return em.createQuery(q).getResultList();
-	}
-
-	// Update
-	public List<GenericModel> updateEntityTable() {
-		String q = "update " + dbTableName + " x";
-		return em.createQuery(q).getResultList();
-	}
-
-	// Delete
-	public List<GenericModel> deleteEntityTable() {
-		String q = "delete from " + dbTableName + " x";
-		return em.createQuery(q).getResultList();
-	}
-
-	/*public void deleteEntityRow(int id) {
-		this.em.getTransaction().begin();
-
-		GenericModel entity = this.findById(id);
-		this.em.remove(entity);
-		this.em.flush();
-		this.em.getTransaction().commit();
-	}*/
-
-	/**
-	 * Methode with "where" search. Don't touch!!.
-	 *
-	 * @param attribute Attribute of database table.
-	 * @param value     Value for attribute.
-	 * @return A Query object.
-	 */
-
 	// Dynamic
+	/**
+	 * Select statement.
+	 * 
+	 * @param attribute name of attribute.
+	 * @param value     value of attribute.
+	 * @return Query.
+	 */
 	private Query getQuery(String attribute, Object value) {
 		return Database.getEntityManager()
 				.createQuery("SELECT x FROM " + dbTableName + " x WHERE x." + attribute + " = :value")
 				.setParameter("value", value);
 	}
 
+	/**
+	 * Get last element.
+	 * 
+	 * @param attribute name of attribute.
+	 * @param value     value of attribute.
+	 * @return Query.
+	 */
 	private Query getLastQuery(String attribute, Object value) {
 		return Database.getEntityManager().createQuery("SELECT x FROM " + dbTableName + " x WHERE x." + attribute
 				+ " = :value ORDER BY x." + attribute + " DESC LIMIT 1").setParameter("value", value);
 	}
 
+	/**
+	 * Get Selection DESC.
+	 * 
+	 * @param attribute     name of attribute.
+	 * @param value         value of attribute.
+	 * @param sortAttribute name of sort attribute.
+	 * @return Query.
+	 */
 	private Query getQueryDESC(String attribute, Object value, String sortAttribute) {
 		return Database.getEntityManager().createQuery("SELECT x FROM " + dbTableName + " x WHERE x." + attribute
 				+ " = :value ORDER BY x." + sortAttribute + " DESC").setParameter("value", value);
 	}
 
+	/**
+	 * Remove query.
+	 * 
+	 * @param attribute name of attribute.
+	 * @param value     value of attribute.
+	 * @return Query.
+	 */
 	private Query removeQuery(String attribute, Object value) {
 		return Database.getEntityManager()
 				.createQuery("DELETE FROM " + dbTableName + " x where x." + attribute + " = :value")
 				.setParameter("value", value);
 	}
 
-
 	// Static
-	
+	/**
+	 * Update report in patient case.
+	 * 
+	 * @param patientCaseID get patient case ID.
+	 * @param report        get report.
+	 */
 	private void updateReport(Object patientCaseID, Object report) {
 		em.getTransaction().begin();
-		Query query = em.createQuery(
-				"UPDATE PatientCase p SET p.report = :report WHERE p.patientCaseID = :patientCaseID");
+		Query query = em
+				.createQuery("UPDATE PatientCase p SET p.report = :report WHERE p.patientCaseID = :patientCaseID");
 		query.setParameter("report", report).setParameter("patientCaseID", patientCaseID).executeUpdate();
 		em.flush();
 		em.getTransaction().commit();
 	}
 
+	/**
+	 * Get appointment from date.
+	 * 
+	 * @param value date of appointment.
+	 * @return Patient list.
+	 */
 	private Query appointmentPatients(Object value) {
 		Query query = em.createQuery(
 				"SELECT a FROM Appointment  a, Patient p WHERE a.appointmentDate = :value GROUP BY a.appointmentID ORDER BY  a.appointmentTime ASC");
@@ -158,55 +226,48 @@ public class Service<GenericModel> {
 		return query;
 	}
 
-	private Query insertPatientCase(String attribute, Object value) {
-		return Database.getEntityManager()
-				.createQuery("DELETE FROM " + dbTableName + " x where x." + attribute + " = :value")
-				.setParameter("value", value);
-	}
-
 	/**
-	 * This methode is only for testing.
-	 *
-	 * @param args
+	 * Add medication.
+	 * 
+	 * @param medication get medication.
 	 */
-	public static void main(String[] args) {
-
-		Service<Patient> test = new Service<>(new Patient());
-
-		try {
-			test.findByAttributeFirstElem("firstname", "toni");
-			System.out.println("yuhu");
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-	}
-
 	public void addMedication(Medication medication) {
 		em.getTransaction().begin();
 		em.persist(medication);
 		em.flush();
 		em.getTransaction().commit();
-		
 	}
 
+	/**
+	 * Add diagnosis.
+	 * 
+	 * @param diagnosis get diagnosis.
+	 */
 	public void addDiagnosis(Diagnosis diagnosis) {
 		em.getTransaction().begin();
 		em.persist(diagnosis);
 		em.flush();
 		em.getTransaction().commit();
-		
 	}
 
+	/**
+	 * Remove diagnosis.
+	 * 
+	 * @param diagnosis get diagnosis.
+	 */
 	public void removeDiagnosis(Diagnosis diagnosis) {
 		em.getTransaction().begin();
 		Diagnosis d = em.find(Diagnosis.class, diagnosis.getDiagnosisID());
 		em.remove(d);
 		em.flush();
 		em.getTransaction().commit();
-		
 	}
 
+	/**
+	 * Remove medication.
+	 * 
+	 * @param medication get medication.
+	 */
 	public void removeMedication(Medication medication) {
 		em.getTransaction().begin();
 		Medication m = em.find(Medication.class, medication.getMedicationID());
@@ -214,22 +275,31 @@ public class Service<GenericModel> {
 		em.flush();
 		em.getTransaction().commit();
 	}
-	
+
+	/**
+	 * Remove patient Case with patient case IDs.
+	 * 
+	 * @param patientCaseID get patient case ID.
+	 */
 	public void removePatientCase(int patientCaseID) {
 		em.getTransaction().begin();
 		PatientCase pc = em.find(PatientCase.class, patientCaseID);
 		em.remove(pc);
 		em.flush();
 		em.getTransaction().commit();
-		
 	}
 
+	/**
+	 * Add Patient Case.
+	 * 
+	 * @param patientCase get patient case.
+	 * @return id of new generated patient case.
+	 */
 	public int addPatientCase(PatientCase patientCase) {
-			em.getTransaction().begin();
-			em.persist(patientCase);
-			em.flush();
-			em.getTransaction().commit();
-			return patientCase.getPatientcaseID();
+		em.getTransaction().begin();
+		em.persist(patientCase);
+		em.flush();
+		em.getTransaction().commit();
+		return patientCase.getPatientcaseID();
 	}
-
 }

@@ -44,13 +44,11 @@ public class Medication {
 	 * Empty constructor for Service class.
 	 */
 	public Medication() {
-
 	}
 
 	public Medication(String activeIngredient, String brandName, String strength, String form, String morning,
 			String noon, String evening, String atBedtime, String unit, String instructions, String indication,
 			PatientCase patientCase) {
-
 		this.activeIngredient = activeIngredient;
 		this.brandName = brandName;
 		this.strength = strength;
@@ -160,5 +158,4 @@ public class Medication {
 	public void setAtBedtime(String atBedtime) {
 		this.atBedtime = atBedtime;
 	}
-
 }

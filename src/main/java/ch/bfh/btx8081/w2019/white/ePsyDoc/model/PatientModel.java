@@ -35,48 +35,92 @@ public class PatientModel {
 	public PatientModel() {
 	}
 
+	/**
+	 * Return patient list.
+	 * 
+	 * @return Patient list.
+	 */
 	public List<Patient> getPatientList() {
 		return patientList;
 	}
 
+	/**
+	 * Set patient list.
+	 * 
+	 * @param patientList get patient list.
+	 */
 	public void setPatientList(List<Patient> patientList) {
 		this.patientList = patientList;
 	}
 
+	/**
+	 * Return patient case list.
+	 * 
+	 * @return Patient case list.
+	 */
 	public List<PatientCase> getPatientCaseList() {
 		return patientCaseList;
 	}
 
+	/**
+	 * Set patient Case list with patient ID.
+	 * 
+	 * @param patientID get patient ID.
+	 */
 	public void setPatientCaseList(int patientID) {
 		this.patientCaseList = patientCaseService.findByAttributFullDESC("patient.patientID", patientID,
 				"patientCaseID");
 	}
 
+	/**
+	 * Method that is executed at the beginning.
+	 */
 	public void init() {
 		setPatientList(patientService.getEntityTable());
 	}
 
+	/**
+	 * Set doctor with doctor ID.
+	 * 
+	 * @param doctorID get doctor ID.
+	 */
 	public void setDoctor(int doctorID) {
 		this.doctor = DoctorService.findByAttributeFirstElem("doctorID", doctorID);
-
 	}
 
+	/**
+	 * Return doctor.
+	 * 
+	 * @return Doctor.
+	 */
 	public Doctor getDoctor() {
 		return doctor;
 	}
 
-	public Patient addPatient(Patient patientID) {
-		return patientService.findByAttributeFirstElem("patientID", patientID);
-	}
-
+	/**
+	 * Set patient with patient ID.
+	 * 
+	 * @param patientID get patient ID.
+	 */
 	public void setPatient(int patientID) {
 		patient = patientService.findByAttributeFirstElem("patientID", patientID);
 	}
 
+	/**
+	 * Return patient.
+	 * 
+	 * @return Patient.
+	 */
 	public Patient getPatient() {
 		return patient;
 	}
 
+	/**
+	 * Add patient case.
+	 * 
+	 * @param patientCase get patient case.
+	 * @return ID form new generated patient case.
+	 */
 	public int addPatientCase(PatientCase patientCase) {
 		return patientCaseService.addPatientCase(patientCase);
 	}

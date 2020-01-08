@@ -41,9 +41,6 @@ public class LoginModel {
 	 * @param doctor get doctor from presenter.
 	 */
 	private void setSession(Doctor doctor) {
-		System.out.println(doctor.getDoctorID());
-		System.out.println(doctor.getFirstname());
-		System.out.println(doctor.getName());
 		VaadinSession.getCurrent().setAttribute("doctorID", doctor.getDoctorID());
 		VaadinSession.getCurrent().setAttribute("doctorFirstname", doctor.getFirstname());
 		VaadinSession.getCurrent().setAttribute("doctorName", doctor.getName());

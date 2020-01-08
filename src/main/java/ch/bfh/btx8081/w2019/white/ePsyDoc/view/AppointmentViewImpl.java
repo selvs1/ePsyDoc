@@ -21,6 +21,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
+ * Setup appointment GUI.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -29,8 +31,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Setup appointment GUI.
  */
 public class AppointmentViewImpl extends MainLayoutView implements AppointmentView {
 
@@ -61,7 +61,7 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 		// DatePicker settings.
 		datePicker.setValue(date);
 
-		// On change date refresh appointment Grid.
+		// On change date refresh appointment grid.
 		datePicker.addValueChangeListener(e -> {
 			date = datePicker.getValue();
 			for (AppointmentViewListener listener : listeners) {
@@ -71,7 +71,7 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 			appointmentG.getDataProvider().refreshAll();
 		});
 
-		// Patient case Grid setup.
+		// Patient case grid setup.
 		patientCaseG.addColumn(PatientCase::getDate).setHeader("Patient Case");
 		patientCaseG.addColumn(PatientCase::getPatientcaseID).setVisible(false);
 
@@ -97,7 +97,7 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 				listener.setPatientCaseList(event.getItem().getPatient().getPatientID());
 			}
 
-			// Update patient case Grid.
+			// Update patient case grid.
 			patientCaseG.setVisible(true);
 			newB.setVisible(true);
 			patientCaseG.getDataProvider().refreshAll();
@@ -128,9 +128,9 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	}
 
 	/**
-	 * @param listeners add listeners.
+	 * Add listeners.
 	 * 
-	 *                  Add listeners.
+	 * @param listeners add listeners.
 	 */
 	@Override
 	public void addListener(AppointmentViewListener listener) {
@@ -138,9 +138,9 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	}
 
 	/**
-	 * @param appointmentList get appointmentList from presenter.
+	 * Set appointment Grid with appointmentList data.
 	 * 
-	 *                        set appointment Grid with appointmentList data.
+	 * @param appointmentList get appointmentList from presenter.
 	 */
 	@Override
 	public void displayAppointmentList(List<Appointment> appointmentList) {
@@ -148,9 +148,9 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	}
 
 	/**
+	 * Set patient case Grid with patientCaseList data.
+	 * 
 	 * @param patientCaseList get patientCaseList from presenter.
-	 *
-	 *                        set patient case Grid with patientCaseList data.
 	 */
 	@Override
 	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
@@ -158,24 +158,22 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	}
 
 	/**
-	 * @param doctor get doctor from presenter.
+	 * Set doctor.
 	 * 
-	 *               set doctor.
+	 * @param doctor get doctor from presenter.
 	 */
 	@Override
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
-
 	}
 
 	/**
-	 * @param patient get patient from presenter
+	 * Set patient.
 	 * 
-	 *                set patient.
+	 * @param patient get patient from presenter.
 	 */
 	@Override
 	public void setPatient(Patient patient) {
 		this.patient = patient;
-
 	}
 }

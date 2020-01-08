@@ -4,6 +4,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.LoginModel;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginView;
 
 /**
+ * Connects model and view.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -13,17 +15,21 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginView;
  * 
  * @version 1.0
  * 
- *          connects model and view.
+ * 
  */
+
 public class LoginPresenter implements LoginView.LoginViewListener {
 
 	private LoginModel model;
 	private LoginView view;
 
 	/**
+	 * Set model, set view and add the presenter class to the view.
 	 * 
-	 * @param model
-	 * @param view
+	 * @param model get model from connector.
+	 * @param view  get view from connector.
+	 * 
+	 * 
 	 */
 	public LoginPresenter(LoginModel model, LoginView view) {
 		this.model = model;
@@ -32,8 +38,11 @@ public class LoginPresenter implements LoginView.LoginViewListener {
 	}
 
 	/**
-	 * @param username
-	 * @param password
+	 * Try to login in model class and create session in the view class. On failure
+	 * throw exception.
+	 * 
+	 * @param username get username from view.
+	 * @param password get password from view.
 	 */
 	@Override
 	public void onLoginBtnClicked(String username, String password) {
@@ -43,6 +52,5 @@ public class LoginPresenter implements LoginView.LoginViewListener {
 		} catch (Exception e) {
 			view.notifyProblem(e.getMessage());
 		}
-
 	}
 }

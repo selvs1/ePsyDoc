@@ -8,6 +8,10 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
+ * ReportView interface contains all functions which are adopted in the
+ * ReportViewImpl class. The Interface ReportViewListener contains all functions
+ * which are adopted in the ReportModel class.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -16,16 +20,12 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          ReportView interface contains all functions which are adopted in the
- *          ReportViewImpl class. The Interface ReportViewListener contains all
- *          functions which are adopted in the ReportModel class.
  */
 public interface ReportView {
 
 	interface ReportViewListener {
 
-		void getAll(int patientCaseID, int patientID);
+		void getAll(int patientCaseID);
 
 		void addPatientCase(PatientCase patientCase);
 
@@ -40,8 +40,6 @@ public interface ReportView {
 		void removeMedication(int patientcase, Medication medication);
 
 		void saveReport(int patientCaseID, String report);
-
-		void getPatientCase(int patientCaseID);
 
 		void getPatientCaseObject(int patientCaseID);
 

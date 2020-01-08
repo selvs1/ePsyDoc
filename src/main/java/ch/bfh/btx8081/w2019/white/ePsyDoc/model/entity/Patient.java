@@ -9,17 +9,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/**
+ * Patient class with all functions.
+ * 
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ */
 @Entity
 public class Patient {
+	// Variables and database settings
 	@Id
 	@GeneratedValue
 	private int patientID;
-
 	@OneToMany(mappedBy = "patient")
 	private List<Appointment> appointments = new ArrayList<>();
-
 	@OneToMany(mappedBy = "patient")
-	private List<PatientCase> patientCaseList; 
+	private List<PatientCase> patientCaseList;
 	private String lastname;
 	private String firstname;
 	private String gender;
@@ -27,9 +38,23 @@ public class Patient {
 	private String adress;
 	private String zip;
 
+	/**
+	 * Empty constructor for Service class.
+	 */
 	public Patient() {
 	}
 
+	/**
+	 * Constructor for patients.
+	 * 
+	 * @param patientID get patient ID.
+	 * @param lastname  get last name.
+	 * @param firstname get first name.
+	 * @param gender    get gender.
+	 * @param date      get date.
+	 * @param adress    get address.
+	 * @param zip       get ZIP.
+	 */
 	public Patient(int patientID, String lastname, String firstname, String gender, Date date, String adress,
 			String zip) {
 		this.patientID = patientID;
@@ -42,111 +67,147 @@ public class Patient {
 		patientCaseList = new ArrayList<PatientCase>();
 	}
 
+	/**
+	 * Return ZIP.
+	 * 
+	 * @return ZIP.
+	 */
 	public String getZip() {
 		return zip;
 	}
 
+	/**
+	 * Set ZIP.
+	 * 
+	 * @param zip get ZIP.
+	 */
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
+	/**
+	 * Return patient ID.
+	 * 
+	 * @return Patient ID.
+	 */
 	public int getPatientID() {
 		return patientID;
 	}
 
+	/**
+	 * Set patient ID.
+	 * 
+	 * @param patientID get patient ID.
+	 */
 	public void setPatientID(int patientID) {
 		this.patientID = patientID;
 	}
 
+	/**
+	 * Return last name.
+	 * 
+	 * @return Last name.
+	 */
 	public String getLastname() {
 		return lastname;
 	}
 
+	/**
+	 * Set last name.
+	 * 
+	 * @param lastname get last name.
+	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
+	/**
+	 * Return first name.
+	 * 
+	 * @return First name.
+	 */
 	public String getFirstname() {
 		return firstname;
 	}
 
+	/**
+	 * Set first name.
+	 * 
+	 * @param firstname get first name.
+	 */
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
+	/**
+	 * Return gender.
+	 * 
+	 * @return Gender.
+	 */
 	public String getGender() {
 		return gender;
 	}
 
+	/**
+	 * Set gender.
+	 * 
+	 * @param gender get gender.
+	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
+	/**
+	 * Return date.
+	 * 
+	 * @return Date.
+	 */
 	public Date getDate() {
 		return date;
 	}
 
+	/**
+	 * Set date.
+	 * 
+	 * @param date get date.
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/**
+	 * Return address.
+	 * 
+	 * @return Address.
+	 */
 	public String getAdress() {
 		return adress;
 	}
 
+	/**
+	 * Set address.
+	 * 
+	 * @param adress get address.
+	 */
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
 
-	public void createPatientCase(Patient patient, Doctor doctor) {
-		PatientCase patientCase = new PatientCase(patient, doctor);
-		patientCaseList.add(patientCase);
-	}
-
+	/**
+	 * Return patient case list.
+	 * 
+	 * @return Patient case List.
+	 */
 	public List<PatientCase> getPatientCaseList() {
 		return patientCaseList;
 	}
 
+	/**
+	 * set patient case list.
+	 * 
+	 * @param patientCaseList get patient case list.
+	 */
 	public void setPatientCaseList(List<PatientCase> patientCaseList) {
 		this.patientCaseList = patientCaseList;
-	}
-
-	public PatientCase getPatientCase(int patientCaseID) {
-		PatientCase returnPatientCase = null;
-		for (PatientCase patientCase : patientCaseList) {
-			if (patientCase.getPatientcaseID() == patientCaseID) {
-				returnPatientCase = patientCase;
-			}
-		}
-		return returnPatientCase;
-	}
-
-	public PatientCase getPatientCaseAtIndex(int index) {
-		return patientCaseList.get(index);
-
-	}
-
-	public PatientCase getLastPatientCase() {
-		return getPatientCaseAtIndex(patientCaseList.size() - 1);
-	}
-
-	public PatientCase getPatientCaseFromPatientCaseID(int patientCaseID) {
-		PatientCase p = null;
-		for (PatientCase patientCase : patientCaseList) {
-			if (patientCase.getPatientcaseID() == patientCaseID) {
-				p = patientCase;
-			}
-		}
-		return p;
-
-	}
-
-
-	public void addPatientCase(Patient patient, Doctor doctor) { //todo: evtl. mit this machen --> sieht schöner aus
-		patientCaseList.add(new PatientCase(patient, doctor));
-	}
-
-	public void removePatientCase(int patientCaseID) {
-		patientCaseList.remove(getPatientCaseFromPatientCaseID(patientCaseID));
 	}
 }

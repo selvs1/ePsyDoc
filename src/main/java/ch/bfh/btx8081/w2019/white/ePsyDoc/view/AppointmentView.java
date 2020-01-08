@@ -9,6 +9,10 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
+ * AppointmentView interface contains all functions which are adopted in the
+ * AppointmentViewListener class. The Interface AppointmentViewListener contains
+ * all functions which are adopted in the AppointmentModel class.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -17,11 +21,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          AppointmentView interface contains all functions which are adopted
- *          in the AppointmentViewListener class. The Interface
- *          AppointmentViewListener contains all functions which are adopted in
- *          the AppointmentModel class.
  */
 public interface AppointmentView {
 	interface AppointmentViewListener {

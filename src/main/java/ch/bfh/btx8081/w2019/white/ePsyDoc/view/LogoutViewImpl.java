@@ -13,6 +13,8 @@ import com.vaadin.flow.router.Route;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 
 /**
+ * Setup logout GUI.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -21,8 +23,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Setup logout GUI.
  */
 @Route("Logout")
 @PageTitle("Logout")

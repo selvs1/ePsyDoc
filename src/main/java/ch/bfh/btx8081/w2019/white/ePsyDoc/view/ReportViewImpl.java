@@ -28,6 +28,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
+ * Setup report GUI
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -36,8 +38,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Setup report GUI
  */
 public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private VerticalLayout information = new VerticalLayout();
@@ -97,8 +97,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 			for (ReportViewListener listener : listeners) {
 				if (VaadinSession.getCurrent().getAttribute("patientCaseID") != null) {
 					listener.getAll(
-							Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()),
-							Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientID").toString()));
+							Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()));
 					listener.getDoctor(
 							Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientCaseID").toString()));
 					listener.getPatientCaseList(
@@ -136,7 +135,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 			}
 		});
 
-		// Setup diagnosis Grid.
+		// Setup diagnosis grid.
 		diagnosisG.addColumn(Diagnosis::getDiagnosis).setHeader("Diagnosis");
 		diagnosisG.setItems(diagnosisList);
 
@@ -161,10 +160,10 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		patientCaseLayout.add(patientCaseI, patientCaseL);
 		information.add(doctorLayout, patientLayout, patientCaseLayout);
 
-		// set diagnose TextField settings.
+		// set diagnose textField settings.
 		diagnosisT.setLabel("Diagnose");
 
-		// fill ComboBox.
+		// fill comboBox.
 		this.combo.setItems("Ibuprofen 200mg", "Ibuprofen 400mg", "Ibuprofen 600mg");
 
 		// Tabs settings.
@@ -215,7 +214,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		medicationG.addColumn(Medication::getInstructions).setHeader("Instructions");
 		medicationG.addColumn(Medication::getIndication).setHeader("Indication");
 
-		// On click insert Medicationvalues in Grid.
+		// On click insert medicationvalues in grid.
 		addMedicationB.addClickListener(e -> {
 			for (ReportViewListener listener : listeners) {
 				listener.getPatientCaseObject(
@@ -299,9 +298,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param listeners add listeners.
+	 * Add listeners.
 	 * 
-	 *                  Add listeners.
+	 * @param listeners add listeners.
 	 */
 	@Override
 	public void addListener(ReportViewListener listener) {
@@ -309,9 +308,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
+	 * Display doctor first and last name.
+	 * 
 	 * @param patientCase get patientCase from presenter.
-	 *
-	 *                    Display doctor first and last name.
 	 */
 	@Override
 	public void displayDoctor(PatientCase patientCase) {
@@ -321,10 +320,10 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param patientCase get patient case from presenter.
+	 * Set all header information (first and last name of doctor and save patient
+	 * case id in Session).
 	 * 
-	 *                    Set all header information (first and last name of doctor
-	 *                    and save patient case id in Session).
+	 * @param patientCase get patient case from presenter.
 	 */
 	@Override
 	public void setSessionID(int patientCaseID) {
@@ -332,10 +331,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param consultation get consultation from presenter.
+	 * fill the consultation textarea with the consultation from patient case.
 	 * 
-	 *                     fill the consultation textarea with the consultation from
-	 *                     patient case.
+	 * @param consultation get consultation from presenter.
 	 */
 	@Override
 	public void displayReport(String report) {
@@ -343,10 +341,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param diagnosisList get diagnosisList from presenter.
+	 * fill the diagnosis grid with the diagnosis in the madicationList.
 	 * 
-	 *                      fill the diagnosis grid with the diagnosis in the
-	 *                      madicationList.
+	 * @param diagnosisList get diagnosisList from presenter.
 	 */
 	@Override
 	public void displayDiagnosisList(List<Diagnosis> diagnosisList) {
@@ -354,10 +351,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param medicationList get medicationList form presenter.
+	 * fill the medication grid with the medication in the madicationList.
 	 * 
-	 *                       fill the medication grid with the medication in the
-	 *                       madicationList.
+	 * @param medicationList get medicationList form presenter.
 	 */
 	@Override
 	public void displayMedicationList(List<Medication> medicationList) {
@@ -365,10 +361,10 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
+	 * remove all tabs and generate new tabs. Add a change tab listener to change
+	 * the patient case.
+	 * 
 	 * @param patientCaseList get patientCaseList from presenter.
-	 *
-	 *                        remove all tabs and generate new tabs. Add a change
-	 *                        tab listener to change the patient case.
 	 */
 	@Override
 	public void displayRegister(List<PatientCase> patientCaseList) {
@@ -393,9 +389,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param patientCase get patientCase from presenter.
+	 * change the patient case in the class.
 	 * 
-	 *                    change the patient case in the class.
+	 * @param patientCase get patientCase from presenter.
 	 */
 	@Override
 	public void setPatientCase(PatientCase patientCase) {
@@ -403,9 +399,9 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param doctor get doctor from presenter.
+	 * change the doctor in the class.
 	 * 
-	 *               change the doctor in the class.
+	 * @param doctor get doctor from presenter.
 	 */
 	@Override
 	public void setDoctor(Doctor doctor) {

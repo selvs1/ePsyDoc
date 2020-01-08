@@ -23,6 +23,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
 @CssImport("frontend://styles/mainlayoutview.css")
 
 /**
+ * Setup MailLayout GUI for report, patient and appointment.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -31,8 +33,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Setup MailLayout GUI for report, patient and appointment.
  */
 public class MainLayoutView extends Div {
 	private static final long serialVersionUID = 1L;

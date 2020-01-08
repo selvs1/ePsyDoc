@@ -10,131 +10,126 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- * This is a concret class for a doctor.
- *
+ * Doctor class with all functions.
+ * 
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
  * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
  */
 @Entity
-public class Doctor  {
-    @Id
-    @GeneratedValue
-    private int doctorID;
+public class Doctor {
+	// Variables and database settings
+	@Id
+	@GeneratedValue
+	private int doctorID;
+	@OneToMany(mappedBy = "doctor")
+	private List<Appointment> appointments = new ArrayList<>();
+	@OneToMany(mappedBy = "doctor")
+	private List<PatientCase> patientCaseList;
+	private String firstname;
+	private String name;
+	private String username;
+	private String password;
+	private Date birthdate;
+	private String street;
+	private String zip;
+	private String city;
 
-    @OneToMany(mappedBy = "doctor")
-    private List<Appointment> appointments = new ArrayList<>();
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    @OneToMany(mappedBy = "doctor")
-    private List<PatientCase> patientCaseList; 
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
 
+	public void setStreet(String street) {
+		this.street = street;
+	}
 
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
 
-    private String firstname;
-    private String name;
-    private String username; 
-    private String password;
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    private Date birthdate;
-    private String street;
-    private String zip;
-    private String city;
+	public int getDoctorID() {
+		return doctorID;
+	}
 
+	public String getName() {
+		return name;
+	}
 
+	public String getFirstname() {
+		return firstname;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	public Date getBirthdate() {
+		return birthdate;
+	}
 
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
+	public String getStreet() {
+		return street;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public String getZip() {
+		return zip;
+	}
 
-    public int getDoctorID() {
-        return doctorID;
-    }
+	public String getCity() {
+		return city;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getFirstname() {
-        return firstname;
-    }
+	public void setFirstname(String firstName) {
+		this.firstname = firstName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public boolean validPassword(String password) {
+		return this.password.equals(password);
+	}
 
-    
-    public Date getBirthdate() {
-        return birthdate;
-    }
+	public void setDoctorID(int doctorID) {
+		this.doctorID = doctorID;
+	}
 
-    
-    public String getStreet() {
-        return street;
-    }
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
 
-    
-    public String getZip() {
-        return zip;
-    }
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
+	}
 
-    
-    public String getCity() {
-        return city;
-    }
+	public List<PatientCase> getPatientCaseList() {
+		return patientCaseList;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFirstname(String firstName) {
-        this.firstname = firstName;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public boolean validPassword(String password) {
-        return this.password.equals(password); 
-    }
-
-    public void setDoctorID(int doctorID) {
-        this.doctorID = doctorID;
-    }
-
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
-    }
-
-    public List<PatientCase> getPatientCaseList() {
-        return patientCaseList;
-    }
-
-    public void setPatientCaseList(List<PatientCase> patientCaseList) {
-        this.patientCaseList = patientCaseList;
-    }
-
+	public void setPatientCaseList(List<PatientCase> patientCaseList) {
+		this.patientCaseList = patientCaseList;
+	}
 
 }

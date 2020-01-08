@@ -7,6 +7,10 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
+ * PatientView interface contains all functions which are adopted in the
+ * PatientViewListener class. The Interface PatientViewListener contains all
+ * functions which are adopted in the PatientModel class.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -15,10 +19,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          PatientView interface contains all functions which are adopted in
- *          the PatientViewListener class. The Interface PatientViewListener
- *          contains all functions which are adopted in the PatientModel class.
  */
 public interface PatientView {
 	interface PatientViewListener {

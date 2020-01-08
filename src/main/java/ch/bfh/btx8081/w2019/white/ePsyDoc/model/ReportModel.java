@@ -10,6 +10,18 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
+/**
+ * Model of Report. Connect to database.
+ * 
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ */
 public class ReportModel {
 	private List<Patient> patientList = new ArrayList<Patient>();
 	private List<PatientCase> patientCaseList = new ArrayList<PatientCase>();
@@ -21,15 +33,13 @@ public class ReportModel {
 	private Service<Diagnosis> diagnosisService = new Service<>(new Diagnosis());
 	private Service<Doctor> DoctorService = new Service<>(new Doctor());
 
-	
 	private PatientCase patientCase;
 	private Doctor doctor;
 
-	
 	public void changePatientCase(int patientCaseID, String report) {
 		patientCaseService.updatePatientCaseReport(patientCaseID, report);
 	}
-	
+
 	public void addMedication(Medication medication) {
 		medicationService.addMedication(medication);
 	}
@@ -49,7 +59,6 @@ public class ReportModel {
 	public int addPatientCase(PatientCase patientCase) {
 		return patientCaseService.addPatientCase(patientCase);
 	}
-	
 
 	public PatientCase getPatientCase() {
 		return patientCase;
@@ -58,9 +67,9 @@ public class ReportModel {
 	public void setPatientCase(int patientCaseID) {
 		this.patientCase = patientCaseService.findByAttributeFirstElem("patientCaseID", patientCaseID);
 	}
-	
+
 	public void setPatientCaseToLastPatientCase(int patientCaseID) {
-		this.patientCase= patientCaseService.findLastElem("patientCaseID",patientCaseID);
+		this.patientCase = patientCaseService.findLastElem("patientCaseID", patientCaseID);
 	}
 
 	public void removePatientCase(int patientCaseID) {
@@ -80,7 +89,8 @@ public class ReportModel {
 	}
 
 	public void setPatientCaseList(int patientID) {
-		this.patientCaseList = patientCaseService.findByAttributFullDESC("patient.patientID", patientID, "patientCaseID");
+		this.patientCaseList = patientCaseService.findByAttributFullDESC("patient.patientID", patientID,
+				"patientCaseID");
 	}
 
 	public List<Medication> getMedicationList() {
@@ -101,7 +111,7 @@ public class ReportModel {
 
 	public void setDoctor(int doctorID) {
 		this.doctor = DoctorService.findByAttributeFirstElem("doctorID", doctorID);
-		
+
 	}
 
 	public Doctor getDoctor() {

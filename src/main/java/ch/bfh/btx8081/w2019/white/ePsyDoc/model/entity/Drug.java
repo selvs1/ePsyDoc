@@ -5,15 +5,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * Drug class with all functions.
+ * 
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ */
 @Entity
 public class Drug {
+	// Variables and database settings
 	@Id
 	@GeneratedValue
 	private int drugID;
-
 	@OneToOne(mappedBy = "drug")
 	private Medication medication;
-
 	private String activeIngridient;
 	private String brandName;
 	private String strength;
@@ -22,8 +33,10 @@ public class Drug {
 	private String instruction;
 	private String unit;
 
+	/**
+	 * Empty constructor for Service class.
+	 */
 	public Drug() {
-
 	}
 
 	public Drug(String activeIngridient, String brandName, String strength, String form, String unit,

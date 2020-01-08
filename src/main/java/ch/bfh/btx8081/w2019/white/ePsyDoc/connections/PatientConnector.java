@@ -11,6 +11,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientViewImpl;
 @Route("Patient")
 @PageTitle("Patient")
 /**
+ * Connects Patient Model and View through the Presenter.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -19,14 +21,12 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.PatientViewImpl;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Connects Patient Model and View through the Presenter
  */
 public class PatientConnector extends VerticalLayout {
 
 	/**
 	 * * Constructor of Patient view. Create new Patient model and view. Create new
-	 * presenter with model and view Add view to GUI
+	 * presenter with model and view Add view to GUI.
 	 */
 	public PatientConnector() {
 		PatientModel model = new PatientModel();

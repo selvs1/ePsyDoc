@@ -15,6 +15,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.connections.AppointmentConnector;
 
 /**
+ * Setup login GUI.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -23,8 +25,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.connections.AppointmentConnector;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Setup login GUI.
  */
 public class LoginViewImpl extends VerticalLayout implements LoginView {
 	private static final long serialVersionUID = 1L;
@@ -75,7 +75,8 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	}
 
 	/**
-	 *
+	 * Return the value of username field.
+	 * 
 	 * @return the username.
 	 */
 	@Override
@@ -84,7 +85,8 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	}
 
 	/**
-	 *
+	 * Return the value of password field.
+	 * 
 	 * @return the password.
 	 */
 	@Override
@@ -102,9 +104,9 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	}
 
 	/**
-	 * @param message error message on login fail.
+	 * Show error notification.
 	 * 
-	 *                Show error notification.
+	 * @param message error message on login fail.
 	 */
 	public void notifyProblem(String message) {
 		Notification.show("Login not possible for user: " + message);
@@ -118,9 +120,9 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	}
 
 	/**
-	 * @param listeners add listeners.
+	 * Add listeners.
 	 * 
-	 *                  Add listeners.
+	 * @param listeners add listeners.
 	 */
 	@Override
 	public void addListener(LoginViewListener listener) {

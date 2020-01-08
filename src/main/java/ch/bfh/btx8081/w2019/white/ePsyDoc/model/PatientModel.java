@@ -8,6 +8,18 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
+/**
+ * Model of Patient. Connect to database.
+ * 
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ */
 public class PatientModel {
 	private List<Patient> patientList = new ArrayList<Patient>();
 	private List<PatientCase> patientCaseList = new ArrayList<PatientCase>();
@@ -19,7 +31,6 @@ public class PatientModel {
 	private Doctor doctor;
 
 	public PatientModel() {
-
 	}
 
 	public List<Patient> getPatientList() {
@@ -42,18 +53,20 @@ public class PatientModel {
 	public void init() {
 		setPatientList(patientService.getEntityTable());
 	}
+
 	public void setDoctor(int doctorID) {
 		this.doctor = DoctorService.findByAttributeFirstElem("doctorID", doctorID);
-		
+
 	}
 
 	public Doctor getDoctor() {
 		return doctor;
 	}
+
 	public Patient addPatient(Patient patientID) {
 		return patientService.findByAttributeFirstElem("patientID", patientID);
 	}
-	
+
 	public void setPatient(int patientID) {
 		patient = patientService.findByAttributeFirstElem("patientID", patientID);
 	}
@@ -65,7 +78,4 @@ public class PatientModel {
 	public int addPatientCase(PatientCase patientCase) {
 		return patientCaseService.addPatientCase(patientCase);
 	}
-	
-
-
 }

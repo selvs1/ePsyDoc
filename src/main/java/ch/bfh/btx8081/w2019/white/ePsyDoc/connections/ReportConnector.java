@@ -11,6 +11,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportViewImpl;
 @Route("Report")
 @PageTitle("Report")
 /**
+ * Connects Report Model and View through the Presenter.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -19,13 +21,11 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportViewImpl;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Connects Report Model and View through the Presenter
  */
 public class ReportConnector extends VerticalLayout {
 	/**
 	 * * Constructor of Report view. Create new Report model and view. Create new
-	 * presenter with model and view Add view to GUI
+	 * presenter with model and view Add view to GUI.
 	 */
 	public ReportConnector() {
 		ReportModel model = new ReportModel();

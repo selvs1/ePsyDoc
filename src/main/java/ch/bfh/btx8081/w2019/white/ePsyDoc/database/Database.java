@@ -12,14 +12,15 @@ import javax.persistence.Persistence;
  * @author Sugeelan Selvasingham
  * @author Viktor Velkov
  * 
- * @version 1.0 This static class helps persisting entity models into database.
- *          A side effect is also reducing the same code block for each entity
+ * @version 1.0
+ * 
+ *          This static class helps persisting entity models into database. A
+ *          side effect is also reducing the same code block for each entity
  *          model through centralization.
  *
  */
 
 public class Database {
-
 	private static EntityManager em = createEntityManager();
 	private static final String PERSISTENCE_UNIT_NAME = "ePsyDoc";
 
@@ -40,5 +41,4 @@ public class Database {
 	public static EntityManager getEntityManager() {
 		return em;
 	}
-
 }

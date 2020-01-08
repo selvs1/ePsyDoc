@@ -7,6 +7,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView;
 
 /**
+ * Connects model and view.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -15,17 +17,16 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.ReportView;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          connects model and view.
  */
 public class ReportPresenter implements ReportView.ReportViewListener {
 	private ReportModel model;
 	private ReportView view;
 
 	/**
+	 * Set model, set view and add the presenter class to the view.
 	 * 
-	 * @param model
-	 * @param view
+	 * @param model get model from connector.
+	 * @param view  get view from connector.
 	 */
 	public ReportPresenter(ReportModel model, ReportView view) {
 		this.model = model;
@@ -34,7 +35,9 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCase
+	 * Create new patient case and update all informations.
+	 * 
+	 * @param patientCase get new patientCase.
 	 */
 	@Override
 	public void addPatientCase(PatientCase patientCase) {
@@ -49,7 +52,9 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
+	 * Remove patient case.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
 	 */
 	@Override
 	public void removePatientCase(int patientCaseID) {
@@ -57,8 +62,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
-	 * @param diagnosis
+	 * Set patient case, add diagnosis and update diagnosis grid in view.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
+	 * @param diagnosis     get new diagnosis.
 	 */
 	@Override
 	public void addDiagnosis(int patientCaseID, Diagnosis diagnosis) {
@@ -69,8 +76,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
-	 * @param diagnosis
+	 * Remove diagnosis and update diagnosis grid in view.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
+	 * @param diagnosis     get selected diagnosis.
 	 */
 	@Override
 	public void removeDiagnosis(int patientCaseID, Diagnosis diagnosis) {
@@ -80,8 +89,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
-	 * @param medication
+	 * Set patient case and add medication. Update medication grid in view.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
+	 * @param medication    get new medication.
 	 */
 	@Override
 	public void addMedication(int patientCaseID, Medication medication) {
@@ -92,8 +103,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
-	 * @param medication
+	 * Remove medication and update view with new Mmdication list.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
+	 * @param medication    get selected medication.
 	 */
 	@Override
 	public void removeMedication(int patientCaseID, Medication medication) {
@@ -103,8 +116,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
-	 * @param report
+	 * Save report in patient case and set report in patient case.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
+	 * @param report        get report of current patientCase.
 	 */
 	@Override
 	public void saveReport(int patientCaseID, String report) {
@@ -113,7 +128,9 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
+	 * Update diagnosis grid.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
 	 */
 	@Override
 	public void getDiagnosisList(int patientCaseID) {
@@ -121,7 +138,9 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
+	 * Update medication grid.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
 	 */
 	@Override
 	public void getMedicationList(int patientCaseID) {
@@ -129,16 +148,9 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
-	 */
-	@Override
-	public void getPatientCase(int patientCaseID) {
-		model.setPatientCase(patientCaseID);
-		view.displayRegister(model.getPatientCaseList());
-	}
-
-	/**
-	 * @param patientCaseID
+	 * Sets patientCase with the help of the patientID. Update doctor in view.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
 	 */
 	@Override
 	public void getDoctor(int patientCaseID) {
@@ -147,7 +159,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientID
+	 * Sets patientCaseList with the help of the patientID. Update the tabs in view
+	 * with current patientCaseList from model.
+	 * 
+	 * @param patientID get patientID from current patient.
 	 */
 	@Override
 	public void getPatientCaseList(int patientID) {
@@ -156,11 +171,14 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
-	 * @param patientID
+	 * Set patientCase, patientCaseList, medicationList, sessionID with
+	 * patientCaseID. Update the view. change doctor, report, medicationList,
+	 * diagnosisList.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
 	 */
 	@Override
-	public void getAll(int patientCaseID, int patientID) {
+	public void getAll(int patientCaseID) {
 		model.setPatientCase(patientCaseID);
 		model.setDiagnosisList(patientCaseID);
 		model.setMedicationList(patientCaseID);
@@ -172,7 +190,10 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param patientCaseID
+	 * Sets patientCase with the help of the patientID. Update the grid in the view
+	 * with the current PatientCaseList.
+	 * 
+	 * @param patientCaseID get patientCaseID from current patientCase.
 	 */
 	@Override
 	public void getPatientCaseObject(int patientCaseID) {
@@ -181,7 +202,9 @@ public class ReportPresenter implements ReportView.ReportViewListener {
 	}
 
 	/**
-	 * @param doctorID
+	 * Sets the current doctor using the id and returns the object to the view.
+	 * 
+	 * @param doctorID get doctorID from current doctor.
 	 */
 	@Override
 	public void getDoctorObject(int doctorID) {

@@ -12,6 +12,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
 @PageTitle("Appointment")
 
 /**
+ * Connects Appointment Model and View through the Presenter.
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -20,14 +21,12 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Connects Appointment Model and View through the Presenter
  */
 public class AppointmentConnector extends VerticalLayout {
 
 	/**
-	 * * Constructor of Appointment view. Create new Appointment model and view.
-	 * Create new presenter with model and view Add view to GUI
+	 * * Constructor of Appointment view. Create new Appointment model and view
+	 * Create new presenter with model and view Add view to GUI.
 	 */
 	public AppointmentConnector() {
 		AppointmentModel model = new AppointmentModel();

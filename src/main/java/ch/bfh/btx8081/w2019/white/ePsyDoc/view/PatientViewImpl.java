@@ -22,6 +22,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
+ * Setup patient GUI.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -30,8 +32,6 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          Setup patient GUI.
  */
 public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private static final long serialVersionUID = 1L;
@@ -56,11 +56,11 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 			}
 		});
 
-		// PatientCase Grid setup.
+		// PatientCase grid setup.
 		patientCaseG.addColumn(PatientCase::getDate).setHeader("Patient Case");
 		patientCaseG.addColumn(PatientCase::getPatientcaseID).setVisible(false);
 
-		// Patient Grid setup.
+		// Patient grid setup.
 		patientG.addColumn(Patient::getPatientID).setHeader("Patient ID");
 		Grid.Column<Patient> firstNameColumn = patientG.addColumn(Patient::getFirstname).setHeader("Firstname");
 		Grid.Column<Patient> lastNameColumn = patientG.addColumn(Patient::getLastname).setHeader("Lastname");
@@ -83,7 +83,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 				listener.setPatientCaseList(patientID);
 			}
 
-			// Update patient case Grid.
+			// Update patient case grid.
 			patientCaseG.setVisible(true);
 			newB.setVisible(true);
 			patientCaseG.getDataProvider().refreshAll();
@@ -116,7 +116,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		lastNameField.setSizeFull();
 		lastNameField.setPlaceholder("Filter");
 
-		// Set visability of create Button and patient case Grid.
+		// Set visability of create button and patient case grid.
 		patientCaseG.setVisible(false);
 		newB.setVisible(false);
 
@@ -141,9 +141,9 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	}
 
 	/**
-	 * @param listeners add listeners.
+	 * Add listeners.
 	 * 
-	 *                  Add listeners.
+	 * @param listeners add listeners.
 	 */
 	@Override
 	public void addListener(PatientViewListener listener) {
@@ -151,10 +151,10 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	}
 
 	/**
-	 * @param patientList get patientList from presenter.
+	 * Set patientList and create new ListenDataProvider and fill data in patient
+	 * Grid.
 	 * 
-	 *                    set patientList and create new ListenDataProvider and fill
-	 *                    data in patient Grid.
+	 * @param patientList get patientList from presenter.
 	 */
 	@Override
 	public void displayPatientList(List<Patient> patientList) {
@@ -164,9 +164,9 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	}
 
 	/**
-	 * @param patientCaseList get patientCaseList from presenter.
+	 * Set patient case Grid
 	 * 
-	 *                        set patient case Grid
+	 * @param patientCaseList get patientCaseList from presenter.
 	 */
 	@Override
 	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
@@ -174,9 +174,9 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	}
 
 	/**
-	 * @param patient get patient from presenter.
+	 * Set patient.
 	 * 
-	 *                set patient.
+	 * @param patient get patient from presenter.
 	 */
 	@Override
 	public void setPatient(Patient patient) {
@@ -184,9 +184,9 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	}
 
 	/**
-	 * @param doctor get doctor from presenter.
+	 * Set doctor.
 	 * 
-	 *               set doctor.
+	 * @param doctor get doctor from presenter.
 	 */
 	@Override
 	public void setDoctor(Doctor doctor) {

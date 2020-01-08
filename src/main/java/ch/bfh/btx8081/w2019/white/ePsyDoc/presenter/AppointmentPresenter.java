@@ -7,6 +7,8 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentView;
 
 /**
+ * Connects model and view.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai
@@ -15,17 +17,16 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentView;
  * @author Viktor Velkov
  * 
  * @version 1.0
- * 
- *          connects model and view.
  */
 public class AppointmentPresenter implements AppointmentView.AppointmentViewListener {
 	private AppointmentModel model;
 	private AppointmentView view;
 
 	/**
+	 * Set model, set view and add the presenter class to the view.
 	 * 
-	 * @param model
-	 * @param view
+	 * @param model get model from connector.
+	 * @param view  get view from connector.
 	 */
 	public AppointmentPresenter(AppointmentModel model, AppointmentView view) {
 		this.model = model;
@@ -34,7 +35,10 @@ public class AppointmentPresenter implements AppointmentView.AppointmentViewList
 	}
 
 	/**
-	 * @param date
+	 * Set appointmentList from date in model class. Adjusts the grid of the view
+	 * with the current appointmentList.
+	 * 
+	 * @param date get selected date from view.
 	 */
 	@Override
 	public void loadAppointmentData(Date date) {
@@ -43,7 +47,10 @@ public class AppointmentPresenter implements AppointmentView.AppointmentViewList
 	}
 
 	/**
-	 * @param patientID
+	 * Sets the patientCaseList for the patient with the patientID.Adjusts the grid
+	 * of the view with the current patientCaseList.
+	 * 
+	 * @param patientID get patientID from selected patient.
 	 */
 	@Override
 	public void setPatientCaseList(int patientID) {
@@ -52,7 +59,9 @@ public class AppointmentPresenter implements AppointmentView.AppointmentViewList
 	}
 
 	/**
-	 * @param patientID
+	 * Sets the selected patient using the id and returns the object to the view.
+	 * 
+	 * @param patientID get patientID from selected patient.
 	 */
 	@Override
 	public void getPatientObject(int patientID) {
@@ -61,7 +70,9 @@ public class AppointmentPresenter implements AppointmentView.AppointmentViewList
 	}
 
 	/**
-	 * @param doctorID
+	 * Sets the current doctor using the id and returns the object to the view.
+	 * 
+	 * @param doctorID get doctorID from current doctor.
 	 */
 	@Override
 	public void getDoctorObject(int doctorID) {
@@ -70,8 +81,11 @@ public class AppointmentPresenter implements AppointmentView.AppointmentViewList
 	}
 
 	/**
-	 * @param patientCase
-	 * @param patientID
+	 * Add patientCase in model and set the patientCase list with the new generated
+	 * patient case. update the view grid with the new patient case list.
+	 * 
+	 * @param patientCase get new patientCase from view.
+	 * @param patientID   get patientID from selected patient.
 	 */
 	@Override
 	public void addPatientCase(PatientCase patientCase, int patientID) {

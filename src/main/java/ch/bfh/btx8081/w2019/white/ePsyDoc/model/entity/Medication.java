@@ -6,17 +6,28 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+/**
+ * Medication class with all functions.
+ * 
+ * @author Alain Nippel
+ * @author Apiwat-David Gaupp
+ * @author Janahan Sellathurai
+ * @author Marko Miletic
+ * @author Sugeelan Selvasingham
+ * @author Viktor Velkov
+ * 
+ * @version 1.0
+ */
 @Entity
 public class Medication {
+	// Variables and database settings
 	@Id
 	@GeneratedValue
 	private int medicationID;
-
 	@ManyToOne
 	private PatientCase patientCase;
 	@OneToOne
 	private Drug drug;
-
 	private String activeIngredient;
 	private String brandName;
 	private String strength;
@@ -29,13 +40,17 @@ public class Medication {
 	private String instructions;
 	private String indication;
 
+	/**
+	 * Empty constructor for Service class.
+	 */
 	public Medication() {
 
 	}
 
 	public Medication(String activeIngredient, String brandName, String strength, String form, String morning,
-			String noon, String evening, String atBedtime, String unit, String instructions, String indication,PatientCase patientCase) {
-		
+			String noon, String evening, String atBedtime, String unit, String instructions, String indication,
+			PatientCase patientCase) {
+
 		this.activeIngredient = activeIngredient;
 		this.brandName = brandName;
 		this.strength = strength;
@@ -47,8 +62,8 @@ public class Medication {
 		this.unit = unit;
 		this.instructions = instructions;
 		this.indication = indication;
-		this.patientCase=patientCase;
-	}	
+		this.patientCase = patientCase;
+	}
 
 	public int getMedicationID() {
 		return medicationID;

@@ -24,72 +24,106 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.connections.AppointmentConnector;
  * 
  * @version 1.0
  * 
- *          Setup login GUI
+ *          Setup login GUI.
  */
 public class LoginViewImpl extends VerticalLayout implements LoginView {
-    private static final long serialVersionUID = 1L;
-    public static final String ROUTE = "login";
-    private VerticalLayout root = new VerticalLayout();
-    private TextField tfUsername = new TextField();
-    private PasswordField tfPassword = new PasswordField();
-    private Button btnSubmit = new Button("Submit");
-    private H1 title = new H1("ePsyDoc");
-    private FormLayout login = new FormLayout();
+	private static final long serialVersionUID = 1L;
+	public static final String ROUTE = "login";
+	private VerticalLayout root = new VerticalLayout();
+	private TextField tfUsername = new TextField();
+	private PasswordField tfPassword = new PasswordField();
+	private Button btnSubmit = new Button("Submit");
+	private H1 title = new H1("ePsyDoc");
+	private FormLayout login = new FormLayout();
 
-    private List<LoginViewListener> listeners = new ArrayList<>();
+	private List<LoginViewListener> listeners = new ArrayList<>();
 
-    public LoginViewImpl() {
+	/**
+	 * Constructor generate the GUI.
+	 */
+	public LoginViewImpl() {
 
-        btnSubmit.addClickListener((x) -> {
+		// On click login.
+		btnSubmit.addClickListener((x) -> {
 			notifyListenersOnLoginBtnClicked();
-        });
+		});
 
-        root.addClassName("login");
-        root.setWidth("300");
-        tfUsername.setPlaceholder("Username");
-        tfUsername.setLabel("Username");
-        tfUsername.setRequired(true);
-        tfUsername.setAutoselect(true);
-        tfUsername.setClearButtonVisible(true);
+		// Setup root.
+		root.addClassName("login");
+		root.setWidth("300");
 
-        tfPassword.setPlaceholder("Password");
-        tfPassword.setLabel("Password");
-        tfPassword.setRequired(true);
-        tfPassword.setAutoselect(true);
-        tfPassword.setClearButtonVisible(true);
+		// Setup username field.
+		tfUsername.setPlaceholder("Username");
+		tfUsername.setLabel("Username");
+		tfUsername.setRequired(true);
+		tfUsername.setAutoselect(true);
+		tfUsername.setClearButtonVisible(true);
 
-        login.add(tfUsername, tfPassword, btnSubmit);
-        root.add(title, login);
-        this.add(root);
-    }
+		// Setup password field.
+		tfPassword.setPlaceholder("Password");
+		tfPassword.setLabel("Password");
+		tfPassword.setRequired(true);
+		tfPassword.setAutoselect(true);
+		tfPassword.setClearButtonVisible(true);
 
-    @Override
-    public String getTextFieldUsername() {
-        return tfUsername.getValue();
-    }
+		// Add to layout.
+		login.add(tfUsername, tfPassword, btnSubmit);
+		// Add to layout.
+		root.add(title, login);
+		// Add to GUI.
+		this.add(root);
+	}
 
-    @Override
-    public String getTextFieldPassword() {
-        return tfPassword.getValue();
-    }
+	/**
+	 *
+	 * @return the username.
+	 */
+	@Override
+	public String getTextFieldUsername() {
+		return tfUsername.getValue();
+	}
 
-    public void notifyListenersOnLoginBtnClicked() {
-        for (LoginViewListener listener : listeners) {
-            listener.onLoginBtnClicked(tfUsername.getValue(), tfPassword.getValue());
-        }
-    }
+	/**
+	 *
+	 * @return the password.
+	 */
+	@Override
+	public String getTextFieldPassword() {
+		return tfPassword.getValue();
+	}
 
+	/**
+	 * On click login with function onLoginBtnClicked in presenter class.
+	 */
+	public void notifyListenersOnLoginBtnClicked() {
+		for (LoginViewListener listener : listeners) {
+			listener.onLoginBtnClicked(tfUsername.getValue(), tfPassword.getValue());
+		}
+	}
 
-    public void notifyProblem(String message) {
-        Notification.show("Login not possible for user: " + message);
-    }
+	/**
+	 * @param message error message on login fail.
+	 * 
+	 *                Show error notification.
+	 */
+	public void notifyProblem(String message) {
+		Notification.show("Login not possible for user: " + message);
+	}
 
-    public void openSession() {
-        UI.getCurrent().navigate(AppointmentConnector.class);
-    }
+	/**
+	 * redirect to appointment class.
+	 */
+	public void openSession() {
+		UI.getCurrent().navigate(AppointmentConnector.class);
+	}
 
-    @Override
-    public void addListener(LoginViewListener listener) {
-        listeners.add(listener);
-    }
+	/**
+	 * @param listeners add listeners.
+	 * 
+	 *                  Add listeners.
+	 */
+	@Override
+	public void addListener(LoginViewListener listener) {
+		listeners.add(listener);
+	}
 }

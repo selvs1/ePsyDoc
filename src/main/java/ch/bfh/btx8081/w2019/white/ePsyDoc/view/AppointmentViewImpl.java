@@ -30,7 +30,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * 
  * @version 1.0
  * 
- *          Setup appointment GUI
+ *          Setup appointment GUI.
  */
 public class AppointmentViewImpl extends MainLayoutView implements AppointmentView {
 
@@ -46,65 +46,70 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	private Doctor doctor;
 	private Patient patient;
 
+	/**
+	 * Constructor generate the GUI.
+	 */
 	public AppointmentViewImpl() {
 
-		// Load Data
+		// Load data on load.
 		this.addAttachListener(e -> {
 			for (AppointmentViewListener listener : listeners) {
 				listener.loadAppointmentData(new Date(System.currentTimeMillis()));
 			}
 		});
-		
-		// DatePicker settings
+
+		// DatePicker settings.
 		datePicker.setValue(date);
-		
-		// Change date 
+
+		// On change date refresh appointment Grid.
 		datePicker.addValueChangeListener(e -> {
 			date = datePicker.getValue();
 			for (AppointmentViewListener listener : listeners) {
-				Date date2 = new Date(0,0,0).valueOf(date);
+				Date date2 = new Date(0, 0, 0).valueOf(date);
 				listener.loadAppointmentData(date2);
-				}
+			}
 			appointmentG.getDataProvider().refreshAll();
 		});
-		
-		// PatientCase Grid setup
+
+		// Patient case Grid setup.
 		patientCaseG.addColumn(PatientCase::getDate).setHeader("Patient Case");
 		patientCaseG.addColumn(PatientCase::getPatientcaseID).setVisible(false);
-		
-		// Column set and description
+
+		// Column set and description.
 		appointmentG.addColumn(Appointment::getAppointmentID).setVisible(false);
 		appointmentG.addColumn(Appointment::getPatientFirstname).setHeader("Firstname");
 		appointmentG.addColumn(Appointment::getPatientLastname).setHeader("Lastname");
 		appointmentG.addColumn(Appointment::getAppointmentTime).setHeader("Time");
 
-		// Column set, description and settings
+		// Set visability.
 		patientCaseG.setVisible(false);
+		newB.setVisible(false);
 
+		// Column set, description and settings.
 		appointmentG.addItemClickListener(event -> {
 			VaadinSession.getCurrent().setAttribute("patientID", event.getItem().getPatient().getPatientID());
 			VaadinSession.getCurrent().setAttribute("patientFirstname", event.getItem().getPatient().getFirstname());
 			VaadinSession.getCurrent().setAttribute("patientName", event.getItem().getPatient().getLastname());
 			VaadinSession.getCurrent().setAttribute("patientCaseID", null);
 
-			// Get PatienCase
+			// Get patient case.
 			for (AppointmentViewListener listener : listeners) {
 				listener.setPatientCaseList(event.getItem().getPatient().getPatientID());
 			}
 
-			// Update PatientCase Grid
+			// Update patient case Grid.
 			patientCaseG.setVisible(true);
 			newB.setVisible(true);
 			patientCaseG.getDataProvider().refreshAll();
 		});
-		
-		// Click listener PatientCase
+
+		// On click redirect to patient case.
 		patientCaseG.addItemClickListener(event -> {
 			VaadinSession.getCurrent().setAttribute("patientCaseID", event.getItem().getPatientcaseID());
 			UI.getCurrent().navigate("Report");
 		});
-		
-		newB.setVisible(false);
+
+		// On click create new patient case.
 		newB.addClickListener(e -> {
 			for (AppointmentViewListener listener : listeners) {
 				listener.getPatientObject(
@@ -112,38 +117,65 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 				listener.getDoctorObject(
 						Integer.parseInt(VaadinSession.getCurrent().getAttribute("doctorID").toString()));
 				PatientCase pc = new PatientCase(patient, doctor);
-				listener.addPatientCase(pc,Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientID").toString()));
+				listener.addPatientCase(pc,
+						Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientID").toString()));
 			}
 		});
 
-		root.add(title, datePicker, appointmentG, patientCaseG,newB);
+		// Add to layout.
+		root.add(title, datePicker, appointmentG, patientCaseG, newB);
 		super.content.add(root);
 	}
 
+	/**
+	 * @param listeners add listeners.
+	 * 
+	 *                  Add listeners.
+	 */
 	@Override
 	public void addListener(AppointmentViewListener listener) {
 		listeners.add(listener);
 	}
 
+	/**
+	 * @param appointmentList get appointmentList from presenter.
+	 * 
+	 *                        set appointment Grid with appointmentList data.
+	 */
 	@Override
 	public void displayAppointmentList(List<Appointment> appointmentList) {
 		this.appointmentG.setItems(appointmentList);
 	}
 
+	/**
+	 * @param patientCaseList get patientCaseList from presenter.
+	 *
+	 *                        set patient case Grid with patientCaseList data.
+	 */
 	@Override
 	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
 		patientCaseG.setItems(patientCaseList);
 	}
 
+	/**
+	 * @param doctor get doctor from presenter.
+	 * 
+	 *               set doctor.
+	 */
 	@Override
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 
 	}
 
+	/**
+	 * @param patient get patient from presenter
+	 * 
+	 *                set patient.
+	 */
 	@Override
 	public void setPatient(Patient patient) {
-		this.patient=patient;
-		
+		this.patient = patient;
+
 	}
 }

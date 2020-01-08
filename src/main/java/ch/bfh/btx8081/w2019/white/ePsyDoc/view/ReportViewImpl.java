@@ -89,7 +89,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	private Doctor doctor;
 
 	/**
-	 * Constructor generate the GUI
+	 * Constructor generate the GUI.
 	 */
 	public ReportViewImpl() {
 		// Execute after loading the page.
@@ -299,7 +299,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param listeners add listeners
+	 * @param listeners add listeners.
 	 * 
 	 *                  Add listeners.
 	 */
@@ -309,7 +309,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param patientCase get patientCase from presenter
+	 * @param patientCase get patientCase from presenter.
 	 *
 	 *                    Display doctor first and last name.
 	 */
@@ -321,7 +321,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param patientCase get patient case from presenter
+	 * @param patientCase get patient case from presenter.
 	 * 
 	 *                    Set all header information (first and last name of doctor
 	 *                    and save patient case id in Session).
@@ -332,7 +332,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param consultation get consultation from presenter
+	 * @param consultation get consultation from presenter.
 	 * 
 	 *                     fill the consultation textarea with the consultation from
 	 *                     patient case.
@@ -343,7 +343,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param diagnosisList get diagnosisList from presenter
+	 * @param diagnosisList get diagnosisList from presenter.
 	 * 
 	 *                      fill the diagnosis grid with the diagnosis in the
 	 *                      madicationList.
@@ -354,7 +354,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param medicationList get medicationList form presenter
+	 * @param medicationList get medicationList form presenter.
 	 * 
 	 *                       fill the medication grid with the medication in the
 	 *                       madicationList.
@@ -365,7 +365,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param patientCaseList get patientCaseList from presenter
+	 * @param patientCaseList get patientCaseList from presenter.
 	 *
 	 *                        remove all tabs and generate new tabs. Add a change
 	 *                        tab listener to change the patient case.
@@ -393,7 +393,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param patientCase get patientCase from presenter
+	 * @param patientCase get patientCase from presenter.
 	 * 
 	 *                    change the patient case in the class.
 	 */
@@ -403,7 +403,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * @param doctor get doctor from presenter
+	 * @param doctor get doctor from presenter.
 	 * 
 	 *               change the doctor in the class.
 	 */
@@ -413,7 +413,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * Refresh page
+	 * Refresh page.
 	 */
 	@Override
 	public void refresh() {

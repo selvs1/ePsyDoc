@@ -32,7 +32,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.MainView;
  * 
  * @version 1.0
  * 
- *          Setup MailLayout GUI for report, patient and appointment
+ *          Setup MailLayout GUI for report, patient and appointment.
  */
 public class MainLayoutView extends Div {
 	private static final long serialVersionUID = 1L;
@@ -51,8 +51,11 @@ public class MainLayoutView extends Div {
 	private Div error = new Div();
 	Accordion accordion = new Accordion();
 
+	/**
+	 * Constructor generate the GUI.
+	 */
 	public MainLayoutView() {
-		// Navigation
+		// Navigation.
 		appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
 		appointment.add(" Appointments");
 		appointment.addClickListener(e -> UI.getCurrent().navigate("Appointment"));
@@ -66,44 +69,43 @@ public class MainLayoutView extends Div {
 		logout.add(" Logout");
 		logout.addClickListener(e -> logout());
 
-		// Add to menubar
+		// Add to menubar.
 		menuBar.addItem(appointment);
 		menuBar.addItem(patient);
 		menuBar.addItem(report);
 		menuBar.addItem(logout);
 
-		// Header
+		// Header add menubar.
 		header.add(menuBar);
 
-		addClassName("main-view");
-
-		// Show active patient
+		// Show active patient.
 		information.setWidth("180");
 		information.add(new Icon(VaadinIcon.USER));
 		information.add(new Label(String.valueOf(VaadinSession.getCurrent().getAttribute("patientFirstname")) + " "
 				+ String.valueOf(VaadinSession.getCurrent().getAttribute("patientName"))));
 		information.add(new Icon(VaadinIcon.FILE));
 		information.add(new Label(String.valueOf(VaadinSession.getCurrent().getAttribute("patientCaseID"))));
-
 		information.addClassName("patient");
-
 		accordion.add("Information", information);
 
+		// Add class.
+		addClassName("main-view");
 		menuBar.addClassName("navbar");
 		body.addClassName("body");
 		content.addClassName("content");
 
-		// Footer
+		// Footer.
 		footer.add("Ⓒ by ePsyDoc");
 
-		// Add to layout
+		// Add to layout.
 		body.add(accordion, content);
 
-		// Error button
+		// Error button.
 		loginB.addClickListener(e -> UI.getCurrent().navigate(MainView.class));
 		error.add(errorT, loginB);
 		error.addClassName("sessionError");
 
+		// Authorization handling.
 		if (VaadinSession.getCurrent().getAttribute("doctorID") == null) {
 			add(error);
 		} else {
@@ -112,6 +114,9 @@ public class MainLayoutView extends Div {
 		}
 	}
 
+	/**
+	 * close session and navigate to logout page.
+	 */
 	private void logout() {
 		VaadinSession.getCurrent().close();
 		UI.getCurrent().navigate(LogoutViewImpl.class);

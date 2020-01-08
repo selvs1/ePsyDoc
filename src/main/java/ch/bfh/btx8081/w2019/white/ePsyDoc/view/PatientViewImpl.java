@@ -31,7 +31,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
  * 
  * @version 1.0
  * 
- *          Setup patient GUI
+ *          Setup patient GUI.
  */
 public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private static final long serialVersionUID = 1L;
@@ -45,6 +45,9 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	private Patient patient;
 	private Doctor doctor;
 
+	/**
+	 * Constructor generate the GUI.
+	 */
 	public PatientViewImpl() {
 		// Load Data
 		this.addAttachListener(e -> {
@@ -52,13 +55,12 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 				listener.loadPatientCaseList();
 			}
 		});
-	
 
-		// PatientCase Grid setup
+		// PatientCase Grid setup.
 		patientCaseG.addColumn(PatientCase::getDate).setHeader("Patient Case");
 		patientCaseG.addColumn(PatientCase::getPatientcaseID).setVisible(false);
 
-		// Patient Grid setup
+		// Patient Grid setup.
 		patientG.addColumn(Patient::getPatientID).setHeader("Patient ID");
 		Grid.Column<Patient> firstNameColumn = patientG.addColumn(Patient::getFirstname).setHeader("Firstname");
 		Grid.Column<Patient> lastNameColumn = patientG.addColumn(Patient::getLastname).setHeader("Lastname");
@@ -67,36 +69,36 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		patientG.addColumn(Patient::getAdress).setHeader("Address");
 		patientG.addColumn(Patient::getZip).setHeader("ZIP");
 
-		// Click listener Patient
+		// On click listener choose patient.
 		patientG.addItemClickListener(event -> {
 			VaadinSession.getCurrent().setAttribute("patientID", event.getItem().getPatientID());
 			VaadinSession.getCurrent().setAttribute("patientFirstname", event.getItem().getFirstname());
 			VaadinSession.getCurrent().setAttribute("patientName", event.getItem().getLastname());
 			VaadinSession.getCurrent().setAttribute("patientCaseID", null);
 
-			// Get PatienCase
+			// Load patient case.
 			for (PatientViewListener listener : listeners) {
 				int patientID = event.getItem().getPatientID();
 				VaadinSession.getCurrent().setAttribute("patientID", patientID);
 				listener.setPatientCaseList(patientID);
 			}
 
-			// Update PatientCase Grid
+			// Update patient case Grid.
 			patientCaseG.setVisible(true);
 			newB.setVisible(true);
 			patientCaseG.getDataProvider().refreshAll();
 		});
-		// Click listener PatientCase
+		// On click open patient case.
 		patientCaseG.addItemClickListener(event -> {
 			VaadinSession.getCurrent().setAttribute("patientCaseID", event.getItem().getPatientcaseID());
 			UI.getCurrent().navigate("Report");
 		});
 
-		// Data provider
+		// Setup patient filter.
 		patientG.setDataProvider(dataProvider);
 		HeaderRow filterRow = patientG.appendHeaderRow();
 
-		// Firstname filter
+		// First name filter.
 		TextField firstNameField = new TextField();
 		firstNameField.addValueChangeListener(event -> dataProvider.addFilter(
 				patient -> StringUtils.containsIgnoreCase(patient.getFirstname(), firstNameField.getValue())));
@@ -105,7 +107,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		firstNameField.setSizeFull();
 		firstNameField.setPlaceholder("Filter");
 
-		// Lastname filter
+		// Last name filter.
 		TextField lastNameField = new TextField();
 		lastNameField.addValueChangeListener(event -> dataProvider
 				.addFilter(patient -> StringUtils.containsIgnoreCase(patient.getLastname(), lastNameField.getValue())));
@@ -114,10 +116,11 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		lastNameField.setSizeFull();
 		lastNameField.setPlaceholder("Filter");
 
-		// Column set, description and settings
+		// Set visability of create Button and patient case Grid.
 		patientCaseG.setVisible(false);
-		
 		newB.setVisible(false);
+
+		// On click create patient case.
 		newB.addClickListener(e -> {
 			for (PatientViewListener listener : listeners) {
 				listener.getPatientObject(
@@ -125,23 +128,34 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 				listener.getDoctorObject(
 						Integer.parseInt(VaadinSession.getCurrent().getAttribute("doctorID").toString()));
 				PatientCase pc = new PatientCase(patient, doctor);
-				listener.addPatientCase(pc,Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientID").toString()));
+				listener.addPatientCase(pc,
+						Integer.parseInt(VaadinSession.getCurrent().getAttribute("patientID").toString()));
 			}
 		});
-		
 
-		// Add elements to root VerticalLayout
+		// Add elements to root VerticalLayout.
 		root.add(patientG, patientCaseG, newB);
 
-		// Add to layout
+		// Add to layout.
 		super.content.add(root);
 	}
 
+	/**
+	 * @param listeners add listeners.
+	 * 
+	 *                  Add listeners.
+	 */
 	@Override
 	public void addListener(PatientViewListener listener) {
 		listeners.add(listener);
 	}
 
+	/**
+	 * @param patientList get patientList from presenter.
+	 * 
+	 *                    set patientList and create new ListenDataProvider and fill
+	 *                    data in patient Grid.
+	 */
 	@Override
 	public void displayPatientList(List<Patient> patientList) {
 		this.patientList = patientList;
@@ -149,20 +163,33 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 		patientG.setDataProvider(dataProvider);
 	}
 
+	/**
+	 * @param patientCaseList get patientCaseList from presenter.
+	 * 
+	 *                        set patient case Grid
+	 */
 	@Override
 	public void displayPatientCaseList(List<PatientCase> patientCaseList) {
 		this.patientCaseG.setItems(patientCaseList);
 	}
+
+	/**
+	 * @param patient get patient from presenter.
+	 * 
+	 *                set patient.
+	 */
 	@Override
 	public void setPatient(Patient patient) {
 		this.patient = patient;
-
 	}
 
+	/**
+	 * @param doctor get doctor from presenter.
+	 * 
+	 *               set doctor.
+	 */
 	@Override
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
-
 	}
-
 }

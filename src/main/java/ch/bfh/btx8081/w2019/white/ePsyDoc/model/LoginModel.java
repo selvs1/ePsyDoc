@@ -18,27 +18,34 @@ import com.vaadin.flow.server.VaadinSession;
  * @version 1.0
  */
 public class LoginModel {
-
+	/**
+	 * Check if login works.
+	 * 
+	 * @param username get username from presenter.
+	 * @param password get password from presenter.
+	 * @throws DoctorException Throw invalid password exception.
+	 */
 	public void login(String username, String password) throws DoctorException {
 		Service<Doctor> ls = new Service<>(new Doctor());
-
 		Doctor doctor = ls.findByAttributeFirstElem("username", username);
-
 		if (doctor.validPassword(password)) {
 			setSession(doctor);
-
 		} else {
 			throw new DoctorException("invalid password");
 		}
-
 	}
 
-	private void setSession(Doctor d) {
-		System.out.println(d.getDoctorID());
-		System.out.println(d.getFirstname());
-		System.out.println(d.getName());
-		VaadinSession.getCurrent().setAttribute("doctorID", d.getDoctorID());
-		VaadinSession.getCurrent().setAttribute("doctorFirstname", d.getFirstname());
-		VaadinSession.getCurrent().setAttribute("doctorName", d.getName());
+	/**
+	 * Set Session data.
+	 * 
+	 * @param doctor get doctor from presenter.
+	 */
+	private void setSession(Doctor doctor) {
+		System.out.println(doctor.getDoctorID());
+		System.out.println(doctor.getFirstname());
+		System.out.println(doctor.getName());
+		VaadinSession.getCurrent().setAttribute("doctorID", doctor.getDoctorID());
+		VaadinSession.getCurrent().setAttribute("doctorFirstname", doctor.getFirstname());
+		VaadinSession.getCurrent().setAttribute("doctorName", doctor.getName());
 	}
 }

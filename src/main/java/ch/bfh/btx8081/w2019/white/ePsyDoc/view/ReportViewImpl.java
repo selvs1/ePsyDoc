@@ -206,10 +206,10 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		medicationG.addColumn(Medication::getBrandName).setHeader("Brand name");
 		medicationG.addColumn(Medication::getStrength).setHeader("Strength");
 		medicationG.addColumn(Medication::getForm).setHeader("Form");
-		medicationG.addColumn(Medication::getmorning).setHeader("morning");
-		medicationG.addColumn(Medication::getnoon).setHeader("noon");
-		medicationG.addColumn(Medication::getevening).setHeader("evening");
-		medicationG.addColumn(Medication::getatBedtime).setHeader("at bedtime");
+		medicationG.addColumn(Medication::getMorning).setHeader("morning");
+		medicationG.addColumn(Medication::getNoon).setHeader("noon");
+		medicationG.addColumn(Medication::getEvening).setHeader("evening");
+		medicationG.addColumn(Medication::getAtBedtime).setHeader("at bedtime");
 		medicationG.addColumn(Medication::getUnit).setHeader("Unit");
 		medicationG.addColumn(Medication::getInstructions).setHeader("Instructions");
 		medicationG.addColumn(Medication::getIndication).setHeader("Indication");

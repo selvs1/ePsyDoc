@@ -129,35 +129,35 @@ public class Medication {
 		this.indication = indication;
 	}
 
-	public String getmorning() {
+	public String getMorning() {
 		return morning;
 	}
 
-	public void setmorning(String morning) {
+	public void setMorning(String morning) {
 		this.morning = morning;
 	}
 
-	public String getnoon() {
+	public String getNoon() {
 		return noon;
 	}
 
-	public void setnoon(String noon) {
+	public void setNoon(String noon) {
 		this.noon = noon;
 	}
 
-	public String getevening() {
+	public String getEvening() {
 		return evening;
 	}
 
-	public void setevening(String evening) {
+	public void setEvening(String evening) {
 		this.evening = evening;
 	}
 
-	public String getatBedtime() {
+	public String getAtBedtime() {
 		return atBedtime;
 	}
 
-	public void setatBedtime(String atBedtime) {
+	public void setAtBedtime(String atBedtime) {
 		this.atBedtime = atBedtime;
 	}
 

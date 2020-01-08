@@ -105,15 +105,4 @@ public class Drug {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-
-	@Override
-	public String toString() {
-		return "drug [activeIngridient=" + activeIngridient + ", brandName=" + brandName + ", strength=" + strength
-				+ ", form=" + form + "]";
-	}
-
-	public String activeIngridientToString() {
-		return this.getactiveIngridient();
-	}
-
 }

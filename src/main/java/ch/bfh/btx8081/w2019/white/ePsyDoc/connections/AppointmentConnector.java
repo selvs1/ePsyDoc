@@ -13,6 +13,7 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.view.AppointmentViewImpl;
 
 /**
  * Connects Appointment Model and View through the Presenter.
+ * 
  * @author Alain Nippel
  * @author Apiwat-David Gaupp
  * @author Janahan Sellathurai

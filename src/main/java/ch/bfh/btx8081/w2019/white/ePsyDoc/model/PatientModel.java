@@ -23,13 +23,15 @@ import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 public class PatientModel {
 	private List<Patient> patientList = new ArrayList<Patient>();
 	private List<PatientCase> patientCaseList = new ArrayList<PatientCase>();
-
 	private Service<Patient> patientService = new Service<>(new Patient());
 	private Service<PatientCase> patientCaseService = new Service<>(new PatientCase());
 	private Service<Doctor> DoctorService = new Service<>(new Doctor());
 	private Patient patient;
 	private Doctor doctor;
 
+	/**
+	 * Empty constructor.
+	 */
 	public PatientModel() {
 	}
 

@@ -2,6 +2,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -21,7 +22,7 @@ import javax.persistence.ManyToOne;
 public class Diagnosis {
 	// Variables and database settings
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int diagnosisID;
 	@ManyToOne
 	private PatientCase patientCase;

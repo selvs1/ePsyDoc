@@ -21,7 +21,7 @@ import java.util.List;
 public class PatientCase {
 	// Variables and database settings
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int patientCaseID;
 	@OneToMany(mappedBy = "patientCase", cascade = CascadeType.REMOVE)
 	private List<Medication> medications;

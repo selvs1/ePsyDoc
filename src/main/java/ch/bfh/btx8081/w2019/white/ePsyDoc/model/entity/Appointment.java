@@ -20,7 +20,7 @@ import java.sql.Time;
 public class Appointment {
 	// Variables and database settings
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int appointmentID;
 	@ManyToOne
 	private Doctor doctor;

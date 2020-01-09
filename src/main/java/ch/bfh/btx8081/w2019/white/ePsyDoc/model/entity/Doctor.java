@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -25,7 +26,7 @@ import javax.persistence.OneToMany;
 public class Doctor {
 	// Variables and database settings
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int doctorID;
 	@OneToMany(mappedBy = "doctor")
 	private List<Appointment> appointments = new ArrayList<>();

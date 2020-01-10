@@ -58,10 +58,7 @@ public class MainLayoutView extends Div {
 		// Navigation.
 		appointment.add(new Icon(VaadinIcon.CALENDAR_USER));
 		appointment.add(" Appointments");
-		appointment.addClickListener(e -> {
-			UI.getCurrent().navigate("Appointment");
-			appointment.getElement().getClassList().add("active");
-		});
+		appointment.addClickListener(e -> UI.getCurrent().navigate("Appointment"));
 		patient.add(new Icon(VaadinIcon.USER));
 		patient.add(" Patients");
 		patient.addClickListener(e -> UI.getCurrent().navigate("Patient"));

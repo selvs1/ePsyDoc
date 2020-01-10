@@ -92,6 +92,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	 * Constructor generate the GUI.
 	 */
 	public ReportViewImpl() {
+		
 		// Execute after loading the page.
 		this.addAttachListener(e -> {
 			for (ReportViewListener listener : listeners) {
@@ -308,12 +309,37 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	}
 
 	/**
-	 * Display doctor first and last name.
+	 * Display doctor first and last name. Sets fields active or inactive. Depends if the correct doctor is working on report.
 	 * 
 	 * @param patientCase get patientCase from presenter.
 	 */
 	@Override
 	public void displayDoctor(PatientCase patientCase) {
+		if(Integer.parseInt(VaadinSession.getCurrent().getAttribute("doctorID").toString()) != patientCase.getDoctor().getDoctorID()) {
+			
+			textfieldactiveIngredient.setVisible(false);
+			combo.setVisible(false);
+			textfieldAtBedtime.setVisible(false);
+			textfieldbrandName.setVisible(false);
+			textfieldEvening.setVisible(false);
+			textfieldForm.setVisible(false);
+			textfieldIndication.setVisible(false);
+			textfieldInstructions.setVisible(false);
+			textfieldMorning.setVisible(false);
+			textfieldNoon.setVisible(false);
+			textfieldStrength.setVisible(false);
+			textfieldUnit.setVisible(false);
+			diagnosisT.setVisible(false);
+			
+			consultationTA.setReadOnly(true);;
+			addMedicationB.setVisible(false);
+			removeMedicationB.setVisible(false);
+			deleteB.setVisible(false);
+			addDiagnosisB.setVisible(false);
+			removeDiagnosisB.setVisible(false);
+			
+			
+		}
 		doctorFirstnameL.setText(patientCase.getDoctor().getFirstname());
 		doctorNameL.setText(patientCase.getDoctor().getName());
 

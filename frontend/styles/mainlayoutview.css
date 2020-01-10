@@ -67,3 +67,7 @@ vaadin-accordion-panel span::before {
 	color: #ffffff;
 	padding: 20px 0;
 }
+
+.active{
+	background-color:red;
+}

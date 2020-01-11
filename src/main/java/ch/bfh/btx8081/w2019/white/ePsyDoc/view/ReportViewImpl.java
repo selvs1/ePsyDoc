@@ -165,7 +165,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 		diagnosisT.setLabel("Diagnose");
 
 		// fill comboBox.
-		this.combo.setItems("Ibuprofen 200mg", "Ibuprofen 400mg", "Ibuprofen 600mg");
+		this.combo.setItems("Ibuprofen 200mg", "Ibuprofen 400mg", "Ibuprofen 600mg","Amoxicillin 825mg", "Pantoprazol 20mg", "Novaminsulfon 500mg");
 
 		// Tabs settings.
 		tabs.setFlexGrowForEnclosedTabs(1);

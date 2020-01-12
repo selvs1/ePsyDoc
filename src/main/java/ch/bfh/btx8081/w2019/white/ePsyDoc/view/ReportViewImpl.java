@@ -301,7 +301,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	/**
 	 * Add listeners.
 	 * 
-	 * @param listeners add listeners.
+	 * @param listener add listeners.
 	 */
 	@Override
 	public void addListener(ReportViewListener listener) {
@@ -331,7 +331,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 			textfieldUnit.setVisible(false);
 			diagnosisT.setVisible(false);
 			
-			consultationTA.setReadOnly(true);;
+			consultationTA.setReadOnly(true);
 			addMedicationB.setVisible(false);
 			removeMedicationB.setVisible(false);
 			deleteB.setVisible(false);
@@ -349,7 +349,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	 * Set all header information (first and last name of doctor and save patient
 	 * case id in Session).
 	 * 
-	 * @param patientCase get patient case from presenter.
+	 * @param patientCaseID get patient case from presenter.
 	 */
 	@Override
 	public void setSessionID(int patientCaseID) {
@@ -359,7 +359,7 @@ public class ReportViewImpl extends MainLayoutView implements ReportView {
 	/**
 	 * fill the consultation textarea with the consultation from patient case.
 	 * 
-	 * @param consultation get consultation from presenter.
+	 * @param report get consultation from presenter.
 	 */
 	@Override
 	public void displayReport(String report) {

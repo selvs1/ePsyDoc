@@ -143,7 +143,7 @@ public class PatientViewImpl extends MainLayoutView implements PatientView {
 	/**
 	 * Add listeners.
 	 * 
-	 * @param listeners add listeners.
+	 * @param listener add listeners.
 	 */
 	@Override
 	public void addListener(PatientViewListener listener) {

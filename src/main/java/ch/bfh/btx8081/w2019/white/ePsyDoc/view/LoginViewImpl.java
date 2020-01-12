@@ -122,7 +122,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 	/**
 	 * Add listeners.
 	 * 
-	 * @param listeners add listeners.
+	 * @param listener add listeners.
 	 */
 	@Override
 	public void addListener(LoginViewListener listener) {

@@ -6,10 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase;
 
 /**
@@ -76,8 +74,8 @@ public class Service<GenericModel> {
 	 * @return List.
 	 * @throws EntityNotFoundException throw exception on failure.
 	 */
-	public List<GenericModel> findByAttributFull(String attribut, Object value) throws EntityNotFoundException {
-		List list = getQuery(attribut, value).getResultList();
+	public List<GenericModel> findByAttributFull(String attribute, Object value) throws EntityNotFoundException {
+		List list = getQuery(attribute, value).getResultList();
 		return (List<GenericModel>) list;
 	}
 
@@ -90,9 +88,9 @@ public class Service<GenericModel> {
 	 * @return List.
 	 * @throws EntityNotFoundException throw exception on failure.
 	 */
-	public List<GenericModel> findByAttributFullDESC(String attribut, Object value, String sortAttribute)
+	public List<GenericModel> findByAttributFullDESC(String attribute, Object value, String sortAttribute)
 			throws EntityNotFoundException {
-		List list = getQueryDESC(attribut, value, sortAttribute).getResultList();
+		List list = getQueryDESC(attribute, value, sortAttribute).getResultList();
 		return (List<GenericModel>) list;
 	}
 
@@ -104,8 +102,8 @@ public class Service<GenericModel> {
 	 * @return List.
 	 * @throws EntityNotFoundException throw exception on failure.
 	 */
-	public List<GenericModel> remove(String attribut, Object value) throws EntityNotFoundException {
-		List list = removeQuery(attribut, value).getResultList();
+	public List<GenericModel> remove(String attribute, Object value) throws EntityNotFoundException {
+		List list = removeQuery(attribute, value).getResultList();
 		return (List<GenericModel>) list;
 	}
 
@@ -116,8 +114,8 @@ public class Service<GenericModel> {
 	 * @param value     value of attribute.
 	 * @return First element from list.
 	 */
-	public GenericModel findLastElem(String attribut, Object value) {
-		List list = getLastQuery(attribut, value).setMaxResults(1).getResultList();
+	public GenericModel findLastElem(String attribute, Object value) {
+		List list = getLastQuery(attribute, value).setMaxResults(1).getResultList();
 		if (list.size() == 0) {
 			throw new EntityNotFoundException("not found");
 		}

@@ -19,6 +19,8 @@
         <vaadin.version>14.0.2</vaadin.version>
 
         <drivers.downloader.phase>pre-integration-test</drivers.downloader.phase>
+<!--        somethin new here below - sugi -->
+        <webdriver.chrome.driver>selenium-chrome-driver</webdriver.chrome.driver>
     </properties>
 
     <repositories>
@@ -306,6 +308,7 @@
                             <enableAssertions>true</enableAssertions>
                             <systemPropertyVariables>
                                 <!-- Pass location of downloaded webdrivers to the tests -->
+
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                             </systemPropertyVariables>
                         </configuration>

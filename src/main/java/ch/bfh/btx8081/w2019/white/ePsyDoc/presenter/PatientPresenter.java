@@ -44,7 +44,7 @@ public class PatientPresenter implements PatientView.PatientViewListener {
 	 * Sets the patientCaseList for the patient with the patientID.Adjusts the grid
 	 * of the view with the current patientCaseList.
 	 * 
-	 * @param patient ID get selected patient.
+	 * @param patientID get selected patient.
 	 */
 	@Override
 	public void setPatientCaseList(int patientID) {

@@ -47,7 +47,7 @@ public class Appointment {
 	/**
 	 * Set appointment ID.
 	 * 
-	 * @param AppointmentID get appointmentID.
+	 * @param appointmentID get appointmentID.
 	 */
 	public void setAppointmentID(int appointmentID) {
 		this.appointmentID = appointmentID;

@@ -130,7 +130,7 @@ public class AppointmentViewImpl extends MainLayoutView implements AppointmentVi
 	/**
 	 * Add listeners.
 	 * 
-	 * @param listeners add listeners.
+	 * @param listener adds a listener.
 	 */
 	@Override
 	public void addListener(AppointmentViewListener listener) {

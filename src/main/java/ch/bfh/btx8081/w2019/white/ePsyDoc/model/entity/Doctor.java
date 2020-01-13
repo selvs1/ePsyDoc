@@ -186,7 +186,7 @@ public class Doctor {
 	/**
 	 * Set the firstname.
 	 *
-	 * @param firstname get firstname.
+	 * @param firstName get firstname.
 	 */
 	public void setFirstname(String firstName) {
 		this.firstname = firstName;

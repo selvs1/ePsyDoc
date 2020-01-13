@@ -19,7 +19,7 @@
         <vaadin.version>14.0.2</vaadin.version>
 
         <drivers.downloader.phase>pre-integration-test</drivers.downloader.phase>
-<!--        somethin new here below - sugi -->
+        <!--        somethin new here below - sugi -->
         <webdriver.chrome.driver>selenium-chrome-driver</webdriver.chrome.driver>
     </properties>
 

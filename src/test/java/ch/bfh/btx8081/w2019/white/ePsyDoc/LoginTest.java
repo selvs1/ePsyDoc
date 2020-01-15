@@ -7,12 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 public class LoginTest {
 
     /**
-     * Vaadin sucks.
+     * Unfortunately this method does't work properly with chromedriver due to uknown reason.
      *
-     * @throws InterruptedException
+     * @throws InterruptedException is a unhandeled exception.
      * @deprecated This methode is used as a template for tests with solenium but unfortunately it doesn't work yet.
      */
     @Test

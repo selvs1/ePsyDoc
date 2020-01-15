@@ -12,7 +12,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.connections.AppointmentConnector;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.view.connections.AppointmentConnector;
 
 /**
  * Setup login GUI.

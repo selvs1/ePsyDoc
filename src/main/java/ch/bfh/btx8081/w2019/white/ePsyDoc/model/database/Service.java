@@ -1,4 +1,4 @@
-package ch.bfh.btx8081.w2019.white.ePsyDoc.database;
+package ch.bfh.btx8081.w2019.white.ePsyDoc.model.database;
 
 import java.util.List;
 

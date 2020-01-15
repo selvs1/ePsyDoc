@@ -2,7 +2,7 @@ package ch.bfh.btx8081.w2019.white.ePsyDoc.model;
 
 import ch.bfh.btx8081.w2019.white.ePsyDoc.database.Service;
 import ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
+import ch.bfh.btx8081.w2019.white.ePsyDoc.model.exceptions.DoctorException;
 import com.vaadin.flow.server.VaadinSession;
 
 /**

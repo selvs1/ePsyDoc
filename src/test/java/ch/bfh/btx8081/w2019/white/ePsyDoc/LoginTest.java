@@ -1,21 +1,11 @@
 package ch.bfh.btx8081.w2019.white.ePsyDoc;
 
-import ch.bfh.btx8081.w2019.white.ePsyDoc.exceptions.DoctorException;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.model.LoginModel;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.presenter.LoginPresenter;
-import ch.bfh.btx8081.w2019.white.ePsyDoc.view.LoginViewImpl;
-import com.vaadin.flow.server.VaadinSession;
 
-
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class LoginTest {
 

@@ -19,7 +19,7 @@ import javax.persistence.Persistence;
  *          model through centralization.
  *
  */
-
+//todo: maybe singleton?
 public class Database {
 	private static EntityManager em = createEntityManager();
 	private static final String PERSISTENCE_UNIT_NAME = "ePsyDoc";

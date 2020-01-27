@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+    <persistence-unit name="ePsyDoc" transaction-type="RESOURCE_LOCAL">
+        <class>ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Doctor</class>
+        <class>ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Appointment</class>
+        <class>ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Diagnosis</class>
+        <class>ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Drug</class>
+        <class>ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Medication</class>
+        <class>ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.Patient</class>
+        <class>ch.bfh.btx8081.w2019.white.ePsyDoc.model.entity.PatientCase</class>
+
+        <properties>
+
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1/ePsyDoc"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+<!--            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>-->
+<!--            EclipseLink will attempt to DROP all tables, then CREATE all tables. If any issues are encountered,
+            EclipseLink will follow the default behavior of your specific database and JDBC driver combination, then continue with the next statement
+            This is useful in development if the schema frequently changes or during testing when the existing data needs to be cleared.
+
+            Note: Using drop-and-create will remove all of the data in the tables when they are dropped.
+            You should never use option on a production schema that has valuable data in the database.
+            If the schema changed dramatically, there could be old constraints in the database that prevent the dropping of the old tables.
+            This may require the old schema to be dropped through another mechanism-->
+
+<!--            <property name="eclipselink.ddl-generation.output-mode" value="both"/>-->
+<!--                SQL Statement wird hier generiert-->
+<!--            <property name="eclipselink.logging.level" value="FINE"/>-->
+<!--                Logs erstellen - like verbose-->
+        </properties>
+    </persistence-unit>
+</persistence>

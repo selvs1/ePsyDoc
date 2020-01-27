@@ -122,6 +122,21 @@ public class Service<GenericModel> {
 		return (GenericModel) list.get(0);
 	}
 
+
+// todo: meine entity
+	public void createEntityRow(GenericModel tuple) {
+		//Todo: exception handling -> if entity already exists
+		em.getTransaction().begin();
+		em.persist(tuple);
+		em.flush();
+		em.getTransaction().commit();
+	}
+
+//	Meine Entity fertig
+
+
+
+
 	/**
 	 * Update patient case.
 	 * 

@@ -48,6 +48,11 @@ public class Doctor {
 
 	}
 
+	public Doctor(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
 	/**
 	 * Set the Password
 	 * 
